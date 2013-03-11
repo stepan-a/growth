@@ -1,0 +1,109 @@
+\documentclass[10pt,a4paper,notitlepage]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+
+ \usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+
+\title{\textsc{Croissance\\ \small{(Fiche de TD n°1)}}}
+\author{Stéphane Adjemian\thanks{Université du Maine, Gains. \texttt{stephane DOT adjemian AT univ DASH lemans DOT fr}}}
+\date{Le \today\ à \thistime}
+
+\maketitle
+
+\exercice{1}  Soit une  économie dont  le PIB  réel par  tête est,  en
+l'année $T$, $y_T=1000$.  \question{1} Si le taux de croissance annuel
+moyen de  $y$ est 0.1\% quel  sera le niveau  du PIB réel par  tête de
+cette économie  150 ans  plus tard ?  \question{2}  Donnez le  taux de
+croissance annuel  moyen si $y_{T+100}=1200$. \question{3}  Si le taux
+de croissance  annuel moyen est  1.5\%, combien faut-il  d'années pour
+que l'économie double son PIB par tête ?\newline
+
+
+\exercice{2}  Le tableau  suivant donne  les niveaux  de PIB  par tête
+réels en  1950 et en  2000 (exprimés en \$  de l'année 2000)  pour les
+états Unis et l'Éthiopie~:
+\begin{center}
+\begin{tabular}{l|cc}\hline
+ & 1950 & 2000 \\ \hline 
+États Unis & 11233,41 & 34364,50 \\ 
+Éthiopie & 329,27 & 725,37\\\hline\hline
+\end{tabular}
+\end{center}
+\question{1} Calculez les  taux de croissance annuels  moyens pour les
+deux pays. \question{2} Caculez, pour 1950  et 2000, les ratios du PIB
+par tête réel.  Quel est le taux de croissance  annnuel moyen du ratio
+des PIB ? \question{3} Combien de  temps faudrait-il à l'Éthiopie pour
+rattraper  le niveau  des États  Unis  en 2000,  si à  partir de  2000
+l'Étiopie bénéficie du taux de  croissance annuel moyen des États Unis
+sur la  période 1950-2000 et si  le taux de croissance  des États Unis
+est nul à partir de 2000 ?\newline
+
+
+\exercice{3} Soit $I(t)$ le niveau de l'investissement à l'instant $t$
+dans  une  économie.   On  suppose  qu'initialement  on  a  $I(0)=I_0=
+1/3$.  \question{1}  écrivez  l'équation différentielle  décrivant  le
+mouvement  de  l'investissement si  celui-ci  croît  au taux  constant
+$\rho$.  \question{2}  Résolvez cette équation en  exprimant le niveau
+de l'investissement  à chaque instant $t$.  \question{3} Supposons que
+la  population, $L(t)$  augmente  à taux  constant  $n$.  Décrivez  la
+dynamique de l'investissement par tête $i(t)=I(t)/L(t)$.  \question{4}
+Supposons que la  population, $L$, augmente à taux  $n(t)$ à l'instant
+$t$ (non  constant). Supposons que  le niveau  de la population  en 0,
+$L(0)$ soit  connue. Exprimez le niveau  de la population en  $T>0$ en
+fonction de  la population  initiale et  de la  chronique des  taux de
+croissance entre 0 et $T$. Déterminez le facteur de croissance entre 0
+et $T$.\newline
+
+\exercice{4} Une fonction de production est dite néo-classique si elle
+vérifie les conditions suivantes :
+\begin{enumerate}
+\item La fonction est homogène de degré 1.
+\item La fonction  est croissante dans ses arguments  (les facteurs de
+  production),  autrement   dit  les  productivités   marginales  sont
+  positives.
+\item Les productivités marginales sont décroissantes.
+\item Les conditions d'Inada : 
+\begin{itemize}
+\item Lorsque l'usage  d'un facteur de production  tend vers l'infini,
+  alors  la productivité  marginale associée  à ce  facteur tend  vers
+  zéro.
+\item Lorsque l'usage d'un facteur de production tend vers zéro, alors
+  la productivité marginale associée à ce facteur tend vers l'infini.
+\end{itemize}
+\end{enumerate}
+\question{1}  La fonction  $Y=K^{\alpha}L^{\beta}$,  avec $\alpha$  et
+$\beta$ deux réels positifs tels  que $\alpha+\beta > 1$, est-elle une
+fonction   de   production   néo-classique ?    \question{2}   Comment
+s'interprète  le coefficient  $\alpha$ ? \question{3}  La fonction  de
+production  $Y=K^{\alpha}L^{1-\alpha}+BK$,  avec   $B$  une  constante
+positive et  $\alpha \in ]0,1[$,  est-elle une fonction  de production
+néo-classique ?    \question{4}   Le  coefficient   $\alpha$   peut-il
+s'interprêter de la même façon que dans le cas de la première fonction
+de    production ?    \question{5}    La   fonction    de   production
+$Y=\left(\alpha
+  K^{\gamma}+(1-\alpha)L^{1-\gamma}\right)^{\frac{1}{\gamma}}$
+est-elle une fonction de production néo-classique ?\newline
+
+\exercice{5}  Soit $K(t)$  le  stock de  capital  physique, $L(t)$  la
+population qui  croît au taux  constant $n>0$, $\alpha \in  ]0,1[$, $s
+\in  ]0,1[$  et $\delta>0$.   La  dynamique  du capital  physique  est
+décrite par  : $\dot{K}(t)=BK(t)^{\alpha}L(t)^{1-\alpha}-\delta K(t)$.
+Déterminez la dynamique du capital physique par tête $k(t)=K(t)/L(t)$.
+
+
+\end{document}

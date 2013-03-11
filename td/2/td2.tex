@@ -1,0 +1,75 @@
+\documentclass[10pt,a4paper,notitlepage]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+
+ \usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+
+\title{\textsc{Croissance\\ \small{(Fiche de TD n°2)}}}
+\author{Stéphane Adjemian\thanks{Université du Maine, Gains. \texttt{stephane DOT adjemian AT univ DASH lemans DOT fr}}}
+\date{Le \today\ à \thistime}
+
+\maketitle
+
+\exercice{1}  Soit $K(t)$  le  stock de  capital  physique, $L(t)$  la
+population qui  croît au taux  constant $n>0$, $\alpha \in  ]0,1[$, $s
+\in  ]0,1[$  et $\delta>0$.   La  dynamique  du capital  physique  est
+décrite par :  $\dot{K}(t)=sK(t)^{\alpha}L(t)^{1-\alpha}-\delta K(t)$.
+\question{1} Après  avoir déterminé  la dynamique du  capital physique
+par  tête,  $k(t)=K(t)/L(t)$,   caractérisez  l'état  stationnaire  du
+modèle.  \question{2}   Si  l'économie   est  initialement   à  l'état
+stationnaire,  quel sera  l'effet  d'un changement  permanent du  taux
+d'épargne  sur la  dynamique  du  capital physique  par  tête, sur  la
+dynamique du produit  par tête et sur la dynamique  de la consommation
+par  tête.   \question{3}  Montrez  qu'il  existe  un  taux  d'épargne
+$\bar{s}$  qui  induit  une   consommation  de  long  terme  optimale.
+\question{4} Si le  taux d'épargne effectif $s$ est  différent du taux
+d'épargne $\bar{s}$,  l'état (hors modèle ici)  doit-il nécessairement
+inciter les ménages à choisir un taux d'épargne $\bar{s}$ ?\newline
+
+\exercice{2}  Soit $K(t)$  le  stock de  capital  physique, $L(t)$  la
+population qui  croît au taux  constant $n>0$, $\alpha \in  ]0,1[$, $s
+\in ]0,1[$ et $\delta>0$. La dynamique du capital physique est décrite
+par :  $\dot{K}(t)=sY(t)-\delta K(t)$.   La technologie  de production
+est de type  Cobb-Douglas : $Y =  K^{\alpha}(AL)^{1-\alpha}$ où $A(t)$
+est   un   indice   technologique   qui   croît   au   taux   constant
+$x$. \question{1} Déterminez l'équation différentielle qui caractérise
+l'évolution  de  la  technologie  $A(t)$.  Pourquoi  est-il  pertinent
+d'introduire un progrès technique (exogène)  dans le modèle de Solow ?
+\question{2}  Déterminez la  dynamique du  stock de  capital par  tête
+efficace,   \textit{ie}   écrivez    l'équation   différentielle   qui
+caractérise  le mouvement  de $\hat{k}=K/(AL)$.  \question{3} Calculez
+l'état  stationnaire  du modèle.  Pourquoi  travaillons  nous sur  des
+variables   par  tête   efficace   (alors  que   cette  variable   est
+inobservable) ?  Quel  est l'impact  d'une augmentation  permanente du
+taux d'épargne sur le long  terme de l'économie ? \question{5} Montrez
+que, si le niveau initial d'une économie est inférieur à son niveau de
+long  terme  ($\hat{k}(0)<\hat{k}^*$)  alors son  taux  de  croissance
+positif  diminue  le  long  de la  transition.  Quel  est  l'hypothèse
+essentielle  sur  la technologie  qui  explique  ce résultat ?  Donnez
+l'intuition.   \question{5}  Caractérisez   la  dynamique  de  $K(t)$,
+$k(t)$, $\hat y(t)$ et  $y(t)$ le long de la transition  et le long du
+sentier de croissance équilibré. Le  taux de croissance du produit par
+tête est-il  nécessairement positif lorsque  le taux de  croissance du
+produit par tête efficace est positif (c'est-à-dire lorsque le taux de
+croissance  du  stock  de  capital  physique  par  tête  efficace  est
+positif) ?  Le  taux   de  croissance  du  produit   par  tête  est-il
+nécessairement négatif  lorsque le taux  de croissance du  produit par
+tête efficace est négatif ?\newline
+
+
+\end{document}

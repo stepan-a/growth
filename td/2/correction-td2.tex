@@ -1,0 +1,357 @@
+\documentclass[10pt,a4paper,notitlepage]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage{wrapfig}
+
+\usepackage[active]{srcltx}
+\usepackage{scrtime}
+\usepackage{nicefrac}
+
+ \usepackage{pgf,tikz}
+ \usepackage{pgfplots}
+ \pgfplotsset{compat=newest}
+ \pgfplotsset{ticks=none}
+\pgfplotsset{plot coordinates/math parser=false}
+ \usetikzlibrary{arrows}
+ \usetikzlibrary{plotmarks}
+
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+
+\newlength\figureheight
+\newlength\figurewidth
+\setlength\figureheight{4cm}
+\setlength\figurewidth{4cm}
+
+
+
+\begin{document}
+
+
+
+\title{\textsc{Croissance\\ \small{(Correction de la fiche de TD n°2)}}}
+\author{Stéphane Adjemian\thanks{Université du Maine, Gains. \texttt{stephane DOT adjemian AT univ DASH lemans DOT fr}}}
+\date{Le \today\ à \thistime}
+
+\maketitle
+
+
+\exercice{1}  \question{1} Nous  avons déjà  montré dans  la fiche  de
+travaux dirigés n°1 que la dynamique  du stock de capital par tête est
+caractérisée par l'équation différentielle suivante :
+\[
+\dot k(t) = sk(t)^{\alpha} - (n+\delta)k(t)
+\]
+À l'état stationnaire  les variables par tête  sont constantes. Notons
+$k^{\star}$  le niveau  d'état stationnaire  du stock  de capital  par
+tête. L'état stationnaire est solution de l'équation suivante :
+\[
+s\left. k^{\star}\right.^{\alpha} = (n+\delta)k^{\star}
+\]
+À l'état  stationnaire l'investissement par  tête doit être égal  à la
+dépréciation du capital par tête.  Cette équation admet deux solutions
+en $k^{\star}$. La solution la  plus évidente est $k^{\star}=0$. Si le
+stock  de capital  est nul  alors sa  dépréciation est  nécessairement
+nulle, par ailleurs, lorsque le stock de capital est nul la production
+et donc l'investissement par  tête sont nuls (puisque l'investissement
+est une fraction de la  production). Nous écartons cette solution, car
+l'économie  serait  alors  réduite  à néant,  et  nous  cherchons  une
+solution  strictement positive  pour  $k^{\star}$. En  divisant les  deux
+membres de la dernière égalité par $k^{\star}$, nous obtenons :
+\[
+s\left. k^{\star}\right.^{\alpha-1} = (n+\delta)
+\]
+À l'état stationnaire, l'investissement par unité de capital doit être
+égal au taux de dépréciation. Nous obtenons finalement :
+\[
+k^{\star}= \left(\frac{s}{n+\delta}\right)^{\frac{1}{1-\alpha}}
+\]
+On déduit directement l'état stationnaire de la production par tête, en substituant ce résultat dans la fonction de production intensive\footnote{Celle-ci exprime la production par tête en fonction du stock de capital par tête. En effet nous avons :
+\[
+Y = K^{\alpha}L^{1-\alpha}
+\]
+En divisant les deux membres par la population :
+\[
+\frac{Y}{L} = K^{\alpha}L^{-\alpha}
+\]
+en utilisant les définitions des variables par tête, on a de façon équivalente :
+\[
+y = k^{\alpha}
+\]
+} :
+\[
+y^{\star} = \left.k^{\star}\right.^{\alpha}= \left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+Enfin la consommation par tête à l'état stationnaire est donnée par :
+\[
+c^{\star} = (1-s)y^{\star} = (1-s)\left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+\question{2} Une augmentation permanente  du taux d'épargne induit une
+augmentation de l'état  stationnaire du stock de  capital physique par
+tête. En effet, nous avons :
+\[
+\begin{split}
+\frac{\mathrm d k^{\star}}{\mathrm d s} &= \frac{1}{1-\alpha}\frac{1}{n+\delta}\left(\frac{s}{n+\delta}\right)^{\frac{1}{1-\alpha}-1}\\
+\Leftrightarrow \frac{\mathrm d k^{\star}}{\mathrm d s} &= \frac{1}{1-\alpha}\frac{1}{n+\delta}\left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}} > 0
+\end{split}
+\]
+puisque, par l'hypothèse de  rendement marginal positif et décroissant
+du capital  physique, nous  avons $0<\alpha<1$. Puisque  la production
+par tête est une fonction monotone  croissante du stock de capital par
+tête,   l'augmentation    permanente   du   taux    d'épargne   induit
+nécessairement une  augmentation de  la production  par tête  à l'état
+stationnaire.  En effet,  en utilisant  les dérivées  en chaîne,  nous
+obtenons :
+\[
+\frac{\mathrm d y^{\star}}{\mathrm d s} = \alpha \left. k^{\star} \right. ^{\alpha-1} \frac{\mathrm d k^{\star}}{\mathrm d s} > 0 
+\]
+Les  conséquences   sur  le  niveau   à  l'état  stationnaire   de  la
+consommation sont moins évidentes. En effet, l'augmentation induite de
+la production par tête,  $y^{\star}$, s'accompagne d'une diminution de
+la  part consommée  du revenu,  $(1-s)$. Pour  conclure il  faut peser
+l'augmentation  de la  production avec  la baisse  de la  propension à
+consommer. Nous devons donc comparer deux pentes : la pente de la part
+de la production consommée, constante et  égale à -1, avec la pente de
+la  production, qui  dépend du  niveau  de $s$  et est  donnée par  la
+dernière  équation.  Une  augmentation  du taux  d'épargne induit  une
+augmentation de la consommation à  l'état stationnaire si et seulement
+si la  pente de  la production  est supérieure  à un  (c'est-à-dire la
+valeur   absolue  de   la   pente   de  la   part   consommée  de   la
+production). Nous donnerons une réponse plus précise en répondant à la
+question  suivante.\newline  
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \begin{center}
+    \input{fig1.tikz}
+  \end{center}
+  \vspace{-20pt}
+  \caption{\textbf{Transition suite à une augmentation du taux d'épargne}}
+  \vspace{-10pt}
+\end{wrapfigure}
+L'augmentation permanente du taux d'épargne induit une augmentation de
+$k^{\star}$ et  de $y^{\star}$.   Si l'économie se  situe initialement
+sur  un état  stationnaire associé  à un  taux d'épargne  plus faible,
+alors l'accroissement  du taux d'épargne  va générer une  dynamique de
+transition   pour    amener   l'économie    vers   le    nouvel   état
+stationnaire. Durant cette transition le  stock de capital par tête et
+la  production  augmentent.  Au   moment  de  l'augmentation  du  taux
+d'épargne, le  niveau de la  consommation par tête chute,  puisque les
+ménages épargnent plus  alors que la production commence  tout juste à
+s'ajuster,  certes à  la  hausse, vers  le  nouvel état  stationnaire.
+Puis, en suivant  la croissance de la production,  la consommation par
+tête  augmente  de  façon  continue pour  rejoindre  son  nouvel  état
+stationnaire, dont  on ne  peut dire  pour l'instant  si il  sera plus
+élevé ou moins élevé que la condition initiale de la consommation.\newline
+
+
+\question{3} La consommation à l'état stationnaire est une fonction du taux d'épargne :
+\[
+c^{\star}(s) = (1-s)\left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+On vérifie  facilement que  la consommation de  long terme  (le niveau
+d'état stationnaire) est nulle si le taux d'épargne est nul. En effet,
+si le taux  d'épargne est nul, alors le stock  de capital physique par
+tête à  long terme  est nul (en  l'absence d'investissement,  le stock
+s'évapore,  du  fait de  la  dépréciation,  jusqu'à  ce que  le  stock
+disparaisse) et donc la production à  long terme est nulle. Puisque la
+consommation  est   une  fraction  constante  de   la  production,  la
+consommation est forcément nulle à long terme dans ce cas. Dans le cas
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \begin{center}
+    \input{fig2.tikz}
+  \end{center}
+  \vspace{-20pt}
+  \caption{\textbf{Taux d'épargne de la règle d'or}}
+  \vspace{-10pt}
+\end{wrapfigure}
+opposé d'un taux  d'épargne égal à un, on atteint  certes le niveau de
+long terme  le plus élevé possible  pour le stock de  capital physique
+par tête  ou la production par  tête (voir les réponses  à la question
+2), mais il  s'agit d'une économie où les ménages  consomment une part
+nulle de la  production! Encore une fois la consommation  à long terme
+est nulle. On  peut tout aussi facilement vérifier, dans  ces deux cas
+polaires,  que si  on augmente  (en partant  de zéro)  ou diminue  (en
+partant  de  un) marginalement  le  taux  d'épargne alors  on  obtient
+nécessairement une  augmentation de  la consommation  par tête  à long
+terme. Entre ces deux cas polaires,  nous cherchons une valeur du taux
+d'épargne telle  que le niveau  de long  terme de la  consommation par
+tête est maximal. Si ce niveau  optimal existe, alors il doit être tel
+qu'en ce point la dérivée de la consommation à l'état stationnaire par
+rapport à $s$  est nulle. La dérivée de $c^{\star}$  par rapport à $s$
+est donnée par :
+\[
+\begin{split}
+\frac{\mathrm dc^{\star}}{\mathrm d s} &= -\left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
++ (1-s)\frac{\alpha}{1-\alpha}\frac{1}{n+\delta}\left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}-1}\\  
+&= \left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\left[\frac{\alpha}{1-\alpha}\frac{1-s}{s}-1\right]
+\end{split}
+\]
+Le taux d'épargne de la  règle d'or $s_{\mathrm{or}}$, qui maximise la
+consommation par tête à long terme doit être tel que :
+\[
+\frac{\mathrm dc^{\star}(s_{\mathrm{or}})}{\mathrm d s} = 0
+\]
+c'est-à-dire, en simplifiant :
+\[
+\frac{\alpha}{1-\alpha}\frac{1-s_{\mathrm{or}}}{s_{\mathrm{or}}}=1
+\]
+On trouve finalement :
+\[
+s_{\mathrm{or}} = \alpha
+\]
+Le  taux d'épargne  de la  règle d'or  est égal  à l'élasticité  de la
+production par rapport au capital physique. Montrons qu'il s'agit bien
+de l'unique maximum. La dérivée de  $c^{\star}$ par rapport à $s$ peut
+s'écrire sous la forme :
+\[
+\frac{\mathrm dc^{\star}}{\mathrm d s} = y^{\star}(s)
+\left[\frac{\alpha}{1-\alpha}\frac{1-s}{s}-1\right]
+\]
+en utilisant la définition de l'état stationnaire de la production par
+tête.       De      façon       équivalente,      en       factorisant
+$\nicefrac{1}{s(1-\alpha)}$, on a :
+\[
+\begin{split}
+\frac{\mathrm dc^{\star}}{\mathrm d s} &= \frac{y^{\star}(s)}{s(1-\alpha)}
+\left[(1-s)\alpha-s(1-\alpha)\right] \\
+ &= \frac{y^{\star}(s)}{s(1-\alpha)}
+\left[\alpha-s\right]
+\end{split}
+\]
+soit par définition de $s_{\mathrm{or}}$ :
+\[
+\begin{split}
+\frac{\mathrm dc^{\star}}{\mathrm d s} = \frac{y^{\star}(s)}{s(1-\alpha)}
+\left[s_{\mathrm{or}}-s\right]
+\end{split}
+\]
+Puisque  la dérivée  de $c^{\star}$  par  rapport à  $s$ est  positive
+(négative)  si  et  seulement si  $s<s_{\mathrm{or}}$  (respectivement
+$s>s_{\mathrm{or}}$),   $s_{\mathrm{or}}=\alpha$  est   bien  l'unique
+valeur du taux  d'épargne qui maximise le niveau de  la consommation à
+l'état stationnaire.\newline
+
+\question{4}  Si le  taux  d'épargne effectif  est  différent du  taux
+d'épargne de la règle d'or, alors on sait qu'en incitant les ménages à
+épargner une  fraction $s_{\mathrm{or}}$  de la production  on amènera
+l'économie dans  une situation  où la consommation  par tête  est plus
+importante à  long terme. On  pourrait donc penser,  si le but  est de
+maximiser le niveau de la consommation par tête à long terme, que l'on
+aurait  toujours   intérêt  à  choisir   un  taux  d'épargne   égal  à
+l'élasticité de la production par rapport  au capital. Mais il ne faut
+pas omettre les conséquences sur le  niveau de consommation par tête à
+court terme,  pendant la transition  qui amène l'économie  vers l'état
+stationnaire de la règle d'or. On distinguera deux situations : le cas
+où l'économie  est initialement en \textit{sur  accumulation} (dans le
+sens où le  taux d'épargne effectif est supérieur à  celui de la règle
+d'or)  et  le cas  où  l'économie  est  initialement en  situation  de
+\textit{sous accumulation} (dans le sens où le taux d'épargne effectif
+est inférieur à celui de la règle d'or). Dans les deux cas, on suppose
+que l'économie  est initialement à  l'état stationnaire (associé  à un
+taux d'épargne non optimal).\newline
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \vspace{-20pt}
+  \begin{center}
+    \input{fig3.tikz}
+  \end{center}
+  \vspace{-10pt}
+  \caption{\textbf{Transition de la consommation (sur accumulation)}}
+  \vspace{-10pt}
+\end{wrapfigure}
+\textbf{Sur accumulation} Il s'agit du cas le plus simple. En effet si
+le taux  d'épargne est  initialement trop élevé,  il faut  le diminuer
+pour atteindre  le taux d'épargne  de la  règle d'or. Puisque  la part
+épargnée  de   la  production  baisse,   dès  le  passage  de   $s$  à
+$s_{\mathrm{or}}$ la  consommation augmente (elle saute).   Ensuite le
+niveau  de la  consommation  par  tête s'ajuste  à  la baisse  jusqu'à
+atteindre son état stationnaire. En  effet, puisque le passage au taux
+d'épargne  de la  règle d'or  exige une  baisse du  taux d'épargne  il
+entraîne aussi une  baisse de l'état stationnaire du  capital par tête
+et donc de la production par tête. L'économie doit rejoindre un nouvel
+état  stationnaire  où  les  ménages  consomment  plus  alors  que  la
+production est  plus faible. Le long  de la transition vers  ce nouvel
+état stationnaire,  le stock  de capital par  tête, la  production par
+tête et donc  la consommation par tête baissent.  Ainsi  le passage de
+$s$ à  $s_{\mathrm{or}}$ est toujours  profitable, à court terme  et à
+long terme le niveau de consommation  obtenu suite à la baisse du taux
+d'épargne  est  toujours  supérieur  à  ce  qu'il  était  initialement : $c(t)>c(0)=c^{\star}(s) \forall t >0$.\newline
+
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \vspace{-20pt}
+  \begin{center}
+    \input{fig4.tikz}
+  \end{center}
+  \vspace{-10pt}
+  \caption{\textbf{Transition de la consommation (sous accumulation)}}
+  \vspace{-10pt}
+\end{wrapfigure}
+\textbf{Sous  accumulation} Si  taux d'épargne  est initialement  trop
+faible,  par  rapport  à  l'optimum,  alors  nous  devrions  augmenter
+celui-ci. Cela assure un niveau de  consommation par tête plus élevé à
+l'état stationnaire, mais cela entraîne mécaniquement une baisse de la
+consommation initialement. Au même  instant que l'augmentation du taux
+d'épargne, la consommation chute puis  adopte un profil croissant pour
+rejoindre   l'état  stationnaire   de  la   règle  d'or.    En  effet,
+l'augmentation du taux d'épargne augmente l'état stationnaire du stock
+de capital  par tête. Le  long de la  dynamique de transition  vers le
+nouvel état stationnaire, le stock  de capital par tête, la production
+par tête  et donc  la consommation par  tête augmentent.   Pendant une
+première période,  $\forall t  \in [0,T[$,  suite à  l'augmentation du
+taux d'épargne,  le niveau  de consommation par  tête demeure  sous sa
+condition  initiale   ($c(0)=c^{\star}(s)$),  avant  de   le  dépasser
+définitivement.  Il  faut donc  mettre en balance  le bénéfice  à long
+terme avec  le coût à  court terme  pour décider s'il  est intéressant
+d'adopter le taux d'épargne de la  règle d'or. Le choix dépendra de la
+préférence  pour le  présent des  ménages.  Si  les ménages  accordent
+beaucoup plus  de poids au  présent qu'au futur, c'est-à-dire  plus de
+poids à  la perte en  termes de consommation  entre $0$ et  $T$ qu'aux
+gains entre $T$ et $\infty$, ils trouveront peu intéressant le passage
+de $s$ à $s_{\mathrm{or}}$.\newline
+
+\exercice{2} \question{1} L'indice  technologique, $A(t)$, est supposé
+croître à taux constant. Nous avons donc :
+\[
+\frac{\dot A(t)}{A(t)} = x \quad \forall\, t
+\]
+L'introduction du progrès  technique est nécessaire dans  le modèle de
+Solow,  car  sans  cette  source  exogène de  croissance  le  taux  de
+croissance des variables  par tête est nul à long  terme. Par exemple,
+le modèle  de Solow sans  progrès technique prédit que  l'hypothèse de
+rendement marginal du capital physique résulte à long terme en un taux
+de  croissance nul  pour  la production  par  tête.  Cette  prédiction
+contredit  l'observation.  \question{2}  Par définition  du  stock  de
+capital par tête efficace, $\hat k$, nous avons :
+\[
+\begin{split}
+  \dot{\hat{k}} &= \frac{\mathrm d}{\mathrm d t}\frac{K}{AL}\\
+&= \frac{\dot K (AL) - K \dot{(AL)}}{(AL)^2}\\
+&= \frac{\dot K (AL) - K \dot A L - K A \dot L}{(AL)^2}\\
+&= \frac{\dot K}{AL} - \hat k \frac{\dot A}{A} - \hat k \frac{\dot L}{L}\\
+&= \frac{\dot K}{AL} - (x+n)\hat k
+\end{split}
+\]
+En substituant la loi d'évolution du stock de capital physique agrégé,
+il vient :
+\[
+\dot{\hat{k}} = \frac{s K^{\alpha}(AL)^{1-\alpha}-\delta K}{AL} - (x+n)\hat k 
+\]
+En exploitant le  fait que la fonction de production  soit homogène de
+degré un (rendements d'échelle constants), on a finalement :
+\[
+\dot{\hat{k}} = s \hat k^{\alpha} - (x+n+\delta)\hat k 
+\]
+\end{document}

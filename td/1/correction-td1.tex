@@ -1,0 +1,337 @@
+\documentclass[10pt,a4paper,notitlepage]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+
+\usepackage[active]{srcltx}
+\usepackage{scrtime}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+
+\begin{document}
+
+
+
+\title{\textsc{Croissance\\ \small{(Correction de la fiche de TD n°1)}}}
+\author{Stéphane Adjemian\thanks{Université du Maine, Gains. \texttt{stephane DOT adjemian AT univ DASH lemans DOT fr}}}
+\date{Le \today\ à \thistime}
+
+\maketitle
+
+
+
+\exercice{1} \question{1} Calculons  le facteur  de
+croissance  qui correspond  à un  taux de  croissance annuel  moyen de
+0.1\% pendant  cent cinquante  ans.  Le  facteur de  croissance annuel
+moyen est égal à un plus le taux de croissance annuel moyen :
+\[
+\overline{G} = 1 + \bar{g} = 1 + 0.001
+\]
+Le  facteur de  croissance sur  cent  cinquante années  est obtenu  en
+composant le facteur annuel moyen cent cinquante fois :
+\[
+G_{T,T+150} = (1 + \bar{g})^{150}
+\]
+Par définition du facteur de croissance, nous avons :
+\[
+G_{T,T+150} = \frac{y_{T+150}}{y_{T}}
+\]
+Soit de façon équivalente :
+\[
+y_{T+150} = G_{T,T+150}y_T
+\]
+c'est-à-dire :
+\[
+y_{T+150} = (1+0.001)^{150} y_T \approx 1161.75
+\]
+\question{2} Si au bout de 200 années le niveau de $y$ est 1200, alors
+le  facteur de  croissance  sur  la période  est  1,2.  Le facteur  de
+croissance  annuel moyen  est obtenu  en  calculant la  racine 200  du
+facteur de croissance sur la période :
+\[
+\overline{G} = 1,2^{\frac{1}{200}}
+\]
+On détermine le  taux de croissance annuel moyen en  retranchant un au
+facteur de croissance annuel moyen :
+\[
+\bar{g} = \overline{G}-1 \approx 0.09\%
+\]
+\question{3}  Si le  taux de  croissance annuel  moyen est  $\bar g  =
+1.5\%$, alors le facteur de  croissance annuel moyen est $\overline{G}
+= 1.015$. Le facteur de croissance sur $T$ années est :
+\[
+1.015^T
+\]
+On cherche  la valeur de  $T$, c'est-à-dire le nombre  d'années, telle
+que ce  facteur de croissance est  égal à deux. On  doit donc résoudre
+l'équation suivante :
+\[
+(1+\bar g)^T = 2
+\]
+Soit de façon équivalente, en appliquant la fonction logarithmique :
+\[
+T \log (1+\bar g) = \log 2 
+\]
+soit finalement :
+\[
+T = \frac{\log 2}{\log 1+\bar g} \approx 46.55
+\]
+Il faut environ quarante six années et demie pour multiplier le niveau
+de $y$ par deux.  Notez que la réponse à la question  ne dépend que du
+taux de  croissance annuel moyen  et pas  de la condition  initiale de
+$y$.
+
+
+\bigskip
+\bigskip
+
+\exercice{2} \question{1}  Pour calculer un taux  de croissance annuel
+moyen,  on commence  par  calculer  le facteur  de  croissance sur  la
+période,  puis par  prendre  sa racine  cinquantième  pour obtenir  le
+facteur de croissance  annuel moyen. On obtient le  taux de croissance
+en  retranchant 1.  Le taux  de croissance  annuel moyen  est égal  au
+facteur  de croissance  moyen  moins  un. Pour  les  états unis,  nous
+avons :
+\[
+\overline{G} = \left(\frac{34364.50}{11233.41}\right)^{\frac{1}{50}}
+\]
+soit
+\[
+\bar g = \overline{G} - 1 \approx 2.26\%
+\]
+Pour l'Éthiopie, nous avons :
+\[
+\overline{G} = \left(\frac{725.37}{329.27}\right)^{\frac{1}{50}}
+\]
+soit
+\[
+\bar g = \overline{G} - 1 \approx 1.59\%
+\]
+\question{2} Notons $r_t$ le ratio du PIB des États Unis à celui de l'Éthiopie :
+\[
+r_t = \frac{\text{PIB}_{\text{USA},t}}{\text{PIB}_{\text{ETH},t}}
+\]
+Nous avons :
+\[
+r_{1950} = \frac{11233.41}{329.27} \approx 34.12
+\]
+et
+\[
+r_{2000} = \frac{34364.50}{725.37} \approx 47.37 
+\]
+Cette augmentation de  l'écart entre les États Unis  et l'Éthiopie est
+une conséquence  de la différence  sur les taux de  croissance annuels
+moyens constatée plus  haut. Le taux de croissance annuel  moyen de ce
+ratio est :
+\[
+\bar g_r = \left(\frac{r_{2000}}{r_{1950}}\right)^{\frac{1}{50}}-1 \approx 0.66\% 
+\]
+\question{3} Le taux de croissance annuel  moyen des États Unis sur la
+période est 2.26\%, le niveau du  PIB de l'Éthiopie en 2000 est 725.37
+\$, pour que l'Éthiopie atteigne le niveau des États Unis, il faudrait
+qu'elle multiplie  son niveau  de PIB par  tête par  $r_{2000} \approx
+47.37$. On cherche donc $T$ solution de l'équation suivante :
+\[
+(1+0.0226)^T = 47.37
+\]
+En prenant le logarithme népérien, on obtient :
+\[
+T = \frac{\log 47.37}{\log (1+0.0226)} \approx 172.52 
+\]
+le nombre  d'années pour que  l'Éthiopie rattrape le niveau  des États
+Unis en 2000,  en supposant que le taux de  croissance annuel moyen de
+l'Éthiopie  soit celui  observé pour  les  États Unis  sur la  période
+1950-2000.
+
+\bigskip
+\bigskip
+
+\exercice{3} \question{1}  Si l'investissement croît à  taux constant,
+alors nous avons :
+\[
+\frac{\dot{I}(\tau)}{I(\tau)} = \rho
+\]
+une équation différentielle d'ordre  un linéaire. \question{2} On peut
+résoudre cette ED en notant que de façon équivalente la dynamique peut
+s'écrire :
+\[
+\dot{\log I(\tau)} = \rho
+\]
+pour tout instant $\tau$. Ainsi en sommant sur $\tau$ entre 0 et t$t$,
+il vient :
+\[
+\int_0^t \dot{\log I(\tau)}\mathrm d\tau = \int_0^t \rho \mathrm d\tau
+\]
+soit de façon équivalente :
+\[
+\log I(t) - \log I(0) = \rho t
+\]
+\[
+\Leftrightarrow \log I(t) - \log I(0) = \rho t
+\]
+\[
+\Leftrightarrow \log I(t)  = \log I(0)+\rho t
+\]
+\[
+\Leftrightarrow I(t)  = I(0)e^{\rho t}
+\]
+Nous avons  exprimé l'investissement  à l'instant  $t$ en  fonction de
+l'investissement    initial   et    du   taux    de   croissance    de
+l'investissement.    \question{3}    Décrivons   la    dynamique    de
+l'investissement par tête si la population croît au taux constant $n$.
+Nous avons :
+\[
+\begin{split}
+  \frac{\mathrm d}{\mathrm dt}i(t) &= \frac{\mathrm d}{\mathrm dt}\frac{I(t)}{L(t)}\\  
+  &= \frac{\dot{I}(t)L(t)-I(t)\dot{L}(t)}{L(t)^2}\\
+  &= \frac{\dot{I}(t)}{L(t)}-i(t)\frac{\dot{L}(t)}{L(t)}\\
+  &= i(t)\left(\frac{\dot{I}(t)}{I(t)}-\frac{\dot{L}(t)}{L(t)}\right)
+\end{split}
+\]
+Ainsi, le taux de croissance de l'investissement par tête est donné par : 
+\[
+g_i(t) =  \rho-n
+\]
+la différence entre le taux de croissance de l'investissement total et le taux de croissance de la 
+population. \question{4} Si le taux de croissance de la population n'est pas constant :
+\[
+\frac{\dot{L}(\tau)}{L(\tau)} = n(\tau)
+\]
+En sommant sur $\tau$ entre 0 et $t$, il vient :
+\[
+\log L(t) - \log L(0) = \int_0^t n(\tau)\mathrm d\tau 
+\]
+et donc :
+\[
+L(t) = L(0)e^{\int_0^t n(\tau)\mathrm d\tau}
+\]
+le terme exponentiel s'interprète comme un facteur de croissance, puisqu'il est égal à $L(t)/L(0)$.
+
+\bigskip
+\bigskip
+
+\exercice{4}  \question{1} Cette  fonction de  production Cobb-Douglas
+n'est pas néo-classique  car ici elle n'est pas homogène  de degré. On
+peut monter  que les  rendements d'échelle sont  supérieurs à  un. En
+effet, pour tout réel $\lambda>1$, nous avons :
+\[
+F(\lambda K, \lambda L) = \lambda^{\alpha}K^{\alpha}\lambda^{\beta}L^{\beta} = \lambda^{\alpha+\beta}F(K,L)>\lambda F(K,L)
+\]
+car  $\alpha+\beta>1$.   \question{2}  Le  coefficient   $\alpha$  est
+l'élasticité de la  production par rapport au capital.  En effet, nous
+avons :
+\[
+\frac{\frac{\partial F}{\partial K}}{\frac{Y}{K}} = \alpha K^{\alpha-1}L^{1-\alpha}\frac{K}{K^{\alpha}L^{1-\alpha}} = \alpha\frac{K^{\alpha}L^{1-\alpha}}{K^{\alpha}L^{1-\alpha}} = \alpha
+\]
+\question{3} Cette fonction de  production n'est pas néo-classique car
+la productivité marginale du capital physique :
+\[
+F_K(K,L) = \alpha K^{\alpha-1}L^{1-\alpha} + B
+\]  
+ne tend pas  vers zéro lorsque le stock de  capital tend vers l'infini
+mais  vers $B$.  \question{4}  Non, pour  une  fonction plus  générale
+l'élasticité de la production par rapport  au capital ne se réduit pas
+à un paramètre constant. L'élasticité est donnée par :
+\[
+\frac{\frac{\partial F}{\partial K}}{\frac{Y}{K}} = \left(\alpha K^{\alpha-1}L^{1-\alpha}+B\right)\frac{K}{K^{\alpha}L^{1-\alpha}}
+\]
+Dès lors  que $B\neq  0$, l'élasticité (variable)  n'est plus  égale à
+$\alpha$ (on ne  peut plus faire la  simplification).  \question{5} On
+vérifie facilement  que cette fonction  de production est  homogène de
+degré  un  et  que  ses productivités  marginales  sont  positives  et
+décroissantes. Il ne s'agit pourtant  pas d'une fonction de production
+néo-classique car les conditions d'Inada  ne sont pas satisfaites pour
+toutes les valeurs possibles des  paramètres. Considérons le cas de la
+productivité marginale du capital. Celle-ci est donnée par :
+\[
+\begin{split}
+F_K(K,L) &= \alpha K^{-\gamma\frac{1-\gamma}{\gamma}}\left[\alpha K^{\gamma} + (1-\alpha)L^{\gamma}\right]^{\frac{1-\gamma}{\gamma}}\\
+&= \alpha \left[\alpha + (1-\alpha)\left(\frac{L}{K}\right)^{\gamma}\right]^{\frac{1-\gamma}{\gamma}}
+\end{split}
+\]
+Le paramètre $\gamma\leq 1$ détermine l'élasticité de substitution entre les facteurs $K$ et $L$ : 
+\[
+\varepsilon = \frac{1}{1-\gamma} 
+\]
+On distingue deux cas, suivant le signe de $\gamma$ :
+\begin{enumerate}
+\item Si $\gamma<0$, c'est-à-dire  si l'élasticité de substitution est
+  inférieure  à un  (l'élasticité de  substitution dans  le cas  d'une
+  fonction de production Cobb-Douglas), on a :
+  \[
+  \lim_{K\rightarrow 0} \left(\frac{L}{K}\right)^{\gamma} = 0
+  \]
+  et donc :
+  \[
+  \lim_{K\rightarrow 0} F_K(K,L) = \alpha^{\frac{1-\gamma}{\gamma}+1} < \infty
+  \]
+  alors que pour une fonction de production néo-classique la limite de
+  cette  productivité marginale  devrait être  infinie. Notez  que sur
+  l'autre bord,  lorsque le  stock de capital  tend vers  l'infini, la
+  productivité marginale tend bien vers zéro.
+\item  Si   $\gamma>0$,  c'est-à-dire   si  les  facteurs   sont  plus
+  substituables que dans le cas Cobb-Douglas, on a :
+  \[
+  \lim_{K\rightarrow \infty} \left(\frac{L}{K}\right)^{\gamma} = \infty
+  \]
+  et donc :
+  \[
+  \lim_{K\rightarrow 0} F_K(K,L) = \alpha^{\frac{1-\gamma}{\gamma}+1} > 0
+  \]
+  alors que que pour une fonction de production néo-classique la limite de
+  cette  productivité marginale  devrait être  nulle. Notez  que sur
+  l'autre bord,  lorsque le  stock de capital  tend vers  zéro, la
+  productivité marginale tend bien vers l'infini.
+\end{enumerate}
+Ainsi, dès lors que $\gamma\neq 0$  les conditions d'Inada ne sont pas
+toutes satisfaites.
+
+
+\bigskip
+\bigskip
+
+\exercice{5}  Soit $K(t)$  le  stock de  capital  physique, $L(t)$  la
+population qui  croît au taux  constant $n>0$, $\alpha \in  ]0,1[$, $s
+\in  ]0,1[$  et $\delta>0$.   La  dynamique  du capital  physique  est
+décrite par  : $\dot{K}(t)=BK(t)^{\alpha}L(t)^{1-\alpha}-\delta K(t)$.
+Déterminons   la    dynamique   du    capital   physique    par   tête
+$k(t)=K(t)/L(t)$. Par définition, nous avons :
+\[
+\dot k(t) = \frac{\mathrm d}{\mathrm dt} \left(\frac{K(t)}{L(t)}\right)
+\]
+En calculant la dérivée par rapport au temps, il vient :
+\[
+\dot k(t) = \frac{\dot K(t)L(t)-K(t)\dot L(t)}{L(t)^2}
+\]
+ou encore :
+\[
+\dot k(t) = \frac{\dot K(t)}{L(t)}\frac{L(t)}{L(t)} - \frac{\dot L(t)}{L(t)}\frac{K(t)}{L(t)}
+\]
+Sachant  que la  population, $L$,  croît au  taux constant  $n$ et  en
+utilisant la définition du stock de capital par tête, il vient :
+\[
+\dot k(t) = \frac{\dot K(t)}{L(t)} - nk(t)
+\]
+Nous avons exprimé la variation du stock de capital par tête en fonction du niveau du stock de capital par tête et de la variation du stock de capital agrégé. Nous pouvons éliminer les variations de $K$ rapportée à $L$ en utilisant la loi de transition pour le stock de capital agrégé. En substituant celle-ci dans la dernière équation, il vient :
+\[
+\begin{split}
+\dot k(t) &= \frac{sK(t)^{\alpha}L(t)^{(1-\alpha)}-\delta K(t)}{L(t)} - nk(t)\\
+  &= s\left(\frac{K(t)}{L(t)}\right)^{\alpha}\left(\frac{L(t)}{L(t)}\right)^{1-\alpha} - (n+\delta)k(t)\\
+  &= sk(t)^{\alpha} - (n+\delta)k(t)
+\end{split}
+\]
+la variation du stock de capital par tête est donnée par différence entre l'investissement par tête et la dépréciation du stock de capital physique par tête. Le stock de capital physique par tête augmente si et seulement si l'investissement par tête est supérieur à la dépréciation du capital par tête. Notez que sans l'hypothèse de rendements d'échelle constants, c'est-à-dire si les exposants de la technologie Cobb-Douglas ne sommaient pas à un, il ne serait pas possible d'éliminer la tendance démographique (le niveau de la population $L(t)$).
+
+\end{document}
