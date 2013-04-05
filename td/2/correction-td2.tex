@@ -354,4 +354,85 @@ degré un (rendements d'échelle constants), on a finalement :
 \[
 \dot{\hat{k}} = s \hat k^{\alpha} - (x+n+\delta)\hat k 
 \]
+\question{3} À l'état stationnaire, l'investissement par tête efficace
+doit être  égal au taux de  dépréciation du stock de  capital par tête
+efficace,  de sorte  que la  variation du  stock de  capital par  tête
+efficace soit nul.  L'état stationnaire $\hat k^\star$  doit donc être
+la solution de :
+\[
+s \left.{\hat k}^\star\right.^{\alpha} - (x+n+\delta){\hat k}^\star
+\]
+En excluant la solution nulle, on obtient :
+\[
+{\hat k}^\star = \left(\frac{s}{n+x+\delta}\right)^{\frac{1}{1-\alpha}}
+\]
+On peut déduire  l'état stationnaire des autres variables  à partir de
+ce  résultat. Notons  que nous  n'aurions  pas pu  identifier un  état
+stationnaire pour le stock de capital  par tête ou le stock de capital
+dans  ce   modèle,  puisque  les  équations   différentielles  dictant
+l'évolution de ces deux variables  ne sont pas autonomes (\emph{ie} le
+lien entre  la variation  et le niveau  dépend du  temps). Clairement,
+puisque  $\nicefrac{1}{1-\alpha}>0$,  une augmentation  permanente  du
+taux  d'épargne  induit une  augmentation  de  l'état stationnaire  du
+capital par tête efficace et donc  aussi une augmentation du niveau de
+long terme de la production par tête efficace. \question{4} Le taux de
+croissance du stock de capital par tête est donné par :
+\[
+g_{\hat k} = s \hat k^{\alpha-1} - (x+n+\delta)
+\]
+En notant, à partir de l'expression de l'état stationnaire donnée plus
+haut, qu'il est possible d'exprimer le taux de dépréciation du capital
+par tête efficace ($n+x+\delta$) en fonction de l'état stationnaire :
+\[
+n+x+\delta = s \left.{\hat k}^\star\right.^{\alpha-1}
+\]
+En substituant dans l'équation du taux de croissance et en factorisant il vient :
+\[
+g_{\hat k} = s \left(\hat k^{\alpha-1} - \left.{\hat k}^\star\right.^{\alpha-1}\right)
+\]
+soit encore :
+\[
+g_{\hat k} = s \left.{\hat k}^\star\right.^{\alpha-1} \left(\left(\frac{\hat k}{\hat k^\star}\right)^{\alpha-1} - 1\right)
+\]
+Clairement, puisque $\alpha-1<0$ à cause des rendements décroissant du
+capital, si  $\nicefrac{\hat k}{{\hat  k}^\star}$ est inférieur  à un,
+c'est-à-dire si le stock de capital  par tête efficace est inférieur à
+son niveau de long terme, le taux de croissance est positif. Au fur et
+à mesure que le stock de  capital par tête efficace augmente, le ratio
+$\nicefrac{\hat k}{{\hat k}^\star}$  se rapproche de un et  le taux de
+croissance se rapproche de zéro. Ce résultat repose sur l'hypothèse de
+rendements  décroissants,   $\alpha<1$.   Au  fur  et   à  mesure  que
+l'économie  se  rapproche de  l'état  stationnaire  en augmentant  son
+niveau de capital, le rendement de l'investissement devient de plus en
+plus faible  et, puisque  l'épargne est une  fraction constante  de la
+production, l'investissement  net de  la dépréciation  est de  plus en
+plus   faible  ce   qui  résulte   en  une   diminution  du   taux  de
+croissance. \question{5} Le taux de croissance du stock de capital par
+tête est :
+\[
+g_k = g_{\hat k} + x
+\]
+Le taux de croissance du stock de capital est :
+\[
+g_K = g_{\hat k} + x + n
+\]
+On établit  ces résultats facilement  en se  rappelant que le  taux de
+croissance  du produit  de deux  variables est  la somme  des taux  de
+croissance de ces deux variables. Le taux de croissance de la production par tête efficace est proportionnel au taux de croissance du capital par tête efficace car la technologie de production (qui transforme le capital en produit) est à élasticité constante :
+\[
+g_{\hat y} = \alpha g_{\hat k}
+\]
+En effet :
+\[
+g_{\hat y} = \frac{\dot{\hat{y}}}{\hat y} = \frac{\frac{\mathrm d}{\mathrm dt}\hat k^\alpha}{\hat k^\alpha} =  \frac{\alpha \hat k^{\alpha-1}\dot{\hat{k}}}{\hat k^\alpha} = \frac{\alpha \dot{\hat{k}}}{\hat k} = \alpha g_{\hat k}   
+\]
+Le taux de croissance de la production par tête est :
+\[
+g_y = g_{\hat y} + x
+\]
+Puisque  $x>0$,  le  taux  de  croissance  du  produit  par  tête  est
+nécessairement positif  si le taux  de croissance du produit  par tête
+efficace est positif.  Dans l'autre sens, si le taux  de croissance du
+produit par tête efficace est négatif,  alors le taux de croissance du
+produit par tête n'est pas nécessairement négatif.
 \end{document}
