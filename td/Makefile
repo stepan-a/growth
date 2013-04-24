@@ -1,6 +1,6 @@
 ROOT_PATH = .
 
-all: td1 td2
+all: td1 td2 td3
 
 td1:
 	$(MAKE) all -C $(ROOT_PATH)/1
