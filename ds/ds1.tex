@@ -1,0 +1,43 @@
+\documentclass[10pt,a4paper,notitlepage]{article}
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage{manfnt}
+\usepackage{hyperref}
+\usepackage{nicefrac}
+
+\usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+
+\title{\textsc{Éducation, Formation et Croissance\\ \small{(Devoir surveillé n°1)}}}
+\date{Le \today\ à \thistime}
+
+\maketitle
+
+Soient $k(t)$ le stock de capital physique d'une économie à l'instant $t$, $L(t)$ la population qui croît au taux constant $n>0$, $\alpha\in]0,1[$ un paramètre technologique, $s\in]0,1[$ le taux d'épargne et 
+$\delta\in[0,1]$ le taux de dépréciation du capital physique. La dynamique du stock de capital physique est décrite par l'équation suivante :
+\[
+\dot K(t) = sY(t)-\delta K(t)
+\]
+et la technologie de production est de type Cobb-Douglas :
+\[
+Y(t) = K(t)^\alpha L(t)^{1-\alpha}
+\]
+\question{1} Donnez une interprétation du paramètre $\alpha$ de la technologie de production. \question{2} Interprétez la loi d'évolution du stock de capital physique (la première équation). \question{3.a} Décrivez la dynamique du capital par tête $k(t)=\nicefrac{K(t)}{L(t)}$, en montrant que :
+\[
+\dot k(t) = sk(t)^{\alpha}-(n+\delta)k(t)
+\]
+\question{3.b} Interprétez cette équation. \question{4} Donnez une expression analytique du taux de croissance du stock de capital physique par tête. \question{5} Représentez graphiquement le taux de croissance du stock de capital physique par tête (en expliquant la construction du graphique) et commentez. \question{6} Calculez l'état stationnaire du modèle (pour le capital par tête, la production par tête et la consommation par tête). \question{7} Quel est le rapport entre l'état stationnaire du stock de capital par tête et le niveau de long terme du capital par tête ? Justifiez votre réponse. \question{8.a} Quel est le taux de croissance du produit par tête à court et à long terme ? \question{8.b} Quel est le taux de croissance du produit à court et à long terme ? \question{9} Montrez que ce modèle prédit une relation décroissante entre le taux de croissance du produit par tête et le niveau du produit par tête. Quelle est l'hypothèse au centre de cette prédiction ? \question{10} Que pouvez-vous dire de la dynamique du capital par tête ou du produit par tête lorsque $\alpha=1$ ?  
+
+\end{document}
