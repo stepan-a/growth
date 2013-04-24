@@ -1,5 +1,5 @@
 LATEX = pdflatex
-TARGET = kirikou.cepremap.org:~/public_html/university/growth/td/2
+TARGET = kirikou.cepremap.org:~/public_html/university/growth/td/3
 
 td3.pdf: td3.tex
 	while ($(LATEX) td3.tex ; \
