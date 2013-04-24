@@ -1,0 +1,773 @@
+\documentclass[10pt,a4paper,notitlepage,onecolumn]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage{nicefrac}
+\usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcommand{\exercice}[2]{\textsc{\textbf{Exercice}} #1 \textbf{[#2]}}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\newcommand{\growth}[1]{\frac{\dot{#1}}{#1}}
+\setlength{\parindent}{0cm}
+
+\title{\textsc{Croissance\\ \small{(Correction de la fiche de TD n°3)}}}
+\author{Stéphane Adjemian\thanks{Université du Maine, Gains. \texttt{stephane DOT adjemian AT univ DASH lemans DOT fr}}}
+\date{Le \today\ à \thistime}
+
+
+
+
+
+\begin{document}
+
+\maketitle
+
+\exercice{1}{Retour sur la règle d'or} Écrivons la loi d'évolution du capital par
+tête $k(t) = K(t)/L(t)$. Commençons par diviser les deux membres de
+l'équation décrivant l'évolution du stock de capital agrégé dans
+l'économie par le nombre de tête $L(t)$~:
+\[
+\frac{\dot{K}}{L} = s \frac{Y}{L} - \delta \frac{K}{L}
+\]
+En substituant la définition de la technologie et en notant que
+$\alpha+1-\alpha = 1$, il vient~:
+\[
+\frac{\dot{K}}{L} = s
+\frac{K^{\alpha}L^{1-\alpha}}{L^{\alpha+(1-\alpha)}} - \delta k
+\]
+soit de façon équivalente~:
+\[
+\frac{\dot{K}}{L} = s
+\left(\frac{K}{L}\right)^{\alpha}\left(\frac{L}{L}\right)^{1-\alpha}
+- \delta k
+\]
+\begin{equation}\label{equ:01}
+\Leftrightarrow \frac{\dot{K}}{L} = s k^{\alpha} - \delta k
+\end{equation}
+Nous cherchons à décrire la loi d'évolution de $k$. Dans la dernière
+équation, le capital intensif apparaît bien en niveau sur le membre
+de droite, mais dans le membre de gauche nous avons la variation du
+stock de capital agrégé rapporté à la taille de la population alors
+que nous aimerions avoir la variation du capital par tête. Par
+définition du capital par tête, nous avons~:
+\[
+\dot{k} = \frac{\mathrm d}{\mathrm dt}\left(\frac{K}{L}\right)
+\]
+en vertu des formules usuelles de dérivation, il vient~:
+\[
+\dot{k} = \frac{\dot{K}L-K\dot{L}}{L^2}
+\]
+\[
+\Leftrightarrow \dot{k} = \frac{\dot{K}L}{L^2}-\frac{K\dot{L}}{L^2}
+\]
+\[
+\Leftrightarrow \dot{k} =
+\frac{\dot{K}}{L}-\frac{K}{L}\frac{\dot{L}}{L}
+\]
+\[
+\Leftrightarrow \dot{k} = \frac{\dot{K}}{L}-nk
+\]
+car la population croît au taux constant $n$. Nous pouvons donc
+exprimer la variation du stock de capital agrégé rapporté à la
+taille de la population en fonction de la variation du stock de
+capital intensif et du niveau du stock de capital intensif. Par
+substitution dans l'équation \ref{equ:01} il vient~:
+\[
+\dot{k} = s k^{\alpha} - (n+\delta) k
+\]
+Cette équation différentielle non linéaire décrit l'évolution du
+stock de capital par tête dans l'économie. Le stock de capital par
+tête s'accroît si et seulement si l'investissement par tête est
+suffisant pour << couvrir >> la dépréciation du capital
+intensif.\newline 
+
+\question{2} L'état de cette économie est complètement
+décrit par le capital intensif (si on connaît $k$ on peut déterminer
+le produit par tête, $y$, via la fonction de production, la
+consommation par tête, $c$, via la règle $c=(1-s)y$ et par
+complémentarité l'investissement par tête, $i = sy$). L'économie est
+à son état stationnaire lorsque les variables intensives ne varient
+plus, c'est-à-dire lorsque le capital par tête ne varie plus
+(puisque cette variable << résume >> l'ensemble de l'économie).
+Formellement, on cherche le niveau de capital par tête $k^{\ast}$
+tel que $\dot{k}$ soit nul, c'est-à-dire tel que~:
+\[
+s\left[k^{\ast}\right]^{\alpha} = (n+\delta)k^{\ast}
+\]
+À l'état stationnaire, le volume de l'investissement en capital physique par tête doit 
+égaliser la dépréciation du capital physique par tête.  
+Une première solution triviale est $k^{\ast}=0$. On ne considère pas
+cette solution car il s'agit d'une situation dégénérée, dans le sens
+où l'économie n'existe pas à l'état stationnaire (toutes les
+variables sont nulles). De plus on peut montrer que cet état
+stationnaire, qualifié de trivial, n'est pas stable dans ce modèle.
+Après une variation infinitésimale du stock de capital physique par
+tête, on ne revient jamais à l'état stationnaire
+trivial\footnote{Vous pouvez établir ce point graphiquement.}. Si
+$k^{\ast}>0$, en divisant les deux membres de l'équation par
+$\left[k^{\ast}\right]^{\alpha}$, il vient~:
+\[
+k^{\ast} = \left(\frac{s}{n+\delta}\right)^{\frac{1}{1-\alpha}}
+\]
+En substituant dans la technologie intensive Cobb-Douglas, on
+obtient directement le niveau d'état stationnaire du produit par
+tête~:
+\[
+y^{\ast} = \left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+Sachant que le niveau de la consommation est une fraction constante,
+$1-s$, du produit, on obtient l'état stationnaire de la
+consommation~:
+\[
+c^{\ast} =
+(1-s)\left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+On voit qu'une augmentation permanente du taux d'épargne déplace
+vers le haut le niveau de long terme\footnote{Ici on parle
+indifféremment de niveau de long terme et d'état stationnaire car
+celui-ci est globalement stable (ce que vous pouvez également
+établir graphiquement).} du capital physique et du produit
+intensifs. Dans une économie où les ménages accumulent plus de
+capital, on atteint un niveau de long terme plus élevé.\newline
+
+
+\question{3} Une augmentation du taux d'épargne a un effet
+ambigu sur le niveau de long terme de la consommation. Considérons
+deux cas polaires. Si $s=1$ alors la consommation est toujours
+nulle. A fortiori elle doit être nulle à l'état stationnaire. Si
+$s=0$, alors le stock de capital intensif décroît à chaque instant
+car l'investissement est toujours nul. Le taux de décroissance de
+$k$ est constant et déterminé par le taux de dépréciation du capital
+par tête ($n+\delta$). Pendant la transition le niveau de la
+consommation est positif, mais à long terme la consommation devient
+nulle car le le capital et produit intensifs tendent vers zéro.\\
+Imaginons que nous dévions marginalement de ces deux cas polaires.
+Pla\-çons nous dans le cas où la totalité du revenu est épargnée
+($s=1$). Si on diminue de façon infinitésimale le taux d'épargne
+alors, même si cela va contribuer à diminuer le niveau de long terme
+de $k$ et $y$, cela va induire une augmentation (infinitésimale) de
+la consommation à long terme. Dans ce cas une diminution du taux
+d'épargne induit une augmentation de la consommation à long terme.
+Envisageons le cas symétrique où la totalité du revenu est consommée
+à chaque instant ($s=0$). Une augmentation infinitésimale du taux
+d'épargne nous permet de définir un état stationnaire non trivial,
+où le produit sera strictement positif, vers lequel l'économie va se
+diriger. Ainsi en augmentant le taux d'épargne on crée un <<~gâteau~>>
+à long terme, que le ménage pourra partager entre épargne et
+consommation. Une augmentation infinitésimale du taux d'épargne
+induit une augmentation infinitésimale de la consommation à long
+terme.\\ Au total on comprend pourquoi l'effet d'une variation du
+taux d'épargne induit un effet ambigu sur la consommation à long
+terme. Quand $s$ est proche de 1, le modèle prédit une relation
+décroissante entre le taux d'épargne et la consommation à long
+terme. Quand $s$ est proche de 0, le modèle prédit une relation
+croissante entre le taux d'épargne et la consommation à long terme.
+Tout ceci suggère qu'il pourrait exister un taux d'épargne optimal,
+au sens de la maximisation du niveau de la consommation par tête à
+long terme, entre 0 et 1. C'est ce que nous nous proposons d'établir
+ici. Posons la consommation intensive à l'état stationnaire comme
+une fonction du taux d'épargne~:
+\[
+c^{\ast}(s) =
+(1-s)\left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+On définit formellement le taux d'épargne de la règle d'or,
+$s_{\mathrm{or}}$, de la façon suivante~:
+\[
+s_{\mathrm{or}} = \arg\max_{s} c^{\ast}(s)
+\]
+La condition nécessaire d'optimalité associée à ce programme est~:
+\[
+-\left(\frac{s_{\mathrm{or}}}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}+
+\frac{\alpha}{1-\alpha}\frac{(1-s_{\mathrm{or}})}{n+\delta}\left(\frac{s_{\mathrm{or}}}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}-1}
+= 0
+\]
+En excluant le cas où $s_{\mathrm{or}}=0$ (il s'agit d'un des deux
+cas polaires, évoqués plus haut, pour lequel on atteint le plus
+faible niveau possible de consommation à long terme), on peut
+diviser les deux membres de cette équation par le premier terme du
+membre de gauche. On obtient~:
+\[
+\frac{\alpha}{1-\alpha}\frac{(1-s_{\mathrm{or}})}{n+\delta}\left(\frac{s_{\mathrm{or}}}{n+\delta}\right)^{-1}
+= 1
+\]
+\[
+\Leftrightarrow\frac{(1-s_{\mathrm{or}})}{s_{\mathrm{or}}}
+ = \frac{1-\alpha}{\alpha}
+\]
+\[
+\Leftrightarrow s_{\mathrm{or}}=\alpha
+\]
+notre candidat pour le taux d'épargne de la règle d'or. Nous venons
+de montrer qu'il existe une unique valeur de $s$ pour laquelle la
+dérivée de $c^{\ast}(s)$ est nulle. Il nous reste à montrer que nous
+avons bien maximisé une fonction. La preuve est directe. Il suffit
+de noter que nous pouvons reprendre les quatres équations
+précédentes en remplaçant ''='' par ''>'' ou ''<''. On voit alors
+directement que la dérivée est positive si et seulement si le taux
+d'épargne est inférieur à la part du capital dans la valeur ajoutée.
+Autrement dit la courbe représentative de la fonction $c^{\ast}(s)$
+est nulle en zéro et en un, pour le reste elle a la forme d'un bol
+inversé. Ces signes de la dérivée sont conformes avec l'analyse à
+proximité des cas polaires évoqués plus haut. Pour conclure,
+$s_{\mathrm{or}}=\alpha$ est bien le taux d'épargne de la règle
+d'or. On obtient les niveaux de long terme des variables intensives
+en remplaçant $s$ par $s_{\mathrm{or}}$ dans les expressions de
+$k^{\ast}$, $y^{\ast}$ et $c^{\ast}$. En particulier, nous
+obtenons~:
+\[
+c^{\ast}_{\mathrm{or}} =
+(1-\alpha)\left(\frac{\alpha}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+Pour interpréter notre résultat, on peut réécrire la définition de
+l'état stationnaire du capital physique intensif de la règle d'or de
+la façon suivante\footnote{En remplaçant $s$ par $\alpha$.}~:
+\[
+\alpha \left[k^{\ast}_{\mathrm{or}}\right]^{1-\alpha} = n+\delta
+\]
+Le terme sur le membre de droite s'interprète comme le rendement du
+capital par tête (la productivité marginale) à l'état stationnaire
+de la règle d'or. De façon équivalente, on a~:
+\[
+\alpha \left[k^{\ast}_{\mathrm{or}}\right]^{1-\alpha} - (n+\delta) =
+0
+\]
+Notre résultat devient transparent. Le taux d'épargne de la règle
+d'or, c'est le taux qui permet d'annuler le rendement du capital
+intensif net de sa dépréciation. Imaginons que le ménage
+représentatif puisse choisir son comportement d'accumulation,
+\textit{ie} la valeur de $s$, sur des considérations de long terme.
+Supposons que le rendement net du capital soit négatif à long terme.
+Cette situation apparaît lorsque $s>\alpha$. En effet, dans ce cas
+$k^{\ast}>k^{\ast}_{\mathrm{or}}$ et, en vertu de l'hypothèse de
+rendements décroissants du capital, on a immédiatement~:
+\[
+s \left[k^{\ast}\right]^{1-\alpha} - (n+\delta)<\alpha
+\left[k^{\ast}_{\mathrm{or}}\right]^{1-\alpha} - (n+\delta) = 0
+\]
+Si le ménage ne se préoccupe seulement que de ce qu'il peut gagner
+ou perdre à long terme, il est alors incité à réduire son taux
+d'épargne. Cela se traduit par une baisse du niveau de long terme du
+capital intensif et, à nouveau par l'hypothèse de rendements
+décroissants du capital\footnote{Le terme $\alpha
+\left[k^*\right]^{1-\alpha}$ est une fonction décroissante de
+$k^*$.}, une augmentation du rendement net du capital intensif à
+long terme. Il va réduire son taux d'épargne tant que le rendement
+net du capital intensif à long terme est négatif. Par symétrie, si
+le rendement net du capital intensif est positif à long terme, alors
+le ménage est incité à augmenter son taux d'épargne, puisqu'il obtient alors 
+un bénéfice. Il va augmenter son taux d'épargne tant que le
+rendement net du capital intensif est strictement positif. Ainsi, on
+comprend bien que le meilleur choix pour le ménage est d'accorder
+son comportement d'accumulation de façon à annuler le rendement net
+du capital intensif.\newline
+
+\question{4} On suppose l'existence d'un gouvernement qui
+taxe proportionnellement les revenus des ménages et alloue le
+montant de l'impôt à l'accumulation du capital. L'équation
+d'évolution du capital agrégé devient~:
+\[
+  \dot{K}(t) = s(1-\tau) Y(t) + \tau Y(t) - \delta K(t)
+\]
+où $\tau \in [0,1]$ est le taux d'imposition. En regroupant les
+termes en $Y(t)$, il vient~:
+\[
+  \dot{K} = (s+\tau(1-s)) Y  - \delta K
+\]
+Le stock de capital agrégé augmente si et seulement si
+l'investissement effectif est supérieur à la dépréciation du
+capital. L'investissement effectif est composé de l'investissement
+<<~choisi~>>\footnote{Dans le modèle de Solow, le comportement
+d'épargne est exogène ; le taux d'épargne n'est pas une variable de
+choix du ménage représentatif.} par le ménage représentatif sur la
+base de son revenu disponible, $s(1-\tau)Y$, et de l'investissement
+induit par la politique fiscale de l'état, $\tau Y$\footnote{Pour le
+dire autrement, en suivant la dernière équation, l'investissement
+effectif est composé de l'investissement que choisirait le ménage
+dans un monde sans politique fiscale, $s Y$, et de l'investissement
+induit par la politique fiscale, $\tau (1-s) Y$, une partie de la
+consommation souhaitée et détournée par l'état vers l'accumulation
+de capital physique.}. En posant $s_{\tau} = s+\tau(1-s)$ le taux
+d'épargne effectif (c'est-à-dire incluant l'effet <<~redistribution~>>
+de la politique fiscale), on peut poursuivre comme dans le modèle de
+Solow habituel~:
+\[
+  \dot{K} = s_{\tau} Y  - \delta K
+\]
+Nous retrouvons donc directement le résultat habituel~:
+\[
+  \dot{k}(t) = (s + \tau(1-s)) k(t)^{\alpha} - (n+\delta) k(t)
+\]
+Le stock de capital intensif augmente si et seulement si
+l'investissement (effectif) par tête couvre la dépréciation du
+capital intensif.\newline
+
+\question{5} Pour caractériser l'économie à l'état
+stationnaire il nous suffit de déterminer  l'état stationnaire du
+capital physique intensif. En utilisant $s_{\tau}$, le taux
+d'épargne effectif, au lieu de $s$ on voit immédiatement que l'état
+stationnaire de $k$ devient~:
+\[
+k^{\ast} = \left(\frac{s +
+\tau(1-s)}{n+\delta}\right)^{\frac{1}{1-\alpha}}
+\]
+et en substituant dans la fonction de production~:
+\[
+y^{\ast} = \left(\frac{s +
+\tau(1-s)}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+La consommation à long terme est définie par la part non épargnée,
+$1-s$, du revenu disponible à long terme $(1-\tau)y^{\ast}$. \`A
+l'état stationnaire, nous devons avoir~:
+\[
+c^{\ast} = (1-s)(1-\tau)\left(\frac{s +
+\tau(1-s)}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+On obtient des résultats intuitifs par rapport à ce que nous avons
+l'habitude de voir. Une augmentation de la taxe, c'est-à-dire une
+augmentation du taux d'épargne effectif, induit une augmentation du
+niveau de long terme du capital et du produit intensifs. L'effet sur
+le niveau de long terme de la consommation est plus ambigu. Une
+augmentation de la taxe augmente certes le produit (ou le revenu) à
+long terme mais dans le même temps elle diminue la fraction du
+revenu que le ménage peut partager entre épargne et consommation.
+Selon les tailles respectives de ces deux effets le revenu
+disponible des ménages peut baisser ou augmenter. La consommation
+étant proportionnelle au revenu disponible, celle-ci peut baisser ou
+augmenter à long terme suite à une augmentation permanente du taux
+de taxe.\newline
+
+\question{6} On suppose que dans le monde sans politique fiscale, le ménage sous accumule le capital~:
+$s<s_{\mathrm{or}}=\alpha$. On  a vu dans notre réponse  à la question
+précédente que l'effet d'une variation  permanente du taux de taxe sur
+le niveau de la consommation par tête est ambigu. On veut montrer, par
+analogie avec le taux d'épargne de la règle d'or, qu'il existe un taux
+de  taxe, strictement  positif, qui  maximise la  consommation  à long
+terme. Celui-ci est défini de la façon suivante~:
+\[
+\overline{\tau} = \arg\max_{\tau} c^{\ast}(\tau)
+\]
+La condition nécessaire d'optimalité associée à ce programme est~:
+\[
+\begin{split}
+(1-s)\left[\frac{s +
+\overline{\tau}(1-s)}{n+\delta}\right]^{\frac{\alpha}{1-\alpha}} &=\\
+(1-s)&(1-\overline{\tau})\left[\frac{s +
+\overline{\tau}(1-s)}{n+\delta}\right]^{\frac{\alpha}{1-\alpha}-1}\frac{1-s}{n+\delta}\frac{\alpha}{1-\alpha}
+\end{split}
+\]
+En supposant que $\overline{\tau}$ est strictement positif (sinon il
+ne s'agit plus d'une taxe mais d'une subvention)
+$s+\overline{\tau}(1-s)$ est nécessairement positif et donc nous
+pouvons diviser les deux membre de cette égalité par le membre de
+gauche~:
+\[
+ 1 = (1-\overline{\tau})\left[\frac{s +
+\overline{\tau}(1-s)}{n+\delta}\right]^{-1}\frac{1-s}{n+\delta}\frac{\alpha}{1-\alpha}
+\]
+\[
+\Leftrightarrow \frac{1-\alpha}{\alpha} =
+\frac{(1-\overline{\tau})(1-s)}{s + \overline{\tau}(1-s)}
+\]
+\[
+\Leftrightarrow (1-\alpha)(s + \overline{\tau}(1-s)) =
+\alpha(1-\overline{\tau})(1-s)
+\]
+\[
+\Leftrightarrow s + \overline{\tau}(1-s) - \alpha s - \alpha
+\overline{\tau}(1-s) = (\alpha-\alpha\overline{\tau})(1-s)
+\]
+\[
+\Leftrightarrow s + \overline{\tau}(1-s) - \alpha s - \alpha
+\overline{\tau}(1-s) = \alpha-\alpha\overline{\tau}-s\alpha +
+s\alpha\overline{\tau}
+\]
+\[
+\Leftrightarrow s + \overline{\tau}-\overline{\tau}s - \alpha s -
+\alpha \overline{\tau}+s\alpha \overline{\tau} =
+\alpha-\alpha\overline{\tau}-s\alpha + s\alpha\overline{\tau}
+\]
+\[
+\Leftrightarrow s + \overline{\tau}(1-s)  = \alpha
+\]
+D'où finalement~:
+\[
+\overline{\tau} = \frac{\alpha-s}{1-s}>0
+\]
+On voit directement\footnote{En remplaçant ``='' par ``>'' dans les
+équivalences qui précèdent.} qu'il s'agit bien d'un maximum car la
+dérivée de $c^{\ast}$ par rapport à $\tau$ est positive si et
+seulement si $\tau<\overline{\tau}$. Notons que nous parvenons à
+exhiber une valeur de $\tau$ optimale strictement positive car nous
+avons postulé une situation de sous accumulation ($s<\alpha$). Le
+meilleur choix consiste à ajuster le taux d'imposition, $\tau$, de
+façon à égaliser le taux d'épargne effectif, $s_{\tau}$, avec le
+taux d'épargne de la règle d'or ($s_{\mathrm{or}}=\alpha$).\newline 
+
+
+\question{7} On peut montrer que le taux de taxe
+$\overline{\tau}$ permet d'obtenir un niveau de consommation à long
+terme identique à celui que nous obtiendrions en suivant la règle
+d'or. Pour établir ce point il suffit de substituer l'expression
+obtenue de $\overline{\tau}$ dans l'expression analytique de
+$c^{\ast}$ obtenue plus haut. On a~:
+\[
+c^{\ast}(\overline{\tau}) = (1-s)(1-\overline{\tau})\left(\frac{s +
+\overline{\tau}(1-s)}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+\[
+\Leftrightarrow c^{\ast}(\overline{\tau}) =
+(1-s)\frac{1-\alpha}{1-s}\left(\frac{s +
+\alpha-s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+\[
+\Leftrightarrow c^{\ast}(\overline{\tau}) =
+(1-\alpha)\left(\frac{\alpha}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+\[
+\Leftrightarrow c^{\ast}(\overline{\tau}) = c_{\mathrm{or}}^{\ast}
+\]
+Ainsi, en détournant (par l'intermédiaire d'une politique fiscale)
+une partie du revenu destiné à la consommation vers l'accumulation,
+l'état parvient à répliquer le taux d'épargne de la règle
+d'or.\newline
+
+\textbf{\textsc{Un peu plus loin...}} L'état peut mimer la règle d'or, en
+dirigeant de façon autoritaire une partie de la consommation des
+ménages vers l'accumulation, car l'économie est dans une situation
+de sur accumulation. Dans le cas contraire, \textit{ie} dans une
+situation de sous accumulation, l'état ne peut atteindre cet
+objectif à l'aide de la politique fiscale que nous venons de
+décrire. En effet, la politique fiscale considérée ici revient
+simplement à faire en sorte que le taux d'épargne
+effectif,$s_{\tau}$, soit supérieur au taux d'épargne $s$. Cela va
+dans le bon sens car l'économie est dans une situation de sous
+accumulation. Quand, au contraire, les ménages sur accumulent le
+capital physique, on ne peut se rapprocher de la règle d'or en
+faisant en sorte que le taux d'épargne effectif soit supérieur au
+taux d'épargne. Il faut amender la redistribution implicite (entre
+consommation et investissement) mise en oeuvre à l'aide de la
+politique fiscale. Pour cela on pourrait simplement supposer que
+l'état redistribue ses gains liés aux taxes sur les revenus sous la
+forme d'unités de consommation au ménage. Dans ce cas la loi
+d'évolution du stock de capital agrégé devrait s'écrire~:
+\[
+\dot{K} = s(1-\tau)Y - \delta K
+\]
+Le taux d'épargne effectif serait alors $s_{\tau}=s(1-\tau)$. Et le
+niveau de consommation serait donné par~: $c(t) =
+[(1-s)(1-\tau)+\tau]y(t)$. En suivant la même démarche, on peut
+montrer que dans une situation de sur accumulation ($s>\alpha$) il
+est alors possible de trouver un taux de taxe positif qui maximise
+le niveau de consommation à long terme. On montre que ce taux de
+taxe doit être tel que le taux d'épargne effectif égalise le taux
+d'épargne de la règle d'or~: $\overline{\tau} = (s-\alpha)/s$. Enfin
+on montre qu'avec cette politique fiscale l'état peut mimer le taux
+d'épargne de la règle d'or ($c^{\ast}(\overline{\tau})$) en
+détournant de façon autoritaire l'épargne vers la
+consommation.\newline
+
+Pour finir, il convient de noter que l'effet de la
+politique fiscale dans le modèle de Solow demeure simple car le
+comportement d'épargne est exogène. Un changement de politique
+fiscale n'affecte pas le comportement d'accumulation des ménages.\newline
+
+\bigskip
+
+
+\exercice{2}{Vitesse de convergence} Le niveau de la technologie ($B$)
+affecte l'état  stationnaire de  la même façon  que le  taux d'épargne
+$s$.  Pour s'en convaincre, il suffit  de noter que $B$ n'apparaît que
+comme un  facteur de $s$ dans  l'équation différentielle caractérisant
+la  dynamique du  stock  de  capital par  tête.   On  remarque que  le
+paramètre $B$, de la même manière que le taux d'épargne, n'affecte pas
+la vitesse de transition vers l'état stationnaire.\newline
+
+\question{1} Trivial. L'état stationnaire est :
+\[
+k^{\star} = \left(\frac{sB}{n+\delta}\right)^{\frac{1}{1-\alpha}}
+\]
+Une  augmentation  du  niveau  de  la  technologie,  $B$,  induit  une
+élévation  du  niveau de  long  terme  de  l'économie (comme  le  taux
+d'épargne en capital physique). \question{2} Notons
+\[
+\varphi(k) = sBk^{\alpha-1} - (n+\delta) 
+\]
+la fonction définissant  le taux de croissance de  $k$. En considérant
+une approximation  de Taylor à l'ordre  1 dans un voisinage  de l'état
+stationnaire, nous avons :
+\[
+\growth{k} \simeq \varphi (k^\star) + \varphi '(k^{\star}) \left(k-k^{\star}\right)
+\]
+Puisque par définition de l'état stationnaire nous avons $\varphi (k^\star)=0$, il vient :
+\[
+\growth{k} \simeq \varphi '(k^{\star}) \left(k-k^{\star}\right)
+\]
+Par ailleurs, nous avons :
+\[
+\varphi '(k) = -(1-\alpha)sB\frac{k^{\alpha-1}}{k}
+\]
+et donc :
+\[
+\begin{split}
+  \varphi '(k^{\star}) &= -(1-\alpha)sB\frac{\frac{n+\delta}{sB}}{k^{\star}}\\
+  &= -(1-\alpha)(n+\delta)\frac{1}{k^{\star}}
+\end{split}
+\]
+Nous obtenons l'approximation  suivante du taux de  croissance dans un
+voisinage de l'état stationnaire :
+\[
+\growth{k} \simeq -(1-\alpha)(n+\delta)\frac{k-k^{\star}}{k^{\star}}
+\] 
+\[
+\Leftrightarrow \growth{k} \simeq (1-\alpha)(n+\delta)\left(1-\frac{k}{k^{\star}}\right)
+\]
+Le  taux de  croissance est  positif si  et seulement  si le  stock de
+capital physique  par tête est supérieur  à son niveau de  long terme.
+\question{3}  Notons  que dans  un  voisinage  de l'état  stationnaire
+$1-\frac{k}{k^{\star}}$ est proche  de zéro. Par ailleurs  on sait que
+$\log (1+x)\simeq x$ pour $x$ dans un voisinage de 0. Ainsi :
+\[
+\log \left(1-\left(1-\frac{k}{k^{\star}}\right)\right) \simeq -\left(1-\frac{k}{k^{\star}}\right) 
+\]
+ou de façon équivalente :
+\[
+\log \frac{k}{k^{\star}} \simeq -\left(1-\frac{k}{k^{\star}}\right) 
+\]
+Nous avons donc :
+\[
+\Leftrightarrow \growth{k} \simeq -(1-\alpha)(n+\delta)\log \frac{k}{k^{\star}}
+\]
+On notera  $\beta =  (1-\alpha)(n+\delta)$ la vitesse  de convergence.
+\question{4} En posant  $\alpha=\nicefrac{1}{3}$ et $n+\delta=4\%$, on
+obtient une  vitesse d'ajustement vers l'état  stationnaire de 2,66\%.
+Notons que cette vitesse est ``artificiellement'' basse car nous avons
+omis le  progrès technique  dans ce  modèle.  Il  faut $\nicefrac{\log
+  2}{\beta}\simeq 26$ ans pour réduire  de moitié la distance à l'état
+stationnaire.   Le  taux d'épargne  n'a  aucun  effet sur  la  vitesse
+d'ajustement vers l'état  stationnaire. \question{5} Quantitativement,
+la transition dans  ce modèle semble plutôt  satisfaisante. La vitesse
+de convergence théorique n'est pas très éloignée de ce que suggère les
+données.   Mais  cela est  la  conséquence  de l'omission  du  progrès
+technique  qui pose  par  ailleurs de  gros  problèmes...  Puisque  la
+prédiction de  ce modèle est que  le taux de croissance  des variables
+par tête est nul à long terme, ce qui semble en contradiction avec les
+données.
+
+\bigskip
+
+\exercice{3}{Terre dans le modèle de Solow} \question{1} En appliquant
+la fonction  logarithme népérien à  la fonction de production :
+\[
+\log Y(t) = \alpha \log K(t) + \beta \log A(t) + \beta \log L(t) + (1-\alpha-\beta) \log T
+\]
+puis en dérivant par rapport à $t$ on obtient directement :
+\[
+\growth{Y} = \alpha\growth{K} + \beta (n+x)
+\]
+\question{2} Puisque les taux de  croissance de la population ($n$) et
+de technologie ($x$) sont constants,  le taux de croissance du produit
+est  constant si  et seulement  si le  taux de  croissance du  capital
+physique est constant. \question{3} Le  taux de croissance du stock de
+capital physique est donné par :
+\[
+\growth{K} = s\frac{Y}{K} - \delta
+\]
+l'investissement  brut  par   unité  de  capital  moins   le  taux  de
+dépréciation du capital physique. On voit que le taux de croissance du
+capital  physique  est  une  fonction croissante  de  la  productivité
+moyenne du  capital.  Ainsi  une augmentation de  $\nicefrac{K}{Y}$ se
+traduit par  une baisse du  taux de croissance  de $K$. On  voit aussi
+qu'une condition nécessaire  et suffisante pour le  taux de croissance
+de $K$ soit  constant est que le ratio  \nicefrac{K}{Y} soit constant,
+c'est-à-dire  que  les  taux  de  croissance  de  $K$  et  $Y$  soient
+identiques. \question{4}  Le long  du sentier de  croissance équilibré
+nous avons $g_K=g_Y$ et donc :
+\[
+g_{Y} = \alpha g_{Y} + \beta (n+x)
+\]
+soit de façon équivalente :
+\[
+g_Y = \frac{\beta}{1-\alpha}(n+x)
+\]
+Dans le modèle de Solow habituel  (sans le facteur fixe Terre) le taux
+de  croissance de  long  terme de  la production  est  $n+x$. On  peut
+montrer que $\nicefrac{\beta}{1-\alpha}$ est inférieur à 1 et que donc
+le  taux  de croissance  est  plus  faible  en présence  d'un  facteur
+fixe. En effet :
+\[
+\frac{\beta}{1-\alpha}<1
+\]
+\[
+\Leftrightarrow \beta < 1-\alpha
+\]
+\[
+\Leftrightarrow \alpha + \beta < 1
+\]
+ce qui est  vrai par hypothèse (rendements décroissants  par rapport à
+$K$ et $L$). \question{5} Nous savons que :
+\[
+g_K = s\frac{Y}{K} - \delta
+\]
+En dérivant les deux membres par rapport au temps, il vient :
+\[
+\dot g_K = s \dot{\left(\frac{Y}{K}\right)}
+\]
+\[
+\Leftrightarrow \dot g_K = s \frac{\dot Y K - Y \dot K}{\dot K}
+\]
+\[
+\Leftrightarrow \dot g_K = s \frac{Y}{K}\left(g_Y-g_K\right)
+\]
+Si  le  taux  de  croissance  du produit  est  supérieur  au  taux  de
+croissance du  capital, alors  le taux de  croissance du  capital doit
+augmenter.   Ceci suggère  une propriété  de stabilité  du sentier  de
+croissance  équilibré (comme  dans  le modèle  de  Solow sans  facteur
+fixe). D'après la réponse à la première question, nous avons :
+\[
+g_Y = \alpha g_K + \beta (n+x)
+\]
+\[
+\Leftrightarrow g_Y-g_K = -(1-\alpha) g_K + \beta (n+x)
+\]
+\[
+\Leftrightarrow g_Y-g_K = (1-\alpha) \left(\frac{\beta}{1-\alpha}(n+x)-g_K\right)
+\]
+En notant :
+\[
+g_K^{\star} = \frac{\beta}{1-\alpha}((n+x))
+\]
+le taux de croissance à long terme du capital, il vient :
+\[
+g_Y - g_k = (1-\alpha)\left(g_K^{\star}-g_K\right)
+\]
+Ainsi nous avons :
+\[
+\dot g_K = s\frac{Y}{K}(1-\alpha)\left(g_K^{\star}-g_K\right)
+\]
+Le  taux de  croissance  de  $K$ augmente  si  et  seulement s'il  est
+inférieur à $g_K^{\star}$, le sentier de croissance équilibré est donc
+stable.\newline
+
+À long  terme le  taux de croissance  du produit est  égal au  taux de
+croissance du capital physique et le taux de croissance du produit par
+tête est donné par :
+\[
+g_y^{\star} = \frac{\beta}{1-\alpha}((n+x)) - x
+\]
+où nous  savons que  $\nicefrac{\beta}{1-\alpha}<1$, pour  des petites
+valeurs du taux de croissance de  la technologie ($x$) il se peut donc
+que  le  taux  de  croissance   du  produit  par  tête  soit  négatif.\newline
+
+\bigskip
+
+\exercice{4}{Pétrole dans le modèle  de Solow} \question{1} En prenant
+le logarithme népérien  de la fonction de production  puis en dérivant
+par rapport à $t$, on obtient :
+\[
+\growth{Y} = \alpha\growth{K} + \beta (n+x) + (1-\alpha-\beta)\growth{P}
+\]
+\question{2} Puisque les taux de croissance de la population ($n$), de
+la  technologie  ($x$)  et  de  la  ressource  naturelle  ($-v$)  sont
+constants, si le  taux de croissance du capital est  constant alors le
+taux   de    croissance   de   la   production    est   nécessairement
+constants. \question{3} D'après la loi d'évolution du stock de capital
+physique nous avons :
+\[
+\growth{K} = s\frac{Y}{K} - \delta
+\]
+Ainsi  une augmentation  du ratio  $\nicefrac{K}{Y}$, l'inverse  de la
+productivité moyenne du capital, se traduit  par une baisse de taux de
+croissance  du  stock  de  capital  physique.  Pour  que  le  taux  de
+croissance de  $K$ soit  constant il  faut et il  suffit que  le ratio
+$\nicefrac{K}{Y}$ soit constant (son  inverse, la productivité moyenne
+du capital, doit  être constante). Sous cette même  condition, le taux
+de croissance de $Y$ est constant.  \question{4} Le long du sentier de
+croissance équilibré,  le taux  de croissance du  produit est  égal au
+taux  de   croissance  du   stock  de   capital  physique   (le  ratio
+$\nicefrac{K}{Y}$  est alors  constant). Nous  pouvons donc  écrire la
+première équation de la façon suivante :
+\[
+(1-\alpha)\growth{Y} = \beta (n+x) + (1-\alpha-\beta)\growth{P}
+\]
+puis en divisant par $1-\alpha$ :
+\[
+\growth{Y} = \frac{\beta}{1-\alpha} (n+x) + \frac{1-\alpha-\beta}{1-\alpha}\growth{P}
+\]
+le taux  de croissance  du produit  le long  du sentier  de croissance
+équilibré. Dans le modèle de Solow de base, c'est-à-dire sans pétrole,
+le taux  de croissance  du produit  le long  du sentier  de croissance
+équilibré      est       $n+x$.       On      sait       déjà      que
+$\nicefrac{\beta(n+x)}{1-\alpha}$ est inférieur à $n+x$, en notant que
+le taux de croissance de la ressource épuisable est $-v<0$, on conclut
+que taux de croissance le long  du sentier de croissance équilibré est
+plus  faible  lorsque  l'on  augmente  le  modèle  de  Solow  avec  le
+pétrole. Le taux de croissance est alors :
+\[
+\growth{Y} = \frac{\beta}{1-\alpha} (n+x) - \frac{1-\alpha-\beta}{1-\alpha}v
+\]
+Le produit peut décroître si la dépréciation de la ressource naturelle
+est assez importante (supérieure à $(n+x)\frac{\beta}{1-\alpha-\beta}$). \question{5} Nous savons que le taux de croissance du stock de capital est :
+\[
+g_K = s \frac{Y}{K} -\delta K
+\]
+en dérivant par rapport au temps, il vient :
+\[
+\dot g_K = s \frac{Y}{K}\left(g_Y - g_K\right)
+\]
+Par ailleurs nous avons :
+\[
+g_K^{\star} = \frac{\beta}{1-\alpha} (n+x) - \frac{1-\alpha-\beta}{1-\alpha}v
+\]
+et
+\[
+\begin{split}
+  g_Y &= \alpha g_K  + \beta (n+x) - (1-\alpha-\beta)v\\
+\Leftrightarrow g_Y-g_K  &= -(1-\alpha) g_K + \beta (n+x) - (1-\alpha-\beta)v\\
+\Leftrightarrow g_Y-g_K  &= -(1-\alpha)\left(g_K - g_K^{\star}\right)
+\end{split}
+\]
+En substituant dans l'équation de la variation du taux de croissance de $K$ on obtient :
+\[
+\dot g_K = -s \frac{Y}{K}(1-\alpha)\left(g_K - g_K^{\star}\right)
+\]
+Cette équation nous dit que le taux  de croissance de K augmente si et
+seulement si le taux de croissance est inférieur au taux de croissance
+le long du  sentier de croissance équilibré  ($g_K^{\star}$). Ainsi on
+voit que le  sentier de croissance équilibré est stable,  dans le sens
+où si l'économie quitte le  sentier de croissance équilibré elle finit
+forcément par le  rejoindre ; $g_K^{\star}$ est donc aussi  le taux de
+croissance à long terme. \question{7} Le taux de croissance du produit
+par tête est :
+\[
+g_y = g_Y - n = \alpha g_K  + \beta (n+x) - (1-\alpha-\beta)v -n
+\]
+Ce  taux   de  croissance  n'est   pas  forcément  positif,   même  si
+$g_Y>0$. \question{8} Pour toute variable $X(t)$ on pose :
+\[
+\hat x (t) = \frac{X(t)}{A(t)L(t)P(t)}
+\]
+En particulier on montre facilement que :
+\[
+\hat y(t) = \hat k(t) ^{\alpha}
+\]
+Puis en suivant la démarche habituelle, on obtient la variation de $\hat k$ :
+\[
+\dot{\hat{k}}(t) = s \hat{k}^{\alpha} - (n+x+\delta-v)\hat{k}(t)
+\]
+où $n+x+\delta-v$  est le taux de  dépréciation de $\hat k$.  À l'état
+stationnaire l'investissement  en $\hat k$  doit être égal au  taux de
+dépréciation de $\hat k$. On trouve l'état stationnaire non trivial :
+\[
+\hat k ^{\star} = \left(\frac{s}{n+x+\delta-v}\right)^{\frac{1}{1-\alpha}}
+\]
+\end{document}

@@ -1,0 +1,225 @@
+\documentclass[12pt,a4paper,notitlepage,twocolumn]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+
+ \usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+
+\title{\textsc{Croissance\\ \small{(Fiche de TD n°3)}}}
+\author{Stéphane Adjemian\thanks{Université du Maine, Gains. \texttt{stephane DOT adjemian AT univ DASH lemans DOT fr}}}
+\date{Le \today\ à \thistime}
+
+
+
+
+\begin{document}
+
+\maketitle
+
+\noindent \textbf{Exercice 1 [Retour sur la règle d'or]} Soit $K(t)$ le stock de capital physique d'une économie,
+$L(t)$ la population qui croît au taux constant $n>0$, $\alpha \in
+]0,1[$ la part du capital dans le produit, $s \in ]0,1[$ le taux
+d'épargne et $\delta>0$ le taux de dépréciation du capital physique.
+La dynamique du capital physique agrégé est décrite par~:
+\[
+  \dot{K}(t) = s Y(t) - \delta K(t)
+\]
+et la technologie de production est de type Cobb - Douglas :
+\[
+  Y(t) = K(t)^{\alpha}L(t)^{1-\alpha}
+\]
+\textbf{(1)} Écrivez l'équation différentielle qui décrit la loi
+d'évolution du capital physique par tête. Interprétez cette équation.
+\textbf{(2)} Déterminez l'état stationnaire de l'économie intensive (on notera $k^{\ast}$,
+$y^{\ast}$ et $c^{\ast}$ les niveaux de long terme du capital par
+tête, du produit par tête et de la consommation par tête).
+\textbf{(3)} Montrez que le taux d'épargne qui maximise le niveau de
+la consommation par tête à long terme, le taux d'épargne dit de la
+règle d'or, est : $s_{\mathrm{or}} = \alpha$. Montrez que, dans ce
+cas, le rendement du capital par tête net de la dépréciation
+effective du capital par tête doit être nul à long terme. On notera
+$k^{\ast}_{\mathrm{or}}$, $y^{\ast}_{\mathrm{or}}$ et
+$c^{\ast}_{\mathrm{or}}$ les niveaux de long terme du capital par
+tête, du produit par tête et de la consommation par tête dans le cas
+de la règle d'or. En particulier on a~:
+\[
+c^{\ast}_{\mathrm{or}} =
+(1-\alpha)\left[\frac{\alpha}{n+\delta}\right]^{\frac{\alpha}{1-\alpha}}
+\]
+\textbf{(4)} On suppose l'existence d'un gouvernement qui taxe
+proportionnellement les revenus des ménages et alloue le montant de
+l'impôt à l'accumulation du capital. L'équation d'évolution du
+capital agrégé devient~:
+\[
+  \dot{K}(t) = s(1-\tau) Y(t) + \tau Y(t) - \delta K(t)
+\]
+où $\tau \in [0,1]$ est le taux d'imposition. Montrez que l'équation
+d'évolution du capital par tête devient~:
+\[
+  \dot{k}(t) = (s + \tau(1-s)) k(t)^{\alpha} - (n+\delta) k(t)
+\]
+Interprétez cette équation. \textbf{(5)} Calculez le nouvel état
+stationnaire de l'économie intensive. En particulier vous établirez
+que~:
+\[
+c^{\ast} = (1-s)(1-\tau)\left[\frac{s +
+\tau(1-s)}{n+\delta}\right]^{\frac{\alpha}{1-\alpha}}
+\]
+\textbf{(6)} On suppose que, dans le monde sans politique fiscale
+($\tau = 0$), l'épargne des ménages est insuffisante pour atteindre
+le niveau de consommation à long terme le plus important possible
+($s<\alpha$). Montrez qu'il existe un taux de taxe sur les revenus,
+$\bar{\tau}$, qui maximise le niveau de la consommation à long
+terme. \textbf{(7)} Le taux $\bar{\tau}$ permet-il d'atteindre le
+niveau de consommation de la règle d'or, $c^{\ast}_{\mathrm{or}}$, à
+long terme~?\newline
+
+
+\noindent \textbf{Exercice 2 [Vitesse de convergence].} Soit $K(t)$
+le stock de capital physique agrégé dans une économie, $L(t)$ la
+population qui croît au taux constant $n>0$, $s \in ]0,1[$ et
+$\delta>0$. La dynamique du capital physique est décrite par :
+$\dot{K}(t)=sY-\delta K(t)$ où le produit est déterminé par la
+fonctions de production Cobb-Douglas $B
+K(t)^{\alpha}L(t)^{1-\alpha}$, avec $B>0$ le niveau constant de la
+technologie et $\alpha \in ]0,1[$ la part du capital dans le
+produit. \textbf{(1)} Après avoir montré que la dynamique du capital
+physique par tête $k(t)=K(t)/L(t)$ est caractérisé par l'équation
+différentielle non linéaire~:
+\[
+\frac{\dot{k}}{k} = s B k^{-(1-\alpha)}-(n+\delta)
+\]
+calculez l'état stationnaire du modèle. Le niveau de la technologie
+affecte t-il le niveau de long terme de l'économie~? \textbf{(2)} En
+utilisant une approximation de Taylor à l'ordre un autour de l'état
+stationnaire, montrez que la dynamique du capital par tête est
+localement décrite par l'équation différentielle linéaire suivante~:
+\[
+\frac{\dot{k}}{k} \simeq (1-\alpha)
+(n+\delta)\left\{1-\frac{k}{k^{\ast}}\right\}
+\]
+On posera $\beta = (1-\alpha)(n+\delta)$ la vitesse de convergence.
+Commentez cette équation. \textbf{(3)} En utilisant la formule du
+développement limité de la fonction $\log$, montrez qu'on peut
+finalement approximer la dynamique de l'économie dans un voisinage
+de l'état stationnaire de la façon suivante~:
+\[
+\frac{\mathrm d}{\mathrm dt}\left(\log \frac{k}{k^\ast}\right) =
+-\beta \log \frac{k}{k^{\ast}}
+\]
+\textbf{(4)} En donnant des valeurs raisonnables aux paramètres du
+modèle, calculez la vitesse de convergence prédite par le modèle.
+Combien de temps faut-il pour réduire de moitié la distance à l'état
+stationnaire~? Quel est le rôle du taux d'épargne sur la
+transition~? \textbf{(5)} A votre avis, le modèle est-il satisfaisant
+du point de vu de ses prédictions sur la transition de l'économie~?
+
+\bigskip
+\bigskip
+
+\noindent \textbf{Exercice 3 [Terre dans le modèle de Solow].} Soit
+$K(t)$ le stock de capital physique agrégé dans une économie, $L(t)$
+la population qui croît au taux constant $\dot{L}/L=n>0$, $T(t)=T$
+la quantité de terre constante dans l'économie, $s \in ]0,1[$ le
+taux d'épargne en capital physique et $\delta>0$ le taux de
+dépréciation du stock de capital physique. La dynamique du capital
+physique est décrite par : $\dot{K}(t)=sY-\delta K(t)$ où le produit
+est déterminé par la fonction de production Cobb-Douglas $
+Y(t)K(t)^{\alpha}\left(A(t)L(t)\right)^{\beta}T^{1-\alpha-\beta}$,
+avec $\alpha$ et $\beta$ positifs et inférieurs à un, $A(t)>0$ le
+niveau de la technologie à l'instant $t$. La technologie croît au
+taux constant $\dot{A}/A = x$. On remarque que nous retrouvons le
+modèle de Solow habituel, c'est-à-dire sans la terre, si
+$\beta=1-\alpha$. \textbf{(1)} Exprimez le taux de croissance du
+produit en fonction des taux de croissance du capital physique, de
+la technologie et de la population. \textbf{(2)} Quels sont les
+conséquences pour le produit si le taux de croissance du capital est
+constant~? \textbf{(3)} Comment se traduit une augmentation du ratio
+capital-travail ($K/Y$) sur le taux de croissance du stock de
+capital physique~? Quelle condition ce ratio doit-il satisfaire pour
+que le taux de croissance du stock capital physique soit constant,
+c'est-à-dire pour que nous puissions définir un sentier de
+croissance équilibré dans ce modèle~? \textbf{(4)} Calculez le taux
+de croissance le long du sentier de croissance équilibré dans ce
+modèle (ie, calculez le taux de croissance du produit). Comparez
+avec le taux de croissance, à long terme, dans le modèle de Solow
+habituel. \textbf{(5.1)} \'Etablissez l'équation suivante pour la
+variation du taux de croissance du stock de capital physique~:
+\[
+\dot{g}_K \equiv \frac{\mathrm d}{\mathrm dt}\left(
+\frac{\dot{K}}{K}\right) = s\frac{Y}{K}\left(g_Y-g_K\right)
+\]
+\textbf{(5.2)} \`A partir de la réponse à la première question
+montrez que~:
+\[
+g_Y-g_K = (1-\alpha)\left(g_K^*-g_K\right)
+\]
+\textbf{(5.3)} Utilisez les deux derniers résultats pour étudier la
+stabilité du sentier de croissance équilibré.
+
+
+
+\textbf{Exercice 5 [Pétrole dans le modèle de Solow].} On
+suppose que la production du bien final nécessite l'utilisation
+d'une ressource naturelle, le pétrole, dans la quelle on ne peut
+investir. Cette ressource constitue un stock qui se déprécie à
+chaque instant. On note $\dot{P} = - v P$, avec $v$ une constante
+positive (le taux de décroissance du stock de pétrole). La
+technologie est de type Cobb-Douglas~:
+\[
+Y(t) = K(t)^{\alpha}(A(t)L(t))^{\beta}P(t)^{1-\alpha-\beta}
+\]
+avec $\alpha$ et $\beta$ deux constantes positives inférieures à un,
+$A(t)$ le niveau de la technologie qui croît au taux constant $x>0$,
+$L(t)$ la population qui croît au taux constant $n>0$. La dynamique
+du stock de capital physique agrégé est caractérisée par l'équation
+différentielle habituelle~: $\dot{K} = sY - \delta K$. \textbf{(1)}
+Exprimez le taux de croissance du produit en fonction des taux de
+croissance du capital physique, de la technologie, de la population
+et du taux de dépréciation de la ressource naturelle. \textbf{(2)}
+Quels sont les conséquences pour le produit si le taux de croissance
+du capital est constant~? \textbf{(3)} Comment se traduit une
+augmentation du ratio capital-travail ($K/Y$) sur le taux de
+croissance du stock de capital physique~? Quelle condition ce ratio
+doit-il satisfaire pour que le taux de croissance du stock capital
+physique soit constant, c'est-à-dire pour que nous puissions définir
+un sentier de croissance équilibré dans ce modèle~? \textbf{(4)}
+Calculez le taux de croissance le long du sentier de croissance
+équilibré dans ce modèle (ie, calculez le taux de croissance du
+produit). Comparez avec le taux de croissance, à long terme, dans le
+modèle de Solow habituel. Le taux de croissance du produit réel le
+long du sentier de croissance équilibré est-il forcément positif ?
+\textbf{(5)} \'Etablissez l'équation suivante pour la variation du
+taux de croissance du stock de capital physique~:
+\[
+\dot{g}_K \equiv \frac{\mathrm d}{\mathrm dt}\left(
+\frac{\dot{K}}{K}\right) = s\frac{Y}{K}\left(g_Y-g_K\right)
+\]
+\`A partir de la réponse à la première question montrez que~:
+\[
+g_Y-g_K = (1-\alpha)\left(g_K^*-g_K\right)
+\]
+Utilisez les deux derniers résultats pour discuter la stabilité du
+sentier de croissance équilibré. \textbf{(7)} Le taux de croissance
+du produit par tête, le long du sentier de croissance équilibré,
+est-il forcément positif dans ce modèle~? \textbf{(8)} Normalisez
+les variables de ce modèle de façon à pouvoir définir un état
+stationnaire. Caractérisez cet état stationnaire.
+
+
+
+\end{document}
