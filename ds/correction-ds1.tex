@@ -1,0 +1,274 @@
+\documentclass[10pt,a4paper,notitlepage]{article}
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage{manfnt}
+\usepackage{hyperref}
+\usepackage{nicefrac}
+\usepackage{color}
+
+\usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+%\pgfplotsset{ticks=none}
+%\pgfplotsset{plot coordinates/math parser=false}
+\usetikzlibrary{arrows}
+\usetikzlibrary{plotmarks}
+
+
+\begin{document}
+
+\title{\textsc{Éducation, Formation et Croissance\\ \small{(Correction du devoir surveillé n°1)}}}
+\date{Le \today\ à \thistime}
+
+\maketitle
+
+Soient $k(t)$ le stock de  capital physique d'une économie à l'instant
+$t$,  $L(t)$  la   population  qui  croît  au   taux  constant  $n>0$,
+$\alpha\in]0,1[$  un  paramètre  technologique,  $s\in]0,1[$  le  taux
+d'épargne  et  $\delta\in[0,1]$ le  taux  de  dépréciation du  capital
+physique. La  dynamique du stock  de capital physique est  décrite par
+l'équation suivante :
+\[
+\dot K(t) = sY(t)-\delta K(t)
+\]
+et la technologie de production est de type Cobb-Douglas :
+\[
+Y(t) = K(t)^\alpha L(t)^{1-\alpha}
+\]
+\question{1}  Donnez une  interprétation du  paramètre $\alpha$  de la
+technologie  de production.  {\color{red}  Le  paramètre $\alpha$  est
+  l'élasticité  de  la production  par  rapport  au stock  de  capital
+  physique. En effet, nous avons :
+\[
+\begin{split}
+\frac{\partial Y}{\partial K}\frac{K}{Y} &= \alpha K^{\alpha-1}L^{1-\alpha}\frac{K}{Y}\\
+&= \alpha K^{\alpha}L^{1-\alpha}\frac{1}{K^{\alpha}L^{1-\alpha}}\\
+&= \alpha
+\end{split}
+\]
+Dans  le   modèle  de   Solow,  où   les  marchés   sont  parfaitement
+concurrentiels, le paramètre $\alpha$ s'interprète aussi comme la part
+des revenus du capital  physique dans les revenus totaux.}\question{2}
+Interprétez  la  loi d'évolution  du  stock  de capital  physique  (la
+première  équation).   {\color{red} Cette  équation  nous  dit que  la
+  variation du stock de capital  physique est positive si et seulement
+  si  l'investissement est  supérieur à  la dépréciation  du stock  de
+  capital physique.}  \question{3.a} Décrivez la dynamique  du capital
+par tête $k(t)=\nicefrac{K(t)}{L(t)}$, en montrant que :
+\[
+\dot k(t) = sk(t)^{\alpha}-(n+\delta)k(t)
+\]  {\color{red} En  partant  de  la définition  du  stock de  capital
+  physique par tête, nous avons :
+\[
+\dot k = \frac{\dot K L - K\dot L}{L^2}
+\]
+en simplifiant  et en  remplaçant $\nicefrac{\dot  L}{L}$ par  $n$, le
+taux de croissance constant de la population, il vient :
+\[
+\dot k = \frac{\dot K}{L} - n
+\]
+en  substituant  la  loi  d'évolution  du  capital  physique  dans  le
+numérateur du premier terme du membre de droite, on obtient :
+\[
+\dot k = \frac{sK^{\alpha}L^{1-\alpha}-\delta K}{L} - n k
+\]
+soit encore :
+\[
+\dot k = \frac{sK^{\alpha}L^{1-\alpha}}{L} - (n+\delta) k
+\]
+ou de façon équivalente :
+\[
+\dot k = sK^{\alpha}L^{-\alpha} - (n+\delta) k
+\]
+soit finalement, par définition de $k$ :
+\[
+\dot k = sk^{\alpha} - (n+\delta) k
+\]
+} \question{3.b} Interprétez cette  équation. {\color{red} Le stock de
+  capital par tête  s'accroît si et seulement  si l'investissement par
+  tête domine la dépréciation du capital par tête (le stock de capital
+  par tête  se déprécie pour  deux raisons : l'usure des  machines, au
+  taux   $\delta$,  l'augmentation   du  nombre   de  tête,   au  taux
+  $n$).}\question{4}  Donnez  une  expression analytique  du  taux  de
+croissance  du stock  de capital  physique par  tête. {\color{red}  On
+  obtient une expression du taux de croissance de $k$ en rapportant la
+  variation  de  $k$ au  niveau  de  $k$.  En  supposant que  $k$  est
+  strictement  positif, on  obtient cette  expression en  divisant les
+  deux membres de la dernière équation par $k$ :
+\[
+g_k \equiv \frac{\dot k}{k} = sk^{\alpha-1} - (n+\delta)
+\]
+Le  taux  de croissance  du  stock  de capital  par  tête  est égal  à
+l'investissement net (de  la dépréciation) par unité  de capital. Dans
+le  modèle de  Solow,  la croissance  est  entièrement déterminée  par
+l'offre.}    \question{5}  Représentez   graphiquement   le  taux   de
+croissance du  stock de  capital physique par  tête (en  expliquant la
+construction  du graphique)  et commentez.   {\color{red} Nous  venons
+  d'établir que  le taux de croissance  du capital par tête  est donné
+  par la différence  entre l'investissement brut par  unité de capital
+  et le taux de dépréciation du capital par tête. L'investissement par
+  unité  de  capital,  $sk^{\alpha-1}$,   est  une  fonction  monotone
+  décroissante  de  $k$ à  cause  de  l'hypothèse sur  les  rendements
+  décroissants  du  capital.   On  montre  facilement  que  la  courbe
+  représentative de  l'investissement par unité de  capital admet deux
+  asymptotes,   verticale   et   horizontale,    en   zéro   et   plus
+  l'infini\footnote{On    vérifie     que    $\lim_{k\rightarrow    0}
+    sk^{\alpha-1}   =    \infty$   et    $\lim_{k\rightarrow   \infty}
+    sk^{\alpha-1} = 0$. Ces  comportements aux bords sont conséquences
+    des conditions d'Inada.}. Par ailleurs le taux de dépréciation est
+  constant,  il  est  donc  graphiquement représenté  par  une  droite
+  horizontale. La figure~\ref{fig:question-5} donne une représentation
+  graphique  du  taux  de  croissance.   On observe  que  le  taux  de
+  croissance  est,  en valeur  absolue,  d'autant  plus important  que
+  l'économie   est  éloignée   de  l'état   stationnaire.}\question{6}
+Calculez l'état stationnaire  du modèle (pour le capital  par tête, la
+production  par tête  et  la consommation  par  tête). {\color{red}  À
+  l'état  stationnaire  l'investissement  par   tête  est  égal  à  la
+  dépréciation du capital par tête (de sorte que la variation du stock
+  est  nulle). L'état  stationnaire, $k^{\star}$,  doit donc  être une
+  solution de :
+\[
+s\left.k^{\star}\right.^{\alpha} = (n+\delta)k^{\star}
+\]
+En excluant la solution nulle, on trouve l'unique solution strictement positive :
+\[
+k^{\star} = \left(\frac{s}{n+\delta}\right)^{\frac{1}{1-\alpha}}
+\]
+En substituant  dans la  fonction de production  par tête,  on obtient
+l'état stationnaire de la production par tête :
+\[
+y^{\star} = \left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+Enfin, sachant que les ménages consomment une fraction $1-s$ du revenu
+(de la production), il vient :
+\[
+c^{\star} = (1-s)\left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+}\question{7} Quel est  le rapport entre l'état  stationnaire du stock
+de capital par tête  et le niveau de long terme  du capital par tête ?
+Justifiez votre réponse. {\color{red}  L'état stationnaire est le long
+  terme du  modèle.  En  effet, nous voyons  clairement sur  la figure
+  \ref{fig:question-5} que  pour toute condition initiale  du stock de
+  capital  par tête  celui-ci se  dirige vers  $k^{\star}$ puisque  le
+  stock  de  capital s'accroît  si  et  seulement  si son  niveau  est
+  inférieur  à  $k^{\star}$.}   \question{8.a}  Quel est  le  taux  de
+croissance du produit par tête à  court et à long terme ? {\color{red}
+  On montre  facilement (voir le cours)  que le taux de  croissance du
+  produit par tête est donné par :
+\[
+g_y = \alpha g_k
+\]
+Ce  résultat  n'est  valable  que   pour  la  fonction  de  production
+Cobb-Douglas. Plus généralement, le taux  de croissance du produit par
+tête est égal au taux de  croissance du capital par tête multiplié par
+l'élasticité de la production par rapport au stock de capital physique
+(il  se trouve  que  dans  le cas  Cobb-Douglas  cette élasticité  est
+constante et égale à $\alpha$).  Comme à long terme l'économie atteint
+son état stationnaire,  le taux de croissance du produit  par tête est
+alors nécessairement  nul. Pour obtenir  le taux de croissance  de $y$
+pendant la transition on peut substituer l'expression de $g_k$ dans la
+dernière équation :
+\[
+g_y = \alpha \left(sk^{\alpha-1} - (n+\delta)\right)
+\]
+soit encore :
+\[
+g_y = \alpha \left(sy^{\frac{\alpha-1}{\alpha}} - (n+\delta)\right)
+\]
+À  nouveau, on  retrouve, pour  la  production par  tête, la  relation
+décroissante  entre  croissance et  niveau  (si  on n'oublie  pas  que
+$\alpha<1$).}   \question{8.b}  Quel  est  le taux  de  croissance  du
+produit à court et à long terme ?  {\color{red} On sait que le taux de
+  croissance d'un produit de variable est  égal à la somme des taux de
+  croissance  des deux  variables. Puisque  $Y =  y L$,  la production
+  totale est  égale à la production  par tête fois le  nombre de tête,
+  nous avons :
+\[
+g_Y = g_y + n
+\]
+À  long terme  le  taux de  croissance  de $Y$  est  déterminé par  la
+croissance démographique ($n$), à court terme nous avons :
+\[
+g_Y = \alpha \left(sy^{\frac{\alpha-1}{\alpha}} - (n+\delta)\right) + n
+\]
+}\question{9}
+Montrez  que ce modèle prédit  une relation décroissante
+entre  le taux  de croissance  du  produit par  tête et  le niveau  du
+produit  par  tête.   Quelle  est   l'hypothèse  au  centre  de  cette
+prédiction ?  {\color{red}  On a montré plus haut que :
+\[
+g_y = \alpha \left(sy^{\frac{\alpha-1}{\alpha}} - (n+\delta)\right)
+\]
+En notant que, par définition de l'état stationnaire, nous pouvons réécrire $n+\delta$ comme :
+\[
+n+\delta =s \left.y^{\star}\right.^{\frac{\alpha-1}{\alpha}}
+\]
+on peut réécrire le taux de croissance de $y$ de la façon suivante :
+\[
+g_y = \alpha s\left(y^{\frac{\alpha-1}{\alpha}} - \left.y^{\star}\right.^{\frac{\alpha-1}{\alpha}}\right)
+\]
+ou encore :
+\[
+g_y = \alpha s \left.y^{\star}\right.^{\frac{\alpha-1}{\alpha}} \left(\left(\frac{y}{y^{\star}}\right)^{\frac{\alpha-1}{\alpha}} - 1\right)
+\]
+ou plus simplement :
+\[
+g_y = \alpha (n+\delta) \left(\left(\frac{y}{y^{\star}}\right)^{\frac{\alpha-1}{\alpha}} - 1\right)
+\]
+Dans  cette  dernière  expression  du   taux  de  croissance  on  voit
+clairement que celui-ci est une fonction décroissante de la distance à
+l'état stationnaire, $\nicefrac{y}{y^{\star}}$, puisque $\alpha<1$. Ce
+résultât  est  donc  la   conséquence  de  l'hypothèse  de  rendements
+décroissants  du  stock  de   capital  physique.   Dans  une  économie
+initialement   pauvre   (en   capital  physique)   le   rendement   de
+l'investissement est plus important que dans une économie initialement
+riche.   Ainsi   le  surcroît  de   production  induit  par   un  même
+investissement, et  donc la  croissance, sera  plus important  dans un
+pays pauvre que dans un  pays riche.  }  \question{10} Que pouvez-vous
+dire  de la  dynamique du  capital  par tête  ou du  produit par  tête
+lorsque  $\alpha=1$ ?   {\color{red}   Avec  $\alpha=1$  on  abandonne
+  l'hypothèse de rendements décroissants du capital, la production par
+  tête est linéaire par rapport au  stock de capital par tête. Dans ce
+  cas, le taux de croissance du capital est simplement donné par :
+\[
+g_k(t) = s - (n+\delta) 
+\]
+En  abandonnant l'hypothèse  de  rendements décroissants,  on perd  la
+relation décroissante entre  le taux de croissance et  le niveau. Dans
+ce modèle, le  taux de croissance est même constant  (il ne dépend que
+des   taux  d'épargne,   de  croissance   de  la   population  et   de
+dépréciation) !  Cela  a plusieurs  conséquences.  Puisque le  taux de
+croissance est constant  et positif (on suppose que  le taux d'épargne
+est assez  important dans le  sens où $s>n+\delta$) le  modèle n'admet
+plus  d'état  stationnaire  pour  les variables  par  tête.   Ici  les
+variables  par tête  croissent  à  long terme,  même  en l'absence  de
+progrès  technique.  Si  toutes  les  économies sont  structurellement
+homogènes alors  elles ont  toutes le même  taux de  croissance. Ainsi
+nous perdons aussi la propriété  de convergence des économies ; il n'y
+a pas  de rattrapage,  si les économies  ont des  conditions initiales
+différentes les écarts persistent indéfiniment.}\newline
+
+\bigskip
+\bigskip
+
+\begin{figure}[H]
+  \centering
+  \input{ds1-question-5.tikz}
+  \caption{Taux de croissance du capital physique par tête.}
+  \label{fig:question-5}
+\end{figure}
+
+\end{document}
