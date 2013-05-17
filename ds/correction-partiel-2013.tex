@@ -1,0 +1,191 @@
+\documentclass[10pt,a4paper,notitlepage]{article}
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage{manfnt}
+\usepackage{hyperref}
+\usepackage{nicefrac}
+
+\usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+
+\title{\textsc{Éducation, Formation et Croissance}}
+\author{\textsc{Université du Maine (Correction du partiel, L2)}}
+\date{}
+
+\maketitle
+
+\exercice{1} \question{1} Nous avons par définition de $\hat{k}$ :
+\[
+\dot{\hat{k}} = \frac{\dot K A L - K (\dot A L + A \dot L)}{(AL)^2}
+\]
+c'est-à-dire :
+\[
+\dot{\hat{k}} = \frac{\dot K}{A L} - \frac{K}{AL}\frac{\dot A}{A} -  \frac{K}{AL}\frac{\dot L}{L}
+\]
+soit encore :
+\[
+\dot{\hat{k}} = \frac{\dot K}{A L} - (n+x)\hat{k}
+\]
+En substituant la loi d'évolution de K dans le premier terme, il vient :
+\[
+\dot{\hat{k}} = \frac{s (1-\tau)Y - \delta K}{A L} - (n+x)\hat{k}
+\]
+En substituant la fonction de production et en développant, on obtient :
+\[
+\dot{\hat{k}} = s (1-\tau)\frac{K^{\alpha}G^{\beta}(AL)^{1-\alpha-\beta}}{A L} - (\delta+n+x)\hat{k}
+\]
+En exploitant le fait que la technologie soit à rendement d'échelle constant, on obtient finalement :
+\[
+\dot{\hat{k}} = s (1-\tau)\hat{k}^{\alpha}\hat{g}^{\beta} - (\delta+n+x)\hat{k}
+\]
+où $\hat{g}$ est la dépense publique par tête efficace. On retrouve le
+résultat habituel, le stock de  capital par tête efficace s'accroît si
+et seulement si l'investissement par  tête efficace est supérieur à la
+dépréciation du stock  de capital par tête  efficace. \question{2} Par
+définition on a $G  = \tau Y$ et donc aussi $\hat g  = \tau \hat y$ en
+divisant les deux membres de  l'égalité par $AL$. En substituant cette
+dernière égalité dans la fonction  de production par tête efficace, il
+vient :
+\[
+\hat y = \hat{k}^{\alpha}\left(\tau \hat{y}\right)^{\beta}
+\]
+De façon équivalente, en, divisant les deux membres par $\hat{y}^{\beta}$ :
+\[
+\hat{y}^{1-\beta} = \tau^{\beta}\hat{k}^{\alpha}
+\]
+soit finalement :
+\[
+\hat{y} = \tau^{\frac{\beta}{1-\beta}}\hat{k}^{\frac{\alpha}{1-\beta}}
+\]
+en substituant  dans la loi d'évolution  du stock de capital  par tête
+efficace, nous obtenons finalement :
+\[
+\dot{\hat{k}} = s(1-\tau)\tau^{\frac{\beta}{1-\beta}}\hat{k}^{\frac{\alpha}{1-\beta}} - (\delta+n+x)\hat{k}
+\]
+\question{3}  L'élasticité  de la  production  par  tête efficace  par
+rapport au stock de capital par tête efficace est :
+\[
+\epsilon_{\nicefrac{\hat y}{\hat k}} = \frac{\alpha}{1-\beta}
+\] 
+On   remarque    que   cette   élasticité   est    plus   grande   que
+$\alpha$. L'introduction de dépenses  publiques productives accroît la
+sensibilité de  $\hat y$ aux  variations de $\hat k$.  \question{4} Le
+taux de croissance d'une variable  est obtenu en divisant la variation
+de cette variable avec son niveau. Dans le cas du stock de capital par
+tête efficace, nous avons donc :
+\[
+g_{\hat k} = s(1-\tau)\tau^{\frac{\beta}{1-\beta}}\hat{k}^{\frac{\alpha}{1-\beta}-1} - (\delta+n+x)
+\]
+\question{5} Pour  un niveau quelconque  du stock de  capital physique
+par tête efficace, le taux de croissance de $\hat k$ est d'autant plus
+grand  que  $(1-\tau)\tau^{\frac{\beta}{1-\beta}}$  est  grand.  Cette
+expression  peut  être décomposée  comme  le  produit de  deux  termes
+$1-\tau$  et  $\tau^{\frac{\beta}{1-\beta}}$ ;  le premier  terme  est
+décroissant par rapport à $\tau$ alors que le second est croissant par
+rapport à $\tau$. Il  y a donc un arbitrage dans  le choix de $\tau$ :
+augmenter $\tau$  augmente la croissance  car en augmentant  $\tau$ on
+augmente la  dépense publique et  donc la production, mais  cette même
+augmentation  de $\tau$  s'accompagne d'un  effet défavorable  dans la
+mesure on  elle réduit le  taux d'épargne effectif (les  revenus taxés
+par l'état ne sont pas épargnés). Si elle existe la taxe optimale doit satisfaire la condition suivante :
+\[
+\frac{\mathrm d}{\mathrm d\tau} (1-\tau)\tau^{\frac{\beta}{1-\beta}}\,  _{\biggl|_{\tau=\tau^{\star}}} = 0
+\]
+Nous avons :
+\[
+\frac{\mathrm d}{\mathrm d\tau} (1-\tau)\tau^{\frac{\beta}{1-\beta}} = (1-\tau)\frac{\beta}{1-\beta}\tau^{\frac{\beta}{1-\beta}-1}-\tau^{\frac{\beta}{1-\beta}} 
+\]
+En annulant cette dérivée évaluée en $\tau^{\star}$ et en simplifiant, nous obtenons la condition suivante
+\[
+\frac{1-\tau^{\star}}{\tau^{\star}}\frac{\beta}{1-\beta}=1
+\]
+Le taxe optimale est donc $\tau^{\star} = \beta$. \question{6} On obtient directement l'état stationnaire par analogie avec les résultats obtenus dans le cours/td en remarquant que la dynamique du stock de capital par tête peut s'écrire :
+\[
+g_{\hat k} = \bar s\hat{k}^{\bar \alpha-1} - (\delta+n+x)
+\]
+avec $\bar s = s(1-\tau)\tau^{\frac{\beta}{1-\beta}}$ et $\bar \alpha = \frac{\alpha}{1-\beta}$. Le niveau de capital par tête efficace qui annule le taux de croissance du capital par tête efficace est :
+\[
+\hat{k}^{\star} = \left(\frac{\bar s}{\delta+n+x}\right)^{\frac{1}{1-\bar\alpha}}
+\]
+c'est-à-dire en substituant les définitions de $\bar s$ et $\bar \alpha$ :
+\[
+\hat{k}^{\star} = \left(\frac{s(1-\tau)\tau^{\frac{\beta}{1-\beta}}}{\delta+n+x}\right)^{\frac{1-\beta}{1-\alpha-\beta}}
+\]
+En rappelant que 
+\[
+\hat y = \tau^{\frac{\beta}{1-\beta}}\hat{k}^{\frac{\alpha}{1-\beta}}
+\]
+il vient :
+\[
+\hat{y}^{\star} = \tau^{\frac{\beta}{1-\beta}}\left(\frac{s(1-\tau)\tau^{\frac{\beta}{1-\beta}}}{\delta+n+x}\right)^{\frac{\alpha}{1-\alpha-\beta}}
+\]
+La consommation par tête efficace est donnée par la part des revenus net des impôts qui n'est pas épargnée, nous avons donc :
+\[
+\hat c = (1-s)(1-\tau)\hat y
+\]
+et donc à l'état stationnaire :
+\[
+\hat{c}^{\star} = (1-s)(1-\tau)\tau^{\frac{\beta}{1-\beta}}\left(\frac{s(1-\tau)\tau^{\frac{\beta}{1-\beta}}}{\delta+n+x}\right)^{\frac{\alpha}{1-\alpha-\beta}}
+\]
+que nous pouvons réécrire sous la forme :
+\[
+\hat{c}^{\star} = (1-s)\left[(1-\tau)\tau^{\frac{\beta}{1-\beta}}\right]^{1+\frac{\alpha}{1-\alpha-\beta}}\left(\frac{s}{\delta+n+x}\right)^{\frac{\alpha}{1-\alpha-\beta}}
+\]
+ou encore :
+\[
+\hat{c}^{\star} = \left[(1-\tau)\tau^{\frac{\beta}{1-\beta}}\right]^{\frac{1-\beta}{1-\alpha-\beta}}(1-s)\left(\frac{s}{\delta+n+x}\right)^{\frac{\alpha}{1-\alpha-\beta}}
+\]
+Cet  état   stationnaire  est   stable.   Nous   avons  vu,   dans  la
+représentation graphique de $g_{\hat k}$, que le taux de croissance de
+$\hat  k$ est  positif si  et seulement  si $\hat  k$ est  inférieur à
+l'état stationnaire. Ainsi  pour toute condition initiale  du stock de
+capital  par tête  efficace,  l'économie converge  à  long terme  vers
+l'état stationnaire $\hat k^{\star}$.  \question{7} Notons que dans la
+dernière  expression de  l'état stationnaire  de $\hat  c$, l'exposant
+$\frac{1-\beta}{1-\alpha-\beta}$  est strictement  positif. Ainsi,  le
+niveau de  long terme  de la  consommation par  tête efficace  est une
+fonction              monotone              croissante              de
+$(1-\tau)\tau^{\frac{\beta}{1-\beta}}$.    Nous    savons   que,   par
+construction, $\tau^{\star}$ maximise ce terme. Ainsi, $\tau^{\star}$,
+en plus d'être  le taux de taxe  qui maximise le taux  de croissance à
+tout   instant,   maximise   le   niveau   de   long   terme   de   la
+consommation. \question{8} Par  analogie avec le cours,  on trouve que
+la vitesse d'ajustement vers l'état stationnaire est :
+\[
+\lambda = (1-\bar \alpha)(\delta+n+x)
+\]
+c'est-à-dire :
+\[
+\lambda = \left(1-\frac{\alpha}{1-\beta}\right)(\delta+n+x)
+\]
+On  remarque  que  l'introduction de  dépenses  publiques  productives
+($\beta>0$)    réduit   la    vitesse    d'ajustement   vers    l'état
+stationnaire. Cela va  dans le bon sens, puisque nous  avons montré en
+cours que  la vitesse de convergence  théorique du modèle de  Solow de
+base  est   trop  importante  par   rapport  à  ce  que   suggère  les
+données. \question{9} Si  $\beta = 1-\alpha$, alors  la production par
+tête  efficace  devient une  fonction  linéaire  du stock  de  capital
+physique  par  tête  efficace.   On  abandonne  ainsi  l'hypothèse  de
+productivité marginale décroissante du  capital. Le taux de croissance
+du stock de capital par tête efficace s'écrit alors :
+\[
+g_{\hat k} = s(1-\tau)\tau^{\frac{\beta}{1-\beta}} - (\delta+n+x)
+\]
+Le taux  de croissance de  $\hat k$ ne dépend  plus de son  niveau. Le
+taux  de croissance  est constant :  si  le taux  d'épargne est  assez
+important  l'économie croît  indéfiniment  à taux  constant. Ainsi  le
+stock  de capital  par tête  tend vers  l'infini, l'état  stationnaire
+n'existe plus.
+\end{document}

@@ -19,6 +19,16 @@ correction-ds1-2013.pdf: correction-ds1-2013.tex ds1-2013-question-5.tikz
 	grep -q "Rerun to get cross" correction-ds1-2013.log ) do true ; \
 	done
 
+partiel-2013.pdf: partiel-2013.tex
+	while ($(LATEX) partiel-2013.tex ; \
+	grep -q "Rerun to get cross" partiel-2013.log ) do true ; \
+	done
+
+correction-partiel-2013.pdf: correction-partiel-2013.tex
+	while ($(LATEX) correction-partiel-2013.tex ; \
+	grep -q "Rerun to get cross" correction-partiel-2013.log ) do true ; \
+	done
+
 clean:
 	rm -rf *.aux
 	rm -rf *.out
@@ -33,4 +43,4 @@ push:
 	rsync -avz --delete-after ./*.tex $(TARGET)
 	rsync -avz --delete-after ./*.py $(TARGET)
 
-all: ds1-2013.pdf correction-ds1-2013.pdf clean push
+all: ds1-2013.pdf correction-ds1-2013.pdf partiel-2013.pdf correction-partiel-2013.pdf clean #push

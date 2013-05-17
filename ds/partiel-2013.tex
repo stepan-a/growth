@@ -1,0 +1,77 @@
+\documentclass[10pt,a4paper,notitlepage]{article}
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage{manfnt}
+\usepackage{hyperref}
+\usepackage{nicefrac}
+
+\usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+
+\title{\textsc{Éducation, Formation et Croissance}}
+\author{\textsc{Université du Maine (Partiel, L2)}}
+\date{}
+
+\maketitle
+
+\exercice{1}  Dans  cet  exercice  on considère  un  modèle  de  Solow
+augmenté de dépenses publiques productives (dans le sens où la dépense
+de l'état accroît la production).  Soit la fonction de production :
+\[
+Y(t) = K(t)^{\alpha}G(t)^{\beta}(A(t)L(t))^{1-\alpha-\beta}
+\]
+Les variables $Y$,  $K$, $L$ et $A$ ont  les interprétations usuelles.
+$G$ est le niveau de la  dépense publique.  Les paramètres $\alpha$ et
+$\beta$ sont  positifs et  vérifient $\alpha+\lambda<1$.  Le  stock de
+capital physique se  déprécie au taux $\delta>0$.   La loi d'évolution
+du stock de capital physique est données par :
+\[
+\dot{K} = s (1-\tau)Y - \delta K
+\]
+où  $s\in]0,1[$  est   le  taux  d'épargne  en   capital  physique  et
+$\tau\in]0,1[$ une taxe sur le  produit.  Cette taxe sur la production
+finance les dépenses publiques, $G = \tau Y$. \question{1} Montrez que
+la loi  d'évolution du capital  physique par tête efficace  est donnée
+par :
+\[
+\dot{\hat{k}} = s(1-\tau)\hat{k}^{\alpha}\hat{g}^{\beta} - (\delta+n+x)\hat{k}
+\]
+où $n>0$  et $x>0$ sont  respectivement les  taux de croissance  de la
+population,    $L$,     et    de     la    technologie,     $A$,    et
+$\hat{k}^{\alpha}\hat{g}^{\beta}=\hat{y}$ est  la production  par tête
+efficace.  Commentez cette  équation. \question{2}  Montrez qu'il  est
+possible  d'écrire la  loi d'évolution  su stock  de capital  par tête
+efficace sous la forme :
+\[
+\dot{\hat{k}} = s(1-\tau)\tau^{\frac{\beta}{1-\beta}}\hat{k}^{\frac{\alpha}{1-\beta}} - (\delta+n+x)\hat{k}
+\]
+en   éliminant  la   variable  $\hat   g$.   \question{3}   Déterminez
+l'élasticité de la production par tête efficace rapport au capital par
+tête  efficace.    Commentez.   \question{4}  Donnez   une  expression
+analytique  du  taux  de  croissance  du stock  de  capital  par  tête
+efficace.       Représentez     graphiquement      ce     taux      de
+croissance. \question{5}  Montrez qu'il  existe un  taux d'imposition,
+$\tau^{\star}$, qui  maximise ce taux  de croissance à  chaque instant
+(pour  tout  niveau  de   $\hat  k$).   \question{6}  Calculez  l'état
+stationnaire  du   modèle.   Commentez   la  stabilité  de   cet  état
+stationnaire.    \question{7}  Montrer   que   le  taux   d'imposition
+$\tau^{\star}$ qui  maximise le  taux de  croissance à  chaque instant
+maximise  le  niveau  de  long  terme  de  la  consommation  par  tête
+efficace. \question{8} Par analogie avec  le résultat obtenu en cours,
+déterminez  la  vitesse  d'ajustement  de  l'économie  vers  son  état
+stationnaire.  Commentez les  différences. Cela  va t  il dans  le bon
+sens ? \question{9} Que deviennent les prédictions du modèle si $\beta = 1-\alpha$ ?
+
+\end{document}
