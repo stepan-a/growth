@@ -22,7 +22,7 @@ ylower = 0.0
 yupper = max(gross_investment_per_unit_of_capital)
 
 
-tikz = open('ds1-question-5.tikz', 'w')
+tikz = open('ds1-2013-question-5.tikz', 'w')
 
 tikz.write('\\begin{tikzpicture}[xscale=.4,yscale=40]\n\n')
 tikz.write('\\draw [<->] (' + str(xlower) + ',' + str(yupper) + ') -- (' + str(xlower) + ',' + str(ylower) + ') -- (' + str(xupper) +  ',' + str(ylower) + ') node[right] {$k$};\n\n');
