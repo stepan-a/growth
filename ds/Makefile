@@ -29,6 +29,11 @@ correction-partiel-2013.pdf: correction-partiel-2013.tex
 	grep -q "Rerun to get cross" correction-partiel-2013.log ) do true ; \
 	done
 
+rattrapage-2013.pdf: rattrapage-2013.tex
+	while ($(LATEX) rattrapage-2013.tex ; \
+	grep -q "Rerun to get cross" rattrapage-2013.log ) do true ; \
+	done
+
 clean:
 	rm -rf *.aux
 	rm -rf *.out
@@ -43,4 +48,4 @@ push:
 	rsync -avz --delete-after ./*.tex $(TARGET)
 	rsync -avz --delete-after ./*.py $(TARGET)
 
-all: ds1-2013.pdf correction-ds1-2013.pdf partiel-2013.pdf correction-partiel-2013.pdf clean #push
+all: ds1-2013.pdf correction-ds1-2013.pdf partiel-2013.pdf correction-partiel-2013.pdf clean push
