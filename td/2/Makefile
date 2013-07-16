@@ -1,5 +1,4 @@
 LATEX = pdflatex
-TARGET = kirikou.cepremap.org:~/public_html/university/growth/td/2
 
 td2.pdf: td2.tex
 	while ($(LATEX) td2.tex ; \
@@ -18,8 +17,4 @@ clean:
 clean-all: clean
 	rm *.pdf
 
-push:
-	rsync -avz --delete-after ./*.pdf $(TARGET)
-	rsync -avz --delete-after ./*.tex $(TARGET)
-
-all: td2.pdf correction-td2.pdf clean push
+all: td2.pdf correction-td2.pdf clean

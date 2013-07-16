@@ -1,5 +1,4 @@
 LATEX = pdflatex
-TARGET = kirikou.cepremap.org:~/public_html/university/growth/ds
 
 INITIAL_PATH = $(PATH)
 PYTHON_PATH = /home/stepan/Python/Anaconda/bin
@@ -43,9 +42,4 @@ clean-all: clean
 	rm *.tikz
 	rm *.log
 
-push:
-	rsync -avz --delete-after ./*.pdf $(TARGET)
-	rsync -avz --delete-after ./*.tex $(TARGET)
-	rsync -avz --delete-after ./*.py $(TARGET)
-
-all: ds1-2013.pdf correction-ds1-2013.pdf partiel-2013.pdf correction-partiel-2013.pdf clean push
+all: ds1-2013.pdf correction-ds1-2013.pdf partiel-2013.pdf correction-partiel-2013.pdf clean
