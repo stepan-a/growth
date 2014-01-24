@@ -17,4 +17,4 @@ clean:
 clean-all: clean
 	rm *.pdf
 
-all: td3.pdf correction-td3.pdf clean push
+all: td3.pdf correction-td3.pdf clean
