@@ -1,0 +1,74 @@
+\documentclass[10pt,a4paper,notitlepage]{article}
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage{manfnt}
+\usepackage{hyperref}
+\usepackage{nicefrac}
+
+\usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+
+\title{\textsc{Éducation, Formation et Croissance\\ \small{(Devoir surveillé n°1)}}}
+\date{Le \today\ à \thistime}
+
+\maketitle
+
+Soient $k(t)$ le stock de capital physique d'une économie à l'instant
+$t$, $L(t)$ la population qui croît au taux constant $n>0$,
+$\alpha\in]0,1[$ un paramètre technologique, $s\in]0,1[$ le taux
+d'épargne et $\delta\in[0,1]$ le taux de dépréciation du capital
+physique. La dynamique du stock de capital physique est décrite par
+l'équation suivante :
+\[
+\dot K(t) = sY(t)-\delta K(t)
+\]
+et la technologie de production est :
+\[
+Y(t) = K(t)^\alpha L(t)^{1-\alpha} + BK(t)
+\]
+avec $B>0$. \question{1} S'agit-il d'une fonction de production
+néoclassique ? Argumentez votre réponse. \question{2} Calculez
+l'élasticité de la production par rapport au stock de capital
+physique. Commentez vos résultats. \question{3.a}
+Interprétez la loi d'évolution du stock de capital physique (la
+première équation). \question{3.b} Décrivez la dynamique du capital
+par tête $k(t)=\nicefrac{K(t)}{L(t)}$, en montrant que :
+\[
+\dot k(t) = sk(t)^{\alpha}+sBk(t)-(n+\delta)k(t)
+\]
+\question{3.c} Interprétez cette équation. \question{4} Donnez une
+expression analytique du taux de croissance du stock de capital
+physique par tête. \question{5} Représentez graphiquement le taux de
+croissance du stock de capital physique par tête (en expliquant la
+construction du graphique) et commentez en fonction du signe de
+$sB-n-\delta$. \question{6} Calculez l'état stationnaire du modèle
+(pour le capital par tête, la production par tête et la consommation
+par tête) s'il existe. \question{7} Quel est le rapport entre l'état
+stationnaire du stock de capital par tête et le niveau de long terme
+du capital par tête ? Justifiez votre réponse. \question{8} Si l'état
+stationnaire n'existe pas, que pouvez-vous dire du long terme de cette
+économie. \question{9} Donnez une expression du taux de croissance du
+produit par tête en fonction du taux de croissance du capital physique
+par tête. Commentez. \question{10} Montrez
+que ce modèle prédit une relation décroissante entre le taux de
+croissance du capital physique par tête et son niveau. Quelle est
+l'hypothèse au centre de cette prédiction ? Comment la forme
+particulière de la fonction de production vient atténuer cette
+hypothèse. \question{11} En procédant par analogie, \emph{ie} je ne
+vous demande pas de refaire les calculs vus en cours, donnez la
+vitesse d'ajustement vers l'état stationnaire (s'il existe) du stock
+de capital physique par tête. Commentez.
+
+\end{document}

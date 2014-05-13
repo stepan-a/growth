@@ -23,6 +23,11 @@ partiel-2013.pdf: partiel-2013.tex
 	grep -q "Rerun to get cross" partiel-2013.log ) do true ; \
 	done
 
+partiel-2014.pdf: partiel-2014.tex
+	while ($(LATEX) partiel-2014.tex ; \
+	grep -q "Rerun to get cross" partiel-2014.log ) do true ; \
+	done
+
 correction-partiel-2013.pdf: correction-partiel-2013.tex
 	while ($(LATEX) correction-partiel-2013.tex ; \
 	grep -q "Rerun to get cross" correction-partiel-2013.log ) do true ; \
@@ -42,4 +47,4 @@ clean-all: clean
 	rm *.tikz
 	rm *.log
 
-all: ds1-2013.pdf correction-ds1-2013.pdf partiel-2013.pdf correction-partiel-2013.pdf clean
+all: ds1-2013.pdf correction-ds1-2013.pdf partiel-2013.pdf correction-partiel-2013.pdf partiel-2014.pdf clean
