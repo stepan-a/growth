@@ -33,6 +33,11 @@ correction-partiel-2013.pdf: correction-partiel-2013.tex
 	grep -q "Rerun to get cross" correction-partiel-2013.log ) do true ; \
 	done
 
+correction-partiel-2014.pdf: correction-partiel-2014.tex
+	while ($(LATEX) correction-partiel-2014.tex ; \
+	grep -q "Rerun to get cross" correction-partiel-2014.log ) do true ; \
+	done
+
 rattrapage-2013.pdf: rattrapage-2013.tex
 	while ($(LATEX) rattrapage-2013.tex ; \
 	grep -q "Rerun to get cross" rattrapage-2013.log ) do true ; \
@@ -41,10 +46,12 @@ rattrapage-2013.pdf: rattrapage-2013.tex
 clean:
 	rm -rf *.aux
 	rm -rf *.out
+	rm -rf auto
+	rm -rf *.log
 
 clean-all: clean
 	rm *.pdf
 	rm *.tikz
 	rm *.log
 
-all: ds1-2013.pdf correction-ds1-2013.pdf partiel-2013.pdf correction-partiel-2013.pdf partiel-2014.pdf clean
+all: ds1-2013.pdf correction-ds1-2013.pdf partiel-2013.pdf correction-partiel-2013.pdf partiel-2014.pdf correction-partiel-2014.pdf clean

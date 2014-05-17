@@ -1,0 +1,296 @@
+\documentclass[10pt,a4paper,notitlepage]{article}
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage{manfnt}
+\usepackage{hyperref}
+\usepackage{nicefrac}
+
+\usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\usepackage{tikz,pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{patterns, arrows, decorations.pathreplacing, calc}
+
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+
+\title{\textsc{Éducation, Formation et Croissance\\ \small{Correction
+      du partiel}}}
+\date{Le \today\ à \thistime}
+
+\maketitle
+
+Soient $k(t)$ le stock de capital physique d'une économie à l'instant
+$t$, $L(t)$ la population qui croît au taux constant $n>0$,
+$\alpha\in]0,1[$ un paramètre technologique, $s\in]0,1[$ le taux
+d'épargne et $\delta\in[0,1]$ le taux de dépréciation du capital
+physique. La dynamique du stock de capital physique est décrite par
+l'équation suivante :
+\[
+\dot K(t) = sY(t)-\delta K(t)
+\]
+et la technologie de production est :
+\[
+Y(t) = K(t)^\alpha L(t)^{1-\alpha} + BK(t)
+\]
+avec $B>0$.\newline
+
+\bigskip
+\bigskip
+
+\question{1} Il ne s'agit pas d'une fonction de production
+néoclassique. Les rendements d'échelle sont bien constants, les
+productivités marginales sont bien positives et décroissantes, mais
+toutes les conditions d'Inada ne sont pas satisfaites. Lorsque le
+stock de capital tend vers l'infini, la productivité marginale du
+capital tend vers $B>0$ et non vers zéro. Cette violation des
+conditions d'Inada ne nous permet pas de garantir l'existence de
+l'état stationnaire. Nous verrons plus loin que si $B$ est assez
+grand, l'état stationnaire n'existe pas et on a de la croissance
+endogène (l'économie croît indéfiniment).\newline
+
+\question{2} L'élasticité est définie par:
+\[
+\epsilon_{Y/K} = \frac{\frac{\partial Y}{\partial K}}{\frac{Y}{K}}
+\]
+En calculant la dérivée de la fonction de production par rapport à
+$K$, il vient:
+\[
+\begin{split}
+  \epsilon_{Y/K} &= \left(\alpha
+    K^{\alpha-1}L^{1-\alpha}+B\right)\frac{K}{Y}\\
+  &= \frac{\alpha K^{\alpha}L^{1-\alpha}+BK}{Y}\\
+  &= \frac{\alpha Y +(1-\alpha)BK}{Y}\\
+  &= \alpha + (1-\alpha)B \frac{K}{Y}
+\end{split}
+\]
+On remarque que l'élasticité est plus grande que dans le cas
+Cobb-Douglas (\emph{ie} sans le terme $BK$ dans la fonction de
+production). A priori, l'élasticité varie durant la transition vers
+l'état stationnaire (s'il existe) ou le sentier de croissance
+équilibrée.\newline
+
+\question{3.a} Le stock de capital physique agrégé augmente si et
+seulement si l'investissement brut est supérieur à la dépréciation du
+stock de capital physique.\newline
+
+\question{3.b} On procède exactement comme dans le cours. Par
+définition, la variation du stock de capital par tête est donnée par:
+\[
+\begin{split}
+  \dot k(t) &= \frac{\dot K(t)L(t)-K(t)\dot L(t)}{L(t)^2}\\
+  &= \frac{\dot K(t)}{L(t)} - nk(t)
+\end{split}
+\]
+En substituant la loi d'évolution du stock de capital physique agrégé
+et la fonction de production, il vient:
+\[
+\begin{split}
+  \dot k(t) &= \frac{sK(t)^\alpha L(t)^{1-\alpha} + sBK(t)-\delta K(t)}{L(t)} - nk(t)\\
+  &= sk(t)^{\alpha} + sBk(t) - (n+\delta)k(t)
+\end{split}
+\]
+car la fonction de production est homogène de degré un.\newline
+
+\question{3.c} Le stock de capital physique par tête s'accroît si et
+seulement si l'investissement par tête domine la dépréciation du stock
+de capital par tête ($n+\delta$ est le taux de dépréciation du stock
+de capital physique par tête).\newline
+
+
+\question{4} Le taux de croissance est obtenu en rapportant la
+variation de $k$ à son niveau:
+\[
+\begin{split}
+  g_k(t) &= \frac{\dot k(t)}{k(t)}\\
+  &= \frac{sk(t)^{\alpha} + sBk(t) - (n+\delta)k(t)}{k(t)}\\
+  &= sk(t)^{\alpha-1} - (n+\delta-sB)
+\end{split}
+\]
+Le taux de croissance est positif si et seulement si l'investissement
+brut par unité de capital, $sk(t)^{\alpha-1}+sB$, est supérieur au
+taux de dépréciation du capital physique par tête, $n+\delta$. Notons,
+avec la dernière expression du taux de croissance du stock de capital
+physique par tête, que nous obtenons une expression très proche de ce
+que nous obtiendrions avec une fonction de production Cobb Douglas: la
+seule différence formelle tient à la constante retranchée à
+$sk^{\alpha-1}$. Attention cette comparaison n'est que formelle, la
+constante $n+\delta-sB$ ne doit pas s'interpréter comme un taux de
+dépréciation et $sk(t)^{\alpha-1}$ n'est pas l'investissement brut par
+unité de capital. Néanmoins, se rapprochement formel pourra servir
+plus loin à vérifier l'exactitude de nos résultats (pour ceux qui ont
+en tête les résultats avec une fonction de production Cobb Douglas).\newline
+
+\question{5} On cherche à représenter graphiquement, dans le plan
+$(k,g_k)$, la dynamique du modèle. On distinguera deux cas selon le
+signe de $n+\delta-sB$. Clairement, le premier terme $sk^{\alpha-1}$
+est une fonction monotone décroissante, car le paramètre positif
+$\alpha$ est strictement inférieur à l'unité. Ainsi, le taux de
+croissance est une fonction monotone décroissante du niveau de capital
+par tête. On sait aussi que
+$\lim_{k\rightarrow\infty}sk^{\alpha-1}=\infty$. Ainsi, si
+$n+\delta-sB$ est positif alors la courbe représentative de $g_k$ croisera une
+unique fois l'axe des abscisses et si le même terme est négatif la
+courbe représentative de $g_k$ ne croisera jamais l'axe des
+abscisses. Dans ce dernier cas, le taux de croissance est toujours
+strictement positif.
+
+\begin{tikzpicture}[scale=.7]
+\draw[->] (-.5, 0) -- (12, 0) node [right] {$k$} ;
+\draw[->] (0, 0) -- (0, 8) node [above] {$g_k$} ;
+\draw[->] (0, 0) -- (0, -2) ;
+% Case 1.
+\draw[dashed] (0,-1.5) node[left] {$-(n+\delta-sB)$} -- (11.5,-1.5) ;
+\draw[thick] (.5,6) to [out=-80,in=150] (5,0) to [out=-30, in=175] (11,-1.45) ;
+\node at (5, 0) {$\bullet$} ;
+\node at (5, 0) [below] {$k^{\star}$} ;
+% Case 2.
+\draw[dashed, blue] (0,.5) node[left] {$-(n+\delta-sB)$} -- (11.5,.5) ;
+\draw[thick, blue] (.5,8) to [out=-80,in=150] (5,2) to [out=-30, in=175] (11,2-1.45) ;
+\end{tikzpicture}
+
+\bigskip
+
+\question{6} L'état stationnaire n'existe que si $n+\delta-sB$ est
+positif, car cette condition assure l'existence d'un (unique) niveau
+$k>0$ tel que le taux de croissance est nul (voir la question
+précédente). Il faut donc que le taux de $sB$ ne soit pas trop grand
+dans le sens où $sB<n+\delta$. Sous cette condition l'état
+stationnaire est donné par:
+\[
+k^{\star} = \left(\frac{s}{n+\delta-sB}\right)^{\frac{1}{1-\alpha}}
+\]
+On obtient directement ce résultat en cherchant le niveau de $k$ tel
+que l'investissement brut par unité de capital est égal au taux de
+dépréciation du stock de capital physique par tête. On note en
+passant, que même si le taux d'épargne apparaît au dénominateur,
+l'état stationnaire est toujours (par rapport au cas d'une technologie
+Cobb-Douglas) une fonction croissante du taux d'épargne. En
+substituant dans la production par tête on obtient:
+\[
+y^{\star} = \left(\frac{s}{n+\delta-sB}\right)^{\frac{\alpha}{1-\alpha}}+B\left(\frac{s}{n+\delta-sB}\right)^{\frac{1}{1-\alpha}}
+\]
+En rappelant que la consommation par tête est le complémentaire de
+l'épargne par tête:
+\[
+c^{\star} = (1-s)\left[\left(\frac{s}{n+\delta-sB}\right)^{\frac{\alpha}{1-\alpha}}+B\left(\frac{s}{n+\delta-sB}\right)^{\frac{1}{1-\alpha}}\right]
+\]
+Une augmentation permanente du taux d'épargne induit une augmentation
+permanente de l'état stationnaire de la production par tête et du
+stock de capital physique par tête. L'effet sur l'état stationnaire de
+la consommation par tête est moins trivial et dépend du niveau initial
+du taux d'épargne.\newline
+
+\question{7} Si l'état stationnaire existe, c'est-à-dire si
+$sB<n+\delta$, est le niveau de long terme de l'économie
+intensive. Pour comprendre ce résultat, il suffit de noter que le
+taux de croissance est positif lorsque $k<k^{^{\star}}$ est négatif
+lorsque $k>k^{\star}$ (voir le graphique de la question 5). Dès lors
+la transition ramène toujours l'économie vers l'état
+stationnaire.\newline
+
+\question{8} Si l'état stationnaire n'existe pas, c'est-à-dire si
+$sB>n+\delta$, le taux de croissance est positif quel que soit le
+niveau du stock de capital par tête. Dans ce cas l'économie croît
+perpétuellement, et on parle alors de croissance endogène. Notons que
+dans ce cas, même si les variables croissent à long terme comme dans
+le modèle avec une technologie $Ak$ (voir le cours), nous ne
+sacrifions pas pour autant la transition: ici le taux de croissance
+est toujours une fonction (décroissante de $k$) et varie dans le temps.\newline
+
+\question{9} Calculons le taux de croissance de la production par
+tête. Par définition, on a:
+\[
+\begin{split}
+  g_y(t) &= \frac{\dot y(t)}{y(t)}\\
+  &= \frac{\alpha k(t)^{\alpha-1}\dot k(t)+B\dot k(t)}{y(t)}\\
+  &= \frac{\alpha k(t)^{\alpha} g_k(t) + B\dot k(t)}{y(t)}\\
+  &= \frac{\alpha y(t) g_k(t) + B\dot k(t) - \alpha B k(t)g_k(t)}{y(t)}\\
+  &= \alpha g_k(t) + (1-\alpha)B\frac{k(t)}{y(t)}g_k(t)\\
+  &= \underset{\epsilon_{y/k}}{\underbrace{\left(\alpha + (1-\alpha)B\frac{k(t)}{y(t)}\right)}}g_k(t)
+\end{split}
+\]
+Le taux de croissance du PIB par tête est égal au taux de croissance
+du stock de capital physique par tête multiplié par l'élasticité de la
+production par rapport au capital physique. Ce résultat était attendu
+(par définition d'une élasticité), seule l'expression de l'élasticité
+est changée (par rapport au cas Cobb-Douglas habituel).\newline
+
+\question{10} Nous le voyons déjà sur le graphique donné plus
+haut. Plus formellement nous avons:
+\[
+\frac{\partial g_k}{\partial k} = -(1-\alpha) s k(t)^{\alpha-2}
+\]
+Cette dérivée est positive car $\alpha\in(0,1)$. C'est parce que le
+rendement du capital physique est décroissant que le taux de
+croissance du stock de capital physique par tête dépend négativement
+de son niveau. Le long de la transition\footnote{On suppose ici que la
+  dotation en capital physique est faible.}, lorsque le stock de
+capital physique par tête augmente, le rendement de l'investissement
+diminue. Ainsi, le long de la transition, chaque unité supplémentaire
+consacrée à l'investissement en capital donnera moins de production
+demain et donc aussi moins d'investissement puisque (dans ce modèle)
+une part constante, $s$, de la production est investie. Comme le taux
+de croissance, nous l'avons vu plus haut, est égal au taux
+d'investissement net (investissement brut moins la dépréciation), le
+taux de croissance diminue le long de la transition (vers l'état
+stationnaire ou le sentier de croissance équilibrée).\newline La
+technologie adoptée dans cet exercice vérifie bien l'hypothèse de
+rendements décroissants (la productivité marginale du capital physique
+est bien décroissante) mais cette productivité marginale ne tend pas
+vers zéro lorsque $k$ tend vers l'infini. Cette violation des
+conditions d'Inada, qui explique pourquoi sous certaines conditions on
+peut observer de la croissance endogène, se manifeste aussi sur la
+valeur de l'élasticité de la production par rapport au capital (qui
+mesure le rendement du capital et caractérise le lien entre $g_k$ et
+$g_y$). Si $B$ est assez grand de sorte que l'économie croît
+indéfiniment alors on a:
+\[
+\lim_{k\rightarrow\infty}\frac{y}{k} =\lim_{k\rightarrow\infty} k^{\alpha-1}+B=B
+\]
+La productivité moyenne, comme la productivité marginale, tend vers
+$B$ lorsque $t$, et donc $k$, tend vers l'infini. En substituant dans
+l'expression de l'élasticité de $y$ par rapport à $k$ on obtient:
+\[
+\lim_{k\rightarrow\infty}\epsilon_{\frac{y}{k}} = \alpha +
+(1-\alpha)B\lim_{k\rightarrow\infty}\frac{k}{y} = 1
+\]
+Si $B$ est assez grand, au sens où $sB>n+\delta$, l'élasticité tend
+vers 1 lorsque $t$ tend vers l'infini. Autrement dit, asymptotiquement
+la technologie devient linéaire (\emph{ie} équivalente à une
+technologie $Ak$) et le rendement du capital constant. Même si le taux
+de croissance de $k$ est une fonction décroissante de $k$ (pour
+$k<\infty$), il ne tend pas nécessairement vers zéro (dés lors que le
+rendement asymptotique de l'investissement par tête est supérieur au taux de
+dépréciation constant du capital par tête).\newline
+
+\question{11} Si l'état stationnaire existe, c'est-à-dire si
+$sB<n+\delta$, la vitesse de convergence vers l'état stationnaire est
+donnée par:
+\[
+\beta = (1-\alpha)(n+\delta-sB)
+\]
+Pour obtenir ce résultat il suffit de comparer l'expression de $g_k$
+dans le cas Cobb-Douglas avec celle donnée ici et de se rappeler (voir
+le cours) de la vitesse de convergence dans le cas
+Cobb-Douglas. Clairement, il suffit de remplacer $n+\delta$ par
+$n+\delta-sB$. On remarque qu'ici la vitesse d'ajustement vers l'état
+stationnaire dépend du comportement d'épargne. Plus une économie
+épargne plus longue sera sa transition vers l'état stationnaire
+(réduction de la vitesse de convergence). La vitesse d'ajustement
+dépend aussi du poids de la partie linéaire en $k$ dans la fonction de
+production. Plus la fonction de production est linéaire ($B$ grand)
+plus faible est la vitesse de convergence.
+
+\end{document}
