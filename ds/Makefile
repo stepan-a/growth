@@ -1,7 +1,6 @@
 LATEX = pdflatex
 
-INITIAL_PATH = $(PATH)
-PYTHON_PATH = /home/stepan/Python/Anaconda/bin
+all: ds1-2013.pdf correction-ds1-2013.pdf partiel-2013.pdf correction-partiel-2013.pdf partiel-2014.pdf correction-partiel-2014.pdf partiel-2015.pdf partiel-2016.pdf clean
 
 ds1-2013.pdf: ds1-2013.tex
 	while ($(LATEX) ds1-2013.tex ; \
@@ -9,9 +8,7 @@ ds1-2013.pdf: ds1-2013.tex
 	done
 
 ds1-2013-question-5.tikz:
-	export PATH=$(PYTHON_PATH):$(INITIAL_PATH)
 	python ds1-2013.py
-	export PATH=$(INITIAL_PATH)
 
 correction-ds1-2013.pdf: correction-ds1-2013.tex ds1-2013-question-5.tikz
 	while ($(LATEX) correction-ds1-2013.tex ; \
@@ -31,6 +28,11 @@ partiel-2014.pdf: partiel-2014.tex
 partiel-2015.pdf: partiel-2015.tex
 	while ($(LATEX) partiel-2015.tex ; \
 	grep -q "Rerun to get cross" partiel-2015.log ) do true ; \
+	done
+
+partiel-2016.pdf: partiel-2016.tex
+	while ($(LATEX) partiel-2016.tex ; \
+	grep -q "Rerun to get cross" partiel-2016.log ) do true ; \
 	done
 
 correction-partiel-2013.pdf: correction-partiel-2013.tex
@@ -58,5 +60,3 @@ clean-all: clean
 	rm *.pdf
 	rm *.tikz
 	rm *.log
-
-all: ds1-2013.pdf correction-ds1-2013.pdf partiel-2013.pdf correction-partiel-2013.pdf partiel-2014.pdf correction-partiel-2014.pdf partiel-2015.pdf clean
