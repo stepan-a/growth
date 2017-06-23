@@ -1,0 +1,45 @@
+\documentclass[11pt,a4paper,notitlepage,twocolumn]{article}
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage{manfnt}
+\usepackage{hyperref}
+\usepackage{nicefrac}
+
+\usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+
+\title{\textsc{Éducation, Formation et Croissance\\ \small{Partiel}}}
+\date{Le \today\ à \thistime}
+
+\maketitle
+\thispagestyle{empty}
+
+Soient $K(t)$ le stock de capital physique d'une économie à l'instant
+$t$, $L(t)$ la population à l'instant $t$ dont le taux de croissance
+$n>0$ est constant, et $Y(t)$ la production à l'instant
+$t$. \textbf{(1)} On suppose que la population à l'instant initial
+$t=0$ est connue, on note $L(0) = L_0$. Déterminer le niveau de la
+population à un instant $t$ quelconque. \textbf{(2)} On suppose que la
+production est définie par la fonction de production :
+\[
+Y(t) = \left(aK(t)^{\psi} + (1-a)L(t)^{\psi}\right)^{\frac{1}{\psi}}
+\]
+avec $\alpha\in]0,1[$ un paramètre technologique, et $\sigma=\nicefrac{1}{(1-\psi)}$ l'élasticité de substitution entre le travail et le capital. Cette fonction de production généralise la fonction Cobb Douglas, que l'on retrouve comme un cas particulier lorsque $\psi=0$. Écrire la production par tête en fonction du stock de capital par tête. \textbf{(3)} Montrer que l'élasticité de la production par tête, $y$, par rapport au stock de capital physique par tête, $k$, que l'on notera $\alpha(k)$ n'est généralement pas constante, sauf dans le cas Cobb-Douglas. Donner l'expression générale de cette élasticité. \textbf{(4)} La fonction de production est-elle néoclassique ? Pourquoi ? \textbf{(5)} La dynamique du stock de capital agrégé est donnée par :
+\[
+\dot K(t) = sY(t)-\delta K(t)
+\]
+où $s\in[0,1]$ est le taux d'épargne et $\delta>0$ le taux de dépréciation du capital physique. Définir, à l'aide d'une équation, la dynamique du stock de capital par tête, $k(t)=\nicefrac{K(t)}{L(t)}$. Donner une interprétation de cette équation. \textbf{(6)} Calculer le taux de croissance du stock de capital par tête, $g_k(t)$, et représenter graphiquement ce taux de croissance (en n'oubliant pas de justifier la construction du graphique). \textbf{(7)} Donner une expression du taux de croissance de la production par tête. \textbf{(8)} Déterminer les conditions sous lesquelles un état stationnaire strictement positif existe. Discuter son unicité. \textbf{(9)} Lorsque celui-ci existe, calculer l'état stationnaire des variables par tête dans ce modèle, on notera $k^{\star}$ et $y^{\star}$. \textbf{(10)} Quelles sont les propriétés remarquables de cet état stationnaire ? \textbf{(11)} Sous quelle condition le modèle prédit-il de la croissance à long terme. Commenter.
+
+\end{document}
