@@ -1,6 +1,6 @@
 LATEX = pdflatex
 
-all: ds1-2013.pdf correction-ds1-2013.pdf partiel-2013.pdf correction-partiel-2013.pdf partiel-2014.pdf correction-partiel-2014.pdf partiel-2015.pdf partiel-2016.pdf partiel-2017.pdf clean
+all: ds1-2013.pdf correction-ds1-2013.pdf partiel-2013.pdf correction-partiel-2013.pdf partiel-2014.pdf correction-partiel-2014.pdf partiel-2015.pdf partiel-2016.pdf partiel-2017.pdf rattrapage-2013.pdf clean
 
 ds1-2013.pdf: ds1-2013.tex
 	while ($(LATEX) ds1-2013.tex ; \
