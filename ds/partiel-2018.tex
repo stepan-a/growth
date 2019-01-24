@@ -1,0 +1,119 @@
+\documentclass[10pt,a4paper,notitlepage,twocolumn]{article}
+\synctex=1
+
+
+\usepackage[margin=3cm]{geometry}
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage{manfnt}
+\usepackage{hyperref}
+\usepackage{nicefrac}
+
+\usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+
+\title{\textsc{Croissance et Développement}}
+\author{\textsc{Université du Maine (Partiel, L2)}}
+\date{Mardi 11 décembre 2018}
+
+\maketitle
+\thispagestyle{empty}
+
+
+\exercice{1} Soient $K(t)$ le stock de capital physique d'une économie
+à l'instant $t$, $L(t)$ la population qui croît au taux constant
+$n>0$, $\alpha\in]0,1[$ un paramètre technologique, $s\in]0,1[$ le
+taux d'épargne et $\delta\in[0,1]$ le taux de dépréciation du capital
+physique. La dynamique du stock de capital physique est décrite par
+l'équation suivante :
+\[
+\dot K(t) = sY(t)-\delta K(t)
+\]
+et la technologie de production est de type Cobb-Douglas :
+\[
+Y(t) = K(t)^\alpha L(t)^{1-\alpha}
+\]
+\question{1} Donnez une interprétation du paramètre $\alpha$ de la
+technologie de production. \question{2} Décrivez et interprétez la
+dynamique du capital par tête
+$k(t)=\nicefrac{K(t)}{L(t)}$. \question{3} Donnez une expression
+analytique du taux de croissance du stock de capital physique par
+tête. \question{4} Représentez graphiquement le taux de croissance du
+stock de capital physique par tête (en expliquant la construction du
+graphique) et commentez. \question{5} Calculez l'état stationnaire du
+modèle (pour le capital par tête, la production par tête et la
+consommation par tête). \question{6} Quel est le rapport entre l'état
+stationnaire du stock de capital par tête et le niveau de long terme
+du capital par tête ? Justifiez votre réponse.\newline
+
+\exercice{2} Dans cet exercice on considère un modèle de Solow
+augmenté d'une seconde variable d'état: le stock de capital humain.
+Soit la fonction de production :
+\[
+Y(t) = K(t)^{\alpha}K(t)^{\lambda}L(t)^{1-\alpha-\lambda}
+\]
+Les variables $Y$,  $K$, et $L$ ont  les interprétations usuelles.
+$H$ est le niveau de capital humain.  Les paramètres $\alpha$ et
+$\lambda$ sont  positifs et  vérifient $\alpha+\lambda<1$.  Le  stock de
+capital physique se  déprécie au taux $\delta\in]0,1[$.   La loi d'évolution
+du stock de capital physique est donnée par :
+\[
+\dot{K}(t) = s_{K} Y(t) - \delta K(t)
+\]
+où $s_{K}\in]0,1[$ est le taux d'épargne en capital physique. La loi
+d'évolution du stock de capital humain est donnée par :
+\[
+\dot{H}(t) = s_{H} Y(t) - \delta H(t)
+\]
+où $s_{H}\in]0,1[$ est le taux d'épargne en capital
+humain. \question{1} Montrez que la dynamique jointe des variables par
+tête est caractérisée par :
+\[
+  \begin{cases}
+    \dot{k}(t) &= s_{K}k(t)^{\alpha}h^{\lambda} - (n+\delta)k(t)\\
+    \dot{h}(t) &= s_{H}k(t)^{\alpha}h^{\lambda} - (n+\delta)h(t)\\
+  \end{cases}
+\]
+Commentez. \question{2} Posez le système d'équations qui permet de
+calculer l'état stationnaire. \question{3} Montrez qu'à l'état
+stationnaire on doit avoir :
+\[
+\frac{k^{\star}}{h^{\star}} = \frac{s_{K}}{s_{H}}
+\]
+Commentez. \question{4} Calculez l'état stationnaire pour le capital
+physique par tête, le capital humain par tête, la production par tête
+et la consommation par tête. Vous devriez trouver :
+\[
+c^{\star} = (1-s_{K}-s_{H})\left(\frac{s_{K}}{n+\delta}\right)^{\frac{\alpha}{1-\alpha-\lambda}}\left(\frac{s_{H}}{n+\delta}\right)^{\frac{\lambda}{1-\alpha-\lambda}}
+\]
+\question{5} Décrivez l'arbitrage, relatif au niveau de la
+consommation par tête à l'état stationnaire, dans les choix
+d'épargne. Calculez les taux d'épargne de la rêgle d'or, on notera
+$s_{K}^{\mathrm{or}}$ et $s_{H}^{\mathrm{or}}$, c'est-à-dire les
+valeurs de $s_{K}$ et $s_{H}$ qui maximisent le niveau de la
+consommation par tête à l'état stationnaire. \question{6} Supposons
+que le taux d'épargne en capital humain soit fixé, égal à
+$\bar{s}_{H}<s_{H}^{\mathrm{or}}$. Calculez le taux d'épargne en
+capital physique qui maximise $c^{\star}$, on notera $s_{K}^{\star}$
+le taux d'épargne optimal. \question{7} Montrez que
+$s_{K}^{\star}>s_{K}^{\mathrm{or}}$ mais que
+$s_{K}^{\star}+\bar{s}_{H}<s_{K}^{\mathrm{or}}+s_{H}^{\mathrm{or}}$. Commentez.
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

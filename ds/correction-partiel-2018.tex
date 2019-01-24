@@ -1,0 +1,428 @@
+\documentclass[10pt,a4paper,notitlepage,twocolumn]{article}
+\synctex=1
+
+
+\usepackage[margin=3cm]{geometry}
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage{manfnt}
+\usepackage{hyperref}
+\usepackage{nicefrac}
+
+\usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+
+\title{\textsc{Croissance et Développement}}
+\author{\textsc{Université du Maine (Éléments de correction du partiel, L2)}}
+\date{Mardi 11 décembre 2018}
+
+\maketitle
+\thispagestyle{empty}
+
+
+\exercice{1} Soient $K(t)$ le stock de capital physique d'une économie
+à l'instant $t$, $L(t)$ la population qui croît au taux constant
+$n>0$, $\alpha\in]0,1[$ un paramètre technologique, $s\in]0,1[$ le
+taux d'épargne et $\delta\in[0,1]$ le taux de dépréciation du capital
+physique. La dynamique du stock de capital physique est décrite par
+l'équation suivante :
+\[
+\dot K(t) = sY(t)-\delta K(t)
+\]
+et la technologie de production est de type Cobb-Douglas :
+\[
+Y(t) = K(t)^\alpha L(t)^{1-\alpha}
+\]
+\question{1} Le paramètre $\alpha$ s'interprète comme l'élasticité de
+la production par rapport au stock de capital physique. En effeft,
+nous avons :
+\[
+  \begin{split}
+    \epsilon_{Y/K} &= \frac{F_{K}(K,L)}{\frac{F(K,L)}{K}}\\
+  &= \frac{\alpha K^{\alpha-1}L^{1-\alpha}}{K^{\alpha-1}L^{1-\alpha}}\\
+  &= \alpha
+\end{split}
+\]
+où $F(K,L)$ est la fonction de production et $F_{K}(K,L)$ sa dérivée
+partielle par rapport au stock de capital physique $K$. \question{2}
+Nous allons caractériser la dynamique du stock de capital par tête en
+calculant les variations de $k$ à chaque instant. Nous avons :
+\[
+\dot k(t) = \frac{\mathrm d}{\mathrm dt} \left(\frac{K(t)}{L(t)}\right)
+\]
+En appliquant la formule usuelle de dérivation d'un ratio de
+fonctions, nous obtenons :
+\[
+  \begin{split}
+    \dot k(t) &= \frac{\dot K(t)L(t)-K(t)\dot L(t)}{L(t)^{2}}\\
+    &= \frac{\dot K(t)}{L(t)} - \frac{K(t)}{L(t)}\frac{\dot L(t)}{L(t)}\\
+    &= \frac{\dot K(t)}{L(t)} - k(t) n \\
+  \end{split}
+\]
+puisque le taux de croissance de la population est supposé constant
+est égal à $n$. En substituant la loi d'évolution du stock de capital
+physique agrégé il vient :
+\[
+\dot k(t) =  \frac{sY(t)-\delta K(t)}{L(t)} - n k(t)
+\]
+soit encore :
+\[
+\dot k(t) =  \frac{sY(t)}{L(t)} - (n+\delta) k(t)
+\]
+En notant que la production par tête, $y(t)=Y(t)/L(t)$, peut s'exprimer en fonction du
+stock de capital physique par tête :
+\[
+y(t) = k(t)^{\alpha}
+\]
+nous avons finalement :
+\[
+\dot k(t) = s k(t)^{\alpha} - (n+\delta)k(t)
+\]
+Le stock de capital physique par tête augmente, c'est-à-dire sa
+variation est positive, si et seulement si l'investissement par tête,
+$sk(t)^{\alpha}$ est supérieur à la dépréciation du stock de capital
+physique par tête, $(n+\delta)k(t)$. \question{3} Le taux de
+croissance d'une variable est le rapport de la variation et du
+niveau. Ainsi, nous obtenons le taux de croissance du stock de capital
+physique par tête en divisant les deux membres de la dernière équation
+par le niveau du stock de capital physique par tête :
+\[
+g_{k}(t) = s k(t)^{\alpha-1} - (n+\delta)
+\]
+Le taux de croissance est positif si et seulement si l'investissement
+brut par unité de capital physique est supérieur au taux de
+dépréciation du stock de capital physique par tête,
+$n+\delta$. \question{4} La représentation graphique du taux de
+croissance est décrite en plusieurs endroits dans le cours. Il ne faut
+pas oublier d'expliquer pourquoi la courbe du taux de croissance est
+monotone décroissante, pourquoi le taux de croissance diverge vers
+l'infini lorsque le stock de capital par tête tend vers zéro et
+pourquoi ce même taux de croissance tend vers $-(n+\delta)$ lorsque le
+stock de capital tend vers l'infini. \question{5} À l'état
+stationnaire, s'il existe, les variables par têtes sont
+constantes. Pour que la variation du stock de capital physique par
+tête soit nulle il faut que l'investissement par tête soit égal à la
+dépréciation du stock de capital physique par tête. Si on note
+$k^\star$ l'état stationnaire du stock de capital physque par tête, on
+doit donc avoir :
+\[
+  s\left. k^{\star} \right.^{\alpha} = (n+\delta) k^{\star}
+\]
+En excluant le la solution nulle et en supposant que $k^{\star}$ est
+strictement positif, on peut diviser les deux membres de l'égalité par
+$k^{\star}$ et on obtient :
+\[
+ \left. k^{\star} \right.^{\alpha} = \frac{n+\delta}{s}
+\]
+soit de façon équivalente :
+\[
+k^{\star} = \left(\frac{s}{n+\delta}\right)^{\frac{1}{1-\alpha}}
+\]
+On note que l'état stationnaire du stock de capital physique par tête
+est une fonction monotone croissante du taux d'épargne (car
+$\alpha<1$). On en déduit l'état stationnaire de la production par
+tête en substituant ce résultât dans la technologie intensive (pour
+tout $k$ on a $y=k^{\alpha}$) :
+\[
+y^{\star} = \left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+Puisque $\alpha>0$, l'état stationnaire de la production par tête est
+aussi une fonction monotone croissante du taux d'épargne. On obtient
+directement la consommation par tête à l'état stationnaire en
+rapellant que la consommation est une part constante de la production,
+on a :
+\[
+c^{\star} = (1-s)\left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+Le lien entre $c^{\star}$ et le taux d'épargne est moins trivial ici.
+Une augmentation du taux d'épargne induit une augmentation de la
+production à l'état stationnaire \emph{et} une diminution de la part
+consommée de la production. L'impact total sur le niveau de la
+consommation par tête à l'état stationnaire dépend de l'ampleur de ces
+deux effets. \question{6} L'état stationnaire est le niveau de long
+terme de l'économie. Dit autrement, pour toute condition initiale
+$k(0)>0$ le stock de capital physique par tête converge vers l'état
+stationnaire $k^{\star}$,
+$\lim_{t\rightarrow\infty}k(t)=k^{\star}$. On peut étayer ce résultat
+graphiquement à l'aide d'un diagramme des phases. En reprenant le
+graphique du taux de croissance (question 4). L'état stationnaire
+$k^{\star}$ est positionné à l'intersection de la courbe du taux de
+croissance (c'est-à-dire l'investissement net par unité de capital) et
+l'axe des abscisses. On remarque que le taux de croissance est positif
+si et seulement si $k<k^{\star}$. Autrement dit, le stock s'accroît
+lorsqu'il est inférieur à $k^{\star}$ et décroit lorsqu'il est
+supérieur à $k^{\star}$. De plus la variation du stock de capital
+physique par tête est d'autant plus faible que l'économie est proche
+de l'état stationnaire. Ainsi à long terme l'économie rejoint l'état
+stationnaire. Il est possible de retrouver cet argument graphique dans
+l'expression du taux de croissance :
+\[
+  \begin{split}
+    g_{k}(t) &= s k(t)^{\alpha-1} - (n+\delta)\\
+    &= s \left(k(t)^{\alpha-1} - \frac{n+\delta}{s}\right)\\
+    &= s \left(k(t)^{\alpha-1} - \left. k^{\star}\right.^{\alpha-1}\right)\\
+    &= s \left. k^{\star}\right.^{\alpha-1} \left( \left(\frac{k(t)}{k^{\star}}\right)^{\alpha-1} - 1\right)\\
+    &= (n+\delta)\left( \left(\frac{k(t)}{k^{\star}}\right)^{\alpha-1} - 1\right)
+  \end{split}
+\]
+
+On voit bien ici, comme sur le graphique, que (\textit{i}) le taux de croissance est positif si
+et seulement si l'économie est sous l'état stationnaire, (\textit{ii})
+le taux de croissance est d'autant plus faible (en valeur absolue) que
+l'économie est proche de l'état stationnaire (c'est-à-dire
+$k(t)/k^{\star}$ proche de 1).
+
+
+\exercice{2} Dans cet exercice on considère un modèle de Solow
+augmenté d'une seconde variable d'état: le stock de capital humain.
+Soit la fonction de production :
+\[
+Y(t) = K(t)^{\alpha}K(t)^{\lambda}L(t)^{1-\alpha-\lambda}
+\]
+Les variables $Y$,  $K$, et $L$ ont  les interprétations usuelles.
+$H$ est le niveau de capital humain.  Les paramètres $\alpha$ et
+$\lambda$ sont  positifs et  vérifient $\alpha+\lambda<1$.  Le  stock de
+capital physique se  déprécie au taux $\delta\in]0,1[$.   La loi d'évolution
+du stock de capital physique est donnée par :
+\[
+\dot{K}(t) = s_{K} Y(t) - \delta K(t)
+\]
+où $s_{K}\in]0,1[$ est le taux d'épargne en capital physique. La loi
+d'évolution du stock de capital humain est donnée par :
+\[
+\dot{H}(t) = s_{H} Y(t) - \delta H(t)
+\]
+où $s_{H}\in]0,1[$ est le taux d'épargne en capital
+humain. \question{1} On montre facilement que la dynamique jointe des variables par
+tête est caractérisée par :
+\[
+  \begin{cases}
+    \dot{k}(t) &= s_{K}k(t)^{\alpha}h^{\lambda} - (n+\delta)k(t)\\
+    \dot{h}(t) &= s_{H}k(t)^{\alpha}h^{\lambda} - (n+\delta)h(t)\\
+  \end{cases}
+\]
+Pour la dynamique du stock de capital physique par tête, on a :
+\[
+  \begin{split}
+    \dot{k}(t) &= \frac{\dot K(t)L(t) - K(t)\dot L(t)}{L(t)^2}\\
+    &= \frac{\dot K(t)}{L(t)} - nk(t)\\
+    &= \frac{s_KY(t)}{L(t)}-(n+\delta)k(t)\\
+    &= s_Kk(t)^{\alpha}h^{\lambda}-(n+\delta)k(t)
+  \end{split}
+\]
+La derrnière ligne vient de l'hypothèse de rendement d'échelle
+constant (homogénéité de degré un de la fonction de production) qui
+nous permet d'écrire la production par tête comme une fonction du
+stock de capital physique par tête et su stock de capital humain par
+tête :
+\[
+  \begin{split}
+    y(t) &= \frac{K(t)^{\alpha}H(t)^{\lambda}L(t)^{1-\alpha-\lambda}}{L(t)}\\
+    &= \left(\frac{K}{L(t)}\right)^{\alpha}\left(\frac{H(t)}{L(t)}\right)^{\lambda}\left(\frac{L(t)}{L(t)}\right)^{1-\alpha-\lambda}\\
+    &= k(t)^{\alpha}h^{\lambda}
+  \end{split}
+\]
+Nous avons suivi exactement la même démarche que dans l'exercice 1, la
+seule chose qui change c'est l'expression de la fonction de
+production. La variation du stock de capital physique par tête est
+positive si et seulement si l'investissement en capital physique est
+supérieur à la dépréciation du stock de capital physique par tête. On
+retrouve la seconde équation en suivant les mêmes étapes. On note que
+la variation du capital physique (humain) par tête dépend non
+seulement du niveau de stock de capital physique (humain) par tête,
+comme dans l'exercice 1, mais aussi du niveau du stock de capital
+humain (physique). Les deux dynamiques sont jointes, car la production
+est déterminée par les quantités de capital physique et humain, on ne
+peut étudier la dynamique du capital physique indépendamment de la
+dynamique du capital humain. \question{2} L'état stationnaire $(k^{\star}, h^{\star})$ doit vérifier :
+\[
+  \begin{cases}
+    s_{K}\left. k^{\star}\right.^{\alpha}\left. h^{\star}\right.^{\lambda} &= (n+\delta)k^{\star}\\
+    s_{H}\left. k^{\star}\right.^{\alpha}\left. h^{\star}\right.^{\lambda} &= (n+\delta)h^{\star}\\
+  \end{cases}
+\]
+À l'état stationnaire l'épargne par tête (en capital physique ou
+humain) doit être égale à la dépréciation (du capital physique ou
+humain). \question{3} En faisant le rapport des deux équations
+précédantes, on trouve directement :
+\[
+\frac{k^{\star}}{h^{\star}} = \frac{s_{K}}{s_{H}}
+\]
+Ce résultat intermédiaire est intuitif. Si une économie épargne
+relativement plus en capital physique (par example) elle sera
+caractérisée par un état stationnaire plus élevé du capital physique
+(relativement au capital humain).
+
+\question{4} En exprimant $k^{\star}$ en fonction de $h^{\star}$, on
+utilise la dernière équation, et en substituant dans le seconde
+équation du système définissant l'état stationnaire, on obtient :
+\[
+s_H \left[\frac{s_K}{s_H}h^{\star}\right]^{\alpha}\left. h^{\star}\right. ^{\lambda} = (n+\delta)h^{\star}
+\]
+soit de façon équivalente :
+\[
+s_H^{1-\alpha}s_K^{\alpha}\left.h^{\star}\right.^{\alpha+\lambda}
+\]
+et donc :
+\[
+h^{\star} = \left(\frac{s_K^{\alpha}s_H^{1-\alpha}}{n+\delta}\right)^{\frac{1}{1-\alpha-\delta}}
+\]
+De la même façon on trouve
+\[
+k^{\star} = \left(\frac{s_K^{1-\lambda}s_H^{1-\lambda}}{n+\delta}\right)^{\frac{1}{1-\alpha-\delta}}
+\]
+En substituant dans la fonction de production par tête :
+\[
+y^{\star} = \left(\frac{s_K^{1-\lambda}s_H^{1-\lambda}}{n+\delta}\right)^{\frac{\alpha}{1-\alpha-\delta}}\left(\frac{s_K^{\alpha}s_H^{1-\alpha}}{n+\delta}\right)^{\frac{\lambda}{1-\alpha-\delta}}
+\]
+Soit en réarrangeant :
+\[
+y^{\star} = \left(\frac{s_{K}}{n+\delta}\right)^{\frac{\alpha}{1-\alpha-\lambda}}\left(\frac{s_{H}}{n+\delta}\right)^{\frac{\lambda}{1-\alpha-\lambda}}
+\]
+Finalement, que la consommation est une part constante de la
+production, plus précisemment $c(t) = (1-s_K-s_H)y(t)$ pour tout $t$,
+on obtient l'état stationnaire de la consommation par tête :
+\[
+c^{\star} = (1-s_{K}-s_{H})\left(\frac{s_{K}}{n+\delta}\right)^{\frac{\alpha}{1-\alpha-\lambda}}\left(\frac{s_{H}}{n+\delta}\right)^{\frac{\lambda}{1-\alpha-\lambda}}
+\]
+Le paramètre $\nicefrac{\alpha}{1-\alpha-\lambda}$ s'interprête comme
+l'élasticité de la production par tête à l'état stationnaire par
+rapport au taux d'épargne en capital physique. On remarque que cette
+élasticité est plus élevée que dans le modèle de Solow
+standard. L'introduction d'un second facteur accumulable magnifie la
+sensibilité de la production au taux d'épargne en capital
+physique. Cette augmentation de la sensibilité de la production au
+taux d'épargne en capital physique s'explique par le fait qu'une
+augmentation du taux d'épargne en capital physique affecte aussi
+l'accumulation du capital humain, qui à son tour (effet de second
+ordre) affecte la production. \question{5} Une augmentation du taux
+d'épargne (en capital physique ou humain) augmente le revenu par tête
+à l'état stationnaire, mais simultanément décroît la part consommée de
+la production. L'effet sur le niveau de la consommation à l'état
+stationnaire est donc non trivial. Il faut peser les conséquences
+relatives du changement de répartition (entre épargne et consommation)
+et l'accroissement de la production (à partager). Considérons les cas
+polaires. Choisir une épargne est nulle ($s_K=s_H=0$), c'est décider
+de consommer la totalité de la production mais aussi décider de ne
+rien épargner. Ainsi à l'état stationnaire les facteurs accumulables
+et donc la production sont nuls. Avec un taux d'épargne nul la
+consommation par tête à l'état stationnaire est nulle. Choisir
+d'épargner toute la production ($s_K+s_H=1$) devrait permettre de
+maximiser la production à l'état stationnaire (cela doit dépendre de
+la répartition entre épargne en capital physique et épargne en capital
+humain). Mais à nouveau dans ce cas aussi, quelque soit le niveau de
+la production, le niveau de la consommation par tête sera nul à l'état
+stationnaire (puisque le ménage décide d'épargner la totalité de la
+production il ne reste rien à manger). Dans les situations
+intermédiaires ($0<s_K+s_H<1$, $s_K>0$ et $s_H>0$), on obtient un
+niveau de consommation par tête strictement positif à l'état
+stationnaire. Par exemple, si on part d'une situation où l'épargne est
+nulle et décide d'augmenter d'un montant arbitrairement petit les deux
+taux d'épargnes, alors $1-s_K-s_H$ va baisser et la production par
+tête $y^{\star}$ va augmenter. Mais l'ampleur de l'augmentation de la
+production sera bien plus importante que celle de la baisse de la part
+de la production consommée\footnote{En zéro la pente de
+  $y^{\star}(s_K)$ est beaucoup plus importante que la pente de
+  $1-s_K-s_H$}. À la rêgle d'or, nous devons avoir :
+\[
+  \begin{cases}
+    \frac{\mathrm d}{\mathrm ds_K}c^{\star}(s_K, s_H) &= 0\\
+    \frac{\mathrm d}{\mathrm ds_H}c^{\star}(s_K, s_H) &= 0\\
+  \end{cases}
+\]
+c'est-à-dire :
+\[
+  \begin{cases}
+    (1-s_K-s_H)\frac{\mathrm d}{\mathrm ds_K}y^{\star}(s_K, s_H) &= y^{\star}\\
+    (1-s_K-s_H)\frac{\mathrm d}{\mathrm ds_H}y^{\star}(s_K, s_H) &= y^{\star}\\
+  \end{cases}
+\]
+On montre facilement que :
+\[
+\frac{\mathrm d}{\mathrm ds_K}y^{\star}(s_K, s_H) = \frac{1}{s_K}\frac{\alpha}{1-\alpha-\lambda}y^{\star}
+\]
+et
+\[
+\frac{\mathrm d}{\mathrm ds_H}y^{\star}(s_K, s_H) = \frac{1}{s_H}\frac{\lambda}{1-\alpha-\lambda}y^{\star}
+\]
+En substituant dans le système des conditions nécessaires :
+\[
+  \begin{cases}
+    \frac{1-s_K-s_H}{1-\alpha-\lambda} &= \frac{s_K}{\alpha}\\
+    \frac{1-s_K-s_H}{1-\alpha-\lambda} &= \frac{s_H}{\lambda}\\
+  \end{cases}
+\]
+En considérant le rapport des deux équations, on doit donc avoir :
+\[
+\frac{s_K}{s_H} = \frac{\alpha}{\lambda}
+\]
+En exprimant $s_H$ en fonction de $s_H$ et en substituant dans la première équation du système, on trouve facilement :
+\[
+s_K^{\mathrm{or}} = \alpha
+\]
+et donc
+\[
+s_H^{\mathrm{or}} = \lambda
+\]
+les taux d'épargnes de la rêgle d'or. Finalement le niveau de consommation de la rêgle d'or est :
+\[
+c_{\mathrm{or}}^{\star} = (1-\alpha-\lambda)\left(\frac{\alpha}{n+\delta}\right)^{\frac{\alpha}{1-\alpha-\lambda}}\left(\frac{\lambda}{n+\delta}\right)^{\frac{\lambda}{1-\alpha-\lambda}}
+\]
+\question{6} Supposons que le taux d'épargne en capital humain soit
+fixé, égal à $\bar{s}_{H}<s_{H}^{\mathrm{or}}$. Clairement cette
+situation est sous optimale. Le seul instrument disponible pour
+maximiser le niveau de la consommation par tête à l'état stationnaire
+est alors le taux d'épargne en capital physique. À l'optimum contraint, on doit avoir :
+\[
+\frac{1-s_K-\bar{s}_H}{1-\alpha-\lambda} = \frac{s_K}{\alpha}
+\]
+En résolvant cette équation pour le taux d'épargne en capital physique, on trouve :
+\[
+s_K^{\star} = \alpha \left[\frac{1}{1-\lambda}(1-\bar{s}_H)\right]
+\]
+le taux d'épargne en capital physique qui maximise le niveau de la
+consommation à l'état stationnaire sachant que le taux d'épargne en
+capital humain est fixé à $\bar{s}_H$. Notons que l'on retrouve le
+taux d'épargne de la rêgle d'or si et seulement si
+$\bar{s}_H=\lambda$. \question{7} Quand $\bar{s}_H<s_H^{\mathrm{or}}$ on a :
+\[
+\frac{1-\bar{s}_H}{1-\lambda}>1
+\]
+et donc :
+\[
+s_K^{\star}>s_K^{\mathrm{or}}
+\]
+Autrement dit, on essaye ici de compenser la sous accumulation en
+capital humain en accumulant plus de capital physique. Cependant, quelques calculs montrent que :
+\[
+s_K^{\star}+\bar{s}_H = s_K^{\mathrm{or}}+s_H^{\mathrm{or}} + \frac{1-\alpha-\lambda}{1-\lambda}\left(\bar{s}_H-s_H^{\mathrm{or}}\right) 
+\]
+Ainsi, lorsque $\bar{s}_H<s_H^{\mathrm{or}}$, même si l'épargne en
+capital physique augmente pour compenser la sous accumulation en
+capital humain, le taux d'épargne total demeure inférieur à ce qu'il
+devrait être pour maximiser la consommation à l'état stationnaire. En
+l'absence d'un instrument, on obtient un niveau plus faible de la
+consommation à l'état stationnaire (on obtient toujours un <<~score~>>
+moins élevé avec une optimisation contrainte qu'avec une optimisation
+non contrainte).
+
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
