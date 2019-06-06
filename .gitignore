@@ -2,5 +2,12 @@
 *.log
 *.out
 *.pdf
+*.eps
+*.nav
+*.snm
+*.toc
 *.synctex.gz
 *.tikz
+*.xlsx
+*.csv
+*.mat

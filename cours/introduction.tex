@@ -1,0 +1,351 @@
+\documentclass[10pt]{beamer}
+
+\usepackage{etex}
+
+\usepackage{fourier-orns}
+\usepackage{ccicons}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsbsy}
+\usepackage{amsopn}
+\usepackage{amscd}
+\usepackage{amsxtra}
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{color}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{lastpage}
+\usepackage[nice]{nicefrac}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{ragged2e}
+\usepackage{listings}
+\usepackage{algorithms/algorithm}
+\usepackage{algorithms/algorithmic}
+
+
+\usepackage{tikz,pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{patterns, arrows, decorations.pathreplacing, decorations.markings, calc}
+\pgfplotsset{plot coordinates/math parser=false}
+\newlength\figureheight
+\newlength\figurewidth
+\usepackage[utf8x]{inputenc}
+\usepackage{cancel}
+\usepackage{tikz-qtree}
+\usepackage{dcolumn}
+
+\newcommand{\trace}{\mathrm{tr}}
+\newcommand{\vect}{\mathrm{vec}}
+\newcommand{\tracarg}[1]{\mathrm{tr}\left\{#1\right\}}
+\newcommand{\vectarg}[1]{\mathrm{vec}\left(#1\right)}
+\newcommand{\vecth}[1]{\mathrm{vech}\left(#1\right)}
+\newcommand{\iid}[2]{\mathrm{iid}\left(#1,#2\right)}
+\newcommand{\normal}[2]{\mathcal N\left(#1,#2\right)}
+\newcommand{\dynare}{\href{http://www.dynare.org}{\color{blue}Dynare}}
+\newcommand{\sample}{\mathcal Y_T}
+\newcommand{\samplet}[1]{\mathcal Y_{#1}}
+\newcommand{\slidetitle}[1]{\fancyhead[L]{\textsc{#1}}}
+
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\binomial}[2]{\begin{pmatrix} #1 \\ #2 \end{pmatrix}}
+\newcommand{\bigO}[1]{\mathcal O \left(#1\right)}
+\newcommand{\red}{\color{red}}
+\newcommand{\blue}{\color{blue}}
+
+\newcolumntype{d}{D{.}{.}{-1}}
+
+\definecolor{gray}{gray}{0.4}
+
+\setbeamertemplate{footline}{
+{\hfill\vspace*{1pt}\href{http://creativecommons.org/licenses/by-sa/3.0/legalcode}{\ccbysa}\hspace{.1cm}
+\raisebox{-.075cm}{\href{https://mnemosyne.adjemian.eu/stepan-a/growth}{\includegraphics[scale=.1]{../img/gitlab.png}}}
+}\hspace{1cm}}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\newenvironment{notes}
+{\bgroup \justifying\bgroup\tiny\begin{spacing}{1.0}}
+{\end{spacing}\egroup\egroup}
+
+\newenvironment{exercise}[1]
+{\bgroup \small\begin{block}{Ex. #1}}
+{\end{block}\egroup}
+
+\begin{document}
+
+\title{Croissance\\\small{Introduction}}
+\author[S. Adjemian]{St\'ephane Adjemian}
+\institute{\texttt{stephane.adjemian@univ-lemans.fr}}
+\date{Septembre 2018}
+
+\begin{frame}
+  \titlepage{}
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}
+  \frametitle{Deux regards sur la croissance}
+  \begin{itemize}
+
+  \item On peut s'intéresser à la croissance économique dans
+    deux directions:
+
+    \begin{itemize}
+
+      \item[$\Rightarrow$] L'évolution dans le temps de la croissance.\newline
+
+      Pourquoi le taux de croissance d'une économie est-il significativement différent en différentes périodes de son histoire ?\newline
+
+      \item[$\Rightarrow$] L'hétérogénéité dans la coupe des nations de la croissance.\newline
+
+      Pourquoi le taux de croissance de la Chine est-il plus important de celui des économies occidentales sur la période récente?
+
+    \end{itemize}
+
+    \bigskip
+
+  \item Ces directions ne sont pas forcément interchangeables. Nous
+    montrerons néanmoins dans ce cours qu'un modèle développé pour expliquer la
+    croissance dans la première direction peut expliquer une bonne
+    part de l'hétérogénéité internationale (observée) des taux de
+    croissance.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Séries temporelles}
+  \framesubtitle{Les États Unis d'Amérique du Nord, I}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[scale=.3]{usa_logged_rgdp_per_capita}
+    \caption{PIB réel par tête en logarithme (USA).}
+    \label{fig:maddison-rgdp-usa}
+  \end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Séries temporelles}
+  \framesubtitle{Les États Unis d'Amérique du Nord, II}
+
+  \begin{itemize}
+  \item Sur la période 1800-2016 le taux de croissance annuel moyen du PIB par tête est $\bar g \approx 1.53\%$.\newline
+
+  \item Sur la même période, le facteur de croissance, le ratio du PIB de 2016 au PIB de 2800, est $G \approx 26,8$. En un peu plus de deux siècles la production par tête d'un américain a été multpliée par environ 27.\newline
+
+  \item[\textbf{Rappel 1}] Le taux de croissance annuel moyen ($\bar g$) est calculé à partir du facteur de croissance ($G$):
+    \[
+         \bar g = (G^{1/T}-1)\times 100
+    \]
+    où $T$ est le nombre d'années sur lequel le facteur de croissance est calculé.\newline
+
+  \item Approximativement, le taux de croissance est aussi donné graphiquement par la pente du PIB par tête en log sur la figure \ref{fig:maddison-rgdp-usa}.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Séries temporelles}
+  \framesubtitle{France, I}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[scale=.3]{fra_logged_rgdp_per_capita1}
+    \caption{PIB réel par tête en logarithme (France).}
+    \label{fig:maddison-rgdp-fra-1}
+  \end{figure}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Séries temporelles}
+  \framesubtitle{France, II}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[scale=.3]{fra_logged_rgdp_per_capita2}
+    \caption{PIB réel par tête en logarithme (France).}
+    \label{fig:maddison-rgdp-fra-2}
+  \end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Séries temporelles}
+  \framesubtitle{France, III}
+
+  \begin{itemize}
+
+  \item La croissance est un phénomène récent en France, postérieur à la révolution.\newline
+
+  \item On identifie facilement les deux guerres mondiales. On observe que le taux de croissance est temporairement plus élevé après ces épisodes.\newline
+
+  \item On identifie les \textit{trentes glorieuses}, et la baisse notable du taux de croissance à partir des années 70-80.\newline
+
+  \item Sur la période 1280-2016, le taux de croissance annuel moyen est $\bar g \approx 0,49$, mais sur la période 1820-2016 on a un taux de croissance annuel moyen nettement plus important $\bar g \approx 1,69$.\newline
+
+  \item En un peu plus de 7 siècle la France a multiplié son niveau de PIB par tête par un peu plus de 36.
+
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Séries temporelles}
+  \framesubtitle{Grande Bretagne}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[scale=.3]{gbr_logged_rgdp_per_capita1}
+    \caption{PIB réel par tête en logarithme (Grande Bretagne). La ligne verticale correspond à l'invention par Watt de la machine à vapeur.}
+    \label{fig:maddison-rgdp-gbr}
+  \end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Contrefactuel}
+  \framesubtitle{Le prix d'un point de croissance}
+
+  \begin{itemize}
+
+  \item Un point de croissance annuel moyen sur d'aussi longues périodes vaut très cher un termes de niveau de PIB.\newline
+
+  \item Entre 1870 (après la guerre civile) et 2000 le PIB par tête aux États Unis (\$ 1996) a été multiplié par 10, avec un taux de croissance annuel moyen de 1,79\%. Sur cette période le PIB par tête est passé de  3340\$ à 33330\$.\newline
+
+  \item En imaginant un monde où les États Unis auraient connus un taux de croissance annuel moyen inférieur de 1 point sur ces 130 années, nous observerions en 2000 un PIB par tête de seulement 9234\$, soit un facteur de croissance de 2,765. Moins d'un tiers du niveau effectivement observé en 2000 !…\newline
+
+  \item … À peu près le niveau du Mexique ou de la Pologne en 2000 !
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Comparaisons internationales, I}
+
+\bigskip
+
+  \begin{itemize}
+
+  \item Comment comparer des niveaux de PIB ?\newline
+
+  \item En 1960:
+
+    \begin{itemize}
+    \item La Suisse est le pays le plus riche en termes de PIB par tête (14980\$ base 1996).
+    \item La Tanzanie est le pays le plus pauvre en termes de PIB par tête (381\$ base 1996).
+    \end{itemize}
+
+    $\Rightarrow$ Le PIB par tête est 39$\times$ moindre en Tanzanie !\newline
+
+  \item En 2000:
+
+    \begin{itemize}
+    \item Les États Unis sont le pays le plus riche en termes de PIB par tête (33330\$ base 1996).
+    \item La Tanzanie est le pays le plus pauvre en termes de PIB par tête (482\$ base 1996).
+    \end{itemize}
+
+    $\Rightarrow$ Le PIB par tête est 69$\times$ moindre en Tanzanie !\newline
+
+  \item Les différences sont très importantes (plus que dans la chronologie sur période séculiaire) et augmentent.\newline
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Comparaisons internationales, II}
+
+\bigskip
+
+  \begin{itemize}
+
+  \item Le taux de croissance annuel moyen (dans le temps) moyen (dans la coupe) :
+    \[
+    \bar{\bar g} = \frac{1}{N}\sum_{i=1}^{N} \bar g_{i}
+    \]
+
+  \item Entre 1960 et 2000, $\bar{\bar g} \approx 1,8$ (pour un échantillon de 112 pays).\newline
+
+  \item L'hétérogénéité augmente:
+    \begin{itemize}
+    \item 1960: $\sigma (log(y)) \approx 0.89$
+    \item 2000: $\sigma (log(y)) \approx 1.12$
+    \end{itemize}
+
+\bigskip
+
+  \item Le pire: $\bar g_{i} = -2,5\%$ pour la République Démocratique du Congo.\newline
+
+  \item Le meilleur: $\bar g_{i} = 6,4\%$ pour Taiwan.\newline
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Comparaisons internationales, III}
+
+\bigskip
+
+  \begin{itemize}
+
+  \item \textbf{Désastres}: République Démocratique du Congo, l'Irak (qui
+    divise son PIB par tête par un facteur supérieur à 2 durant la
+    période), de nombreux autres pays ont connu des taux de croissance
+    du PIB réel par tête négatifs : Tchad, Madagascar, Mozambique,
+    Somalie, Zambie, Ouganda, Guayana, Zaïre, Nicaragua, Bénin,
+    République Centre Africaine, Haïti, Burundi, Ghana, Venezuela,
+    Mauritanie et le Niger.\newline
+
+  \item \textbf{Miracles}: Taiwan, Corée du Sud (5.9\%), Singapour
+    (6.2\%), Hong-Kong (5.4\%), le Botswana (5,1\%)...\newline
+
+
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Comparaisons internationales, III}
+  \framesubtitle{Dynamique de la distribution}
+
+
+  \bigskip
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[scale=.4]{plt01}
+    \caption{Évolution de la distribution du PIB par tête.}
+    \label{fig:quah}
+  \end{figure}
+
+
+\end{frame}
+
+
+
+
+\end{document}
+
+
+% Local Variables:
+% ispell-check-comments: exclusive
+% ispell-local-dictionary: "french"
+% TeX-master: t
+% End:
