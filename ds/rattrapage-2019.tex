@@ -1,0 +1,94 @@
+\documentclass[10pt,a4paper,notitlepage]{article}
+\synctex=1
+
+
+\usepackage[margin=3cm]{geometry}
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage{manfnt}
+\usepackage{hyperref}
+\usepackage{nicefrac}
+
+\usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+
+
+\begin{document}
+
+\title{\textsc{Croissance et Développement}}
+\author{\textsc{Université du Maine (Rattrapage, L2)}}
+\date{Mardi 11 juin 2019}
+
+
+\maketitle
+\thispagestyle{empty}
+
+
+\begin{quote}
+  Les réponses non commentées ou non suffisament détaillées ne seront
+  pas considérées.
+\end{quote}
+
+\bigskip
+\bigskip
+
+\exercice{1} Soient $K(t)$ le stock de capital physique d'une économie
+à l'instant $t$, $L(t)$ la population qui croît au taux constant
+$n>0$, $\alpha\in]0,1[$ un paramètre technologique, $s\in]0,1[$ le
+taux d'épargne, $\delta\in[0,1]$ le taux de dépréciation du capital
+physique, et $B$ un paramètre positif. La dynamique du stock de
+capital physique est décrite par l'équation suivante :
+\[
+\dot K(t) = sY(t)-\delta K(t)
+\]
+et la technologie de production est définie par :
+\[
+  Y(t) = 
+  \begin{cases}
+    K(t)^\alpha L(t)^{1-\alpha} - BL(t), \text{ si }K(t)^\alpha L(t)^{1-\alpha} \geq BL(t)\\
+    0, \text{ sinon.}
+  \end{cases}
+\]
+ou de façon équivalente par :
+\[
+Y(t) = \max \left(K(t)^\alpha L(t)^{1-\alpha} - BL(t), 0\right)
+\]
+\question{1} La fonction de production est-elle néoclassique ?
+Pourquoi ? \question{2} Écrire la fonction de production intensive,
+c'est-à-dire exprimer la production par tête en fonction du stock de
+capital par tête. \question{3} Représenter graphiquement la fonction
+de production intensive, en justifiant la construction du
+graphique. \question{4} Écrire la dynamique du stock de cpaital par
+tête. Interpréter. \question{5} Représenter graphiquement les
+variations du stock de capital. \question{6} Montrer que, selon la
+valeur du paramètre $B$, il peut exister zéro, un ou deux états
+stationnaires strictment positif. Donner explicitement la condition
+sur $B$. Notons qu'il existe toujours un état stationnaire (avec un
+stock de capital nul). \question{7} Dans le cas où il n'existe pas
+d'état stationnaire, quelle est la prédiction du modèle sur le long
+terme de l'économie ? \question{8} Dans le cas où il existe deux états
+stationnaires positifs, quelle est la prédiction de modèle sur le long
+terme ? Discuter. \question{9} Notons
+$\underline{k}^{\star}<\overline{k}^{\star}$ les deux états
+stationnaires. Quelles sont les conséquences, sur
+$\underline{k}^{\star}$ et $\overline{k}^{\star}$, d'une augmentation
+permanente du taux d'épargne ?\newline
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
