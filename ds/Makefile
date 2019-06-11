@@ -1,6 +1,6 @@
 LATEX = pdflatex
 
-all: ds1-2013.pdf correction-ds1-2013.pdf partiel-2013.pdf correction-partiel-2013.pdf partiel-2014.pdf correction-partiel-2014.pdf partiel-2015.pdf partiel-2016.pdf partiel-2017.pdf partiel-2018.pdf rattrapage-2013.pdf rattrapage-2017.pdf correction-rattrapage-2017.pdf correction-partiel-2018.pdf clean
+all: ds1-2013.pdf correction-ds1-2013.pdf partiel-2013.pdf correction-partiel-2013.pdf partiel-2014.pdf correction-partiel-2014.pdf partiel-2015.pdf partiel-2016.pdf partiel-2017.pdf partiel-2018.pdf rattrapage-2013.pdf rattrapage-2017.pdf correction-rattrapage-2017.pdf correction-partiel-2018.pdf rattrapage-2018.pdf rattrapage-2019.pdf clean
 
 ds1-2013.pdf: ds1-2013.tex
 	while ($(LATEX) ds1-2013.tex ; \
@@ -68,6 +68,16 @@ rattrapage-2013.pdf: rattrapage-2013.tex
 rattrapage-2017.pdf: rattrapage-2017.tex
 	while ($(LATEX) rattrapage-2017.tex ; \
 	grep -q "Rerun to get cross" rattrapage-2017.log ) do true ; \
+	done
+
+rattrapage-2018.pdf: rattrapage-2018.tex
+	while ($(LATEX) rattrapage-2018.tex ; \
+	grep -q "Rerun to get cross" rattrapage-2018.log ) do true ; \
+	done
+
+rattrapage-2019.pdf: rattrapage-2019.tex
+	while ($(LATEX) rattrapage-2019.tex ; \
+	grep -q "Rerun to get cross" rattrapage-2019.log ) do true ; \
 	done
 
 correction-rattrapage-2017.pdf: correction-rattrapage-2017.tex
