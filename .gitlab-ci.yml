@@ -22,9 +22,12 @@ pdf:
       - ds/correction-partiel-2013.pdf
       - ds/correction-partiel-2014.pdf
       - ds/correction-partiel-2018.pdf
-      - td/1/td.pdf
-      - td/2/td.pdf
-      - td/3/td.pdf
+      - td/1/td1.pdf
+      - td/2/td2.pdf
+      - td/3/td3.pdf
+      - td/1/correction-td1.pdf
+      - td/2/correction-td2.pdf
+      - td/3/correction-td3.pdf
     expire_in: 1 day
 
 web:
@@ -43,6 +46,9 @@ web:
     - ds/correction-partiel-2013.pdf /home/www/le-mans.adjemian.eu/croissance/exam
     - ds/correction-partiel-2014.pdf /home/www/le-mans.adjemian.eu/croissance/exam
     - ds/correction-partiel-2018.pdf /home/www/le-mans.adjemian.eu/croissance/exam
-    - cp -r td/1/td.pdf /home/www/le-mans.adjemian.eu/croissance/td/1/td.pdf
-    - cp -r td/2/td.pdf /home/www/le-mans.adjemian.eu/croissance/td/2/td.pdf
-    - cp -r td/3/td.pdf /home/www/le-mans.adjemian.eu/croissance/td/3/td.pdf
+    - cp -r td/1/td1.pdf /home/www/le-mans.adjemian.eu/croissance/td/1/td1.pdf
+    - cp -r td/2/td2.pdf /home/www/le-mans.adjemian.eu/croissance/td/2/td2.pdf
+    - cp -r td/3/td3.pdf /home/www/le-mans.adjemian.eu/croissance/td/3/td3.pdf
+    - cp -r td/1/correction-td1.pdf /home/www/le-mans.adjemian.eu/croissance/td/1/correction-td1.pdf
+    - cp -r td/2/correction-td2.pdf /home/www/le-mans.adjemian.eu/croissance/td/2/correction-td2.pdf
+    - cp -r td/3/correction-td3.pdf /home/www/le-mans.adjemian.eu/croissance/td/3/correction-td3.pdf
