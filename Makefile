@@ -1,8 +1,8 @@
 ROOT_PATH = .
 
-.PHONY: all data
+.PHONY: all clean-all data cours
 
-all: data
+all: data td-build ds-build cours
 
 data: data/pwt91.csv data/pwt91.mat data/fra_logged_rgdp_per_capita2.dat data/gbr_logged_rgdp_per_capita.dat data/usa_logged_rgdp_per_capita.dat data/rgdpc-density-1960.dat
 
@@ -36,12 +36,19 @@ td-build:
 ds-build:
 	$(MAKE) -C $(ROOT_PATH)/ds all
 
+cours: data
+	$(MAKE) -C $(ROOT_PATH)/cours all
+
 td-clean:
 	$(MAKE) -C $(ROOT_PATH)/td clean-all
 
 ds-clean:
 	$(MAKE) -C $(ROOT_PATH)/ds clean-all
 
-all: td-build ds-build
+cours-clean:
+	$(MAKE) -C $(ROOT_PATH)/cours clean-all
 
-clean-all: td-clean ds-clean
+data-clean:
+	rm data/*.dat data/*xlsx data/*.mat data/*.csv
+
+clean-all: td-clean ds-clean cours-clean data-clean

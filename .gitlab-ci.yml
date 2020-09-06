@@ -1,0 +1,48 @@
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+  TERM: linux
+  GIT_STRATEGY: fetch
+
+stages:
+  - build
+  - deploy
+
+pdf:
+  stage: build
+  script:
+    - make all
+  tags:
+    - generic
+  artifacts:
+    paths:
+      - cours/introduction.pdf
+      - ds/partiel-2013.pdf
+      - ds/partiel-2014.pdf
+      - ds/partiel-2018.pdf
+      - ds/correction-partiel-2013.pdf
+      - ds/correction-partiel-2014.pdf
+      - ds/correction-partiel-2018.pdf
+      - td/1/td.pdf
+      - td/2/td.pdf
+      - td/3/td.pdf
+    expire_in: 1 day
+
+web:
+  stage: deploy
+  only:
+    - master@University/growth
+  tags:
+    - restricted
+  dependencies:
+    - pdf
+  script:
+    - cp cours/introduction.pdf /home/www/le-mans.adjemian.eu/croissance/cours
+    - ds/partiel-2013.pdf /home/www/le-mans.adjemian.eu/croissance/exam
+    - ds/partiel-2014.pdf /home/www/le-mans.adjemian.eu/croissance/exam
+    - ds/partiel-2018.pdf /home/www/le-mans.adjemian.eu/croissance/exam
+    - ds/correction-partiel-2013.pdf /home/www/le-mans.adjemian.eu/croissance/exam
+    - ds/correction-partiel-2014.pdf /home/www/le-mans.adjemian.eu/croissance/exam
+    - ds/correction-partiel-2018.pdf /home/www/le-mans.adjemian.eu/croissance/exam
+    - cp -r td/1/td.pdf /home/www/le-mans.adjemian.eu/croissance/td/1/td.pdf
+    - cp -r td/2/td.pdf /home/www/le-mans.adjemian.eu/croissance/td/2/td.pdf
+    - cp -r td/3/td.pdf /home/www/le-mans.adjemian.eu/croissance/td/3/td.pdf
