@@ -93,6 +93,6 @@ clean:
 	rm -rf *.synctex.gz
 
 clean-all: clean
-	rm *.pdf
-	rm *.tikz
-	rm *.log
+	rm -f correction-ds1-2013.pdf correction-partiel-2013.pdf correction-partiel-2014.pdf correction-partiel-2018.pdf correction-rattrapage-2017.pdf ds1-2013.pdf partiel-2013.pdf partiel-2014.pdf partiel-2015.pdf partiel-2016.pdf partiel-2017.pdf partiel-2018.pdf rattrapage-2013.pdf rattrapage-2017.pdf rattrapage-2018.pdf rattrapage-2019.pdf
+	rm -f *.tikz
+	rm -f *.log

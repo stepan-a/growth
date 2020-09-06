@@ -15,6 +15,6 @@ clean:
 	rm -rf *.log
 
 clean-all: clean
-	rm *.pdf
+	rm -f *.pdf
 
 all: td3.pdf correction-td3.pdf clean
