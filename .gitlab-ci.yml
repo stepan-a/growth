@@ -40,12 +40,12 @@ web:
     - pdf
   script:
     - cp cours/introduction.pdf /home/www/le-mans.adjemian.eu/croissance/cours/introduction.pdf
-    - ds/partiel-2013.pdf /home/www/le-mans.adjemian.eu/croissance/exam/partiel-2013.pdf
-    - ds/partiel-2014.pdf /home/www/le-mans.adjemian.eu/croissance/exam/partiel-2014.pdf
-    - ds/partiel-2018.pdf /home/www/le-mans.adjemian.eu/croissance/exam/partiel-2018.pdf
-    - ds/correction-partiel-2013.pdf /home/www/le-mans.adjemian.eu/croissance/exam/correction-partiel-2013.pdf
-    - ds/correction-partiel-2014.pdf /home/www/le-mans.adjemian.eu/croissance/exam/correction-partiel-2014.pdf
-    - ds/correction-partiel-2018.pdf /home/www/le-mans.adjemian.eu/croissance/exam/correction-partiel-2018.pdf
+    - ds/partiel-2013.pdf /home/www/le-mans.adjemian.eu/croissance/ds/partiel-2013.pdf
+    - ds/partiel-2014.pdf /home/www/le-mans.adjemian.eu/croissance/ds/partiel-2014.pdf
+    - ds/partiel-2018.pdf /home/www/le-mans.adjemian.eu/croissance/ds/partiel-2018.pdf
+    - ds/correction-partiel-2013.pdf /home/www/le-mans.adjemian.eu/croissance/ds/correction-partiel-2013.pdf
+    - ds/correction-partiel-2014.pdf /home/www/le-mans.adjemian.eu/croissance/ds/correction-partiel-2014.pdf
+    - ds/correction-partiel-2018.pdf /home/www/le-mans.adjemian.eu/croissance/ds/correction-partiel-2018.pdf
     - cp -r td/1/td1.pdf /home/www/le-mans.adjemian.eu/croissance/td/1/td1.pdf
     - cp -r td/2/td2.pdf /home/www/le-mans.adjemian.eu/croissance/td/2/td2.pdf
     - cp -r td/3/td3.pdf /home/www/le-mans.adjemian.eu/croissance/td/3/td3.pdf
