@@ -4,7 +4,7 @@ if range(1)<1950
     error('PWT data are not available before 1950.')
 end
 
-if range(end)>2014
+if range(end)>2017
     error('PWT data are not available after 2014.')
 end
 

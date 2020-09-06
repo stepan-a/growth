@@ -3,7 +3,7 @@ LATEX = pdflatex
 all: introduction.pdf clean
 
 introduction.pdf: introduction.tex
-	while ($(LATEX) introduction.tex ; \
+	while ($(LATEX) --shell-escape introduction.tex ; \
 	grep -q "Rerun to get cross" introduction.log ) do true ; \
 	done
 

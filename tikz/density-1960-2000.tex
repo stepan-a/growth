@@ -1,0 +1,10 @@
+\begin{tikzpicture}
+
+  \begin{axis}[/pgf/number format/1000 sep={},scale=1, enlargelimits=false, color=blue!30!black, xlabel style={font=\color{white!15!black}}, xlabel={Logarithme du PIB par tête}]
+    \addplot[style={black,mark=none,smooth,thick}] table[x index=0, y index=1, col sep=space]{../data/rgdpc-density-1960.dat};
+    \addlegendentry{$1960$};
+    \addplot[style={red,mark=none,smooth,thick}] table[x index=0, y index=1, col sep=space]{../data/rgdpc-density-2000.dat};
+    \addlegendentry{$2000$};
+  \end{axis}
+
+\end{tikzpicture}

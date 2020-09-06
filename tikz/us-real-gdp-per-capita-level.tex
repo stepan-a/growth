@@ -1,0 +1,7 @@
+\begin{tikzpicture}
+
+  \begin{axis}[/pgf/number format/1000 sep={},scale=1, title= \small{PIB par tête}, enlargelimits=false, color=blue!30!black]
+    \addplot[style={black,mark=none}] table[x index=0, y expr=exp(\thisrowno{1}), col sep=space]{../data/usa_logged_rgdp_per_capita.dat};
+  \end{axis}
+
+\end{tikzpicture}

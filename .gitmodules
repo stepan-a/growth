@@ -1,0 +1,3 @@
+[submodule "routines/matlab2tikz"]
+	path = routines/matlab2tikz
+	url = https://github.com/matlab2tikz/matlab2tikz.git

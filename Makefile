@@ -1,5 +1,35 @@
 ROOT_PATH = .
 
+.PHONY: all data
+
+all: data
+
+data: data/pwt91.csv data/pwt91.mat data/fra_logged_rgdp_per_capita2.dat data/gbr_logged_rgdp_per_capita.dat data/usa_logged_rgdp_per_capita.dat data/rgdpc-density-1960.dat
+
+data/pwt91.csv data/mpd2018.csv: data/build.jl
+	@echo "Download xlsx data files (PWT and Maddison databases) and convert to CSV..."
+	@cd data; julia build.jl
+
+data/pwt91.mat: data/pwt91.csv routines/pwt/build.m
+	@echo "Convert PWT data into a mat file..."
+	@cd routines/pwt; matlab -nosplash -nodisplay -batch "build; quit" 2> /dev/null
+
+data/fra_logged_rgdp_per_capita2.dat: data/mpd2018.csv routines/introduction/plt_fra_logged_rgdp_per_capita.m
+	@echo "Prepare plot for France historical data..."
+	@cd routines/introduction; matlab -nosplash -nodisplay -batch "plt_fra_logged_rgdp_per_capita; quit" 2> /dev/null
+
+data/gbr_logged_rgdp_per_capita.dat: data/mpd2018.csv routines/introduction/plt_gbr_logged_rgdp_per_capita.m
+	@echo "Prepare plot for UK historical data..."
+	@cd routines/introduction; matlab -nosplash -nodisplay -batch "plt_gbr_logged_rgdp_per_capita; quit" 2> /dev/null
+
+data/usa_logged_rgdp_per_capita.dat: data/mpd2018.csv routines/introduction/plt_usa_logged_rgdp_per_capita.m
+	@echo "Prepare plot for US historical data..."
+	@cd routines/introduction; matlab -nosplash -nodisplay -batch "plt_usa_logged_rgdp_per_capita; quit" 2> /dev/null
+
+data/rgdpc-density-1960.dat: routines/introduction/rgdppcdensity.m
+	@echo "Prepare plot for 1960 and 2000 real gdp per capita..."
+	@cd routines/introduction; matlab -nosplash -nodisplay -batch "rgdppcdensity; quit" 2> /dev/null
+
 td-build:
 	$(MAKE) -C $(ROOT_PATH)/td all
 

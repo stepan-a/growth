@@ -1,7 +1,8 @@
-\documentclass[10pt]{beamer}
+\synctex=1
+
+\documentclass[10pt,notheorems]{beamer}
 
 \usepackage{etex}
-
 \usepackage{fourier-orns}
 \usepackage{ccicons}
 \usepackage{amssymb}
@@ -12,20 +13,18 @@
 \usepackage{amsxtra}
 \usepackage{amsthm}
 \usepackage{float}
-\usepackage{color}
+\usepackage{color, colortbl}
 \usepackage{mathrsfs}
 \usepackage{bm}
 \usepackage{lastpage}
 \usepackage[nice]{nicefrac}
 \usepackage{setspace}
-\usepackage{hyperref}
 \usepackage{ragged2e}
 \usepackage{listings}
 \usepackage{algorithms/algorithm}
 \usepackage{algorithms/algorithmic}
-
-
-\usepackage{tikz,pgfplots}
+\usepackage[frenchb]{babel}
+\usepackage{tikz,pgfplots,pgfplotstable}
 \pgfplotsset{compat=newest}
 \usetikzlibrary{patterns, arrows, decorations.pathreplacing, decorations.markings, calc}
 \pgfplotsset{plot coordinates/math parser=false}
@@ -35,6 +34,25 @@
 \usepackage{cancel}
 \usepackage{tikz-qtree}
 \usepackage{dcolumn}
+\usepackage{adjustbox}
+\usepackage{environ}
+\usepackage[cal=boondox]{mathalfa}
+\usepackage{manfnt}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=black,
+  urlcolor=black,
+}
+\usepackage{venndiagram}
+
+% Git hash
+\usepackage{xstring}
+\usepackage{catchfile}
+\immediate\write18{git rev-parse HEAD > git.hash}
+\CatchFileDef{\HEAD}{git.hash}{\endlinechar=-1}
+\newcommand{\gitrevision}{\StrLeft{\HEAD}{7}}
 
 \newcommand{\trace}{\mathrm{tr}}
 \newcommand{\vect}{\mathrm{vec}}
@@ -57,31 +75,58 @@
 \newcommand{\red}{\color{red}}
 \newcommand{\blue}{\color{blue}}
 
-\newcolumntype{d}{D{.}{.}{-1}}
+\renewcommand{\qedsymbol}{C.Q.F.D.}
 
-\definecolor{gray}{gray}{0.4}
+\newcolumntype{d}{D{.}{.}{-1}}
+\definecolor{gray}{gray}{0.9}
+\newcolumntype{g}{>{\columncolor{gray}}c}
+
+\setbeamertemplate{theorems}[numbered]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Théorème}
+
+\theoremstyle{definition} % insert bellow all blocks you want in normal text
+\newtheorem{definition}{Définition}
+\newtheorem{properties}{Propriétés}
+\newtheorem{lemma}{Lemme}
+\newtheorem{property}[properties]{Propriété}
+\newtheorem{example}{Exemple}
+\newtheorem*{idea}{Éléments de preuve} % no numbered block
 
 \setbeamertemplate{footline}{
-{\hfill\vspace*{1pt}\href{http://creativecommons.org/licenses/by-sa/3.0/legalcode}{\ccbysa}\hspace{.1cm}
-\raisebox{-.075cm}{\href{https://mnemosyne.adjemian.eu/stepan-a/growth}{\includegraphics[scale=.1]{../img/gitlab.png}}}
-}\hspace{1cm}}
+  {\hfill\vspace*{1pt}\href{http://creativecommons.org/licenses/by-sa/3.0/legalcode}{\ccbysa}\hspace{.1cm}
+    \raisebox{-.075cm}{\href{https://git.adjemian.eu/University/growth}{\includegraphics[scale=.1]{../img/gitlab.png}}}\enspace
+    \href{https://git.adjemian.eu/University/growth/-/blob/\HEAD/cours/introduction.tex}{\gitrevision}\enspace\today
+  }\hspace{1cm}}
 
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{caption}[numbered]
+
 \newenvironment{notes}
 {\bgroup \justifying\bgroup\tiny\begin{spacing}{1.0}}
-{\end{spacing}\egroup\egroup}
+  {\end{spacing}\egroup\egroup}
 
 \newenvironment{exercise}[1]
 {\bgroup \small\begin{block}{Ex. #1}}
-{\end{block}\egroup}
+  {\end{block}\egroup}
+
+\newenvironment{defn}[1]
+{\bgroup \small\begin{block}{Définition. #1}}
+  {\end{block}\egroup}
+
+\newenvironment{exemple}[1]
+{\bgroup \small\begin{block}{Exemple. #1}}
+  {\end{block}\egroup}
+
 
 \begin{document}
 
 \title{Croissance\\\small{Introduction}}
 \author[S. Adjemian]{St\'ephane Adjemian}
 \institute{\texttt{stephane.adjemian@univ-lemans.fr}}
-\date{Septembre 2018}
+\date{Septembre 2020}
 
 \begin{frame}
   \titlepage{}
@@ -96,15 +141,17 @@
   \item On peut s'intéresser à la croissance économique dans
     deux directions:
 
+    \bigskip
+
     \begin{itemize}
 
-      \item[$\Rightarrow$] L'évolution dans le temps de la croissance.\newline
+    \item[$\Rightarrow$] L'évolution dans \textbf{le temps} de la croissance.\newline
 
-      Pourquoi le taux de croissance d'une économie est-il significativement différent en différentes périodes de son histoire ?\newline
+      Pourquoi le taux de croissance d'une économie change t-il significativement en différentes périodes de son histoire~?\newline
 
-      \item[$\Rightarrow$] L'hétérogénéité dans la coupe des nations de la croissance.\newline
+    \item[$\Rightarrow$] L'hétérogénéité dans \textbf{la coupe des nations} de la croissance.\newline
 
-      Pourquoi le taux de croissance de la Chine est-il plus important de celui des économies occidentales sur la période récente?
+      Pourquoi le taux de croissance de la Corée du sud est-il plus important de celui des économies occidentales sur la période récente~?
 
     \end{itemize}
 
@@ -124,13 +171,18 @@
 \begin{frame}
   \frametitle{Séries temporelles}
   \framesubtitle{Les États Unis d'Amérique du Nord, I}
-  \begin{figure}[H]
-    \centering
-    \includegraphics[scale=.3]{usa_logged_rgdp_per_capita}
-    \caption{PIB réel par tête en logarithme (USA).}
-    \label{fig:maddison-rgdp-usa}
-  \end{figure}
+  \begin{center}
+    \input{../tikz/us-real-gdp-per-capita.tex}
+  \end{center}
+\end{frame}
 
+
+\begin{frame}
+  \frametitle{Séries temporelles}
+  \framesubtitle{Les États Unis d'Amérique du Nord, I'}
+  \begin{center}
+    \input{../tikz/us-real-gdp-per-capita-level.tex}
+  \end{center}
 \end{frame}
 
 
@@ -138,19 +190,67 @@
   \frametitle{Séries temporelles}
   \framesubtitle{Les États Unis d'Amérique du Nord, II}
 
-  \begin{itemize}
-  \item Sur la période 1800-2016 le taux de croissance annuel moyen du PIB par tête est $\bar g \approx 1.53\%$.\newline
+  \begin{description}
 
-  \item Sur la même période, le facteur de croissance, le ratio du PIB de 2016 au PIB de 2800, est $G \approx 26,8$. En un peu plus de deux siècles la production par tête d'un américain a été multpliée par environ 27.\newline
-
-  \item[\textbf{Rappel 1}] Le taux de croissance annuel moyen ($\bar g$) est calculé à partir du facteur de croissance ($G$):
+  \item[\textbf{Rappel 1}] Le taux de croissance annuel moyen ($\bar g$) est calculé à partir du facteur de croissance ($G$)~:
     \[
-         \bar g = (G^{1/T}-1)\times 100
+      \bar g = (G^{1/T}-1)\times 100
     \]
     où $T$ est le nombre d'années sur lequel le facteur de croissance est calculé.\newline
 
-  \item Approximativement, le taux de croissance est aussi donné graphiquement par la pente du PIB par tête en log sur la figure \ref{fig:maddison-rgdp-usa}.
+  \item[\textbf{Rappel 2}] Le taux de croissance entre t et t-1 peut être approximé par le logarithme népérien du facteur de croissance~:
+    \[
+      g_t \approx 100\times\log \left(\frac{y_t}{y_{t-1}}\right)
+    \]
+    Cette approximation est « bonne » quand le taux de croissance est proche de zéro.
+  \end{description}
 
+\end{frame}
+
+\begin{notes}
+  \begin{itemize}
+
+  \item \textbf{Rappel 2.} Nous savons que le taux de croissance est égal au facteur de croissance moins 1. En effet
+    \[
+      \begin{split}
+        G_t-1 &= \frac{y_t}{y_{t-1}}-1\\
+        &= \frac{y_t-y_{t-1}}{y_{t-1}} \equiv g_t
+      \end{split}
+    \]
+    De façon équivalente nous avons donc~:
+    \[
+      G_t = 1+g_t
+    \]
+    En appliquant le logarithme népérien, il vient~:
+    \[
+      \log (G_t) = \log(1+g_t)
+    \]
+    Par ailleurs, voir le cours de mathématiques ou la page wikipédia sur les \href{https://fr.wikipedia.org/wiki/S%C3%A9rie_de_Taylor}{séries de Taylor}, nous savons que~:
+    \[
+      log(1+x) = \sum_{i=1}^{\infty}\frac{(-1)^{n+1}}{n!}x^n
+    \]
+    tant que $x\in]-1,1[$. Nous pouvons donc approximer $\log(1+g)$ par $g$, car si $g$ est petit (par exemple si le taux de croissance est de 2\% nous avons $g=0,02$) alors les termes suivants de la série de Taylor (on a $g^2=4\times 10^{-4}$, $g^3 = 8\times 10^{-6}$, \ldots) sont très petits (négligeables). En utilisant cette approximation, nous avons finalement:
+    \[
+      g_t \approx \log(G_t)
+    \]
+    Nous ré-utiliserons, plus loin dans le cours, l'approximation de Taylor pour simplifier les modèles sur lequels nous travaillons.
+  \end{itemize}
+\end{notes}
+
+
+
+\begin{frame}
+  \frametitle{Séries temporelles}
+  \framesubtitle{Les États Unis d'Amérique du Nord, III}
+
+  \begin{itemize}
+  \item Sur la période 1800-2016 le taux de croissance annuel moyen du PIB par tête est $\bar g \approx 1.53\%$.\newline
+
+  \item Sur la même période, le facteur de croissance, le ratio du PIB de 2016 au PIB de 1800, est $G \approx 26,8$. En un peu plus de deux siècles la production par tête d'un américain a été multpliée par environ 27.\newline
+
+  \item Approximativement, le taux de croissance moyen est aussi donné graphiquement par la pente du PIB par tête en logarithme.\newline
+
+  \item On remarque que le taux de croissance est temporairement très supérieur au taux de croissance moyen après les creux (voir par exemple la crise de 1929).
   \end{itemize}
 
 \end{frame}
@@ -158,32 +258,40 @@
 
 \begin{frame}
   \frametitle{Séries temporelles}
-  \framesubtitle{France, I}
-  \begin{figure}[H]
-    \centering
-    \includegraphics[scale=.3]{fra_logged_rgdp_per_capita1}
-    \caption{PIB réel par tête en logarithme (France).}
-    \label{fig:maddison-rgdp-fra-1}
-  \end{figure}
+  \framesubtitle{Les États Unis d'Amérique du Nord, IV}
+
+  \begin{center}
+    \input{../tikz/us-real-gdp-per-capita-with-regression.tex}
+  \end{center}
 
 \end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Séries temporelles}
+  \framesubtitle{France, I}
+
+  \begin{center}
+    \input{../tikz/fra-1-real-gdp-per-capita.tex}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Séries temporelles}
+  \framesubtitle{France, I'}
+
+  \begin{center}
+    \input{../tikz/fra-2-real-gdp-per-capita.tex}
+  \end{center}
+
+\end{frame}
+
 
 \begin{frame}
   \frametitle{Séries temporelles}
   \framesubtitle{France, II}
-  \begin{figure}[H]
-    \centering
-    \includegraphics[scale=.3]{fra_logged_rgdp_per_capita2}
-    \caption{PIB réel par tête en logarithme (France).}
-    \label{fig:maddison-rgdp-fra-2}
-  \end{figure}
-
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{Séries temporelles}
-  \framesubtitle{France, III}
 
   \begin{itemize}
 
@@ -204,12 +312,10 @@
 \begin{frame}
   \frametitle{Séries temporelles}
   \framesubtitle{Grande Bretagne}
-  \begin{figure}[H]
-    \centering
-    \includegraphics[scale=.3]{gbr_logged_rgdp_per_capita1}
-    \caption{PIB réel par tête en logarithme (Grande Bretagne). La ligne verticale correspond à l'invention par Watt de la machine à vapeur.}
-    \label{fig:maddison-rgdp-gbr}
-  \end{figure}
+
+  \begin{center}
+    \input{../tikz/uk-real-gdp-per-capita.tex}
+  \end{center}
 
 \end{frame}
 
@@ -222,11 +328,11 @@
 
   \item Un point de croissance annuel moyen sur d'aussi longues périodes vaut très cher un termes de niveau de PIB.\newline
 
-  \item Entre 1870 (après la guerre civile) et 2000 le PIB par tête aux États Unis (\$ 1996) a été multiplié par 10, avec un taux de croissance annuel moyen de 1,79\%. Sur cette période le PIB par tête est passé de  3340\$ à 33330\$.\newline
+  \item Entre 1870 (après la guerre civile) et 2000 le PIB par tête aux États Unis (\$ 1996) a été multiplié par 14, avec un taux de croissance annuel moyen de 2,26\%. Sur cette période le PIB par tête est passé de  3736\$ à 53015\$.\newline
 
-  \item En imaginant un monde où les États Unis auraient connus un taux de croissance annuel moyen inférieur de 1 point sur ces 130 années, nous observerions en 2000 un PIB par tête de seulement 9234\$, soit un facteur de croissance de 2,765. Moins d'un tiers du niveau effectivement observé en 2000 !…\newline
+  \item En imaginant un monde où les États Unis auraient connus un taux de croissance annuel moyen inférieur de 1 point sur ces 130 années, nous observerions en 2000 un PIB par tête de seulement 19026\$, soit un facteur de croissance de 5,1. À peine plus d'un tiers du niveau effectivement observé en 2000~!\ldots\newline
 
-  \item … À peu près le niveau du Mexique ou de la Pologne en 2000 !
+  \item \ldots Entre l'Île Maurice et les Seychelles en 2000~!
 
   \end{itemize}
 
@@ -236,31 +342,31 @@
 \begin{frame}
   \frametitle{Comparaisons internationales, I}
 
-\bigskip
+  \bigskip
 
   \begin{itemize}
 
-  \item Comment comparer des niveaux de PIB ?\newline
+  \item Comment comparer des niveaux de PIB~?\newline
 
   \item En 1960:
 
     \begin{itemize}
-    \item La Suisse est le pays le plus riche en termes de PIB par tête (14980\$ base 1996).
-    \item La Tanzanie est le pays le plus pauvre en termes de PIB par tête (381\$ base 1996).
+    \item La Suisse est le pays le plus riche en termes de PIB par tête (20086\$ base 2011).
+    \item Le Botswana est le pays le plus pauvre en termes de PIB par tête (405\$ base 2011).
+    \item[$\Rightarrow$] Le PIB par tête est 49,6$\times$ moindre au Botswana~!\newline
     \end{itemize}
 
-    $\Rightarrow$ Le PIB par tête est 39$\times$ moindre en Tanzanie !\newline
+    $\Rightarrow$ Le PIB par tête est 49,6$\times$ moindre au Botswana~!\newline
 
   \item En 2000:
 
     \begin{itemize}
-    \item Les États Unis sont le pays le plus riche en termes de PIB par tête (33330\$ base 1996).
-    \item La Tanzanie est le pays le plus pauvre en termes de PIB par tête (482\$ base 1996).
+    \item Le Luxembourg est le pays le plus riche en termes de PIB par tête (57062\$ base 2011).
+    \item La République Démocratique du Congo (ex Zaïre) est le pays le plus pauvre en termes de PIB par tête (496\$ base 2011).
+    \item[$\Rightarrow$] Le PIB par tête est 115$\times$ moindre en République Démocratique du Congo~!\newline
     \end{itemize}
 
-    $\Rightarrow$ Le PIB par tête est 69$\times$ moindre en Tanzanie !\newline
-
-  \item Les différences sont très importantes (plus que dans la chronologie sur période séculiaire) et augmentent.\newline
+  \item Les différences sont très importantes (bien plus que dans la chronologie sur période séculaire) et augmentent.\newline
 
   \end{itemize}
 
@@ -270,28 +376,28 @@
 \begin{frame}
   \frametitle{Comparaisons internationales, II}
 
-\bigskip
+  \bigskip
 
   \begin{itemize}
 
-  \item Le taux de croissance annuel moyen (dans le temps) moyen (dans la coupe) :
+  \item Le taux de croissance annuel moyen (dans le temps) moyen (dans la coupe)~:
     \[
-    \bar{\bar g} = \frac{1}{N}\sum_{i=1}^{N} \bar g_{i}
+      \bar{\bar g} = \frac{1}{N}\sum_{i=1}^{N} \bar g_{i}
     \]
 
-  \item Entre 1960 et 2000, $\bar{\bar g} \approx 1,8$ (pour un échantillon de 112 pays).\newline
+  \item Entre 1960 et 2000, $\bar{\bar g} \approx 2\%$ (pour un échantillon de 111 pays).\newline
 
   \item L'hétérogénéité augmente:
     \begin{itemize}
-    \item 1960: $\sigma (log(y)) \approx 0.89$
-    \item 2000: $\sigma (log(y)) \approx 1.12$
+    \item 1960: $\sigma (log(y)) \approx 0.93$
+    \item 2000: $\sigma (log(y)) \approx 1.29$
     \end{itemize}
 
-\bigskip
+    \bigskip
 
-  \item Le pire: $\bar g_{i} = -2,5\%$ pour la République Démocratique du Congo.\newline
+  \item Le pire: $\bar g_{i} = -4,2\%$ pour la République Démocratique du Congo.\newline
 
-  \item Le meilleur: $\bar g_{i} = 6,4\%$ pour Taiwan.\newline
+  \item Le meilleur: $\bar g_{i} = 8,9\%$ pour Malte.\newline
 
   \end{itemize}
 
@@ -301,40 +407,50 @@
 \begin{frame}
   \frametitle{Comparaisons internationales, III}
 
-\bigskip
+  \bigskip
 
   \begin{itemize}
 
-  \item \textbf{Désastres}: République Démocratique du Congo, l'Irak (qui
-    divise son PIB par tête par un facteur supérieur à 2 durant la
-    période), de nombreux autres pays ont connu des taux de croissance
-    du PIB réel par tête négatifs : Tchad, Madagascar, Mozambique,
-    Somalie, Zambie, Ouganda, Guayana, Zaïre, Nicaragua, Bénin,
-    République Centre Africaine, Haïti, Burundi, Ghana, Venezuela,
-    Mauritanie et le Niger.\newline
+  \item \textbf{Désastres} (taux de croissance négatif): BEN (-0.1\%), BGD (-0.1\%), CAF (-1.1\%), COD (-4.2\%), DZA (-0.35\%), GHA (-0.68\%), GIN (-0.63\%), MDG (-0.53\%), NER (-1.6\%), NGA (-3.5\%), NIC (-0.5\%), RWA (-0.56\%), SEN (-0.24\%), SYR (-0.97\%), TCD (-0.83\%), TZA (-0.094\%), ZMB (-0.91\%).\newline
 
-  \item \textbf{Miracles}: Taiwan, Corée du Sud (5.9\%), Singapour
-    (6.2\%), Hong-Kong (5.4\%), le Botswana (5,1\%)...\newline
+  \item \textbf{Miracles} (taux de croissance supérieur à 5\%): BWA (8.1\%), EGY (5\%), GNQ (5.5\%), HKG (5.1\%), KOR (7.7\%), MLT (8.9\%), SGP (6.7\%), TWN (6.7\%).\newline
 
+  \item Des pays initialement pauvres qui s'enrichissent, les pays initialement mieux dotés qui s'appauvrissent, des pauvres qui restent pauvres et des riches toujours plus riches.
 
   \end{itemize}
 
 \end{frame}
+
+
+\begin{frame}
+  \frametitle{Comparaisons des taux de croissance}
+  \framesubtitle{Petit échantillon (55 nations de 1950 à 2017)}
+
+  \begin{Center}
+    \input{../tikz/world-1950-2017.tex}
+  \end{Center}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Comparaisons des taux de croissance}
+  \framesubtitle{Grand échantillon (111 nations de 1960 à 2000)}
+
+  \begin{Center}
+    \input{../tikz/world-1960-2000.tex}
+  \end{Center}
+
+\end{frame}
+
 
 \begin{frame}
   \frametitle{Comparaisons internationales, III}
   \framesubtitle{Dynamique de la distribution}
 
-
-  \bigskip
-
-  \begin{figure}[H]
-    \centering
-    \includegraphics[scale=.4]{plt01}
-    \caption{Évolution de la distribution du PIB par tête.}
-    \label{fig:quah}
-  \end{figure}
-
+  \begin{center}
+    \input{../tikz/density-1960-2000.tex}
+  \end{center}
 
 \end{frame}
 
