@@ -8,7 +8,7 @@ ds1-2013.pdf: ds1-2013.tex
 	done
 
 ds1-2013-question-5.tikz:
-	python ds1-2013.py
+	python3 ds1-2013.py
 
 correction-ds1-2013.pdf: correction-ds1-2013.tex ds1-2013-question-5.tikz
 	while ($(LATEX) correction-ds1-2013.tex ; \
