@@ -581,8 +581,184 @@
 \end{frame}
 
 
+\begin{frame}
+  \frametitle{Formalisme en temps continu}
+
+  \begin{itemize}
+
+  \item Dans ce cours on s'intéresse à la dynamique d'aggrégats économiques (le PIB, le stock de capital physique, \ldots).\newline
+
+  \item Pour étudier la dynamique de variables (ou systèmes de variables) on dispose des outils suivants~:
+
+    \begin{itemize}
+
+    \item[-] Les équations récurrentes si le temps est discret ($t\in\mathbb N$), par exemple~:
+      \[
+        x_t = \alpha + \beta x_{t-1}
+      \]
+
+    \item[-] Les équations différentielles si le temps est continu ($t\in\mathbb R$), par exemple~:
+      \[
+        \dot x(t) = \alpha + \beta x(t)
+      \]
+    \end{itemize}
+
+    \medskip
+
+  \item Dans ce cours, comme dans la littérature, nous adopterons un
+    formalisme en temps continu.\newline
+
+  \item Ce choix peut sembler contre-intuitif, relativement à
+    l'observation des aggrégats, mais a l'avantage de la simplicité.
+
+  \end{itemize}
+
+\end{frame}
 
 
+\begin{frame}
+  \frametitle{Formalisme en temps continu}
+  \framesubtitle{Le taux de croissance}
+
+  \begin{itemize}
+
+  \item Habituellement nous définissons le taux de croissance d'une variable (en temps discret) $x_t$ comme~:
+    \[
+      g_t = \frac{x_t-x_{t-1}}{x_{t-1}} \equiv G_t - 1
+    \]
+    c'est-à-dire comme la variation de $x$, que l'on note souvent
+    $\Delta x_t = x_{t}-x_{t-1}$, rapporté au niveau de $x$ en $t-1$.\newline
+
+  \item Sous l'hypothèse d'un temps continu, on adopte une définition analogue~:
+    \[
+      g(t) = \frac{\dot x(t)}{x(t)}
+    \]
+    où $\dot x(t)$ est la dérivée de $x$ par rapport au temps $\dot x(t) = \frac{\mathrm dx(t)}{\mathrm dt}$.\newline
+
+  \item Le numérateur $\dot x(t)$ est la version continue de $\Delta x_t$, c'est-à-dire la variation de $x$ induite par une variation infinitésimale de $t$.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Formalisme en temps continu}
+  \framesubtitle{Facteur et taux de croissance, I}
+
+  \begin{itemize}
+
+  \item La définition du facteur de croissance ne change pas~:
+    \[
+      G(0,T) = \frac{x(T)}{x(0)}
+    \]
+    le niveau en $T$ rapporté au niveau initial (ici 0). Comment relier ce facteur de croissance avec le taux de croissance~?\newline
+
+  \item Pour répondre, en supposant que la condition initiale $x(0)$ ainsi que les taux de
+    croissances $g(t)$ pour $t\in[0,T]$ sont connus, nous devons
+    déterminer le niveau de la variable $x(T)$.\newline
+
+  \item Pour simplifier le problème, supposons que le taux de croissance soit constant, c'est-à-dire que $g(t)=g \forall t\in[0,T]$. La fonction du temps $x(t)$ inconnue doit donc satisfaire~:
+    \[
+      \frac{\dot x(t)}{x(t)} = g \quad \forall x\in [0,T]
+    \]
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Formalisme en temps continu}
+  \framesubtitle{Facteur et taux de croissance, II}
+
+  \begin{itemize}
+
+  \item Par ailleurs nous savons que $ (\log u)' = \nicefrac{u'}{u}$. Nous pouvons donc réécrire la condition sur la fonction $x(t)$ comme~:
+    \[
+      \dot{\log x(t)} = g
+    \]
+
+  \item En passant, nous obtenons une nouvelle définition du taux de croissance~:
+
+    \begin{block}{Taux de croissance}
+      Le taux de croissance d'une variable $x(t)$ est égal à la variation du logarithme de cette variable~:
+      \[
+        g(t) = \frac{\mathrm d \log x(t)}{\mathrm dt}
+      \]
+    \end{block}
+
+  \item Pour déterminer $\log x(T)$ il suffit de sommer la condition initiale, $\log x(0)$, et les variation de $\log x(s)$ pour $s\in[0,T]$~:
+    \[
+      \log x(T) = \log x(0) + \int_0^T \dot{\log x(s)}\mathrm d s
+    \]
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Formalisme en temps continu}
+  \framesubtitle{Facteur et taux de croissance, III}
+
+  \begin{itemize}
+
+  \item En substituant la contrainte sur la fonction $x(t)$~:
+    \[
+      \begin{split}
+        \log x(T) &= \log x(0) + \int_0^T g\mathrm d s\\
+        &= \log x(0) + gT
+      \end{split}
+    \]
+
+  \item En appliquant la fonction exponentielle (puisque notre problème est de trouver $x(T)$ pas $\log x(T)$)~:
+    \[
+      x(T) = x(0)e^{gT}
+    \]
+
+  \item Le facteur de croissance est donc~:
+    \[
+      G(0,T) = e^{gT}
+    \]
+
+  \item Plus généralement, pour un taux de croissance variable, nous aurions~:
+    \[
+      x(T) = x(0)e^{\int_0^Tg(s)\mathrm ds}
+    \]
+    Le facteur de croissance entre 0 et $T$ est l'exponentielle de la somme des taux de croissance entre $0$ et $T$.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Formalisme en temps continu}
+  \framesubtitle{Taux de croissance d'un produit}
+
+  \begin{itemize}
+
+  \item Soit $x(t) = u(t)\cdot v(t)$, avec $g_u(t)$ et $g_v(t)$ les taux de croissance de $u$ et $v$. Quel est le taux de croissance de $x$~?\newline
+
+  \item En appliquant le logarithme, on transforme le produit en somme~:
+    \[
+      \log x(t) = \log u(t) + \log v(t)
+    \]
+
+  \item En dérivant par rapport à $t$. On obtient directement~:
+    \[
+      g_x(t) = g_u(t) + g_v(t)
+    \]
+    on retient donc que le taux de croissance d'un produit est la somme des taux de croissance.\newline
+
+  \item[\dbend] En temps discret, c'est un peu plus compliqué~:
+    \[
+      g_{x,t} = g_{u_t} + g_{v,t} + g_{u,t}\cdot g_{v,t}
+    \]
+    si on approxime pas le résultat en élmiminant le terme croisé.
+  \end{itemize}
+
+\end{frame}
 
 
 \end{document}
