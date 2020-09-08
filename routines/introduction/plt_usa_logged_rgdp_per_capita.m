@@ -17,7 +17,7 @@ axis tight
 box on
 
 % Save plot
-saveas(fh, '../../cours/usa_logged_rgdp_per_capita', 'epsc2')
+saveas(fh, '../../img/usa_logged_rgdp_per_capita', 'epsc2')
 
 % Save data in a text file (to be used by latex/pgfplots)
 fid = fopen('../../data/usa_logged_rgdp_per_capita1.dat', 'w');
