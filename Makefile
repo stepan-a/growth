@@ -4,7 +4,7 @@ ROOT_PATH = .
 
 all: data td-build ds-build cours
 
-data: data/pwt91.csv data/pwt91.mat data/fra_logged_rgdp_per_capita2.dat data/gbr_logged_rgdp_per_capita.dat data/usa_logged_rgdp_per_capita.dat data/rgdpc-density-1960.dat
+data: data/pwt91.csv data/pwt91.mat data/fra_logged_rgdp_per_capita2.dat data/gbr_logged_rgdp_per_capita.dat data/usa_logged_rgdp_per_capita2.dat data/rgdpc-density-1960.dat
 
 data/pwt91.csv data/mpd2018.csv: data/build.jl
 	@echo "Download xlsx data files (PWT and Maddison databases) and convert to CSV..."
@@ -22,7 +22,7 @@ data/gbr_logged_rgdp_per_capita.dat: data/mpd2018.csv routines/introduction/plt_
 	@echo "Prepare plot for UK historical data..."
 	@cd routines/introduction; matlab -nosplash -nodisplay -batch "plt_gbr_logged_rgdp_per_capita; quit" 2> /dev/null
 
-data/usa_logged_rgdp_per_capita.dat: data/mpd2018.csv routines/introduction/plt_usa_logged_rgdp_per_capita.m
+data/usa_logged_rgdp_per_capita2.dat: data/mpd2018.csv routines/introduction/plt_usa_logged_rgdp_per_capita.m
 	@echo "Prepare plot for US historical data..."
 	@cd routines/introduction; matlab -nosplash -nodisplay -batch "plt_usa_logged_rgdp_per_capita; quit" 2> /dev/null
 

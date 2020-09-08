@@ -20,7 +20,7 @@ box on
 saveas(fh, '../../cours/usa_logged_rgdp_per_capita', 'epsc2')
 
 % Save data in a text file (to be used by latex/pgfplots)
-fid = fopen('../../data/usa_logged_rgdp_per_capita.dat', 'w');
+fid = fopen('../../data/usa_logged_rgdp_per_capita1.dat', 'w');
 fprintf(fid, '%d \t %12.8f\n', [transpose(usa_rgdp(srows,1)); transpose(log(usa_rgdp(srows,2)))]);
 fclose(fid);
 
@@ -32,7 +32,7 @@ if showstatistics
     G
 end
 
-% We only use data when they become available every year
+% We only use data after civil war
 srows = find(usa_rgdp(:,1)>=1870);
 
 if showstatistics
@@ -44,3 +44,8 @@ if showstatistics
     usa_rgdp(srows(1),2)
     usa_rgdp(srows(end),2)
 end
+
+% Save data in a text file (to be used by latex/pgfplots)
+fid = fopen('../../data/usa_logged_rgdp_per_capita2.dat', 'w');
+fprintf(fid, '%d \t %12.8f\n', [transpose(usa_rgdp(srows,1)); transpose(log(usa_rgdp(srows,2)))]);
+fclose(fid);
