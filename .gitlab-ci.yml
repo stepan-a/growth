@@ -16,6 +16,7 @@ pdf:
   artifacts:
     paths:
       - cours/introduction.pdf
+      - cours/solow.pdf
       - ds/partiel-2013.pdf
       - ds/partiel-2014.pdf
       - ds/partiel-2018.pdf
@@ -40,6 +41,7 @@ web:
     - pdf
   script:
     - cp cours/introduction.pdf /home/www/le-mans.adjemian.eu/croissance/cours/introduction.pdf
+    - cp cours/solow.pdf /home/www/le-mans.adjemian.eu/croissance/cours/chapitre-1-solow.pdf
     - cp ds/partiel-2013.pdf /home/www/le-mans.adjemian.eu/croissance/exam/partiel-2013.pdf
     - cp ds/partiel-2014.pdf /home/www/le-mans.adjemian.eu/croissance/exam/partiel-2014.pdf
     - cp ds/partiel-2018.pdf /home/www/le-mans.adjemian.eu/croissance/exam/partiel-2018.pdf
