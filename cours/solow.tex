@@ -166,7 +166,7 @@
     \medskip
   \item \textbf{Simplification:} une robinsonnade\ldots
   \end{itemize}
-  
+
 \end{frame}
 
 
@@ -182,18 +182,18 @@
 
 \begin{frame}
   \frametitle{Environnement, II}
-  
+
   \begin{itemize}
 
   \item Économie autarcique.
 
     \begin{itemize}
-      \item[$\Rightarrow$] Pas de différence entre revenu et production d'une économie.
-      \item[$\Rightarrow$] Pas de différence entre épargne et investissement.
+    \item[$\Rightarrow$] Pas de différence entre revenu et production d'une économie.
+    \item[$\Rightarrow$] Pas de différence entre épargne et investissement.
     \end{itemize}
 
-  \bigskip
-    
+    \bigskip
+
   \item Hypothèse de concurrence parfaite.\newline
 
     \begin{itemize}
@@ -203,20 +203,20 @@
       général avec des marchés),\newline
 
       \begin{itemize}
-        \item[--] On va donc au plus simple\ldots
-        \item[--] Mais pas de prix (puisqu'il n'y a pas de marchés). 
+      \item[--] On va donc au plus simple\ldots
+      \item[--] Mais pas de prix (puisqu'il n'y a pas de marchés).
       \end{itemize}
 
     \end{itemize}
 
-  \bigskip
+    \bigskip
 
   \item Offre de travail inélastique (pas de chômage).\newline
 
   \item Démographie exogène.\newline
 
   \item Comportement d'épargne exogène.
-  
+
   \end{itemize}
 
 \end{frame}
@@ -236,16 +236,16 @@
   \frametitle{L'hypothèse des rendements (marginaux) décroissants, I}
 
   \begin{itemize}
-    
-    \item Une vieille idée chez les économistes (Turgot, Malthus, Ricardo, \ldots) pas toujours très optimistes.\newline
 
-    \item Supposons que, chaque année, Robinson augmente la surface cultivable sur son île\ldots Sans accroître son effort car il travaille déjà beaucoup.\newline
-    
-    \item Même si les terres suplémentaires sont également fertiles, sa production de blé augmentera de moins en moins.\newline
+  \item Une vieille idée chez les économistes (Turgot, Malthus, Ricardo, \ldots) pas toujours très optimistes.\newline
 
-    \item \emph{Ceteris paribus} en augmentant un unique facteur de production (ici la terre) le \textbf{rendement marginal} est décroissant (l'effort de Robinson sur chaque parcelle diminue).\newline
+  \item Supposons que, chaque année, Robinson augmente la surface cultivable sur son île\ldots Sans accroître son effort car il travaille déjà beaucoup.\newline
 
-    \item[\dbend] Si Robinson double la surface cultivée \textbf{et} la quantité de travail (en faisant travailler Vendredi) il se peut qu'il parvienne à doubler la production, on parle alors de \textbf{rendements d'échelle} constants. 
+  \item Même si les terres suplémentaires sont également fertiles, sa production de blé augmentera de moins en moins.\newline
+
+  \item \emph{Ceteris paribus} en augmentant un unique facteur de production (ici la terre) le \textbf{rendement marginal} est décroissant (l'effort de Robinson sur chaque parcelle diminue).\newline
+
+  \item[\dbend] Si Robinson double la surface cultivée \textbf{et} la quantité de travail (en faisant travailler Vendredi) il se peut qu'il parvienne à doubler la production, on parle alors de \textbf{rendements d'échelle} constants.
 
   \end{itemize}
 
@@ -256,9 +256,9 @@
   \frametitle{L'hypothèse des rendements (marginaux) décroissants, II}
 
   \medskip
-  
+
   \begin{itemize}
-    
+
   \item Cette hypothèse est le c\oe{}ur du modèle de Solow. Sans cette
     hypothèse, qu'il faudra évaluer par rapport aux données, les
     prédictions du modèle changent radicalement.\newline
@@ -297,7 +297,7 @@
   \frametitle{Progrès technique exogène, II}
 
   \begin{itemize}
-    
+
   \item Pour palier l'épuisement de la croissance, il faut une source d'impulsion externe qui améliore l'efficacité des facteurs de production.\newline
 
   \item On suppose que le progrès tombe du ciel, il s'agit d'une manne.\newline
@@ -313,9 +313,347 @@
 \section{La fonction de production néoclassique}
 
 \begin{frame}
-  \frametitle{La fonction de production néoclassique}
+  \frametitle{Le bien}
+
+  \begin{itemize}
+
+  \item On suppose qu'il existe un unique bien dans l'économie, en quantitée $Y$.\newline
+
+  \item Ce bien homogène est utilisé pour la consommation ($C$) et l'investissement ($I$) dans le capital physique ($K$).\newline
+
+  \item Dans ce chapitre on suppose que la production du bien homogène (en quantitée $Y$) nécessite deux facteurs~: les services du stock de capital physique ($K$) et du travail ($L$).\newline
+
+  \item La technologie de production est caractérisée par une fonction de production, $Y = F(K,L)$, dont les propriétés sont déterminantes dans le modèle de Solow (pour la transition et le long terme).\newline
+
+  \end{itemize}
 
 \end{frame}
+
+
+
+\begin{frame}
+  \frametitle{La fonction de production néoclassique, I}
+
+
+  \begin{definition}
+    Une fonction de production $F(K,L)$ est dite néoclassique si~:
+    \medskip
+    \begin{enumerate}
+
+    \item Les productivités marginales sont positives, $F_K(K,L)>0$ et $F_K(K,L)>0$.\newline
+
+    \item Les productivités marginales sont décroissantes, $F_{KK}(K,L)<0$ et $F_{LL}(K,L)<0$.\newline
+
+    \item Les rendements d'échelle sont constants~: $F(\lambda K, \lambda L) = \lambda F(K,L)$ pour tout $\lambda>0$.\newline
+
+    \item Les conditions d'Inada~:
+      \[
+        \begin{split}
+          \lim_{K\rightarrow 0}F_K(K,L) = \infty & \lim_{K\rightarrow \infty}F_K(K,L) = 0 \\
+          \lim_{L\rightarrow 0}F_L(K,L) = \infty & \lim_{L\rightarrow \infty}F_L(K,L) = 0
+        \end{split}
+      \]
+
+    \end{enumerate}
+  \end{definition}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{La fonction de production néoclassique, II}
+  \framesubtitle{Remarques}
+
+  Une fonction de production néoclassique est donc~:
+
+  \medskip
+
+  \begin{itemize}
+
+  \item Croissante, puisque les productivités marginales sont positives. Quand on augmente la quantité de $K$ ou de $L$ on augmente la production ($Y$).\newline
+
+  \item À rendements décroissants, puisque les productivités marginales sont décroissantes. Plus on augmente la quantité de travail, moins la production augmente.\newline
+
+  \item À rendements d'échelle constants, puisque la fonction deproduction est homogène de degré un. Doubler les quantités de facteurs de production, double la production.\newline
+
+  \end{itemize}
+
+  On verra plus loin que les conditions d'Inada, qui caractérisent le comportement aux bords des productivités marginales, sont essentielles pour définir les propriétés de long terme du modèle.\newline
+\end{frame}
+
+\begin{frame}
+  \frametitle{La fonction de production néoclassique, III}
+  \framesubtitle{Exemple~: La fonction Cobb-Douglas (a)}
+
+
+  \[
+    Y = K^{\alpha}L ^{1-\alpha}
+  \]
+  avec $0<\alpha<1$.
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item $F_K(K,L) = \alpha K^{\alpha-1}L^{1-\alpha}=\alpha\frac{Y}{K}>0$,
+  \item $F_L(K,L) = (1-\alpha) K^{\alpha}L^{-\alpha}=(1-\alpha)\frac{Y}{L}>0$,
+  \item $F_{KK}(K,L) = \alpha(\alpha-1)K^{\alpha-2}L^{1-\alpha}=\alpha(\alpha-1)\frac{Y}{K^2}<0$
+  \item $F_{LL}(K,L) = -\alpha(1-\alpha)K^{\alpha}L^{-\alpha-1}=-\alpha(1-\alpha)\frac{Y}{L^2}<0$
+  \item $\left(\lambda K\right)^{\alpha}\left(\lambda L\right)^{1-\alpha}=\lambda^{\alpha+1-\alpha}K^{\alpha}L ^{1-\alpha} = \lambda K^{\alpha}L ^{1-\alpha}$ $\forall \lambda>0$
+  \item En notant que l'on a aussi $F_K(K,L) = \alpha \left(\frac{L}{K}\right)^{1-\alpha}$ et $F_L(K,L) = (1-\alpha) \left(\frac{K}{L}\right)^{\alpha}$, on voit facilement que les conditions d'Inada sont satisfaites.
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{La fonction de production néoclassique, III}
+  \framesubtitle{Exemple~: La fonction Cobb-Douglas (b)}
+
+  \begin{center}
+    \begin{tikzpicture}[scale=1.2]
+      \begin{axis}[
+        title={$Y = K^{\alpha}L^{1-\alpha}$},
+        xlabel=$K$,
+        ylabel=$L$,
+        xticklabels={,,},
+        yticklabels={,,},
+        zticklabels={,,},
+        3d box=complete,
+        enlargelimits=false,
+        grid,
+        grid style={dashed, gray!60},
+        axis line style={thin},
+        small,
+        ]
+        \addplot3[
+        mesh,
+        draw=black,
+        samples=50,
+        domain=0:10,
+        domain y=0:10,
+        ]
+        {x^0.333333*y^(1-0.333333)};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{La fonction de production néoclassique, III}
+  \framesubtitle{Exemple~: La fonction Cobb-Douglas (c)}
+
+  \begin{itemize}
+  \item L'hypothèse de rendements d'échelle constants permet de réécrire la technologie sous forme intensive, c'est à dire en exprimant la production par tête $y=\nicefrac{Y}{L}$ comme une fonction du stock de capital physique par tête $k = \nicefrac{K}{L}$.\newline
+
+  \item On a~:
+    \[
+      Y = K^{\alpha}L^{1-\alpha}
+    \]
+    en divisant les deux membres par $L$~:
+    \[
+      \begin{split}
+        \frac{Y}{L} &= \frac{K^{\alpha}L^{1-\alpha}}{L^{\alpha+1-\alpha}}\\
+        &= \left(\frac{K}{L}\right)^{\alpha} \left(\frac{L}{L}\right)^{1-\alpha}\\
+      \end{split}
+    \]
+    et donc~:
+    \[
+      y = k^{\alpha}
+    \]
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{La fonction de production néoclassique, III}
+  \framesubtitle{Exemple~: La fonction Cobb-Douglas (d)}
+
+  \medskip
+
+  La fonction de production sous forme intensive, $y=f(k)=k^{\alpha}$, hérite des propriétés de la fonction de production $F(K,L)=K^{\alpha}L^{1-\alpha}$:
+
+  \medskip
+
+  \begin{enumerate}
+  \item Productivité marginal positive~: $f'(k) = \alpha k^{\alpha-1}>0$,
+  \item Productivité marginale décroissante~: $f''(k)= -(1-\alpha)\alpha k^{\alpha-2}<0$,
+  \item Conditions d'Inada~: $\lim_{k\rightarrow 0} f'(k)=\infty$ et $\lim_{k\rightarrow \infty} f'(k)=0$
+  \end{enumerate}
+
+  \medskip
+
+  \begin{columns}
+    \begin{column}{0.6\textwidth}
+      {\small
+        \begin{itemize}
+        \item[--] Les pentes des tangentes sont $>0$,
+        \item[--] Les pentes des tangentes sont $\searrow$,
+        \item[--] La pente de la tangente en 0 est $\infty$,
+        \item[--] La pente de la tangente en $\infty$ est 0.
+          \bigskip
+        \item[--] La fonction est concave.
+        \end{itemize}}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[
+          title={$y = k^{\alpha}$},
+          xlabel=$k$,
+          ylabel=$y$,
+          xticklabels={,,},
+          yticklabels={,,},
+          enlargelimits=false,
+          grid style={dashed, gray!60},
+          axis x line = bottom,
+          axis y line = left,
+          axis line style={thin},
+          small,
+          ]
+          \addplot[
+          draw=black,
+          thick,
+          smooth,
+          samples=500,
+          domain=0:8,
+          ]
+          {x^0.333333};
+          \addplot[mark=none, red, thin] coordinates {(0,0.66666666) (8,3.3333333)};
+          \addplot[mark=none, red, thin] coordinates {(0,1.0582673679787995) (8,2.1165347359575994)};
+          \addplot[mark=*] coordinates {(1,1)};
+          \addplot[mark=*] coordinates {(4,1.5874010519681994)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{La fonction de production néoclassique, III}
+  \framesubtitle{Exemple~: La fonction Cobb-Douglas (e)}
+
+  \medskip
+
+  \begin{itemize}
+
+  \item Le paramètre $\alpha$ s'interprète comme l'élasticité de la production par rapport au stock de capital physique.\newline
+
+  \item En effet, cette élasticité est définie par~:
+    \[
+      \epsilon(K,L) = \frac{\frac{\partial Y}{\partial K}}{\frac{Y}{K}}
+    \]
+    soit~:
+    \[
+      \begin{split}
+        \epsilon(K,L) &= \frac{K}{Y}\alpha K^{\alpha-1}L^{1-\alpha}\\
+        &= \alpha\frac{K^{\alpha}L^{1-\alpha}}{Y}\\
+        &= \alpha \quad \forall (K,L)\in \mathbb R_+^2
+      \end{split}
+    \]
+
+    \medskip
+
+  \item On note que cette élasticité ne dépend pas de $K$ ou $L$.
+
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{La fonction de production néoclassique, III}
+  \framesubtitle{Exemple~: La fonction Cobb-Douglas (e, suite)}
+
+  \medskip
+
+  \begin{itemize}
+
+  \item Ce même paramètre $\alpha$, dans le modèle de Solow, où la concurrence est parfaite, détermine aussi le partage du revenu entre le capital et le travail.\newline
+
+  \item En effet dans une économie en concurrence parfaiteles facteurs sont rémunérés aux productivités marginales.\newline
+
+  \item Chaque unité de travail est rémunérée au taux de salaire $w=\frac{\partial Y}{\partial L}$.\newline
+
+  \item Chaque unité de capital est rémunérée au taux d'intérêt $r = \frac{\partial Y}{\partial K}$.\newline
+
+  \item La rémunération totale du capital est donc~: $K\frac{\partial Y}{\partial K}$, et la part de la rémunération du capital dans le revenu total~:
+    \[
+      \frac{K}{Y}\frac{\partial Y}{\partial K} = \alpha
+    \]
+
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{La fonction de production néoclassique, III}
+  \framesubtitle{Exemple~: La fonction Cobb-Douglas (f)}
+
+  \medskip
+
+  \begin{itemize}
+
+  \item Le Taux Marginal de Substitution Technique du travail au capital, noté $\textrm{TMST}_{L,K}$, est défini comme la variation de travail nécessaire pour compenser une variation infinitésimale du stock de capital physique (de sorte que que $Y$ soit constant).\newline
+
+  \item En considérant la différentielle totale de la fonction de production~:
+    \[
+      \mathrm dY = F_K(K,L)\mathrm dK + F_L(K,L)\mathrm dL
+    \]
+    \begin{columns}
+      \begin{column}{0.7\textwidth}
+        \begin{addmargin}[1,1cm]{0cm}
+          en posant $\mathrm dY = 0$, il vient~:
+          \[
+            \frac{\mathrm d L}{\mathrm d K} = -\frac{F_K(K,L)}{F_L(K,L)} \equiv \textrm{TMST}_{L,K}
+          \]
+        \end{addmargin}
+      \end{column}
+      \begin{column}{0.3\textwidth}
+        {\tiny Certains imposent la positivité du TMST en le définissant comme le rapport des productivités marginales.}
+      \end{column}
+    \end{columns}
+    \bigskip
+  \item Avec la fonction Cobb-Douglas, nous avons~:
+    \begin{columns}
+      \begin{column}{0.7\textwidth}
+        \begin{addmargin}[1,1cm]{0cm}
+          \[
+            \textrm{TMST}_{L,K} = -\frac{\alpha}{1-\alpha}\frac{L}{K}
+          \]
+        \end{addmargin}
+      \end{column}
+      \begin{column}{0.3\textwidth}
+        {\tiny Le TMST donne la pente des isoquantes, à l'optimum il doit être égal au rapport des prix.}
+      \end{column}
+    \end{columns}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{La fonction de production néoclassique, III}
+  \framesubtitle{Exemple~: La fonction Cobb-Douglas (g)}
+
+  \medskip
+
+  \begin{itemize}
+
+  \item L'élasticité de substitution entre les facteurs, notée $\sigma(K,L)$, est le taux de croissance du ratio des facteurs de production ($\mathrm d \log \frac{L}{K}$) rapporté au taux de croissance du taux marginal de substitution technique ($\mathrm d \log |TMST_{L,K}|$).\newline
+
+  \item $\sigma(K,L)$ caractérise la courbure des isoquantes.\newline
+
+  \item Dans le cas Cobb-Douglas, le TMST est proportionel au ratio $\nicefrac{L}{K}$.\newline
+
+  \item Les deux de croissance de ces deux termes sont donc identiques, ainsi~:
+    \[
+      \sigma(K,L) = 1\quad \forall (K,L) \in \mathbb R_+^2
+    \]
+  \end{itemize}
+\end{frame}
+
+
 
 
 \section{L'équation fondamentale du modèle de Solow}
