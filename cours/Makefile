@@ -3,7 +3,7 @@ LATEX = pdflatex
 all: introduction.pdf solow.pdf clean
 
 %.pdf: %.tex
-	@rubber --src-specials --pdf $*
+	@rubber --src-specials --unsafe --pdf $*
 
 clean:
 	@rm -f *.aux *.log *.out *.nav *.rel *.toc *.snm *.synctex.gz *.vrb
