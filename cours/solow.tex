@@ -26,7 +26,7 @@
 \usepackage[frenchb]{babel}
 \usepackage{tikz,pgfplots,pgfplotstable}
 \pgfplotsset{compat=newest}
-\usetikzlibrary{patterns, arrows, decorations.pathreplacing, decorations.markings, calc}
+\usetikzlibrary{patterns, arrows, decorations.pathreplacing, decorations.markings, decorations.text, calc}
 \pgfplotsset{plot coordinates/math parser=false}
 \newlength\figureheight
 \newlength\figurewidth
@@ -75,6 +75,9 @@
 \newcommand{\bigO}[1]{\mathcal O \left(#1\right)}
 \newcommand{\red}{\color{red}}
 \newcommand{\blue}{\color{blue}}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=1.0pt] (char) {#1};}}
 
 \renewcommand{\qedsymbol}{C.Q.F.D.}
 
@@ -661,14 +664,432 @@
 
 \begin{frame}
   \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Encore une histoire de baignoire et de fuite\ldots}
+
+  \begin{block}{Accumulation du stock de capital physique aggrégé}
+    \[
+      \dot K(t) = I(t) - \delta K(t)
+    \]
+  \end{block}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item $0<\delta<1$ est le taux de dépréciation du stock de capital physique.\newline
+
+  \item $\delta K$ est le volume de capital qui s'évapore à chaque instant.\newline
+
+  \item[\dbend] Ne pas confondre le \textbf{taux} de dépréciation ($\delta$) et la dépréciation ($\delta K$, il s'agit d'un volume).\newline
+
+  \item Cette équation nous dit que le stock de capital physique augmente ($\dot K > 0$) ssi l'investissement est supérieur à la dépréciation.
+  \end{itemize}
 
 \end{frame}
 
 
-\section{Progrès technique}
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Expérience 1: Investissement constant (a)\ldots}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Supposons que l'investissement soit constant, \emph{i.e.} $I(t)=\iota\quad\forall t\in\mathbb R_+$. Caractérisons la dynamique du stock de capital.\newline
+
+  \item Nous avons~:
+    \[
+      \dot K(t) = \iota - \delta K(t)
+    \]
+    Il s'agit d'une équation différentielle linéaire d'ordre 1 à
+    coefficients constants.\newline
+
+  \item Si $\iota=0$ (\emph{i.e.} pas de second membre), on retrouve une équation différentielle analogue à celle que nous avons rencontrée dans le chapitre introductif~:
+    \[
+      \frac{\dot K(t)}{K(t)} = -\delta
+    \]
+    S'il n'y a pas d'investissement le stock de capital décroît, le taux de (dé)croissance est le taux de dépréciation du capital. Il n'est pas nécessaire de savoir résoudre une équation différentielle pour comprendre qu'à long terme le capital disparaît\ldots
+
+  \end{itemize}
+
+\end{frame}
+
 
 \begin{frame}
-  \frametitle{Le progrès technique}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Expérience 1: Investissement constant (b)\ldots}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Cherchons une solution de cette équation différentielle, \emph{i.e.} cherchons une fonction $K(t)$ qui vérifie cette équation.\newline
+
+  \item En utilisant la dérivée logarithmique, puis en intégrant les deux membres de cette équation, il vient~:
+    \[
+      \log K(t) = \tilde A - \delta t
+    \]
+    où $\tilde A$ est une constante d'intégration (qui apparaît avec le calcul des primitives).\newline
+
+  \item Nous savons donc qu'une solution de l'équation différentielle est~:
+    \[
+      K(t) = A e^{-\delta t}
+    \]
+    où $A = e^{\tilde A}\in\mathbb R_+$. Nous avons donc une infinité de solution, une pour chaque valeur  possible de $A$.
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Expérience 1: Investissement constant (c)\ldots}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Puisque $\delta$, le taux de dépréciation est positif, nous avons bien comme annoncé~:
+    \[
+      \lim_{t\rightarrow\infty}K(t) = 0
+    \]
+    Puisqu'il n'y a pas d'investissement, la dépréciation épuise complétement le stock de capital à long terme.\newline
+
+  \item Que se passe t-il si $\iota>0$~?\ldots Il s'agit d'une équation différentielle linéaire avec un second membre (l'investissement $\iota$). Pour trouver une solution, on commence par chercher une solution particulère de l'équation différentielle avec second membre~:
+    \[
+      \dot K(t) = -\delta K(t) + \iota
+    \]
+
+  \item La constante $K^{\star}(t) = \nicefrac{\iota}{\delta} \forall t\in\mathbb R_+$ est une solution évidente.\newline
+
+  \item En effet pour cette solution la variation est nulle, $\dot{K^{\star}} = 0$, et $\iota-\delta K^{\star}(t) = 0$.
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Expérience 1: Investissement constant (d)\ldots}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Une solution générale de l'équation avec second membre est la somme de la solution générale de l'équation sans second membre et de la solution particulière de l'équation complète~:
+    \[
+      K(t) = Ae^{-\delta t} + \frac{\iota}{\delta}
+    \]
+
+  \item On peut vérifier en substituant cette solution dans l'équation différentielle complète.
+    \begin{itemize}
+    \item[--] Pour le membre de gauche on a~:
+      \[
+        {\color{red}\dot K(t)} = -\delta A e^{-\delta t}
+      \]
+    \item[--] Pour le membre de droite on a~:
+      \[
+        \begin{split}
+          {\color{red}\iota - \delta K(t)} &= \iota - \delta \left(Ae^{-\delta t} + \frac{\iota}{\delta}\right)\\
+          &= -\delta A e^{-\delta t}
+        \end{split}
+      \]
+    \end{itemize}
+  \item Les deux membres sont identiques, on a donc bien trouvé la solution générale de l'équation différentielle $\dot K(t) = -\delta K(t) + \iota$.
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Expérience 1: Investissement constant (e)\ldots}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item À nouveau, nous disposons d'une infinité de solution~: une pour chaque valeur de la constante d'intégration $A$.\newline
+
+  \item Pour sélectionner une solution, on utilise la condition initiale du stock de capital physique. Suppose qu'à l'instant initial nous ayons $K(0)=K_0>0$.\newline
+
+  \item En évaluant la solution générale en 0, nous devons avoir~:
+    \[
+      K_0 = A + \frac{\iota}{\delta}
+    \]
+
+  \item Ainsi, la solution de l'équation différentielle qui « passe » par la condition initiale $K_0$ est~:
+    \[
+      K(t) = \left(K_0-\frac{\iota}{\delta}\right)e^{-\delta t} + \frac{\iota}{\delta}
+    \]
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Expérience 1: Investissement constant (f)\ldots}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Pour toute condition initiale $K_0$ on a~:
+    \[
+      \lim_{t\rightarrow\infty} K(t) = \frac{\iota}{\delta} \equiv K^{\star}
+    \]
+
+  \item Le niveau de long terme du stock de capital physique ne dépend pas de la condition initiale, et ce niveau est d'autant plus élevé que l'investissement est important ou le taux de dépréciation faible.\newline
+
+  \item Si $K_0>\frac{\iota}{\delta}$, la transition vers $K^{\star}$ est monotone décroissante.\newline
+  \item Si $K_0<\frac{\iota}{\delta}$, la transition vers $K^{\star}$ est monotone croissante.\newline
+
+  \item Si $K_0 = K^{\star}$ alors $K(t)=K^{\star}\forall t\in\mathbb R_+$.
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Expérience 2: Investissement variable (a)\ldots}
+
+  \begin{itemize}
+  \item On peut généraliser en considérant un flux d'investissement variable (c'est plus vraisemblable). L'équation différentielle à résoudre devient~:
+    \[
+      \dot K(t) = -\delta K(t) + I(t)
+    \]
+
+    \bigskip
+
+  \item Il s'agit d'une fonction différentielle linéaire à coefficients variables (on a remplacé la constante $\iota$ par une fonction arbitraire $I(t)$).\newline
+
+
+  \item Si la condition initiale est $K(0)=K_0$ alors on peut montrer qu'il existe une unique solution~:
+    \[
+      K(t) = e^{-\delta t}\left(K_0 + \int_0^te^{\delta s}I(s)\mathrm ds\right)
+    \]
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Expérience 2: Investissement variable (b)\ldots}
+
+  \begin{itemize}
+
+  \item Si le taux de dépréciation est nul, $\delta=0$, on voit que le stock de capital à l'instant $t$ est le stock de capital à l'instant initial ($K_0$) plus la somme des flux d'investissement entre 0 et $t$ ($\int_0^tI(s)\mathrm ds$).\newline
+
+  \item Plus généralement, pour interpréter le résultat, notons que $e^{-\tau \delta}$ est le facteur de dépréciation entre 0 et $\tau$. Si $X$ se déprécie au taux $\delta$ alors $\frac{X(t)}{X(0)}=e^{-\delta t}$ et $\frac{X(t)}{X(s)} = \frac{X(t)}{X(0)}\frac{X(0)}{X(s)} = e^{-(t-s)\delta}$.\newline
+
+  \item En réécrivant l'équation pour $K(t)$ sous la forme~:
+    \[
+      K(t) = e^{-\delta t}K_0 + \int_0^te^{-(t-s)\delta}I(s)\mathrm ds
+    \]
+    $K(t)$ est donc la somme de ce qui reste du capital initial, $e^{-\delta t}K_0$, et la somme des flux d'investissement dépréciés~: $e^{-(t-s)\delta}I(s)$ pour $s\in[0,t]$.
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Expérience 2: Investissement variable (c)\ldots}
+
+  \begin{itemize}
+
+  \item Il est difficile d'en dire plus sur la dynamique du stock de capital physique, comme nous pouvions le faire dans le cas où l'investissement est constant, sans spécifier la fonction d'investissmeent\ldots\newline
+
+  \item Heureusement dans le modèle de Solow, on a une idée plus précise sur $I(t)$, qui va nous permettre d'aller beaucoup plus loin.\newline
+
+  \item L'investissement ne vient pas de nul part\ldots Dans une économie fermée il est déterminé par l'épargne qui elle même dépend du revenu (ou de la production) et donc indirectement de $K(t)$.\newline
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{L'investissement}
+
+  \begin{itemize}
+
+  \item Dans une économie fermée l'investissement doit être égal à l'épargne.\newline
+
+  \item[\circled{$\mathcal H$}] On suppose que l'épargne est une faction constante de la production (du revenu).\newline
+
+  \item On note $s\in[0,1]$ le taux d'épargne, on a donc~: $I(t) = sY(t)$.\newline
+
+  \item La production elle même dépend, via la fonction de production, du stock de capital physique et du travail, on a donc $I(t) = s K(t)^{\alpha}L(t)^{1-\alpha}$ et finalement~:
+  \end{itemize}
+
+  \begin{block}{Accumulation du stock de capital physique aggrégé}
+    \[
+      \dot K(t) =  s K(t)^{\alpha}L(t)^{1-\alpha} -  \delta K(t)
+    \]
+  \end{block}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Sans croissance de la population (a)}
+
+  \begin{itemize}
+
+  \item Supposons que la population soit constante, $L(t) = L_0\forall t\in\mathbb R_+$.\newline
+
+  \item La dynamique du capital est alors caractérisée par~:
+    \bigskip
+    \[
+      \dot K(t) =  \underbrace{s L_0^{1-\alpha}K(t)^{\alpha}}_{\text{Investissement}} -  \underbrace{\delta K(t)}_{\text{Dépréciation}}
+    \]
+
+    \bigskip
+
+  \item Il s'agit d'une équation différentielle non linéaire que nous ne savons pas résoudre (on verra en TD qu'il est possible de résoudre cette équation avec un changement de variable).\newline
+
+  \item Sans explicitement résoudre l'équation, on peut se faire une idée assez précise de la dynamique à l'aide d'une analyse graphique.\newline
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Sans croissance de la population (b)}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Pour représenter graphiquement la dynamique nous travaillons dans un plan avec $K$ sur l'axe des abscisses et une quantité de bien homogène sur l'axe des ordonnées.\newline
+
+  \item Dans ce plan on peut représenter~:
+    \medskip
+    \begin{itemize}
+    \item[--] {\color{blue} L'investissement~:} $sL_0^{1-\alpha}K^{\alpha}$, est une courbe monotone croissante concave avec une pente infinie en 0 et nulle en l'infini (Inada) qui a pour origine (0,0).\newline
+    \item[--] {\color{blue} La dépréciation~:} $\delta K$, qui est une droite croissante de pente $\delta$ et d'origine en (0,0).\newline
+    \end{itemize}
+
+  \item Puisque la pente de l'investissement est infinie en 0 alors que la pente de dépréciation est finie ($\delta$), la courbe d'investissement part au dessus de la droite de dépréciation.\newline
+
+  \item Puisque la pente de la courbe d'investissement décroît de façon monotone et tend vers 0, elle croise nécessairement une unique fois la droite de dépréciation.
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Sans croissance de la population (c)}
+
+  \bigskip
+
+  \begin{center}
+    \begin{tikzpicture}[scale=1.3]
+      \begin{axis}[
+        title={},
+        xlabel= $K$,
+        ylabel= {Quantité de bien homogène},
+        xticklabels={,,},
+        yticklabels={,,},
+        enlargelimits=true,
+        grid style={dashed, gray!60},
+        axis x line = bottom,
+        axis y line = left,
+        axis line style={thin},
+        xmin = 0,
+        xmax = 15,
+        ymin = 0,
+        ymax = 0.8,
+        small,
+        ]
+        \addplot[
+        draw=black,
+        thick,
+        smooth,
+        samples=500,
+        domain=0:10,
+        ]
+        {.2*x^0.333333};
+        \node[right] at (10.1, 0.43){{\color{blue}$s L_0^{1-\alpha}K^{\alpha}$}};
+        \addplot[
+        draw=black,
+        thick,
+        smooth,
+        samples=2,
+        domain=0:10,
+        ]
+        {.075*x};
+        \node[right] at (10.1, 0.75){{\color{blue}$\delta K$}};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Sans croissance de la population (c)}
+
+  \bigskip
+
+  \begin{center}
+    \begin{tikzpicture}[scale=1.3]
+      \begin{axis}[
+        title={},
+        xlabel= $K$,
+        ylabel= {Quantité de bien homogène},
+        xticklabels={,,},
+        yticklabels={,,},
+        enlargelimits=true,
+        grid style={dashed, gray!60},
+        axis x line = bottom,
+        axis y line = left,
+        axis line style={thin},
+        xmin = 0,
+        xmax = 15,
+        ymin = 0,
+        ymax = 0.8,
+        small,
+        ]
+        \addplot[
+        draw=black,
+        thick,
+        smooth,
+        samples=500,
+        domain=0:10,
+        ]
+        {.2*x^0.333333};
+        \node[right] at (10.1, 0.43){{\color{blue}$s L_0^{1-\alpha}K^{\alpha}$}};
+        \addplot[
+        draw=black,
+        thick,
+        smooth,
+        samples=2,
+        domain=0:10,
+        ]
+        {.075*x};
+        \node[right] at (10.1, 0.75){{\color{blue}$\delta K$}};
+        \addplot[draw=red, thick, smooth, <->] coordinates {
+          (1,0.075)
+          (1,0.2)};
+        \node[right] at (1.6, 0.13){{\color{red}$\dot K>0$}};
+        \addplot[draw=red, thick, smooth, <->] coordinates {
+          (7,0.525)
+          (7,0.38256142141126714)};
+        \node[right] at (7.6, 0.55){{\color{red}$\dot K<0$}};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
 
 \end{frame}
 
