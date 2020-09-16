@@ -1075,6 +1075,157 @@
 \end{frame}
 
 
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Sans croissance de la population (d)}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Pour toute condition initiale, $K(0)$, l'économie se dirige à long terme vers $K^{\star}$.\newline
+
+  \item La convergence vers $K^{\star}$ est monotone croissante si $K(0)<K^{\star}$ ou décroissante si $K(0)>K^{\star}$.\newline
+
+  \item $K^{\star}$ est ce que l'on appelle un état stationnaire, quand le stock de capital est égal à $K^{\star}$ il ne varie plus ($\dot K = 0$) car l'investissement est exactement égal à la dépréciation.\newline
+
+  \item L'état stationnaire est défini par l'égalité de l'investissement et de la dépréciation~:
+    \[
+      \delta K^{\star} = s L_0^{1-\alpha}{K^{\star}}^{\alpha}
+    \]
+    soit de façon équivalente~:
+    \[
+      K^{\star} = L_0\left(\frac{s}{\delta}\right)^{\frac{1}{1-\alpha}}
+    \]
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Sans croissance de la population (d)}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item À long terme, le stock de capital atteint un niveau plus élevé si le taux d'épargne ($s$) est plus important, si l'élasticité de la production par rapport au capital ($\alpha$) est plus élevée (en supposant $s>\delta$), ou si le taux de dépréciation ($\delta$) est plus faible\newline
+
+    \begin{center}
+      \begin{tikzpicture}[scale=1]
+        \begin{axis}[
+          title={},
+          xlabel= $K$,
+          ylabel= {Quantité de bien homogène},
+          xticklabels={,,},
+          yticklabels={,,},
+          enlargelimits=true,
+          grid style={dashed, gray!60},
+          axis x line = bottom,
+          axis y line = left,
+          axis line style={thin},
+          xmin = 0,
+          xmax = 11,
+          ymin = 0,
+          ymax = 0.8,
+          small,
+          clip=false,
+          ]
+          \addplot[
+          draw=black,
+          thick,
+          smooth,
+          samples=500,
+          domain=0:10,
+          ]
+          {.2*x^0.333333};
+          \node[right] at (10.1, 0.43){{\tiny{\color{blue}$s L_0^{1-\alpha}K^{\alpha}$}}};
+          \addplot[
+          draw=black,
+          thick,
+          smooth,
+          samples=2,
+          domain=0:10,
+          ]
+          {.075*x};
+          \node[right] at (10.1, 0.75){{\tiny{\color{blue}$\delta K$}}};
+          %
+          % Steady state
+          %
+          \coordinate (a) at (4.354648431614539, 0.3265986323710904);
+          \draw [dashed]
+          (a -| 0,0)      node [left] { \tiny $I^{\star}$ }
+          -- (a)          node [circle,fill,inner sep=1pt] {}
+          -- (a |- 0,0)   node [below] { \tiny $K^{\star}$ };
+          %
+          % Increase in the elasticity of production w.r.t. capital
+          %
+          \only<2>{
+            \addplot[
+            draw=red,
+            thick,
+            smooth,
+            samples=500,
+            domain=0:10,
+            ]
+            {.2*x^0.5};
+            \coordinate (a1) at (7.1111111111111125, 0.5333333333333334);
+            \draw [dashed, red]
+            (a1 -| 0,0)      node [left] { \tiny $I^{\star}$ }
+            -- (a1)          node [circle,fill,inner sep=1pt] {}
+            -- (a1 |- 0,0)   node [below] { \tiny $K^{\star}$ };
+            \node at (4.4,0.70) {\color{red}\small $\mathrm d \alpha >0$};
+          }
+          %
+          % Increase in the saving rate
+          %
+          \only<4>{
+            \addplot[
+            draw=red,
+            thick,
+            smooth,
+            samples=500,
+            domain=0:10,
+            ]
+            {.3*x^0.333333333};
+            \coordinate (a2) at (7.999999999999997, 0.5999999999999998);
+            \draw [dashed, red]
+            (a2 -| 0,0)      node [left] { \tiny $I^{\star}$ }
+            -- (a2)          node [circle,fill,inner sep=1pt] {}
+            -- (a2 |- 0,0)   node [below] { \tiny $K^{\star}$ };
+            \node at (4.4,0.70) {\color{red}\small $\mathrm d s >0$};
+          }
+          %
+          % Decrease in the depreciation rate
+          %
+          \only<6>{
+            \addplot[
+            draw=red,
+            thick,
+            smooth,
+            samples=500,
+            domain=0:10,
+            ]
+            {.05*x};
+            \coordinate (a3) at (7.999999999999997, 0.3999999999999999);
+            \draw [dashed, red]
+            (a3 -| 0,0)      node [left] { \tiny $I^{\star}$ }
+            -- (a3)          node [circle,fill,inner sep=1pt] {}
+            -- (a3 |- 0,0)   node [below] { \tiny $K^{\star}$ };
+            \node at (4.4,0.70) {\color{red}\small $\mathrm d \delta <0$};
+          }
+        \end{axis}
+      \end{tikzpicture}
+    \end{center}
+
+  \end{itemize}
+
+\end{frame}
+
+
+
+
 \end{document}
 
 
