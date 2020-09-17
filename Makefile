@@ -4,7 +4,7 @@ ROOT_PATH = .
 
 all: data td-build ds-build cours
 
-data: data/pwt91.csv data/pwt91.mat data/fra_logged_rgdp_per_capita2.dat data/gbr_logged_rgdp_per_capita.dat data/usa_logged_rgdp_per_capita2.dat data/rgdpc-density-1960.dat
+data: data/pwt91.csv data/pwt91.mat data/fra_logged_rgdp_per_capita2.dat data/gbr_logged_rgdp_per_capita.dat data/usa_logged_rgdp_per_capita2.dat data/rgdpc-density-1960.dat data/fra_logged_population.dat
 
 data/pwt91.csv data/mpd2018.csv: data/build.jl
 	@echo "Download xlsx data files (PWT and Maddison databases) and convert to CSV..."
@@ -29,6 +29,10 @@ data/usa_logged_rgdp_per_capita2.dat: data/mpd2018.csv routines/introduction/plt
 data/rgdpc-density-1960.dat: routines/introduction/rgdppcdensity.m
 	@echo "Prepare plot for 1960 and 2000 real gdp per capita..."
 	@cd routines/introduction; matlab -nosplash -nodisplay -batch "rgdppcdensity; quit" 2> /dev/null
+
+data/fra_logged_population.dat: routines/chapitre-1/plt_fra_population_growth.m
+	@echo "Prepare plots for demography in France..."
+	@cd routines/chapitre-1; matlab -nosplash -nodisplay -batch "plt_fra_population_growth; quit" 2> /dev/null
 
 td-build:
 	$(MAKE) -C $(ROOT_PATH)/td all

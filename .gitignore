@@ -10,6 +10,7 @@ cours/*.synctex.gz
 
 data/*.dat
 data/*.xlsx
+data/*.xls
 data/*.csv
 data/*.mat
 

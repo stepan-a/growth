@@ -1224,6 +1224,52 @@
 \end{frame}
 
 
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Démographie, population en France (log)}
+
+  \begin{center}
+    \input{../tikz/fra-logged-population.tex}
+  \end{center}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Démographie, taux de croissance de la population en France (\%)}
+
+  \begin{center}
+    \input{../tikz/fra-population-growth.tex}
+  \end{center}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Démographie}
+
+  \begin{itemize}
+
+  \item On ne cherche pas à expliquer les fluctuations de la population ou la tendance démographique.\newline
+
+  \item On suppose que la population augmente régulièrement de façon exogène, et on note $n>0$ le taux de croissance de la population.\newline
+
+  \item Plus formellement, on a donc~:
+    \[
+      \frac{\dot L(t)}{L(t)} = n \quad \forall t\in\mathbb R_+
+    \]
+    et on suppose que la condition initiale est $L(0) = L_0>0$.\newline
+
+  \item En résolvant cette équation différentielle, on obtient la population à l'instant $t$ commune une fonction de la condition initiale et du taux de croissance~:
+    \[
+      L(t) = L_0e^{nt}
+    \]
+
+  \end{itemize}
+
+\end{frame}
 
 
 \end{document}
