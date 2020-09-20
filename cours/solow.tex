@@ -2083,6 +2083,146 @@
 \end{frame}
 
 
+\begin{frame}
+  \frametitle{Statique comparative}
+  \framesubtitle{Augmentation permanente de l'élasticité de la production par rapport au capital}
+
+  \bigskip
+
+  \begin{block}{}
+    Si $\alpha$ augmente de façon permanente, et si $s>n+\delta$, alors le niveau de long terme de l'économie ($k^{\star}$, $y^{\star}$, $i^{\star}$ ou $c^{\star}$) s'accroît.
+  \end{block}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Pour la production par tête on montre que~:
+    \[
+      \frac{\mathrm d y^{\star}}{\mathrm d \alpha} = \frac{1}{(1-\alpha)^2}\log\left(\frac{s}{n+\delta}\right)\left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+    \]
+    Cette dérivée est positive si et seulement si $s>n+\delta$.\newline
+
+  \item On peut aussi le voir graphiquement.
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{notes}
+  \begin{itemize}
+
+  \item Pour le calcul de la dérivée de la production par tête à l'état stationnaire par rapport à l'élasticité de la production par rapport au capital, notons d'abord que~:
+    \[
+      \frac{\mathrm d}{\mathrm d\alpha} \frac{\alpha}{1-\alpha} = \frac{1}{(1-\alpha)^2}
+    \]
+    Ensuite on reconnaît que nous devons dériver une fonction de la forme~:
+    \[
+      f(x) = a^{u(x)}
+    \]
+    par rapport à $x$, où $a$ est une constante réelle positive. Pour ce faire on réécrit la fonction sous la forme équivalente suivante~:
+    \[
+      f(x) = e^{u(x)\log a}
+    \]
+    En utilisant la dérivée de la fonction exponentielle (et la dérivation en chaîne), il vient après simplification~:
+    \[
+      f'(x)= u'(x)\log (a) a^{u(x)}
+    \]
+
+    \bigskip
+
+  \item Le signe de la dérivée de $y^{\star}$ par rapport à $\alpha$
+    dépend d'une condition de sur le taux d'épargne ($s$) et le taux
+    de dépréciation du capital par tête ($n+\delta$). La condition est
+    généralement satisfaite dans les données. Avec les Penn World
+    Tables, on peut trouver des séries pour le taux de dépréciation,
+    calculer le taux de croissance de la population et approximer le
+    taux d'épargne avec le ratio investissement sur PIB. Une aproche
+    plus simple consiste à noter qu'à l'état stationnaire nous
+    avons~:
+    \[
+      \frac{k^{\star}}{y^{\star}} = \frac{s}{n+\delta}
+    \]
+    l'inverse de la productivité moyenne du capital. Il ne nous
+    reste qu'à calculer ce ratio dans les données pour vérifier que
+    la condition est généralement satisfaite. Les deux figures
+    suivantes représentent une série temporelle de ce ratio en
+    France entre 1950 et 2017, puis la moyenne de ce ratio pour une
+    large coupe d'économie.
+  \end{itemize}
+
+  \begin{center}
+    \input{../tikz/fra-k-over-y-ratio.tex}
+  \end{center}
+
+  \begin{center}
+    \input{../tikz/world-k-y-ratios-1960-2000.tex}
+  \end{center}
+
+\end{notes}
+
+
+\begin{frame}
+  \frametitle{Statique comparative}
+  \framesubtitle{Augmentation permanente du taux d'épargne (a)}
+
+  \bigskip
+
+  \begin{block}{}
+    Si $s$ augmente de façon permanente, alors $k^{\star}$, $y^{\star}$ et $i^{\star}$ augmentent, mais l'effet sur la consommation par tête à long terme est ambigüe.
+  \end{block}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Pour la production par tête on montre que~:
+    \[
+      \frac{\mathrm d y^{\star}}{\mathrm d s} = \frac{\alpha}{1-\alpha}\frac{1}{n+\delta}\left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}-1}>0
+    \]
+    car le rendement marginal du capital est décroissant ($\alpha<1$).\newline
+
+  \item Pour l'investissement par tête, on a~:
+    \[
+      \frac{\mathrm d i^{\star}}{\mathrm d s} = y^{\star} + s\frac{\mathrm d y^{\star}}{\mathrm d s}>0
+    \]
+
+  \item On peut aussi le voir graphiquement.
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Statique comparative}
+  \framesubtitle{Augmentation permanente du taux d'épargne (b)}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Pour la consommation par tête c'est un peu plus compliqué\ldots Rappelons que~:
+    \[
+      c^{\star} = (1-s) y^{\star}
+    \]
+
+    \medskip
+
+  \item Une augmentation de $s$ augmente $y^{\star}$, comme nous venons de le montrer, mais aussi diminue $(1-s)$.\newline
+
+  \item Pour augmenter la taille du gâteau on sacrifie une fraction du gâteau\ldots L'effet total dépend du rendement du sacrifice. On a~:
+    \[
+      \frac{\mathrm d c^{\star}}{\mathrm d s} = (1-s)\frac{\mathrm d y^{\star}}{\mathrm d s} - y^{\star}
+    \]
+    ou encore~:
+    \[
+      \mathrm d c^{\star} = \underbrace{(1-s)\mathrm d y^{\star}}_{\text{Le gain}} - \underbrace{y^{\star}\mathrm d s}_{\text{Le sacrifice}}
+    \]
+
+  \end{itemize}
+
+\end{frame}
+
 
 \end{document}
 
