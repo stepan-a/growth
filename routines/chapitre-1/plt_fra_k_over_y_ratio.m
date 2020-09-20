@@ -1,4 +1,4 @@
-showstatistics = true;
+showstatistics = false;
 
 addpath ../pwt
 
