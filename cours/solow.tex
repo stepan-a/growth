@@ -1272,8 +1272,819 @@
 \end{frame}
 
 
-\end{document}
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Démographie et dynamique du capital (a)}
 
+  \begin{itemize}
+
+  \item La croissance de la population affecte la dynamique du capital~:
+    \[
+      \dot K(t) =  \underbrace{s K(t)^{\alpha}L(t)^{1-\alpha}}_{\text{Investissement}} -  \underbrace{\delta K(t)}_{\text{Dépréciation}}
+    \]
+
+  \item[$\Rightarrow$] Le lien entre la variation du stock de capital
+    ($\dot K(t)$) et le niveau du stock de capital ($K(t)$) n'est plus
+    constant dans le temps\ldots\newline
+
+  \item Car la croissance de la population augmente la production et donc l'investissement.\newline
+
+  \item On dit que l'équation différentielle n'est pas autonome, car l'équation fonctionnelle dépend de $t$ directement via la population $L(t)=e^{nt}$.\newline
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Démographie et dynamique du capital (b)}
+
+  \begin{itemize}
+
+  \item Il n'est plus possible d'étudier simplement la dynamique de $K$, car la courbe d'investissement se déplace de façon continue.\newline
+
+  \end{itemize}
+
+  \begin{center}
+    \begin{tikzpicture}[scale=1]
+      \begin{axis}[
+        title={},
+        xlabel= $K$,
+        ylabel= {Quantité de bien homogène},
+        xticklabels={,,},
+        yticklabels={,,},
+        enlargelimits=true,
+        grid style={dashed, gray!60},
+        axis x line = bottom,
+        axis y line = left,
+        axis line style={thin},
+        xmin = 0,
+        xmax = 11,
+        ymin = 0,
+        ymax = 0.8,
+        small,
+        clip=false,
+        ]
+        \addplot[
+        draw=black,
+        thick,
+        smooth,
+        samples=500,
+        domain=0:10,
+        ]
+        {.2*x^0.333333};
+        \node[right] at (10.1, 0.43){{\tiny{\color{blue}$s K^{\alpha}L(t)^{1-\alpha}$}}};
+        \addplot[
+        draw=black,
+        thick,
+        smooth,
+        samples=2,
+        domain=0:10,
+        ]
+        {.075*x};
+        \node[right] at (10.1, 0.75){{\tiny{\color{blue}$\delta K$}}};
+        %
+        % Steady state
+        %
+        \coordinate (a) at (4.354648431614539, 0.3265986323710904);
+        \draw [dashed]
+        (a -| 0,0)      node [left] { \tiny $I^{\star}$ }
+        -- (a)          node [circle,fill,inner sep=1pt] {}
+        -- (a |- 0,0)   node [below] { \tiny $K^{\star}$ };
+        %
+        % Growing population (1)
+        %
+        \only<2->{
+          \addplot[
+          draw=black!60,
+          thick,
+          smooth,
+          samples=500,
+          domain=0:10,
+          ]
+          {.25*x^0.333333333};
+          \coordinate (a1) at (6.085806194501845, 0.45643546458763834);
+          \draw [dashed, black!60]
+          (a1 -| 0,0) node [left] { \tiny $I^{\star}$ }
+          -- (a1) node [circle,fill,inner sep=1pt] {}
+          -- (a1 |- 0,0) node [below] { \tiny $K^{\star}$ };
+        }
+        %
+        % Growing population (2)
+        %
+        \only<3->{
+          \addplot[
+          draw=black!30,
+          thick,
+          smooth,
+          samples=500,
+          domain=0:10,
+          ]
+          {.3*x^0.333333333};
+          \coordinate (a2) at (7.999999999999997, 0.5999999999999998);
+          \draw [dashed, black!30]
+          (a2 -| 0,0)      node [left] { \tiny $I^{\star}$ }
+          -- (a2)          node [circle,fill,inner sep=1pt] {}
+          -- (a2 |- 0,0)   node [below] { \tiny $K^{\star}$ };
+        }
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Démographie et dynamique du capital (c)}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Tout se passe comme si l'équation différentielle définissant
+    la dynamique du stock de capital physique changeait à chaque instant.\newline
+
+  \item Le déplacement de la courbe d'investissement et donc le
+    déplacement vers $+\infty$ de l'intersection entre les courbes
+    d'investissement et de dépréciation ne nous permet plus de définir
+    le comportement du capital à long terme.\newline
+
+  \item On a l'intuition que le stock de capital physique va croître indéfiniment, mais on ne sait pas précisément comment.\newline
+
+  \item Il faut que nous trouvions un moyen de stabiliser la forme de
+    la dynamique, en éliminant l'effet de la croissance
+    démographique.\newline
+
+  \item C'est implicitement ce que nous avons fait plus tôt en posant
+    $L(t)=L_0$ pour tout $t\in\mathbb R_+$, mais cette solution
+    extrême n'est pas satisfaisante.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Stationnariser la dynamique du capital (a)}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Nous contournons le problème en étudiant la dynamique du stock de capital par tête, $k(t)=\nicefrac{K(t)}{L(t)}$, plutôt celle du stock de capital aggrégé.\newline
+
+  \item De façon générale, pour un aggrégat $X(t)$ on définit l'aggrégat par tête avec $x(t) = \nicefrac{X(t)}{L(t)}$.\newline
+
+  \item Si nous parvenons à déterminer les propriétés dynamique de $k(t)$ nous pouvons en déduire celle de $K(t)$ car~:
+    \[
+      K(t) = L(t)k(t) \quad\Rightarrow\quad g_K(t) = g_k(t) + n
+    \]
+    Il suffit de rajouter une constante (le taux de croissance démographique) au taux de croissance du stock de capital par tête pour obtenir le taux de croissance du stock de capital aggrégé.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Stationnariser la dynamique du capital (b)}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Par définition et en utilisant les formules usuelles de dérivation, la variation du stock de capital par tête est donnée par~:
+    \[
+      \begin{split}
+        \dot k(t) &= \frac{\mathrm d}{\mathrm dt}\left(\frac{K(t)}{L(t)}\right)\\
+        &= \frac{\dot K(t)L(t)-K(t)\dot L(t)}{L(t)^2}\\
+        &= \frac{\dot K(t)}{L(t)}-\frac{K(t)}{L(t)}\frac{\dot L(t)}{L(t)}
+      \end{split}
+    \]
+    \[
+      \Leftrightarrow\dot k(t) = \frac{\dot K(t)}{L(t)} - nk(t)
+    \]
+
+    \bigskip
+
+  \item Sur le membre de droite il nous reste le stock de capital aggrégé rapporté à la population, que nous devons éliminer pour obtenir une expression de $\dot k(t)$ en fonction de $k(t)$.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Stationnariser la dynamique du capital (c)}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item En substituant la loi d'évolution du stock de capital aggrégé, il vient~:
+    \[
+      \dot k(t) = \frac{s K(t)^{\alpha}L(t)^{1-\alpha}-\delta K(t)}{L(t)} - nk(t)
+    \]
+
+    \bigskip
+
+  \item En répartissant le dénominateur, $L(t)$, sous les deux puissances (on exploite les rendements d'échelle constants)~:
+    \[
+      \dot k(t) = s \left(\frac{K(t)}{L(t)}\right)^{\alpha}\left(\frac{L(t)}{L(t)}\right)^{1-\alpha} - (n+\delta)k(t)
+    \]
+
+    \bigskip
+
+  \item Finalement~:
+    \[
+      \dot k(t) = s k(t)^{\alpha} - (n+\delta)k(t)
+    \]
+
+    \medskip
+
+    Une équation différentielle non linéaire d'ordre 1 \textbf{autonome}, la variation du stock de capital par tête ne dépend que de son niveau.\newline
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Dynamique du capital par tête (a)}
+
+  \bigskip
+
+  \begin{block}{Accumulation du stock de capital physique par tête}
+    \[
+      \dot k(t) =  s k(t)^{\alpha} -  (n+\delta) k(t)
+    \]
+  \end{block}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item $s k(t)^{\alpha}$ est l'investissement par tête (le taux d'épargne fois la production par tête),\newline
+
+  \item $(n+\delta)k(t)$ est la dépréciation du capital par tête. Le terme $(n+\delta)$ s'interprète comme le taux de dépréciation du capital par tête. Celui-ci se déprécie pour deux raisons~:\newline
+
+    \begin{itemize}
+    \item[($\delta$)] parce que les machines s'usent, et
+    \item[($n$)] parce que le nombre de travailleurs par machine augmente.
+    \end{itemize}
+
+    \bigskip
+
+  \item Le stock de capital par tête s'accroît ssi l'investissement
+    est supérieur à la dépréciation du stock de capital par tête.
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{Dynamique du capital par tête (b)}
+
+  \begin{center}
+    \begin{tikzpicture}[scale=1.3]
+      \begin{axis}[
+        title={},
+        xlabel= $k$,
+        ylabel= {},
+        xticklabels={,,},
+        yticklabels={,,},
+        enlargelimits=true,
+        grid style={dashed, gray!60},
+        axis x line = bottom,
+        axis y line = left,
+        axis line style={thin},
+        xmin = 0,
+        xmax = 11,
+        ymin = 0,
+        ymax = 0.8,
+        small,
+        clip=false,
+        ]
+        \addplot[
+        draw=black,
+        thick,
+        smooth,
+        samples=500,
+        domain=0:10,
+        ]
+        {.2*x^0.333333};
+        \node[right] at (10.1, 0.43){{\tiny{\color{blue}$s k^{\alpha}$}}};
+        \addplot[
+        draw=black,
+        thick,
+        smooth,
+        samples=2,
+        domain=0:10,
+        ]
+        {.075*x};
+        \node[right] at (10.1, 0.75){{\tiny{\color{blue}$(n+\delta) k$}}};
+        \node at (0.5,0) {\tiny $\blacktriangleright$};
+        \node at (1.5,0) {\tiny $\blacktriangleright$};
+        \node at (2.5,0) {\tiny $\blacktriangleright$};
+        \node at (3.5,0) {\tiny $\blacktriangleright$};
+        \node at (5.5,0) {\tiny $\blacktriangleleft$};
+        \node at (6.5,0) {\tiny $\blacktriangleleft$};
+        \node at (7.5,0) {\tiny $\blacktriangleleft$};
+        \node at (8.5,0) {\tiny $\blacktriangleleft$};
+        \node at (9.5,0) {\tiny $\blacktriangleleft$};
+        %
+        % Steady state
+        %
+        \addplot[draw=red, thin] coordinates {(4.35464843161454, 0) (4.35464843161454,0.3265986323710905)};
+        \addplot[draw=red, thin] coordinates {(0, 0.3265986323710905) (4.35464843161454,0.3265986323710905)};
+        \node[draw=red,circle, fill=red, scale=.3] at (4.35464843161454,0.3265986323710905) {};
+        \node[below] at (4.35464843161454,0) {\tiny{\color{red}$k^{\star}$}};
+        \node[left] at (0,0.3265986323710905) {\tiny{\color{red}$i^{\star}=(n+\delta)k^{\star}$}};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{État stationnaire (a)}
+
+  \bigskip
+
+  \begin{definition}
+    L'état stationnaire du modèle de Solow est le niveau de capital par tête tel que le stock de capital par tête est constant.
+  \end{definition}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Quand le stock de capital par tête est constant toutes les variables par tête sont constantes, car~:
+    $y = k^{\alpha}$, $c = (1-s)k^{\alpha}$ et $i = sk^{\alpha}$.\newline
+
+  \item D'après la loi d'évolution du stock de capital par tête, à l'état stationnaire l'investissement par tête doit être égal à la dépréciation du capital par tête.\newline
+
+  \item Dans le modèle de Solow il existe deux états stationnaires. Le premier est dit « trivial »~: quand le stock de capital par tête est nul, la production et donc l'investissement par tête sont nuls comme la dépréciation. Dans cet état stationnaire toutes les variables par tête sont nulles\ldots\newline
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{État stationnaire (b)}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Cet état stationnaire ne semble donc pas très intéressant
+    (l'économie n'existe pas), c'est pourquoi on ne le considère pas habituellement.\newline
+
+  \end{itemize}
+
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+      \item Une autre raison d'évacuer l'état stationnaire trivial
+        est qu'il est instable.
+      \item Si une économie en $k=0$ est perturbée (une quantité
+        arbitrairement petite de capital tombe du ciel)\ldots
+      \item Elle s'éloigne définitivement de $k=0$.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{tikzpicture}[scale=.85]
+        \begin{axis}[
+          title={},
+          xlabel= $k$,
+          ylabel= {},
+          xticklabels={,,},
+          yticklabels={,,},
+          enlargelimits=true,
+          grid style={dashed, gray!60},
+          axis x line = bottom,
+          axis y line = left,
+          axis line style={thin},
+          xmin = 0,
+          xmax = 11,
+          ymin = 0,
+          ymax = 0.8,
+          small,
+          clip=false,
+          ]
+          \addplot[
+          draw=black,
+          thick,
+          smooth,
+          samples=500,
+          domain=0:10,
+          ]
+          {.2*x^0.333333};
+          \node[right] at (10.1, 0.43){{\tiny{\color{blue}$s k^{\alpha}$}}};
+          \addplot[
+          draw=black,
+          thick,
+          smooth,
+          samples=2,
+          domain=0:10,
+          ]
+          {.075*x};
+          \node[right] at (10.1, 0.75){{\tiny{\color{blue}$(n+\delta) k$}}};
+          \node at (0.5,0) {\tiny {\color{red}$\blacktriangleright$}};
+          \node at (1.5,0) {\tiny {\color{red}$\blacktriangleright$}};
+          \node at (2.5,0) {\tiny {\color{red}$\blacktriangleright$}};
+          \node at (3.5,0) {\tiny {\color{red}$\blacktriangleright$}};
+          %
+          % Steady state
+          %
+          \addplot[draw=black!60, thin, dashed] coordinates {(4.35464843161454, 0) (4.35464843161454,0.3265986323710905)};
+          \addplot[draw=black!60, thin, dashed] coordinates {(0, 0.3265986323710905) (4.35464843161454,0.3265986323710905)};
+          \node[draw=black,circle, fill=black, scale=.3] at (4.35464843161454,0.3265986323710905) {};
+          \node[draw=red,circle, fill=red, scale=.3] at (0,0) {};
+          \node[below] at (4.35464843161454,0) {\tiny{$k^{\star}$}};
+          \node[left] at (0,0.3265986323710905) {\tiny{$i^{\star}$}};
+
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{État stationnaire (c)}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item L'état stationnaire non trivial $k^{\star}>0$ doit satisfaire~:
+    \[
+      s \left. k^{\star} \right.^{\alpha} = (n+\delta) k^{\star}
+    \]
+    car la variation de $k$ est nulle ssi l'investissement par tête
+    est égal à la dépréciation du capital par tête.\newline
+
+  \item En divisant les deux membres par $k^{\star}$ (que nous avons supposé strictement positif) et le taux d'épargne, il vient~:
+    \[
+      \left. k^{\star} \right.^{\alpha-1} = \frac{n+\delta}{s}
+    \]
+    la productivité moyenne du capital à l'état stationnaire.\newline
+
+  \item En inversant et prenant la racine $1-\alpha$, on obtient finalement~:
+    \[
+      k^{\star} = \left(\frac{s}{n+\delta}\right)^{\frac{1}{1-\alpha}}
+    \]
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{État stationnaire (c)}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item L'état stationnaire non trivial $k^{\star}>0$ doit satisfaire~:
+    \[
+      s \left. k^{\star} \right.^{\alpha} = (n+\delta) k^{\star}
+    \]
+    car la variation de $k$ est nulle ssi l'investissement par tête
+    est égal à la dépréciation du capital par tête.\newline
+
+  \item En divisant les deux membres par $k^{\star}$ (que nous avons supposé strictement positif) et le taux d'épargne, il vient~:
+    \[
+      \left. k^{\star} \right.^{\alpha-1} = \frac{n+\delta}{s}
+    \]
+    la productivité moyenne du capital à l'état stationnaire.\newline
+
+  \item En inversant et prenant la racine $1-\alpha$, on obtient finalement~:
+    \[
+      k^{\star} = \left(\frac{s}{n+\delta}\right)^{\frac{1}{1-\alpha}}
+    \]
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{État stationnaire (d)}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Comme dans le cas avec population constante, l'état
+    stationnaire (qui est aussi le niveau de long terme) est une
+    fonction croissante du taux d'épargne ($s$), décroissante du taux de
+    dépréciation du capital par tête ($n+\delta$), et croissante de l'élasticité
+    $\alpha$.\newline
+
+    \begin{center}
+      \begin{tikzpicture}[scale=1]
+        \begin{axis}[
+          title={},
+          xlabel= $k$,
+          ylabel= {Quantité de bien par tête},
+          xticklabels={,,},
+          yticklabels={,,},
+          enlargelimits=true,
+          grid style={dashed, gray!60},
+          axis x line = bottom,
+          axis y line = left,
+          axis line style={thin},
+          xmin = 0,
+          xmax = 11,
+          ymin = 0,
+          ymax = 0.8,
+          small,
+          clip=false,
+          ]
+          \addplot[
+          draw=black,
+          thick,
+          smooth,
+          samples=500,
+          domain=0:10,
+          ]
+          {.2*x^0.333333};
+          \node[right] at (10.1, 0.43){{\tiny{\color{blue}$s k^{\alpha}$}}};
+          \addplot[
+          draw=black,
+          thick,
+          smooth,
+          samples=2,
+          domain=0:10,
+          ]
+          {.075*x};
+          \node[right] at (10.1, 0.75){{\tiny{\color{blue}$(n+\delta) k$}}};
+          %
+          % Steady state
+          %
+          \coordinate (a) at (4.354648431614539, 0.3265986323710904);
+          \draw [dashed]
+          (a -| 0,0)      node [left] { \tiny $i^{\star}$ }
+          -- (a)          node [circle,fill,inner sep=1pt] {}
+          -- (a |- 0,0)   node [below] { \tiny $k^{\star}$ };
+          %
+          % Increase in the elasticity of production w.r.t. capital
+          %
+          \only<2>{
+            \addplot[
+            draw=red,
+            thick,
+            smooth,
+            samples=500,
+            domain=0:10,
+            ]
+            {.2*x^0.5};
+            \coordinate (a1) at (7.1111111111111125, 0.5333333333333334);
+            \draw [dashed, red]
+            (a1 -| 0,0)      node [left] { \tiny $i^{\star}$ }
+            -- (a1)          node [circle,fill,inner sep=1pt] {}
+            -- (a1 |- 0,0)   node [below] { \tiny $k^{\star}$ };
+            \node at (4.4,0.70) {\color{red}\small $\mathrm d \alpha >0$};
+          }
+          %
+          % Increase in the saving rate
+          %
+          \only<4>{
+            \addplot[
+            draw=red,
+            thick,
+            smooth,
+            samples=500,
+            domain=0:10,
+            ]
+            {.3*x^0.333333333};
+            \coordinate (a2) at (7.999999999999997, 0.5999999999999998);
+            \draw [dashed, red]
+            (a2 -| 0,0)      node [left] { \tiny $i^{\star}$ }
+            -- (a2)          node [circle,fill,inner sep=1pt] {}
+            -- (a2 |- 0,0)   node [below] { \tiny $k^{\star}$ };
+            \node at (4.4,0.70) {\color{red}\small $\mathrm d s >0$};
+          }
+          %
+          % Decrease in the depreciation rate
+          %
+          \only<6>{
+            \addplot[
+            draw=red,
+            thick,
+            smooth,
+            samples=500,
+            domain=0:10,
+            ]
+            {.05*x};
+            \coordinate (a3) at (7.999999999999997, 0.3999999999999999);
+            \draw [dashed, red]
+            (a3 -| 0,0)      node [left] { \tiny $i^{\star}$ }
+            -- (a3)          node [circle,fill,inner sep=1pt] {}
+            -- (a3 |- 0,0)   node [below] { \tiny $k^{\star}$ };
+            \node at (4.4,0.70) {\color{red}\small $\mathrm d (n+\delta) <0$};
+          }
+        \end{axis}
+      \end{tikzpicture}
+    \end{center}
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{État stationnaire (e)}
+
+  \bigskip
+
+  En substituant $k^{\star}$ dans la fonction de production, on déduit l'état stationnaire des autres variables par tête du modèle.
+
+  \bigskip
+
+  \begin{block}{État stationnaire du modèle de Solow}
+    À l'état stationnaire le capital par tête, la production par tête, l'investissement par tête et la consommation par tête sont donnés par~:
+    \begin{eqnarray*}
+      k^{\star} = \left(\frac{s}{n+\delta}\right)^{\frac{1}{1-\alpha}}  &\quad y^{\star} = \left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}\\
+      i^{\star} =  s\left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}  &\quad c^{\star} = (1-s)\left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+    \end{eqnarray*}
+  \end{block}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{État stationnaire (f)}
+
+
+  \begin{center}
+    \begin{tikzpicture}[scale=1.3]
+      \begin{axis}[
+        title={},
+        xlabel= $k$,
+        ylabel= {},
+        xticklabels={,,},
+        yticklabels={,,},
+        enlargelimits=true,
+        grid style={dashed, gray!60},
+        axis x line = bottom,
+        axis y line = left,
+        axis line style={thin},
+        xmin = 0,
+        xmax = 11,
+        ymin = 0,
+        ymax = 0.8,
+        small,
+        clip=false,
+        ]
+        %
+        % Investment
+        %
+        \addplot[
+        draw=black,
+        thick,
+        smooth,
+        samples=500,
+        domain=0:10,
+        ]
+        {.2*x^0.333333};
+        \node[right] at (10.1, 0.43){{\tiny{\color{blue}$s k^{\alpha}$}}};
+        %
+        % Depreciation
+        %
+        \addplot[
+        draw=black,
+        thick,
+        smooth,
+        samples=2,
+        domain=0:10,
+        ]
+        {.075*x};
+        \node[right] at (10.1, 0.75){{\tiny{\color{blue}$(n+\delta) k$}}};
+        %
+        % Output
+        %
+        \addplot[
+        draw=black,
+        thick,
+        smooth,
+        samples=500,
+        domain=0:10,
+        ]
+        {.3*x^0.333333};
+        \node[right] at (10.1, 0.65){{\tiny{\color{blue}$k^{\alpha}$}}};
+        %
+        % Steady state (k,i)
+        %
+        \coordinate (a0) at (4.354648431614539, 0.3265986323710904);
+        \draw [dashed]
+        (a0 -| 0,0)      node [left] { \tiny $i^{\star}$ }
+        -- (a0)          node [circle,fill,inner sep=1pt] {}
+        -- (a0 |- 0,0)   node [below] { \tiny $k^{\star}$ };
+        %
+        % Steady state (k,y)
+        %
+        \coordinate (a1) at (4.354648431614539, 0.48989770830357504);
+        \draw [dashed]
+        (a1 -| 0,0)      node [left] { \tiny $y^{\star}$ }
+        -- (a1)          node [circle,fill,inner sep=1pt] {}
+        -- (a1 |- 0,0);
+        %
+        % Steady state (c)
+        %
+        \addplot[draw=black!80, thin, <->] coordinates {
+          (-1.5, 0.3265986323710904)
+          (-1.5, 0.48989770830357504)};
+        \node[right] at (-2.5, 0.4){{\tiny{$c^{\star}$}}};
+        \addplot[draw=black!40, thin, dotted] coordinates {
+          (-1.5, 0.3265986323710904)
+          (0, 0.3265986323710904)};
+        \addplot[draw=black!40, thin, dotted] coordinates {
+          (-1.5, 0.48989770830357504)
+          (0, 0.48989770830357504)};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'équation fondamentale du modèle de Solow}
+  \framesubtitle{État stationnaire (e)}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Il existe un unique état stationnaire strictement positif.\newline
+
+  \item Cet état stationnaire est globalement stable. Pour toute
+    condition initiale (sauf $y(0)=0$), l'économie se rapproche de cet
+    état stationnaire. En particulier~:
+    \[
+      \lim_{t\rightarrow\infty} y(t) = y^{\star}\quad\forall y(0)
+    \]
+
+    \bigskip
+
+  \item L'histoire n'a pas d'importance à long terme, que l'on soit
+    initialement riche ou pauvre on rejoint le même état
+    stationnaire.\newline
+
+  \item Épuisement de la croissance  à long terme (pourquoi est-ce un problème~?)
+
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Statique comparative}
+  \framesubtitle{Augmentation permanente du taux de croissance démographique}
+
+  \bigskip
+
+  \begin{block}{}
+    Si $n$ (ou $\delta$) augmente de façon permanente, alors le niveau de long terme de l'économie ($k^{\star}$, $y^{\star}$, $i^{\star}$ ou $c^{\star}$) baisse.
+  \end{block}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Relativement intuitif~: s'il y a plus de têtes le niveau des variables par tête diminue (ne pas oublier que le rendement marginal du travail est décroissant).\newline
+
+  \item Pour la production par tête, on a~:
+    \[
+      \frac{\mathrm dy^{\star}}{\mathrm d n} = -\frac{\alpha}{1-\alpha}\frac{s}{(n+\delta)^2}\left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}-1}<0
+    \]
+    car le rendement marginal du capital est décroissant ($\alpha<1$).\newline
+
+  \item On peut aussi le voir graphiquement.
+  \end{itemize}
+
+\end{frame}
+
+
+
+\end{document}
 
 % Local Variables:
 % ispell-check-comments: exclusive
