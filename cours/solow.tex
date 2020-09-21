@@ -876,6 +876,41 @@
 \end{frame}
 
 
+\begin{notes}
+  \begin{itemize}
+
+  \item Pour résoudre l'équation différentielle, multiplions les deux membres par $e^{-\delta t}$~:
+    \[
+      e^{\delta t}\left(\dot K(t)+\delta K(t)\right) = e^{\delta t} I(t)
+    \]
+
+  \item Or, nous avons~:
+    \[
+      \begin{split}
+        \frac{\mathrm d}{\mathrm dt} e^{\delta t} K(t) &= e^{\delta t} \dot K(t) + \delta e^{\delta t}K(t)\\
+        &= e^{\delta t}\left(\dot K(t)+\delta K(t)\right)
+      \end{split}
+    \]
+
+  \item On peut donc réécrire l'équation différentielle sous la forme~:
+    \[
+      \frac{\mathrm d}{\mathrm ds} e^{\delta s} K(s) = e^{\delta s} I(s)
+    \]
+
+  \item En intégrant les deux membres entre 0 et $t$, il vient~:
+    \[
+      e^{\delta t}K(t) - K(0) = \int_0^te^{\delta s} I(s)\mathrm ds
+    \]
+    et donc~:
+    \[
+      K(t) = e^{-\delta t}\left(K(0) + \int_0^te^{\delta s} I(s)\mathrm ds\right)
+    \]
+
+  \end{itemize}
+
+\end{notes}
+
+
 \begin{frame}
   \frametitle{L'équation fondamentale du modèle de Solow}
   \framesubtitle{Expérience 2: Investissement variable (b)\ldots}
