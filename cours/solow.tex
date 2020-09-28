@@ -2323,6 +2323,162 @@
 \end{frame}
 
 
+\begin{frame}
+  \frametitle{La rêgle d'or}
+  \framesubtitle{Stock de capital optimal (a)}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Nous avons déjà montré que le niveau du stock de capital par tête à long terme, $k^{\star}$, est une fonction monotone croissante du taux d'épargne $s$.\newline
+
+  \item Ainsi, maximiser le niveau de la consommation par tête à long terme, $c^{\star}$, par rapport à $s$ est équivalent à maximiser $c^{\star}$ par rapport à $k^{\star}$.\newline
+
+  \item Écrivons $c^{\star}$ comme une fonction de $k^{\star}$~:
+    \[
+      \begin{split}
+        c^{\star}(k^{\star}) &= \left(1-s\right)\left.k^{\star}\right.^{\alpha}\\
+        &= \left(1-(n+\delta)\left.k^{\star}\right.^{1-\alpha}\right)\left.k^{\star}\right.^{\alpha}\\
+        &= \underbrace{\left.k^{\star}\right.^{\alpha}}_{y^{\star}}-\underbrace{(n+\delta)k^{\star}}_{i^{\star}}\\
+      \end{split}
+    \]
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{La rêgle d'or}
+  \framesubtitle{Stock de capital optimal (b)}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item La condition nécessaire d'optimalité est obtenue en annulant $\left.c^{\star}\right.'(k^{\star})$~:
+    \[
+      \alpha \left. k_{\textrm{or}}^{\star}\right. ^{\alpha-1} = n+\delta
+    \]
+    \[
+      \Leftrightarrow \alpha \left. k_{\textrm{or}}^{\star}\right. ^{\alpha-1}-\delta = n
+    \]
+
+    \bigskip
+
+  \item À l'optimum, la productivité marginale du capital nette de la dépréciation (qui doit correspondre à la rémunération du capital dans un environnement parfaitement concurrentiel, $r^{\star}$) doit être égale au taux de croissance de la population.\newline
+
+  \item Si le taux d'intérêt réel est supérieur au taux de croissance de la population, c'est-à-dire si $k^{\star}<k_{\textrm{or}}^{\star}$ on a intérêt à reporter de la consommation vers le futur (augmenter l'épargne).\newline
+
+  \item On vérifie que $\left.c^{\star}\right.''(k^{\star})<0$, nous avons bien un unique optimum.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{La rêgle d'or}
+  \framesubtitle{Taux d'épargne optimal}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item En substituant l'expression de l'état stationnaire du capital par tête, il vient~:
+    \[
+      \alpha \left(\left(\frac{s_{\mathrm{or}}}{n+\delta}\right)^{\frac{1}{1-\alpha}}\right)^{\alpha-1} = n+\delta
+    \]
+    à l'optimum.\newline
+
+  \item On a donc~:
+    \[
+      \alpha \frac{n+\delta}{s_{\mathrm{or}}} = n+\delta
+    \]
+    et donc~:
+    \[
+      s_{\mathrm{or}} = \alpha
+    \]
+
+    \bigskip
+
+  \item Le taux d'épargne de la règle d'or est égal à la part de la rémunération du capital dans le revenu total.\newline
+
+  \item Si le taux d'épargne effectif est différent de la part de la rémunération du capital, le niveau de la consommation à long terme sera sous optimal.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{La rêgle d'or}
+  \framesubtitle{Faut-il suivre les recommendations de la rêgle d'or~? (a)}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Si $s\neq s_{\mathrm{or}}$ doit-on inciter les ménages à changer leur comportement d'épargne~?\newline
+
+  \item Sur les considérations de long terme, la réponse est sans aucun doute positive. Mais il faut aussi prendre en compte la transition\ldots\newline
+
+  \item On distingue deux situations~:\newline
+
+    \begin{columns}
+      \begin{column}{.5\textwidth}
+        \begin{Center}
+          \textbf{Sur-accumulation}\\
+          $s>s_{\mathrm{or}}$
+        \end{Center}
+        \begin{itemize}
+        \item L'économie épargne trop.\newline
+        \item Diminuer le taux d'épargne augmente $c^{\star}$\ldots\newline
+        \item Et augmente la consommation à court terme.
+        \end{itemize}
+      \end{column}
+      \begin{column}{.5\textwidth}
+        \begin{Center}
+          \textbf{Sous-accumulation}\\
+          $s<s_{\mathrm{or}}$
+        \end{Center}
+        \begin{itemize}
+        \item L'économie épargne trop peu.\newline
+        \item Augmenter le taux d'épargne augmente $c^{\star}$\ldots\newline
+        \item Mais diminue la consommation à court terme.
+        \end{itemize}
+      \end{column}
+    \end{columns}
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{La rêgle d'or}
+  \framesubtitle{Faut-il suivre les recommendations de la rêgle d'or~? (b)}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Dans une situation de sous accumulation il y a un arbitrage entre les générations.\newline
+
+  \item La génération présente devrait sacrifier son niveau de consommation pour le bénéfice des générations futures.\newline
+
+  \item La réponse de la génération présente dépendra de sa préférence pour le bien-être des générations futures...\newline
+
+  \item Mais aussi de la durée, le long de la transition, de la période durant laquelle son niveau de consommation sera moindre.\newline
+
+  \item Si l'économie converge très vite vers l'état stationnaire, il n'y a plus d'arbitrage entre les générations.\newline
+
+  \item C'est pourquoi il est important d'avoir les idées plus claires sur la dynamique de transition.
+
+  \end{itemize}
+
+\end{frame}
 \end{document}
 
 % Local Variables:
