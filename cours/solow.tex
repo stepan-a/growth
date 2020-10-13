@@ -2982,6 +2982,122 @@
 \end{frame}
 
 
+\begin{frame}
+  \frametitle{Progrès technique}
+  \framesubtitle{Dynamique de transition (a)}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Caractérisons plus précisement la dynamique de transition en calculant le taux de croissance du stock de capital par tête efficace à l'instant $t$.\newline
+
+  \item On a par définition~:
+    \[
+      g_{\hat k}(t) = \frac{\dot{\hat{k}}(t)}{\hat{k}(t)}
+    \]
+
+    \bigskip
+
+  \item En substituant la loi d'évolution du stock de capital par tête efficace, il vient directement~:
+    \[
+      g_{\hat k}(t) = s\hat k(t)^{\alpha-1} - (n+x+\delta)
+    \]
+    Notons que $\hat k^{\alpha-1}$ peut se lire comme $\nicefrac{\hat y}{\hat k}$ la productivité moyenne du capital.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Progrès technique}
+  \framesubtitle{Dynamique de transition (b)}
+
+  \begin{block}{Taux de croissance du capital par tête efficace}
+    \[
+      g_{\hat k}(t) = \underbrace{\frac{s\hat y}{\hat k}}_{\substack{\text{L'investissement par}\\\text{unité de capital}}} - \underbrace{(n+x+\delta)}_{\substack{\text{Le taux de dépréciation du capital}\\\text{par tête efficace}}}
+    \]
+  \end{block}
+
+  \begin{itemize}
+
+  \item Le taux de croissance du stock de capital physique par tête efficace est égal à l'investissemenent net (de la dépréciation) par unité de capital.\newline
+
+  \item On peut représenter graphiqement ce taux de croissance en notant que:\newline
+    \begin{itemize}
+
+    \item $\nicefrac{\hat y}{\hat k}$ est une fonction monotone décroissante de $\hat k$ ($\alpha<1$),
+    \item $\nicefrac{\hat y}{\hat k}$ tend vers $\infty$ quand $\hat k$ tend vers 0 (Inada)
+    \item $\nicefrac{\hat y}{\hat k}$ tend vers $0$ quand $\hat k$ tend vers $\infty$ (Inada)
+    \end{itemize}
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Progrès technique}
+  \framesubtitle{Dynamique de transition (c)}
+
+  \begin{center}
+    \begin{tikzpicture}[scale=1.3]
+      \begin{axis}[
+        title={},
+        xlabel= $\hat k$,
+        ylabel= {$g_{\hat k}$},
+        xticklabels={,,},
+        yticklabels={,,},
+        enlargelimits=true,
+        grid style={dashed, gray!60},
+        axis x line = bottom,
+        axis y line = left,
+        axis lines = middle,
+        axis line style={thin},
+        xmin = -1,
+        xmax = 11,
+        ymin = -0.2,
+        ymax = 0.8,
+        small,
+        clip=false,
+        ]
+        \addplot[
+        draw=black,
+        thick,
+        smooth,
+        samples=500,
+        domain=.175:10,
+        ]
+        {.267*x^(0.333333-1)-0.1} ;
+        \addplot[
+        draw=black,
+        dashed,
+        samples=2,
+        domain=0:10,
+        ] coordinates { (0, -.08) (10, -.08)};
+        \node[right] at (10.1, -.05) {\tiny \color{blue} $s\hat k^{\alpha-1}-(n+x+\delta)$};
+        \node at (0.5,0) {\tiny $\blacktriangleright$};
+        \node at (1.5,0) {\tiny $\blacktriangleright$};
+        \node at (2.5,0) {\tiny $\blacktriangleright$};
+        \node at (3.5,0) {\tiny $\blacktriangleright$};
+        \node at (5.5,0) {\tiny $\blacktriangleleft$};
+        \node at (6.5,0) {\tiny $\blacktriangleleft$};
+        \node at (7.5,0) {\tiny $\blacktriangleleft$};
+        \node at (8.5,0) {\tiny $\blacktriangleleft$};
+        \node at (9.5,0) {\tiny $\blacktriangleleft$};
+        \node[left] at (-.5,-.08) {\tiny $-(n+x+\delta)$};
+        %
+        % Steady state
+        %
+        \node[below] at (4.35464843161454,0) {\tiny{\color{red}$\hat k^{\star}$}};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+
+
+\end{frame}
+
 \end{document}
 
 % Local Variables:
