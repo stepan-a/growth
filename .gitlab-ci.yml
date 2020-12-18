@@ -34,7 +34,7 @@ pdf:
 web:
   stage: deploy
   only:
-    - master@University/growth
+    - master@stepan/growth
   tags:
     - restricted
   dependencies:
