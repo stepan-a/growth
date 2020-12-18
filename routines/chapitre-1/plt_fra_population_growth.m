@@ -3,13 +3,15 @@ showstatistics = false;
 
 % Load Maddison data
 warning ('off','all');
-T = readtable('../../data/maddison-pop.csv');
+T = readtable('../../data/mpd2018.csv');
 warning ('on','all');
 
-years = T.x1;
-srows = find(years>=1820);
+years = T.year;
+srows = (years>=1820);
+frows = cellfun(@(x) isequal(x, 'France'), T.country);
+Srows = find(srows & frows); 
 
-fra_pop = [years(srows), 1000*T.France(srows)];
+fra_pop = [years(Srows), 1000*T.pop(Srows)];
 
 if showstatistics
     % Plot the logged population
