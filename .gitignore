@@ -7,6 +7,7 @@ cours/*.nav
 cours/*.snm
 cours/*.toc
 cours/*.synctex.gz
+cours/*.rubbercache
 
 data/*.dat
 data/*.xlsx
