@@ -19,5 +19,8 @@ img/*.eps
 
 ds/*.pdf
 ds/*.tikz
+ds/*.aux
+ds/*.log
+ds/*.out
 
 td/*/*.pdf
