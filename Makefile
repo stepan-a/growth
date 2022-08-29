@@ -1,6 +1,6 @@
 ROOT_PATH = .
 
-.PHONY: all clean-all data cours
+.PHONY: all push clean-all data cours
 
 all: data td-build ds-build cours
 
@@ -60,3 +60,19 @@ data-clean:
 	rm data/*.dat data/*xlsx data/*.mat data/*.csv
 
 clean-all: td-clean ds-clean cours-clean data-clean
+
+push: all
+	rsync -vz --progress cours/introduction.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/cours/
+	rsync -vz --progress cours/solow.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/cours/
+	rsync -vz --progress ds/partiel-2013.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/exam/
+	rsync -vz --progress ds/partiel-2014.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/exam/
+	rsync -vz --progress ds/partiel-2018.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/exam/
+	rsync -vz --progress ds/correction-partiel-2013.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/exam/
+	rsync -vz --progress ds/correction-partiel-2014.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/exam/
+	rsync -vz --progress ds/correction-partiel-2018.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/exam/
+	rsync -vz --progress td/1/td1.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/td/1/
+	rsync -vz --progress td/2/td2.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/td/2/
+	rsync -vz --progress td/3/td3.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/td/3/
+	rsync -vz --progress td/1/correction-td1.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/td/1/
+	rsync -vz --progress td/2/correction-td2.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/td/2/
+	rsync -vz --progress td/3/correction-td3.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/td/3/
