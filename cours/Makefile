@@ -6,7 +6,7 @@ all: introduction.pdf solow.pdf clean
 	@rubber --src-specials --unsafe --pdf $*
 
 clean:
-	@rm -f *.aux *.log *.out *.nav *.rel *.toc *.snm *.synctex.gz *.vrb
+	@rm -f *.aux *.log *.out *.nav *.rel *.toc *.snm *.synctex.gz *.vrb *.rubbercache
 	@rm -rf auto
 
 clean-all:
