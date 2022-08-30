@@ -1,6 +1,6 @@
 debug = false;
 
-T = readtable('../../data/pwt91.csv');
+T = readtable('../../data/pwt100.csv');
 
 countries = unique(T.countrycode);
 variables = T.Properties.VariableNames;
@@ -20,4 +20,4 @@ for i = 5:length(variables)
     end
 end
 
-save ../../data/pwt91.mat PWT countries variables years
+save ../../data/pwt100.mat PWT countries variables years

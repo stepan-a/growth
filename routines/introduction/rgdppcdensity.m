@@ -3,9 +3,9 @@ debug = false;
 addpath ../pwt
 addpath ../kde
 
-pwt = load('../../data/pwt91.mat');
+pwt = load('../../data/pwt100.mat');
 
-init = 1960; last = 2000;
+init = 1960; last = 2019;
 
 [rgdpo, countries1, years1] = makesample(pwt, 'rgdpo', init:last);
 [pop, countries2, years2] = makesample(pwt, 'pop', init:last);
@@ -43,6 +43,6 @@ end
 fid = fopen('../../data/rgdpc-density-1960.dat', 'w');
 fprintf(fid, '%d \t %12.8f\n', [transpose(x1); transpose(f1)]);
 fclose(fid);
-fid = fopen('../../data/rgdpc-density-2000.dat', 'w');
+fid = fopen('../../data/rgdpc-density-2019.dat', 'w');
 fprintf(fid, '%d \t %12.8f\n', [transpose(x2); transpose(f2)]);
 fclose(fid);

@@ -4,7 +4,7 @@ import urllib.request as url
 import pandas as pd
 
 MADDISON = 'mpd2020'
-PWT ='pwt91'
+PWT ='pwt100'
 
 MADDISON_PATH = 'https://www.rug.nl/ggdc/historicaldevelopment/maddison/data/'+MADDISON+'.xlsx'
 PWT_PATH = 'https://www.rug.nl/ggdc/docs/'+PWT+'.xlsx'

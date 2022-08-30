@@ -3,9 +3,9 @@ tikz = false;
 
 addpath ../pwt
 
-pwt = load('../../data/pwt91.mat');
+pwt = load('../../data/pwt100.mat');
 
-init = 1960; last = 2000;
+init = 1960; last = 2019;
 
 [rgdpo, countries1, years1] = makesample(pwt, 'rgdpo', init:last);
 [pop, countries2, years2] = makesample(pwt, 'pop', init:last);
@@ -15,6 +15,9 @@ if ~isequal(countries1, countries2)
 end
 
 countries = countries1;
+
+% display number of countries in the sample
+fprintf('Number of countries observed between %s and %s is %s\n', num2str(init), num2str(last), num2str(length(countries)));
 
 rgdpc = rgdpo./pop;
 lrgdpc = log(rgdpc);
@@ -34,40 +37,43 @@ fprintf('Min growth rate is %s for %s\n', num2str(gmin), countries{imin});
 fprintf('Max growth rate is %s for %s\n', num2str(gmax), countries{imax});
 
 % Poorest in year init
-[yminInit, iyInit] = min(lrgdpc(1,:));
+[yminInit, iyInit] = min(rgdpc(1,:));
 fprintf('Country with smallest GDP/capita in %s is %s (%s)\n', int2str(init), countries{iyInit}, num2str(yminInit));
 
 % Richest in year init
-[ymaxInit, iyInit] = max(lrgdpc(1,:));
+[ymaxInit, iyInit] = max(rgdpc(1,:));
 fprintf('Country with highest GDP/capita in %s is %s (%s)\n', int2str(init), countries{iyInit}, num2str(ymaxInit));
 
-fprintf('Level factor in %s is %s\n', int2str(init), num2str(exp(ymaxInit)/exp(yminInit)))
+fprintf('Level factor in %s is %s\n', int2str(init), num2str(ymaxInit/yminInit))
 
 % Poorest in year last
-[yminLast, iyLast] = min(lrgdpc(end,:));
+[yminLast, iyLast] = min(rgdpc(end,:));
 fprintf('Country with smallest GDP/capita in %s is %s (%s)\n', int2str(last), countries{iyLast}, num2str(yminLast));
 
 % Richest in year init
-[ymaxLast, iyLast] = max(lrgdpc(end,:));
+[ymaxLast, iyLast] = max(rgdpc(end,:));
 fprintf('Country with highest GDP/capita in %s is %s (%s)\n', int2str(last), countries{iyLast}, num2str(ymaxLast));
 
-fprintf('Level factor in %s is %s\n', int2str(last), num2str(exp(ymaxLast)/exp(yminLast)))
+fprintf('Level factor in %s is %s\n', int2str(last), num2str(ymaxLast/yminLast))
 
 % Disasters
 list_d = list(grgdpc<0,:)
 
-for i=1:size(list_d, 1)
-    fprintf('%s (%s%%), ', list_d{i,1}, num2str(list_d{i,2},2))
+if ~isempty(list_d)
+    for i=1:size(list_d, 1)
+        fprintf('%s (%s%%), ', list_d{i,1}, num2str(list_d{i,2},2))
+    end
 end
 
 % Miracles
 list_m = list(grgdpc>5,:)
 
-for i=1:size(list_m, 1)
-    fprintf('%s (%s%%), ', list_m{i,1}, num2str(list_m{i,2},2))
+if ~isempty(list_m)
+    for i=1:size(list_m, 1)
+        fprintf('%s (%s%%), ', list_m{i,1}, num2str(list_m{i,2},2))
+    end
 end
 
-fprintf('\n\n%s (%s%%) ', list_m{1,1}, num2str(list_m{1,2},2))
 % Max growth rate
 [gmax, imax] = max(grgdpc);
 fprintf('Max growth rate is %s for %s\n', num2str(gmax), countries{imax});
