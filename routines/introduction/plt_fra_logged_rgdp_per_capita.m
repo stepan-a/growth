@@ -1,11 +1,11 @@
 showstatistics = false;
 
 % Load Maddison data
-T = readtable('../../data/mpd2018.csv');
+T = readtable('../../data/mpd2020.csv');
 
 % Select FRA data
 srows = find(T.countrycode=="FRA");
-fra_rgdp = [T.year(srows), T.cgdppc(srows)];
+fra_rgdp = [T.year(srows), T.gdppc(srows)];
 
 % We only use data when they become available every year
 srows = find(fra_rgdp(:,1)>=1280);
@@ -28,6 +28,7 @@ if showstatistics
     % Compute average growth annual rate
     G1 = fra_rgdp(srows(end),2)/fra_rgdp(srows(1),2);
     g1 = (G1^(1/(fra_rgdp(srows(end),1)-fra_rgdp(srows(1),1)))-1)*100;
+    G1
     g1
 end
 
@@ -52,5 +53,6 @@ if showstatistics
     % Compute average growth annual rate
     G2 = fra_rgdp(srows(end),2)/fra_rgdp(srows(1),2);
     g2 = (G2^(1/(fra_rgdp(srows(end),1)-fra_rgdp(srows(1),1)))-1)*100;
+    G2
     g2
 end

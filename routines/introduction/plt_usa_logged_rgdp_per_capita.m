@@ -1,11 +1,11 @@
 showstatistics = false;
 
 % Load Maddison data
-T = readtable('../../data/mpd2018.csv');
+T = readtable('../../data/mpd2020.csv');
 
 % Select USA data
 srows = find(T.countrycode=="USA");
-usa_rgdp = [T.year(srows), T.cgdppc(srows)];
+usa_rgdp = [T.year(srows), T.gdppc(srows)];
 
 % We only use data when they become available every year
 srows = find(usa_rgdp(:,1)>=1800);
