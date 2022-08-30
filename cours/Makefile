@@ -2,8 +2,14 @@ LATEX = pdflatex
 
 all: introduction.pdf solow.pdf clean
 
-%.pdf: %.tex
-	@rubber --src-specials --unsafe --pdf $*
+introduction.pdf: introduction.tex ../data/fra_logged_rgdp_per_capita2.dat ../data/fra_logged_rgdp_per_capita1.dat ../data/gbr_logged_rgdp_per_capita.dat ../data/usa_logged_rgdp_per_capita2.dat ../data/rgdpc-density-1960.dat ../tikz/us-real-gdp-per-capita.tex ../tikz/us-real-gdp-per-capita-with-regression.tex ../tikz/us-real-gdp-per-capita-level.tex ../tikz/uk-real-gdp-per-capita.tex ../tikz/fra-1-real-gdp-per-capita.tex ../tikz/fra-2-real-gdp-per-capita.tex ../tikz/world-1950-2017.tex ../tikz/world-1960-2000.tex ../tikz/density-1960-2000.tex
+	@rubber --src-specials --unsafe --pdf introduction
+
+solow.pdf: solow.tex ../data/fra_logged_population.dat ../data/fra_k_over_y_ratio.dat ../tikz/fra-logged-population.tex ../tikz/fra-population-growth.tex ../tikz/fra-k-over-y-ratio.tex ../tikz/world-k-y-ratios-1960-2000.tex
+	@rubber --src-specials --unsafe --pdf solow
+
+# %.pdf: %.tex
+#	@rubber --src-specials --unsafe --pdf $*
 
 clean:
 	@rm -f *.aux *.log *.out *.nav *.rel *.toc *.snm *.synctex.gz *.vrb *.rubbercache
