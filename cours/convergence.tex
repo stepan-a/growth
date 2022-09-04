@@ -1,0 +1,1636 @@
+\synctex=1
+
+\documentclass[10pt,notheorems]{beamer}
+
+\usepackage{etex}
+\usepackage{fourier-orns}
+\usepackage{ccicons}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsbsy}
+\usepackage{amsopn}
+\usepackage{amscd}
+\usepackage{amsxtra}
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{color, colortbl}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{lastpage}
+\usepackage[nice]{nicefrac}
+\usepackage{setspace}
+\usepackage{ragged2e}
+\usepackage{listings}
+\usepackage{algorithms/algorithm}
+\usepackage{algorithms/algorithmic}
+\usepackage[frenchb]{babel}
+\usepackage{tikz,pgfplots,pgfplotstable}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{patterns, arrows, decorations.pathreplacing, decorations.markings, decorations.text, calc}
+\pgfplotsset{plot coordinates/math parser=false}
+\newlength\figureheight
+\newlength\figurewidth
+%\usepackage[utf8x]{inputenc}
+\usepackage{cancel}
+\usepackage{tikz-qtree}
+\usepackage{dcolumn}
+\usepackage{adjustbox}
+\usepackage{environ}
+\usepackage[cal=boondox]{mathalfa}
+\usepackage{manfnt}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=black,
+  urlcolor=black,
+}
+\usepackage{venndiagram}
+\usepackage{scrextend}
+\usepackage[normalem]{ulem}
+
+% Git hash
+\usepackage{xstring}
+\usepackage{catchfile}
+\immediate\write18{git rev-parse HEAD > git.hash}
+\CatchFileDef{\HEAD}{git.hash}{\endlinechar=-1}
+\newcommand{\gitrevision}{\StrLeft{\HEAD}{7}}
+
+\newcommand{\trace}{\mathrm{tr}}
+\newcommand{\vect}{\mathrm{vec}}
+\newcommand{\tracarg}[1]{\mathrm{tr}\left\{#1\right\}}
+\newcommand{\vectarg}[1]{\mathrm{vec}\left(#1\right)}
+\newcommand{\vecth}[1]{\mathrm{vech}\left(#1\right)}
+\newcommand{\iid}[2]{\mathrm{iid}\left(#1,#2\right)}
+\newcommand{\normal}[2]{\mathcal N\left(#1,#2\right)}
+\newcommand{\dynare}{\href{http://www.dynare.org}{\color{blue}Dynare}}
+\newcommand{\sample}{\mathcal Y_T}
+\newcommand{\samplet}[1]{\mathcal Y_{#1}}
+\newcommand{\slidetitle}[1]{\fancyhead[L]{\textsc{#1}}}
+
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\binomial}[2]{\begin{pmatrix} #1 \\ #2 \end{pmatrix}}
+\newcommand{\bigO}[1]{\mathcal O \left(#1\right)}
+\newcommand{\red}{\color{red}}
+\newcommand{\blue}{\color{blue}}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=1.0pt] (char) {#1};}}
+
+\renewcommand{\qedsymbol}{C.Q.F.D.}
+
+\newcolumntype{d}{D{.}{.}{-1}}
+\definecolor{gray}{gray}{0.9}
+\newcolumntype{g}{>{\columncolor{gray}}c}
+
+\setbeamertemplate{theorems}[numbered]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Théorème}
+
+\theoremstyle{definition} % insert bellow all blocks you want in normal text
+\newtheorem{definition}{Définition}
+\newtheorem{properties}{Propriétés}
+\newtheorem{lemma}{Lemme}
+\newtheorem{assumption}{Hypothèse}
+\newtheorem{property}[properties]{Propriété}
+\newtheorem{example}{Exemple}
+\newtheorem*{idea}{Éléments de preuve} % no numbered block
+
+\setbeamertemplate{footline}{
+  {\hfill\vspace*{1pt}\href{http://creativecommons.org/licenses/by-sa/3.0/legalcode}{\ccbysa}\hspace{.1cm}
+    \raisebox{-.1cm}{\href{https://github.com/stepan-a/growth}{\includegraphics[scale=.015]{../img/git.png}}}\enspace
+    \href{https://github.com/stepan-a/growth/blob/\HEAD/cours/convergence.tex}{\gitrevision}\enspace--\enspace\today\enspace
+  }}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{caption}[numbered]
+
+
+\NewEnviron{notes}{\justifying\tiny\begin{spacing}{1.0}\BODY\vfill\pagebreak\end{spacing}}
+
+\newenvironment{exercise}[1]
+{\bgroup \small\begin{block}{Ex. #1}}
+  {\end{block}\egroup}
+
+\newenvironment{defn}[1]
+{\bgroup \small\begin{block}{Définition. #1}}
+  {\end{block}\egroup}
+
+\newenvironment{exemple}[1]
+{\bgroup \small\begin{block}{Exemple. #1}}
+  {\end{block}\egroup}
+
+
+
+
+
+
+\begin{document}
+
+\title{Croissance\\\small{Convergence}}
+\author[S. Adjemian]{St\'ephane Adjemian}
+\institute{\texttt{stephane.adjemian@univ-lemans.fr}}
+\date{Septembre 2022}
+
+\begin{frame}
+  \titlepage{}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Plan}
+  \tableofcontents
+\end{frame}
+
+
+\section{Rattrapage}
+
+\begin{frame}
+  \frametitle{Rattrapage, I}
+
+  \begin{itemize}
+
+  \item Dans le chapitre II nous avons vu qu'il existe une relation décroissante
+    entre le taux de croissance du stock de capital par tête efficace d'une
+    économie et son niveau.\newline
+
+  \item On a aussi une relation décroissante pour la production par tête efficace
+    (avec une fonction de production Cobb-Douglas le taux de croissance de
+    $\hat y$ est proportionnel au taux de croissance de $\hat k$)~:
+    \[
+      g_{\hat y}(t) = \alpha s  \frac{\hat y}{\hat k} - \alpha (n+x+\delta)
+    \]
+    soit en remplaçant $\hat k$ par $\hat y^{\frac{1}{\alpha}}$~:
+    \[
+      g_{\hat y}(t) = \alpha s  \hat y(t)^{-\frac{1-\alpha}{\alpha}} - \alpha (n+x+\delta)
+    \]
+    avec une puissance négative sur $\hat y$, d'où la relation décroissante
+    entre taux de croissance et niveau.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Rattrapage, II}
+
+  \begin{itemize}
+
+  \item On peut exprimer $(n+x+\delta)$ en fonction de l'état stationnaire (voir la définition de $y^\star$)~:
+    \[
+      n+x+\delta = s \left.y^{\star}\right.^{-\frac{1-\alpha}{\alpha}}
+    \]
+
+  \item En substituant dans l'équation de $g_{\hat y}$~:
+    \[
+      g_{\hat y}(t) = \alpha s  \hat y^{-\frac{1-\alpha}{\alpha}} - \alpha s \left.y^{\star}\right.^{-\frac{1-\alpha}{\alpha}}
+    \]
+
+  \item Soit en factorisant~:
+    \[
+      g_{\hat y}(t) = \alpha (n+x+\delta)\left(\left(\frac{y(t)}{y^{\star}}\right)^{-\frac{1-\alpha}{\alpha}}-1\right)
+    \]
+
+  \item[$\Rightarrow$] $g_{\hat y}\geq 0$ ssi $\hat y\leq \left.\hat y^{\star}\right.$ \& $|g_{\hat y}|$ est d'autant plus grand que $\hat y$ est éloigné de $\hat y^\star$.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Rattrapage, III}
+
+  \begin{itemize}
+
+  \item Idem pour le taux de croissance de la production par tête car~:
+    \[
+      g_y(t) = g_{\hat y}(t) + x
+    \]
+
+  \item Le taux de croissance du PIB par tête est d'autant plus important que
+    l'économie est éloignée de sa tendance de long terme~:\newline
+
+    \begin{columns}
+      \begin{column}{0.5\textwidth}
+        \begin{center}
+        \begin{tikzpicture}[scale=.8]
+          \begin{axis}[
+            title={},
+            xlabel= {Temps},
+            ylabel= {Production par tête en logarithme},
+            xticklabels={,,},
+            yticklabels={,,},
+            enlargelimits=true,
+            grid style={dashed, gray!60},
+            axis x line = bottom,
+            axis y line = left,
+            axis line style={thin},
+            xmin = 0,
+            xmax = 11,
+            ymin = 0,
+            ymax = 2,
+            small,
+            clip=false,
+            ]
+            \addplot[
+            draw=red,
+            thick,
+            dashed,
+            smooth,
+            samples=2,
+            domain=0:10,
+            ]
+            {x*.1+1};
+            \addplot[
+            draw=black,
+            thick,
+            smooth,
+            samples=100,
+            domain=0:10,
+            ]
+            {x*.1+1-.6*exp(-.5*x)};
+            \node[right] at (0, .4) {\tiny $\log y(0)$};
+          \end{axis}
+        \end{tikzpicture}
+        \end{center}
+      \end{column}
+      \begin{column}{0.5\textwidth}
+        \begin{itemize}
+
+        \item La droite rouge représente la tendance de long terme en logarithme, sa pente est $x$.\newline
+
+        \item La courbe noire est la trajectoire de la production par tête en logarithme.\newline
+
+        \item Quand celle-ci démarre sous la tendance de long terme, la pente de $\log y(t)$ est en tout point supérieure à
+          celle de la tendance de long terme ($x$).
+
+        \end{itemize}
+      \end{column}
+    \end{columns}
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Rattrapage, IV}
+  \framesubtitle{Les États Unis d'Amérique du Nord (rattrapage de la tendance)}
+
+  \begin{columns}
+      \begin{column}{0.8\textwidth}
+        \input{../tikz/us-real-gdp-per-capita-with-regression.tex}
+      \end{column}
+      \begin{column}{0.2\textwidth}
+        \footnotesize{
+        C'est parce qu'en moyenne l'économie croît plus vite que la tendance
+        quand elle s'en écarte par dessous, et croît en moyenne moins vite quand
+        elle s'en écarte par dessus, qu'elle revient toujours vers la tendance.}
+      \end{column}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Rattrapage, V}
+  \framesubtitle{}
+
+  \begin{itemize}
+
+  \item Supposons que deux économies $A$ et $B$ soient structurellement
+    identiques~: elles ont la même croissance démographique ($n$), elles
+    bénéficient du même progrès technique ($x$), elles ont le même comportement
+    d'épargne ($s$), le capital se déprécie de la même façon ($\delta$) et elles
+    utilisent la même technologie ($\alpha$). Les deux économies ont donc le même
+    état stationnaire.\newline
+
+  \item Ces économies ne diffèrent que par leurs fortunes respectives. On
+    supposera que $\hat y_A(0)<\hat y_B(0)$, c'est-à-dire que l'économie $A$ est
+    initialement moins riche (en termes de production par tête).\newline
+
+  \item On suppose aussi que $\hat y_B(0)<y^\star$.\newline
+
+  \item Le modèle de Solow nous dit que le taux de croissance de l'économie $A$
+    doit être supérieur à celui de l'économie $B$
+
+  \end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Rattrapage, VI}
+  \framesubtitle{}
+
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{center}
+        \begin{tikzpicture}[scale=1]
+          \begin{axis}[
+            title={},
+            xlabel= $\hat y$,
+            ylabel= {$g_{\hat y}$},
+            xticklabels={,,},
+            yticklabels={,,},
+            enlargelimits=true,
+            grid style={dashed, gray!60},
+            axis x line = bottom,
+            axis y line = left,
+            axis lines = middle,
+            axis line style={thin},
+            xmin = -1,
+            xmax = 11,
+            ymin = -0.2,
+            ymax = 0.8,
+            small,
+            clip=false,
+            ]
+            \addplot[
+            draw=black,
+            thick,
+            smooth,
+            samples=500,
+            domain=.175:10,
+            ]
+            {.3*x^(0.4-1)-0.1} ;
+            \addplot +[mark=none, red] coordinates {(1, 0) (1, .2)};
+            \node[below] at (1,0) {\tiny{\red $\hat y_A(0)$}};
+            \addplot +[mark=none, blue] coordinates {(3, 0) (3, 0.055184557391535966)};
+            \node[below] at (3,0) {\tiny{\blue $\hat y_B(0)$}};
+            \node[below] at (6.240251469155713,0) {\tiny{$\hat y^{\star}$}};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+      \end{column}
+      \begin{column}{0.5\textwidth}
+        \begin{itemize}
+
+        \item L'économie $A$ va rattraper l'économie $B$ (puisque son taux de croissance est plus élevé).\newline
+
+        \item À long terme, les deux économies atteignent le même niveau.\newline
+
+        \item Si le modèle est correct nous devrions observer, dans les données,
+          que le taux de croissance d'une économie pauvre est en moyenne plus
+          important que le taux de croissance d'une économie riche.
+
+        \end{itemize}
+      \end{column}
+    \end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Rattrapage, VII}
+  \framesubtitle{Convergence des pays de l'OCDE (1950-2019)}
+  \begin{Center}
+    \input{../tikz/oecd-1950-2019.tex}
+  \end{Center}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Rattrapage, VII'}
+  \framesubtitle{Convergence des pays de l'OCDE (1950-2019)}
+
+  \begin{itemize}
+
+  \item Comme attendu, les économies plus pauvres en 1950 ont, en moyenne, un taux de croissance du PIB par tête plus élevé.\newline
+
+  \item On a bien ici une relation décroissante entre le taux de croissance du PIB par tête et son niveau.\newline
+
+  \item On observe donc un rattrapage des économies initialement moins bien dotées vers les économies plus riches.\newline
+
+  \item À long terme les niveaux de PIB par tête de ces économies de l'OCDE devraient converger vers un même niveau.\newline
+
+    \medskip
+
+  \item \textbf{Problème} On ne retrouve pas cette relation décroissante pour des échantillons plus larges.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Rattrapage, VIII}
+  \framesubtitle{Non convergence (1960-2019)}
+
+  \begin{Center}
+    \input{../tikz/world-1960-2019-with-regression.tex}
+  \end{Center}
+
+\end{frame}
+
+
+\begin{notes}
+
+  \begin{list}{$\bullet$}{}
+
+  \item La droite rouge sur la figure précédente, qui résume la relation entre
+    le taux de croissance et la condition initiale, est ce que l'on appelle en
+    statistique une droite de régression.\newline
+
+  \item Supposons que nous disposions d'un échantillon de $N$ observations pour
+    le taux de croissance et la condition initiale du PIB par tête~:
+    $\left\{g_{y,i}, \log y_i(0)\right\}_{i=1}^N$.\newline
+
+  \item On cherche une droite $g_{y,i} = \alpha + \beta \log y_i(0)$,
+    c'est-à-dire des valeurs pour les paramètres $\alpha$ et $\beta$, qui
+    représente le mieux possible le nuage de points dans le plan
+    $\left(\log y_i(0), g_{y,i}\right)$.\newline
+
+  \item A priori, il est impossible de trouver une droite qui passe par les $N$
+    points, sauf si par miracle l'échantillon est parfaitement aligné le long
+    d'une droite, c'est-à-dire si le taux de croissance est une fonction
+    linéaire du logarithme de la condition initiale du PIB par tête (on se doute
+    que ce n'est pas le cas).
+
+  \item On reconnaît qu'il n'est pas possible de d'expliquer le taux de
+    croissance seulement à partir de la condition initiale dans un modèle
+    linéaire, en adoptant le modèle suivant~:
+    \[
+      g_{y,i} = \alpha + \beta \log y_i(0) + \varepsilon_i
+    \]
+    où le résidu $\varepsilon$ représente la croissance que nous ne pouvons
+    expliquer avec la condition initiale. Ce résidu peut être contenir des
+    erreurs de mesures ou des variables omises. Nous ne savons pas vraiment, à
+    ce stade (voir plus loin) de quoi il s'agit. On supposera qu'il s'agit d'une
+    variable aléatoire de moyenne nulle (changer la moyenne revient à changer la
+    valeur de la constante $\alpha$, il y a un problème d'identification).\newline
+
+  \item Chercher la droite qui représente le mieux possible le nuage de points
+    revient à chercher les valeurs de $\alpha$ et $\beta$ qui minimise la part
+    inexpliquée de la croissance (les $\varepsilon$).\newline
+
+  \item Comme les $\varepsilon$ peuvent être négatifs ou positifs, on va
+    chercher les valeurs des paramètres $\alpha$ et $\beta$ qui minimisent les $\varepsilon^2$.
+
+  \item L'estimateur des MCO (Moindres Carrés Ordinaires) est défini par le problème suivant~:
+    \[
+      \left(\hat\alpha,\hat\beta\right) = \arg\max_{\alpha,\beta}\sum_{i=1}^N\varepsilon_i^2
+    \]
+    \[
+      \Leftrightarrow \left(\hat\alpha,\hat\beta\right) = \arg\max_{\alpha,\beta}\sum_{i=1}^N\left(g_{y,i} - \alpha - \beta \log y_i(0) \right)^2
+    \]
+
+    \pgfmathsetseed{1138} % set the random seed
+    \pgfplotstableset{ % Define the equations for x and y
+      create on use/x/.style={create col/expr={6+\pgfplotstablerow}},
+      create on use/y/.style={create col/expr={(-0.8*\thisrow{x}+10)+rand}}
+    }
+    \pgfplotstablenew[columns={x,y}]{9}\loadedtable
+
+    \pgfplotstablecreatecol[linear regression]{regression}{\loadedtable}
+
+    \pgfplotsset{
+      colored residuals/.style 2 args={
+        only marks,
+        scatter,
+        point meta=explicit,
+        colormap={redblue}{color=(#1) color=(#2)},
+        error bars/y dir=minus,
+        error bars/y explicit,
+        error bars/draw error bar/.code 2 args={
+            \pgfkeys{/pgf/fpu=true}
+            \pgfmathtruncatemacro\positiveresidual{\pgfplotspointmeta<0}
+            \pgfkeys{/pgf/fpu=false}
+            \ifnum\positiveresidual=0
+                \draw [#2] ##1 -- ##2;
+            \else
+                \draw [#1] ##1 -- ##2;
+            \fi
+          },
+          /pgfplots/table/.cd,
+          meta expr=(\thisrow{y}-\thisrow{regression})/abs(\thisrow{y}-\thisrow{regression}),
+          y error expr=\thisrow{y}-\thisrow{regression}
+        },
+        colored residuals/.default={red}{blue}
+      }
+
+      \begin{center}
+        \begin{tikzpicture}
+          \begin{axis}[
+            xlabel={$\log y(0)$},
+            ylabel={$g_y(0)$},
+            axis lines=left,
+            xmin=5, xmax=15,
+            ymin=-2, ymax=7,
+            ]
+
+            \makeatletter
+            \addplot [colored residuals] table {\loadedtable};
+            \addplot [
+            no markers,
+            thick, black
+            ] table [y=regression] {\loadedtable} ;
+          \end{axis}
+        \end{tikzpicture}
+      \end{center}
+
+      \medskip
+
+    \item Les segments verticaux, entre les observations et la droite de régression, représentent les résidus $\varepsilon$ dont nous allons minimiser la somme des carrés pour obtenir les estimateurs $\hat\alpha$ et $\hat\beta$.\newline
+
+    \item $\hat\alpha$ et $\hat\beta$ doivent satisfaire (les conditions du 1er ordre)~:
+      \[
+        \begin{cases}
+          \sum_{i=1}^N \left(g_{y,i} - \hat\alpha - \hat\beta \log y_i(0)\right) &= 0\\
+          \sum_{i=1}^N \log y_i(0)\left(g_{y,i} - \hat\alpha - \hat\beta \log y_i(0)\right) &= 0
+        \end{cases}
+      \]
+
+    \item La première condition nous dit que la moyenne des $\hat\varepsilon$ doit être nulle, la seconde condition nous dit que la covariance entre la variable explicative, la condition initiale, et $\hat\varepsilon$ doit être nulle.\newline
+
+    \item Ces deux conditions de moments permettent d'identifier $\hat\alpha$ et $\hat\beta$~:
+      \[
+        \begin{cases}
+          \hat\alpha &= \frac{1}{N} \sum_{i=1}^Ng_{y,i} - \hat\beta \frac{1}{N} \sum_{i=1}^N \log y_i(0) = \overline{g}_{y} - \hat\beta \overline{\log y(0)}\\[12pt]
+          \hat\beta &= \frac{\sum_{i=1}^N\left(\log y_i(0)-\overline{\log y(0)}\right)\left(g_{y,i}-\overline{g}_{y}\right)}{\sum_{i=1}^N\left(\log y_i(0)-\overline{\log y(0)}\right)^2}
+        \end{cases}
+      \]
+
+    \item Il convient de s'interroger sur ce que représentent les estimateurs $\hat\alpha$ et $\hat\beta$.
+
+    \item Supposons que, dans la Nature, le taux de croissance soit
+      effectivement une fonction affine bruitée du logarithme de la condition initiale,
+      c'est-à-dire que les données soient générées par~:
+      \[
+        g_{y,i} = \alpha_0 + \beta_0 \log y_i(0) + \epsilon_i
+      \]
+      où $\alpha_0$ et $\beta_0$ sont les vraies valeurs inconnues des
+      paramètres, $\epsilon_i$ est une variable aléatoire centrée sur zéro, et
+      où, pour faire simple, on suppose que $\log y_i(0)$ est déterministe (Si
+      on considère le cas plus général où il s'agit d'une variable aléatoire il
+      faut raisonner conditionnellement à cette variable. L'important est que
+      cette variable aléatoire soit exogène au sens où elle est orthogonale à la
+      perturbation $\epsilon$).\newline
+
+    \item[\textbf{Remarque 1}] Ce modèle implique que $g_{y,i}$ est une variable
+      aléatoire.\newline
+
+    \item[\textbf{Remarque 2}] Puisque $\hat\alpha$ et $\hat\beta$ sont des
+      fonctions des $g_{y,i}$, les estimateurs sont aussi des variables
+      aléatoires.\newline
+
+    \item[$\Rightarrow$] Si la Nature nous donne un autre échantillon en tirant
+      d'autres réalisations des $\epsilon_i$, on obtiendra d'autres valeurs pour
+      les estimateurs. Il n'y a aucune chance pour que $\hat\beta$ soit égal à
+      la vraie valeur $\beta_0$...\newline
+
+    \item Supposons que la Nature nous fournissent plusieurs échantillons (en
+      tirant des réalisations différentes des $\epsilon_i$), quelle sera la
+      valeur moyenne de l'estimateur $\hat\beta$~?\newline
+
+    \item On peut montrer qu'en moyenne, sous les hypothèses adoptées,
+      $\hat\beta$ sera égal à $\beta_0$, c'est-à-dire que l'espérance de
+      $\hat\beta$ est égale à $\beta_0$. On dit alors que l'estimateur est sans
+      biais.\newline
+
+    \item Par définition, en substituant le modèle de la Nature dans
+      l'expression de l'estimateur de $\beta$, on a~:
+      \[
+        \begin{split}
+          \hat\beta &= \frac{\sum_{i=1}^N\left(\log y_i(0)-\overline{\log y(0)}\right)\left(\alpha_0 + \beta_0 \log y_i(0) + \epsilon_i-\frac{1}{N}\sum_{j=1}^{N}\left(\alpha_0 + \beta_0 \log y_j(0) + \epsilon_j\right)\right)}
+                      {\sum_{i=1}^N\left(\log y_i(0)-\overline{\log y(0)}\right)^2}\\[12pt]
+                    &= \frac{\sum_{i=1}^N\left(\log y_i(0)-\overline{\log y(0)}\right)\left(\alpha_0-\alpha_0 + \beta_0 \left(\log y_i(0)-\overline{\log y(0)}\right) + \epsilon_i-\overline{\epsilon}\right)}
+                      {\sum_{i=1}^N\left(\log y_i(0)-\overline{\log y(0)}\right)^2}\\[12pt]
+                    &= \frac{\beta_0\sum_{i=1}^N\left(\log y_i(0)-\overline{\log y(0)}\right)^2+\sum_{i=1}^N\left(\log y_i(0)-\overline{\log y(0)}\right)\left(\epsilon_i-\overline{\epsilon}\right)}
+                      {\sum_{i=1}^N\left(\log y_i(0)-\overline{\log y(0)}\right)^2}\\[12pt]
+                    &= \beta_0 + \frac{\sum_{i=1}^N\left(\log y_i(0)-\overline{\log y(0)}\right)\left(\epsilon_i-\overline{\epsilon}\right)}
+                      {\sum_{i=1}^N\left(\log y_i(0)-\overline{\log y(0)}\right)^2}\\
+        \end{split}
+      \]
+      Il y a donc bien un rapport entre $\hat\beta$ et $\beta_0$~: l'estimateur
+      de $\beta$ est égal à la vraie valeur du paramètre $\beta_0$ plus un terme
+      aléatoire (à cause de la présence des $\epsilon_i$).
+
+    \item On a donc $\hat\beta \neq \beta_0$, mais la différence (le second
+      terme) est d'espérance nulle car les $\epsilon_i$ sont supposés de
+      moyennes nulles~:
+      \[
+        \mathbb E\left[\frac{\sum_{i=1}^N\left(\log y_i(0)-\overline{\log y(0)}\right)\left(\epsilon_i-\overline{\epsilon}\right)}
+                      {\sum_{i=1}^N\left(\log y_i(0)-\overline{\log y(0)}\right)^2}\right] = \frac{\sum_{i=1}^N\left(\log y_i(0)-\overline{\log y(0)}\right)\mathbb E \left[\epsilon_i-\overline{\epsilon}\right]}
+                      {\sum_{i=1}^N\left(\log y_i(0)-\overline{\log y(0)}\right)^2} = 0
+      \]
+
+    \item On a donc $\mathbb E [\hat\beta] = \beta_0$, en moyenne (sur les échantillons que la Nature peut nous donner) l'estimateur est égal à la vraie valeur du paramètre.\newline
+
+    \item Nous savons que $\hat\beta \neq \beta_0$ car l'estimateur est une
+      variable aléatoire. À l'issue de l'estimation par les MCO nous ne sommes
+      donc pas certain de la valeur de $\beta$. L'incertitude liée à
+      l'estimation est caractérisée par la variance de l'estimateur,
+      $\mathbb V [\hat\beta]$. Si cette variance est grande cela veut dire que
+      $\hat\beta$ peut être éloigné de $\beta_0$, la probabilité que $\hat\beta$
+      soit éloigné de $\beta_0$ est d'autant plus faible que la variance est
+      proche de zéro.\newline
+
+    \item Vous verrez dans un cours de statistique ou d'économétrie comment estimer cette variance.\newline
+
+    \item Dans notre cas, la régression du taux de croissance sur la condition
+      initiale en log, la mesure de cette incertitude est cruciale. En effet, si
+      nous trouvons une pente négative $\hat\beta<0$, sommes nous certain que la
+      pente soit significativement différente de zéro~? C'est-à-dire, sommes
+      nous certain qu'il y a bien une relation décroissante entre taux de
+      croissance et condition initiale (ou que le rendement marginal du capital
+      soit bien décroissant)~?
+
+    \item Dans le cas de l'échantillon de 111 pays observés de 1960 à 2019, on
+      trouve $\hat\beta = -0,1929$ et
+      $\widehat{\mathbb V [\hat\beta]} = 0,0294$.\newline
+
+    \item Dans un cours de statistique ou d'économétrie vous verrez qu'il existe
+      un test pour tester la significativité d'un paramètre basé sur la
+      statistique de Student définie comme le rapport de l'estimateur et de la
+      racine carrée de sa variance). Si cette statistique est inférieure à 1,96
+      en valeur absolue alors on ne peut rejeter l'hypothèse que le paramètre
+      estimé est différent de zéro (avec un certain seuil d'erreur). On dit
+      alors que le paramètre n'est pas significativement de zéro. Dans le cas de
+      notre grand échantillon, cette statistique est égale à -1,1249, la pente
+      n'est pas significativement différente de zéro. Il n'y a pas de relation
+      significative entre le taux de croissance du PIB par tête et le logarithme
+      de la condition initiale du PIB par tête. Dans le cas des pays de l'OCDE,
+      on peut montrer que cette relation (décroissante) est significative.\newline
+
+    \item[\textbf{Remarque 3}] Ces estimations sont, pour un économiste, insatisfaisantes
+      car on ne comprend pas vraiement ce que nous estimons~: comment devons
+      nous interprêter les paramètres estimés ? Que représente $\epsilon$~? Nous
+      reviendrons là dessus plus loin en montrant comment les paramètres du
+      modèle estimé sont liés aux paramètres du modèle de Solow.
+
+  \end{list}
+
+\end{notes}
+
+
+\begin{frame}
+  \frametitle{Rattrapage, VIII'}
+  \framesubtitle{Non convergence (1960-2019)}
+
+  \begin{itemize}
+
+  \item La droite rouge, qui résume la relation entre taux de croissance et
+    niveau initial, est bien décroissante.\newline
+
+  \item Mais la pente est beaucoup plus faible que dans le cas des économies de
+    l'OCDE et on peut montrer que le coefficient directeur de la droite n'est
+    pas significativement différent de 0.\newline
+
+  \item[$\Rightarrow$] Il n'y a pas de relation significative entre le taux de
+    croissance et le niveau initial du PIB par tête, c'est-à-dire pas de rattrapage.\newline
+
+    \bigskip
+
+  \item Faut-il rejeter le modèle de Solow~?
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Rattrapage, IX}
+  \framesubtitle{}
+
+  \begin{itemize}
+
+  \item Sur la base de ce résultât, certains économistes (par exemple Romer en
+    1986) rejettent l'hypothèse de rendement marginal décroissant du capital (et
+    donc le modèle de Solow).\newline
+
+  \item Mais on peut expliquer ce résultat, sans pour autant
+    abandonner cette hypothèse...En revenant sur l'hypothèse d'homogénéité structurelle~: Toutes
+    les économies ne sont pas identiques par rapport à $n$, $s$, ... Les états
+    stationnaires sont différents, les cibles des économies sont différentes.\newline
+
+  \item Si l'état stationnaire est spécifique à chaque économie, le modèle de
+    Solow prédit toujours que l'économie (dé)croît d'autant plus qu'elle est
+    éloignée de \emph{son} état stationnaire, mais il n'y a pas de raison qu'une
+    économie pauvre croisse plus vite qu'une économie riche.\newline
+
+  \item Le rattrapage est conditionnel à l'hétérogénéité des niveaux de long terme.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Rattrapage, IX'}
+  \framesubtitle{}
+
+  \begin{center}
+        \begin{tikzpicture}[scale=1.4]
+          \begin{axis}[
+            title={},
+            xlabel= {\tiny $\hat y$},
+            ylabel= {\tiny $g_{\hat y}$},
+            xticklabels={,,},
+            yticklabels={,,},
+            enlargelimits=true,
+            grid style={dashed, gray!60},
+            axis x line = bottom,
+            axis y line = left,
+            axis lines = middle,
+            axis line style={thin},
+            xmin = -1,
+            xmax = 20,
+            ymin = -0.2,
+            ymax = 0.8,
+            small,
+            clip=false,
+            ]
+            \addplot[
+            draw=red,
+            thick,
+            smooth,
+            samples=500,
+            domain=.175:10,
+            ]
+            {.3*x^(0.4-1)-0.1} ;
+            \addplot[
+            draw=blue,
+            thick,
+            smooth,
+            samples=500,
+            domain=2.8:19,
+            ]
+            {.6*(x-2)^(0.3-1)-0.1} ;
+            \addplot +[mark=none, red, dashed] coordinates {(1, 0) (1, .2)};
+            \node[below] at (1,0) {\tiny{\red $\hat y_A(0)$}};
+            \addplot +[mark=none, blue, dashed] coordinates {(3.5, 0) (3.5, 0.35173877418274213)};
+            \node[below] at (3.5,0) {\tiny{\blue $\hat y_B(0)$}};
+            \node[below] at (6.240251469155713,0) {\tiny{\red $\hat y_A^{\star}$}};
+            \node[below] at (14.931373133239166,0) {\tiny{\blue $\hat y_B^{\star}$}};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+
+  L'économie $A$ est initialement plus pauvre que l'économie $B$ mais son taux
+  de croissance est plus faible. Quand les économies ne sont pas
+  structurellement homogènes on ne peut pas directement comparer les taux de
+  croissance entre pays.
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Rattrapage, IX''}
+  \framesubtitle{}
+
+  \begin{itemize}
+
+  \item Quand les économies sont structurellement hétérogènes, le modèle de
+    Solow prédit que chaque économie se rapproche de son état stationnaire et
+    que le long de la transition le taux de croissance décroît en valeur
+    absolue.\newline
+
+  \item La dynamique de transition peut résulter en un éloignement des
+    économies.\newline
+
+  \item Ne pas trouver une relation décroissante entre $g_y$ et $y$ ne doit pas
+    nous conduire à rejeter le modèle de Solow.\newline
+
+  \item Si nous pouvions contrôler des différences sur $n$, $s$, ... et
+    construire des données de taux de croissance purgées de ces différences,
+    nous devrions obtenir une relation décroissante.\newline
+
+  \item On peut le faire en ajoutant des variables explicatives dans le modèle
+    statistique.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Rattrapage, X}
+  \framesubtitle{Les prédictions du modèle de Solow}
+
+  \begin{definition}[Convergence absolue]
+    Si les économies sont structurellement homogènes, le taux de croissance
+    d'une économie pauvre doit être plus élevé que celui d'une économie riche.
+    Les économies pauvres rattrapent les économies riches.
+  \end{definition}
+
+  \bigskip
+
+  \begin{definition}[Convergence conditionnelle]
+    Si les économies sont structurellement hétérogènes, le taux de croissance
+    d'une économie est d'autant plus élevé que celle-ci est éloignée de son état
+    stationnaire. Chaque économie converge vers son propre état stationnaire.
+  \end{definition}
+
+  \bigskip
+
+  \textbf{Remarque} Dans le cas de la convergence absolue chaque économie se
+  rapproche de son état stationnaire, mais toutes les économies ont le même état
+  stationnaire.
+\end{frame}
+
+
+
+\section{Vitesse de convergence}
+
+
+\begin{frame}
+  \frametitle{Vitesse de convergence}
+  \framesubtitle{Motivation}
+
+  \begin{itemize}
+
+  \item Le modèle de Solow prédit une convergence absolue ou conditionnelle des économies.\newline
+
+  \item Il faut un temps infini pour que l'économie atteigne l'état stationnaire (au fur et à mesure qu'elle se rapproche le taux de croissance tend vers zéro).\newline
+
+  \item On peut caractériser quantitativement la transition vers l'état stationnaire en calculant une vitesse de convergence.\newline
+
+  \item Combien de temps faut-il attendre pour réduire de moitié la distance à l'état stationnaire~?\newline
+
+  \item Quantifier plus précisement la transition permet~:
+    \begin{enumerate}
+    \item de tester le modèle de Solow (en comparant la vitesse de convergence théorique avec celle que nous pouvons déduire des données).
+    \item de se faire une idée plus précise sur l'importance des arbitrages intertemporels.
+    \end{enumerate}
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Vitesse de convergence}
+  \framesubtitle{Approximation (1)}
+
+  \begin{itemize}
+
+  \item Pour calculer la demi-vie de la distance à l'état stationnaire, il faut
+    que nous puissions nous faire une idée du niveau de l'économie $k(t)$ (ou
+    $y(t)$) à chaque instant (pour le comparer à $k^\star$, ou
+    $y^{\star}$).\newline
+
+  \item Nous pourrions le faire en résolvant l'équation différentielle
+    caractérisant la dynamique du stock de capital (ou de la
+    production).\newline
+
+  \item Cela n'est pas généralement pas possible de façon analytique car cette
+    équation est nonlinéaire\footnote[frame]{Si la fonction de production est
+      Cobb-Douglas on peut, à l'aide d'un changement de variable, obtenir une solution analytique (voir
+      \href{https://stephane-adjemian.fr/posts/simulation-du-modele-de-solow/}{\dotuline{ici}}).
+      Ici, nous ferons comme si cela n'était pas possible.}.\newline
+
+  \item Généralement on approxime le modèle en le linéarisant.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Vitesse de convergence}
+  \framesubtitle{Approximation (2, Taylor)}
+
+  \begin{itemize}
+
+  \item Le taux de croissance du stock de capital par tête efficace est~:
+    \[
+      g_{\hat k} = \varphi(\hat k) \equiv s \hat k^{\alpha-1} - (n+x+\delta)
+    \]
+
+  \item En considérant une approximation de Taylor à l'ordre un dans un voisinage de l'état stationnaire~:
+    \[
+      g_{\hat k} \approx \varphi(\hat k^{\star}) + \varphi'(\hat k^{\star}) (\hat k - \hat k^\star)
+    \]
+    ou encore~:
+    \[
+      g_{\hat k} \approx \varphi'(\hat k^{\star}) (\hat k - \hat k^\star) = -\varphi'(\hat k^{\star})\hat k^\star + \varphi'(\hat k^{\star})\hat k
+    \]
+    puisque le taux de croissance est nul à l'état stationnaire.\newline
+
+  \item On remplace la fonction non linéaire $\varphi(\hat k)$ par sa tangente en $\hat k^\star$.\newline
+
+  \item Nous pourrions, en principe, approximer le modèle ailleurs qu'en $\hat k^{\star}$... Mais ce serait un très mauvais choix.
+
+  \end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Vitesse de convergence}
+  \framesubtitle{Approximation (3, Taylor (suite))}
+
+  \begin{itemize}
+
+  \item On a~: $\varphi'(\hat k) = -s(1-\alpha)$ et donc à l'état stationnaire~:
+    \[
+      \begin{split}
+        \varphi'(\hat k) &= -(1-\alpha) s \left. \hat k^\star \right. ^{\alpha-2}\\
+                         &= -(1-\alpha) \frac{s \left. \hat k^\star \right. ^{\alpha-1}}{\hat k^\star}\\
+                         &= -(1-\alpha)(n+x+\delta)\frac{1}{\hat k^\star}
+      \end{split}
+    \]
+    où on a exploité la définition de l'état stationnaire dans la dernière ligne.\newline
+
+  \item On a donc~:
+    \[
+      g_{\hat k} \approx -(1-\alpha)(n+x+\delta)\underbrace{\frac{\hat k - \hat k^{\star}}{\hat k^\star}}_{\substack{\text{Déviation à l'état}\\ \text{stationnaire}\\ \text{(en taux)}}}
+    \]
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Vitesse de convergence}
+  \framesubtitle{Approximation (4, logarithme)}
+
+  \begin{itemize}
+
+  \item $g_{\hat k}$ peut s'écrire comme la variation d'un logarithme~: $\dot{\log\hat k}$.\newline
+
+  \item À l'aide d'une approximation, on peut aussi réécrire la déviation à l'état stationnaire avec un $\log$.\newline
+
+  \item Nous savons que $\log 1+x \approx x$ si $x$ est proche de zéro.\newline
+
+  \item Posons $x = \frac{\hat k - \hat k^{\star}}{\hat k^{\star}} = \frac{\hat k }{\hat k^{\star}}-1$, qui doit être proche de 0 si l'économie est proche de l'état stationnaire.\newline
+
+  \item On doit donc avoir $\log(1+x) = \log \frac{\hat k }{\hat k^{\star}} \approx \frac{\hat k - \hat k^{\star}}{\hat k^\star}$.\newline
+
+  \item D'où finalement~:
+    \[
+      \dot{\log\hat k} \approx -(1-\alpha)(n+x+\delta)\log\frac{\hat k }{\hat k^{\star}}
+    \]
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Vitesse de convergence}
+  \framesubtitle{Approximation (5)}
+
+  \begin{itemize}
+
+  \item En notant que $\dot{\log\hat k} = \frac{\mathrm d}{\mathrm dt}\log\left(\nicefrac{\hat k }{\hat k^{\star}}\right)$, c'est-à-dire que le taux de croissance de $\hat k$ est égal au taux de croissance de la position relative  à l'état stationnaire $\nicefrac{\hat k}{\hat k^{\star}}$ (puisque l'état stationnaire est constant), nous avons finalement~:
+    \[
+      \dot{\log\frac{\hat k }{\hat k^{\star}}} \approx -(1-\alpha)(n+x+\delta)\log\frac{\hat k }{\hat k^{\star}}
+    \]
+
+  \item La variation de la distance à l'état stationnaire est une fonction linéaire de la distance à l'état stationnaire. En notant $z(t) = \log\frac{\hat k }{\hat k^{\star}}$, la dynamique approximée peut s'écrire sous la forme~:
+    \[
+      \dot z(t) = -(1-\alpha)(n+x+\delta)z(t)
+    \]
+    une équation différentielle linéaire à coefficients constants et sans second membre (que nous savons résoudre).
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Vitesse de convergence}
+  \framesubtitle{Distance approximée à l'état stationnaire}
+
+  \begin{itemize}
+
+  \item Cette équation différentielle, nous dit que le taux de (dé)croissance de la distance à l'état stationnaire est constant.\newline
+
+  \item Pour une condition initiale donnée de cette distance, $z(0)$, nous avons donc~:
+    \[
+      z(t) = z(0) e^{-\beta t}
+    \]
+    où $\beta=(1-\alpha)(n+x+\delta)>0$, le taux de décroissance de la distance à l'état stationnaire.
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Vitesse de convergence}
+  \framesubtitle{Demi-vie de la distance à l'état stationnaire}
+
+  \bigskip
+
+  \begin{itemize}
+
+  \item Réduire de moitié la distance à l'état stationnaire $\Leftrightarrow$ diviser $z$ par 2.\newline
+
+  \item Le temps nécessaire pour réduire de moitié la distance à l'état stationnaire est $t$ tel que $z(t)/z(0)=\nicefrac{1}{2}$.\newline
+
+  \item On cherche $t$ tel que $e^{-\beta t}=\nicefrac{1}{2}$. En prenant le $\log$, il vient~:
+    \[
+      - \beta t = -\log 2
+    \]
+    \[
+      \Leftrightarrow t = \frac{\log 2}{\beta}
+    \]
+
+  \item Si $\alpha=\nicefrac{1}{3}$ et $n=x=\delta=0.02$, alors $\beta = 4\%$.\newline
+
+  \item[$\Rightarrow$] Il faut un peu plus de 17 ans pour réduire de moitié la distance à l'état stationnaire.\newline
+
+  \item Cela semble trop lent au regard de la série du PIB par tête américain (les écarts à la tendance se referment plus vite).\newline
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{notes}
+
+  \begin{list}{$\bullet$}{}
+
+  \item Le paramètre $\alpha$ représente l'élasticité de la production par
+    rapport au stock de caiptal physique. Sous l'hypothèse de concurrence
+    parfaite, comme nous l'avons vu dans le chapitre II, ce paramètre représente
+    aussi la part du revenu du capital dans le revenu total. Il s'agit du
+    complémentaire de la part du revenu dut travail dans le revenu total. À
+    l'époque de la construction de ces modèles, les économistes s'accordaient
+    majoritairement pour penser que ces parts sont relativement constantes dans
+    le temps mais variables d'une économie à l'autre. Ces observations
+    justifient l'utilisation d'une fonction de production Cobb-Douglas, qui est
+    la seule compatible avec des parts constantes dans le temps. Depuis de
+    nombreuses observations et études tendent à remettre en question la
+    constance de ces parts (voir par exemple ce rapport de
+    l'\href{https://www.oecd.org/g20/topics/employment-and-social-policy/The-Labour-Share-in-G20-Economies.pdf}{\dotuline{OCDE}}).
+    La part du revenu du traval peut se déduire de la comptabilité nationale,
+    les économistes s'accordent en général sur une part autour de
+    $\nicefrac{2}{1}$ et donc une part du capital autour de $\nicefrac{1}{3}$.\newline
+
+  \item Pour le taux de croissance de la population, même s'il y beaucoup
+    d'hétérogénéité, les observations tournent autour de 2\% par année. On fixe
+    donc $n=0.02$. Pour le taux de dépréciation, les observations sont moins
+    directes (dans les versions récentes de la base PWT on dispose d'estimations
+    pour ce taux, la variable notée \textrm{delta}), les économistes de la
+    croissance considèrent généralement $\delta=0.02$ (voir par exemple Mankiw,
+    Romer et Weil (QJE, 1992)). Dans les versions récentes de la base de données
+    PWT, les estimations reportées pour le taux de dépréciation sont
+    sensiblement supérieures à 2\%.
+
+  \item Pour le taux de croissance de l'indice d'efficacité du travail, $x$,
+    nous ne disposons pas d'observation directe, puisque l'efficacité du travail
+    n'est pas observée. Mais nous savons qu'à long terme $x$ est le taux de
+    croissance des variables par tête. Sur longue période (au-delà d'un siècle,
+    voir la base de données de Maddison) le taux de croissance annuel moyen du
+    PIB par tête tourne autour de 2\%, d'où $x =0.02$.
+
+
+  \item On trouve $t=\nicefrac{\log 2}{0,04} \approx 17,33$. Il s'agit d'années
+    car les taux (démographie, efficacité du travail et dépréciation)
+    sont annuels.\newline
+
+  \item Dans le cas de la série de PIB par tête US, on voit que l'économie
+    rejoint beaucoup plus vite la tendance de long terme (ici approximée par la
+    droite rouge). En 17 ans elle ne comble pas la moitié de l'écart, mais
+    plutôt la totalité.\newline
+
+  \item On va voir plus loin qu'il est possible d'exploiter la dimension en
+    coupe pour obtenir une mesure de la vitesse de convergence. On verra qu'il y
+    a encore une incohérence entre la théorie et les données (où la vitesse
+    d'ajustement mesurée vers l'état stationnaire est plus faible que ce qu
+    suggère la théorie), mais que la différence ne va pas dans le même sens.
+    Encore une fois, les dimensions temporelles et en coupe ne sont pas forcément
+    interchangeables.
+
+  \end{list}
+
+\end{notes}
+
+\section{Estimer et tester le modèle de Solow}
+
+\begin{frame}
+  \frametitle{Estimation du modèle de Solow}
+  \framesubtitle{Ramener Solow dans le plan Condition initiale -- Croissance (1)}
+
+  \begin{itemize}
+
+  \item Nous allons estimer le modèle de Solow en exploitant la dimension en coupe.\newline
+
+  \item Nous pourrons alors tester le modèle de Solow. Les prédictions quantitatives du modèle de Solow sont elles en ligne avec ce que nous pouvons voir dans les données~?\newline
+
+  \item Pour cela on va ramener le modèle de Solow dans le plan $(\log y(0), g_y)$, comme dans le graphiques présentés plus haut.\newline
+
+  \item Pour ce faire il nous faut~:\newline
+    \begin{enumerate}
+    \item Décrire la dynamique du PIB par tête efficace (plutôt que du capital physique qui est moins bien observé).\newline
+    \item Décrire la dynamique du PIB par tête (car on n'observe pas l'efficacité des travailleurs).
+    \end{enumerate}
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Estimation du modèle de Solow}
+  \framesubtitle{Ramener Solow dans le plan Condition initiale -- Croissance (2)}
+
+  \begin{itemize}
+
+  \item Pour ramener le modèle dans le plan $(\log \hat y(0), g_{\hat y})$ nos pourrions partir de l'équation différentielle pour $g_{\hat y}$ et utiliser les mêmes approximations que pour $g_{\hat k}$... \newline
+
+  \item Plus simplement, en notant que par définition de la fonction de production nous avons $\log\hat y = \alpha\log\hat k$ (idem à l'état stationnaire), on en déduit que $\log \nicefrac{\hat y}{\hat y^{\star}} = \alpha \log \nicefrac{\hat k}{\hat k^{\star}}$ et $\frac{\mathrm d}{\mathrm dt}\log\nicefrac{\hat y}{\hat y^{\star}} = \frac{\mathrm d}{\mathrm dt}\log\nicefrac{\hat k}{\hat k^{\star}}$.\newline
+
+  \item Et donc directement~:
+    \[
+      \dot{\log\frac{\hat y}{\hat y^{\star}}} = -(1-\alpha)(n+x+\delta)\log\frac{\hat y}{\hat y^{\star}}
+    \]
+
+    \bigskip
+
+  \item Les dynamiques (approximées) de $\hat k$ et $\hat y$sont identiques $\Longrightarrow$ Même vitesse de convergence pour $\hat k$ et $\hat y$.
+
+  \end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Estimation du modèle de Solow}
+  \framesubtitle{Ramener Solow dans le plan Condition initiale -- Croissance (3)}
+
+  \begin{itemize}
+
+  \item En résolvant l'équation différentielle, on a donc~:
+    \[
+      \log \frac{\hat y(t)}{\hat y^{\star}} = e^{-\beta t}\log \frac{\hat y(0)}{\hat y^{\star}}
+    \]
+    \[
+      \log \hat y(t) = e^{-\beta t} \log \hat y(0) + \left(1-e^{-\beta t}\right)\log \hat y^{\star}
+    \]
+
+    \medskip
+
+  \item On a bien $\lim_{t\rightarrow\infty}\hat y(t) = \hat y^{\star}$.\newline
+
+  \item En retranchant $\log \hat y(0)$ et en divisant par $t$ on obtient le taux de croissance annuel de la production par tête efficace prédit par le modèle de Solow (approximé)~:
+    \[
+      \bar g_{\hat y}(0,t) = \frac{1-e^{-\beta t}}{t}\log \hat y^{\star} - \frac{1-e^{-\beta t}}{t}\log \hat y(0)
+    \]
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{notes}
+
+  \begin{list}{$\bullet$}{}
+
+  \item À chaque instant le logarithme de la production par tête efficace est une combinaison convexe de sa condition initiale et de sa cible. Le poids sur la condition initiale tend vers zéro quand $t$ tend vers l'infini, asymptotiquement, l'histoire n'affecte pas le niveau du PIB par tête efficace.\newline
+
+  \item Le taux de croissance moyen du PIB par tête efficace approximé défini par~:
+    \[
+      \bar g_{\hat y}(0,t) = \frac{\log\hat y(t)-\log\hat y(0)}{t}
+    \]
+    dépend négativement de la condition initiale (car $e^{-\beta t}<1$ pour tout $t\in\mathbb R_+$ dès lors que $\beta>0$ c'est-à-dire $\alpha<1$). Le taux de croissance moyen est d'autant plus faible que le niveau initial de la production par tête efficace est élevé.\newline
+
+  \item Nous n'observons la production par tête efficace, mais seulement la production par tête... Il nous reste à déduire la prédiction du modèle de Solow pour la production par tête. Il suffit pour cela de noter que l'on peut réécrire $\hat y(t) = \nicefrac{Y((t)}{A(t)L(t)}$ comme $\hat y(t)=\nicefrac{y(t)}{A(t)}$. On a alors~:
+    \[
+      \begin{split}
+        \bar g_{\hat y}(0,t) &= \frac{\log\frac{y(t)}{A(t)}-\log\frac{y(0)}{A(0)}}{t}\\
+                             &= \frac{\log y(t)-\log y(0) - \left(\log A(t)-\log A(0)\right)}{t}\\
+                             &= \frac{\log y(t)-\log y(0)}{t} - \frac{\log A(t)-\log A(0)}{t}\\
+                             &= \bar g_{\hat y}(0,t) - x\\
+      \end{split}
+    \]
+    car $A(t)=A(0)e^{xt}$, l'efficacité du travail croît au taux constant $x$.
+  \end{list}
+
+\end{notes}
+
+
+\begin{frame}
+  \frametitle{Estimation du modèle de Solow}
+  \framesubtitle{Ramener Solow dans le plan Condition initiale -- Croissance (4)}
+
+  \begin{itemize}
+
+  \item En remplaçant $\hat y(t)$ par $\nicefrac{y(t)}{A(t)}$, sauf pour l'état stationnaire que nous savons exprimer en fonction des paramètres du modèle, on obtient la prédiction du modèle de Solow pour le taux de croissance de la production par tête~:
+    \[
+      \bar g_{y}(0,t) = x + \frac{1-e^{-\beta t}}{t}\log \hat y^{\star} - \frac{1-e^{-\beta t}}{t}\log y(0) + \frac{1-e^{-\beta t}}{t}\log A(0)
+    \]
+
+    \bigskip
+
+  \item On a bien une relation décroissante entre le taux de croissance moyen de la production par tête et sa condition initiale (en logarithme).\newline
+
+  \item \textbf{Problème:} Nous n'observons pas plus $A(0)$ que $\hat y(0)$...
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Estimation du modèle de Solow}
+  \framesubtitle{Un modèle pour tester la convergence absolue (1)}
+
+  \begin{itemize}
+
+  \item Supposons que le monde soit peuplé de $N$ économies structurellement homogènes, $i=1,\ldots,N$. Le taux de croissance, puisque les économies partagent le même état stationnaire, est donné par~:
+    \[
+      \bar g_{y,i}(0,t) = x + \frac{1-e^{-\beta t}}{t}\log \hat y^{\star} - \frac{1-e^{-\beta t}}{t}\log y_i(0) + \frac{1-e^{-\beta t}}{t}\log A_i(0)
+    \]
+
+    \bigskip
+
+  \item L'hétérogénéité du taux de croissance de la production par tête s'explique seulement par les conditions initiales (de la production par tête et de l'efficacité du travail).\newline
+
+  \item Mais l'hétérogénéité de l'efficacité du travail n'est pas observée.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Estimation du modèle de Solow}
+  \framesubtitle{Un modèle pour tester la convergence absolue (2)}
+
+  \begin{assumption}
+    L'efficacité du travail initiale peut s'écrire comme $\log A_i = a + \varepsilon_i$ où $\varepsilon_i$ est une variable aléatoire i.i.d. telle que~:
+    \[
+      \mathbb E [\varepsilon_i] = 0 \quad \forall i\in\{1,\ldots,N\},
+    \]
+    \[
+      \mathbb V [\varepsilon_i] = \sigma_A^2 \quad \forall i\in\{1,\ldots,N\}
+    \]
+    et
+    \[
+      \mathbb Cov(\varepsilon_i, \log y_j(0)) = 0 \quad \forall (i,j)\in\{1,\ldots,N\}^2
+    \]
+  \end{assumption}
+
+
+  \begin{itemize}
+
+  \item La nullité de l'espérance permet d'identifier $a$ comme le niveau moyen de l'efficacité du travail (en logarithme).\newline
+
+  \item Les hypothèses sur la variance et la covariance sont des propriétés qui
+    assurent que nous sommes capables d'estimer le modèle efficacement et sans
+    biais.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{notes}
+
+  \begin{list}{$\bullet$}{}
+
+  \item Sous l'hypothèse 1, on décompose le niveau initial de l'efficacité du
+    travail en une partie commune, la constance $a$ qui ne varie pas d'une
+    économie à l'autre, et une partie idiosyncrasique, $\varepsilon_i$ est
+    spécifique à chaque économie. Dans certaines économies le niveau de
+    l'efficacité du travail est inférieur au niveau moyen, dans d'autres il est
+    supérieur. Nous n'avons rien à dire sur l'origine de l'hétérogénéité.\newline
+
+  \item Nous supposons que la variance de $\varepsilon_i$ ne dépend pas de $i$,
+    cela veut dire que la probabilité de s'éloigner du niveau moyen de
+    l'efficacité initiale du travail (au dessus ou au dessous) est la même pour
+    toutes les économies. Cette hypothèse est nécessaire pour que les
+    estimations que nous allons proposer par la suite soient efficaces (au sens ou
+    la variance des estimateurs est minimale).\newline
+
+  \item La nullité de la covariance entre les conditions initiales de la
+    production par tête et l'efficacité du travail est indispensable pour
+    assurer l'estimation sans biais des paramètres du modèle (en particulier
+    l'élasticité du taux de croissance par rapport à la condition initiale).
+    Cette hypothèse nous permettra aussi de calculer la part de l'hétérogénéité
+    des taux de croissance que nous pouvons attribuer à l'hétérogénéité de la
+    production par tête initiale (c'est-à-dire mesure le pouvoir explicatif du
+    modèle de Solow). Cela veut dire qu'en moyenne il n'y a pas de rapport entre
+    la condition initiale du PIB par tête et la condition initiale de
+    l'efficacité du travail. C'est une hypothèse que l'on peut critiquer comme
+    peu vraisemblable.\newline
+
+  \item En substituant $\log A_i = a + \varepsilon_i$ dans l'équation du taux de
+    croissance de la production par tête, il vient~:
+    \[
+      \bar g_{y,i}(0,t) = x + \frac{1-e^{-\beta t}}{t}\log \hat y^{\star} - \frac{1-e^{-\beta t}}{t}\log y_i(0) + \frac{1-e^{-\beta t}}{t}\left(a + \varepsilon_i\right)
+    \]
+    \[
+      \Leftrightarrow \bar g_{y,i}(0,t) = \underbrace{x + \frac{1-e^{-\beta t}}{t} a + \frac{1-e^{-\beta t}}{t}\log \hat y^{\star}}_{\text{ne dépend pas de i}} \underbrace{- \frac{1-e^{-\beta t}}{t}\log y_i(0) + \frac{1-e^{-\beta t}}{t}\varepsilon_i}_{\text{spécifique à chaque économie}}
+    \]
+    D'après le modèle Solow, sous l'hypothèse d'homogénéité structurelle, on
+    observe des taux de croissance différents parce que les économies ont des
+    conditions initiales différentes (pour la production par tête et
+    l'efficacité du travail).\newline
+
+  \item Cela suggère le modèle empirique suivant~:
+    \[
+      \bar g_{y,i}(0,t) = a_0 + a_1\log y_i(0) + u_i
+    \]
+    où, si le modèle de Solow est vrai, $a_0$ correspond aux termes qui ne dépendent pas de $i$, $a_1$ doit être négatif car il correspond à $-\frac{1-e^{-\beta t}}{t}$, et le résidu du modèle empirique $u$ est lié à l'hétérogénéité initiale inobservée de l'efficacité du travail, $\frac{1-e^{-\beta t}}{t}\varepsilon_i$.
+  \end{list}
+
+\end{notes}
+
+
+\begin{frame}
+  \frametitle{Estimation du modèle de Solow}
+  \framesubtitle{Un modèle pour tester la convergence absolue (3)}
+
+  \begin{itemize}
+
+  \item En substituant l'expression supposée de $\log A_i$ dans l'équation du taux de croissance on montre que le taux de croissance prédit par le modèle de Solow, sous l'hypothèse d'homogénéité structurelle, est~:
+    \[
+      \begin{split}
+        \bar g_{y,i}(0,t) = x& + \frac{1-e^{-\beta t}}{t} a + \frac{1-e^{-\beta t}}{t}\log \hat y^{\star}\\
+        -& \frac{1-e^{-\beta t}}{t}\log y_i(0) + \frac{1-e^{-\beta t}}{t}\varepsilon_i
+        \end{split}
+    \]
+
+  \item Cela suggère le modèle empirique suivant~:
+    \[
+      \bar g_{y,i}(0,t) = a_0 + a_1\log y_i(0) + u_i
+    \]
+
+  \item Cela correspond à l'équation de la droite de régression dans les graphiques du taux de croissance contre la condition initiale (par exemple pour les pays de l'OCDE)\ldots
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Estimation du modèle de Solow}
+  \framesubtitle{Un modèle pour tester la convergence absolue (4)}
+
+  \begin{itemize}
+
+  \item \ldots Mais ici nous pouvons relier l'ordonnée à l'origine et la pente ($a_0$ et $a_1$) aux paramètres du modèle de Solow.\newline
+
+  \item En particulier, nous pouvons déduire la vitesse de convergence à partir de la pente. En effet~:
+    \[
+      a_1 = -\frac{1-e^{-\beta t}}{t} \quad\Leftrightarrow\quad \beta = -\frac{1}{t}\log\left(1+ta_1\right)
+    \]
+
+    \medskip
+
+  \item Nous pouvons aussi donner une interprétation au résidu de la régression (la différence entre le taux de croissance observé et le taux de croissance prédit par le modèle) qui représente l'hétérogénéité inobservée de l'efficacité du travail.\newline
+
+  \item Les paramètres comme les résidus ont une interprétation structurelle.
+
+  \end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Estimation du modèle de Solow}
+  \framesubtitle{Test de la convergence absolue par Mankiw, Romer et Weil (1)}
+
+  \begin{center}
+    \includegraphics[scale=.25]{../img/mrw-table-3.png}
+  \end{center}
+
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Estimation du modèle de Solow}
+  \framesubtitle{Test de la convergence absolue par Mankiw, Romer et Weil (2)}
+
+  \begin{itemize}
+
+  \item Le coefficient $\hat a_1$ est significativement négatif seulement dans le cas de l'échantillon des pays de l'OCDE.\newline
+
+  \item[$\Rightarrow$] On trouve de la convergence absolue seulement pour les pays de l'OCDE.\newline
+
+  \item Pour les pays de l'OCDE, la vitesse de convergence estimée, $\hat\beta$,
+    déduite de $\hat a_1$, est de 1,67\%. C'est bien moins que ce que suggère la
+    théorie. Avec cette estimation, il faudrait 41 ans et 6 mois pour réduire de
+    moitiée la distance à l'état stationnaire.\newline
+
+  \item Dans le cas des pays de l'OCDE, le modèle de Solow, sous l'hypothèse
+    d'homogénéité structurelle, parvient à expliquer 46\% de l'hétérogénéité
+    observée du taux de croissance.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{notes}
+
+  \begin{list}{$\bullet$}{}
+
+
+  \item Supposons que les paramètres $a_0$ et $a_1$ soient connus dans le modèle empirique suivant~:
+    \[
+      \bar g_{y,i}(0,t) = a_0 + a_1\log y_i(0) + u_i
+    \]
+
+  \item Rappelons que si $X$ et $Y$ sont deux variables aléatoires alors la variance d'une combinaison linéaire des variables aléatoires est~:
+    \[
+      \mathbb V [aX+bY] = a^ 2\mathbb V [X] + b^ 2\mathbb V [Y] + 2ab\mathbb Cov(X,Y)
+    \]
+    où $a$ et $b$ sont deux paramètres.\newline
+
+  \item Puisque, par hypothèse, les résidus sont orthogonaux à $\log y_i(0)$ (nullité de la covariance), nous déduisons la variance du taux de croissance~:
+    \[
+      \mathbb V\left[\bar g_{y,i}(0,t)\right] = a_1^ 2\mathbb V \left[\log y_i(0)\right] + \mathbb V \left[u_i\right]
+    \]
+    \[
+      \Leftrightarrow 1 =\underbrace{\frac{ a_1^ 2\mathbb V \left[\log y_i(0)\right]}{ \mathbb V\left[\bar g_{y,i}(0,t)\right]}}_{\substack{\text{Part de la variance de $\bar g_{y,i}(0,t)$}\\ \text{expliquée par}\\ \text{la variance de $\log y_i(0)$}}} + \underbrace{\frac{\mathbb V \left[u_i\right]}{\mathbb V\left[\bar g_{y,i}(0,t)\right] }}_{\substack{\text{Part de la variance de $\bar g_{y,i}(0,t)$}\\ \text{expliquée par l'hétérogénéité de}\\ \text{l'efficacité initiale du travail}}}
+    \]
+
+  \item Le coefficient de détermination, noté $R^ 2$, est égal à 1 moins la
+    variance des résidus rapportée à la variance de la variable endogène (ici le
+    taux de croissance). Le $R^ 2$ mesure la part de l'hétérogénéité de la
+    variable endogène expliquée par le modèle (les variables exogènes, ici la
+    condition initiale de la production par tête). Par construction, le $R^ 2$
+    est compris entre 0 et 1, plus le coefficient est proche de 1 plus le
+    pouvoir explicatif, en termes de variance, du modèle est important.\newline
+
+  \item Mankiw, Romer et Weil reportent un autre coefficient : le coefficient de
+    détermination modifié noté $\bar R^ 2$. Celui-ci pénalise le coefficient de
+    détermination quand le nombre de variables exogènes augmente. On sait qu'on
+    parviendra toujours, mécaniquement, à expliquer plus de la variance de la
+    variable endogène (le taux de croissance) en augmentant le nombre de
+    variable exogènes. Pour rendre la comparaison entre différents modèles moins
+    biaisée on pénalise les modèles qui ont plus de variables exogènes. Cette
+    modification explique pourquoi dans le tableau on voit un coefficient de
+    détermination négatif (pour le deuxième échantillon).\newline
+
+  \item On retient de l'estimation de Mankiw, Romer et Weil, que le modèle de
+    Solow (en supposant que les économies sont structurellement homogènes)
+    explique la moitié de l'hétérogénéité des taux de croissance parmis pour les
+    pays de l'OCDE, mais que le pouvoir explicatif du modèle est nul pour les
+    échantillons plus grands.
+  \end{list}
+
+\end{notes}
+
+
+\begin{frame}
+  \frametitle{Estimation du modèle de Solow}
+  \framesubtitle{Un modèle pour tester la convergence conditionnelle (1)}
+
+  \begin{itemize}
+
+  \item Abandonnons l'hypothèse d'homogénéité structurelle.\newline
+
+  \item On suppose que les économies sont différentes en termes d'épargne ($s_i$) et de croissance démographique ($n_i$).\newline
+
+  \item L'état stationnaire est spécifique à chaque économie~:
+    \[
+      \hat y_i^{\star} = \left(\frac{s_i}{n_i+x+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+    \]
+    et donc~:
+    \[
+      \log \hat y_i^{\star} = \frac{\alpha}{1-\alpha}\log \left(\frac{s_i}{n_i+x+\delta}\right)
+    \]
+    \[
+      \Leftrightarrow \log \hat y_i^{\star} = \frac{\alpha}{1-\alpha}\log s_i - \frac{\alpha}{1-\alpha}\log(n_i+x+\delta)
+    \]
+
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Estimation du modèle de Solow}
+  \framesubtitle{Un modèle pour tester la convergence conditionnelle (2)}
+
+  \begin{itemize}
+
+  \item[\textdbend] Normalement la vitesse de convergence devrait être spécifique à chaque économie, $\beta_i=(1-\alpha)(n_i+x+\delta)$, puisque celle-ci dépend du taux de croissance de la population.\newline
+
+  \item Sans vraiment le discuter, Mankiw Romer et Weil supposent que la vitesse de convergence est la même pour toutes les économies. Cela simplifie beaucoup l'estimation (autrement nous ne pourrions pas utiliser les Moindres Carrés Ordinaires pour estimer le modèle).
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Estimation du modèle de Solow}
+  \framesubtitle{Un modèle pour tester la convergence conditionnelle (3)}
+
+  \begin{itemize}
+
+  \item En substituant l'expression de l'état stationnaire spécifique dans le taux de croissance prédit par le modèle de Solow, on obtient~:
+    \[
+      \begin{split}
+        \bar g_{y,i}(0,t) = x &+ \frac{1-e^{-\beta t}}{t} a - \frac{1-e^{-\beta t}}{t}\log y_i(0)\\
+                                              &+ \frac{1-e^{-\beta t}}{t} \frac{\alpha}{1-\alpha}\log s_i - \frac{1-e^{-\beta t}}{t} \frac{\alpha}{1-\alpha}\log (n_i+x+\delta)\\
+                                              &+ \frac{1-e^{-\beta t}}{t}\varepsilon_i
+      \end{split}
+    \]
+
+  \item Ce qui suggère le modèle empirique suivant~:
+    \[
+      \bar g_{y,i}(0,t) = a_0 + a_1\log y_i(0) + a_2\log s_i + a_3 \log(n_i+x+\delta) + u_i
+    \]
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Estimation du modèle de Solow}
+  \framesubtitle{Un modèle pour tester la convergence conditionnelle (4)}
+
+  \begin{itemize}
+
+  \item Le modèle de Solow prédit que~:\newline
+
+    \begin{itemize}
+
+    \item $a_1<0$
+
+    \item $a_2>0$ et $a_3<0$
+
+    \item $a_2+a_3 = 0$\newline
+
+    \end{itemize}
+
+  \item Comment dans le cas de la régression de convergence absolue, on peut déduire la vitesse de convergence estimée, $\hat\beta$, à partir de $\hat a_1$.\newline
+
+  \item Pour les données le taux d'épargne est approximé par le ratio investissement / production.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Estimation du modèle de Solow}
+  \framesubtitle{Test de la convergence conditionnelle par Mankiw, Romer et Weil (1)}
+
+  \begin{center}
+    \includegraphics[scale=.6]{../img/mrw-table-4.png}
+  \end{center}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Estimation du modèle de Solow}
+  \framesubtitle{Test de la convergence conditionnelle par Mankiw, Romer et Weil (2)}
+
+  \begin{itemize}
+
+  \item On obtient les signes attendus (conforment au modèle de Solow).\newline
+
+  \item On obtient $\hat a_1<0$ pour les trois échantillons $\Rightarrow$ Convergence conditionnelle.\newline
+
+  \item L'élasticité du taux de croissance par rapport taux d'épargne est bien positive.\newline
+
+  \item L'élasticité du taux de croissance par rapport taux de dépréciation du capital par tête efficace est bien négative.\newline
+
+  \item Le pouvoir explicatif du modèle de Solow ($R^ 2$) est beaucoup plus important.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Estimation du modèle de Solow}
+  \framesubtitle{Test de la convergence conditionnelle par Mankiw, Romer et Weil (3)}
+
+  \begin{itemize}
+
+  \item[\manerrarrow] \textbf{Mais} la vitesse de convergence déduite ($\hat \beta = 0,6\% - 1\% - 1,7\%$) est trop faible par rapport à ce que suggère la théorie.\newline
+
+  \item[\manerrarrow] \textbf{Mais} la contrainte $a_2+a_3=0$ est rejetée par les données.\newline
+
+  \item[$\Rightarrow$] Même si le modèle de Solow est qualitativement très satisfaisant (on a les signes attendus), il n'est pas quantitativement satisfaisant.\newline
+
+  \item Il faut, c'est l'objet du prochain chapitre, amender le modèle de Solow.\newline
+
+  \item Une piste, si on souhaite rapprocher la vitesse de convergence théorique de la vitesse de convergence empirique, est de modifier le modèle de façon à augmenter la part de la rémunération du capital ($\alpha$) dans le revenu total. Il faut pour cela élargir la notion de capital.
+
+  \end{itemize}
+
+\end{frame}
+
+
+
+\end{document}
+
+
+% Local Variables:
+% ispell-check-comments: exclusive
+% ispell-local-dictionary: "french"
+% TeX-master: t
+% End:

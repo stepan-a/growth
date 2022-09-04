@@ -5,7 +5,7 @@ addpath ../pwt
 
 pwt = load('../../data/pwt100.mat');
 
-init = 1960; last = 2019;
+init = 1950; last = 2019;
 
 [rgdpo, countries1, years1] = makesample(pwt, 'rgdpo', init:last);
 [pop, countries2, years2] = makesample(pwt, 'pop', init:last);
@@ -15,6 +15,12 @@ if ~isequal(countries1, countries2)
 end
 
 countries = countries1;
+
+oecdlist = {'AUS', 'AUT','BEL','CAN','CHE','DEU','DNK','ESP','FIN','FRA', 'GBR', 'GRC', 'IRE', 'ISL', 'ITA', 'JPN', 'KOR', 'LUX', 'MEX', 'NLD', 'NOR', 'NZL', 'PRT', 'SWE', 'TUR', 'USA'};
+
+[countries, ic, io] = intersect(countries, oecdlist);
+rgdpo = rgdpo(:,ic);
+pop = pop(:,ic);
 
 % display number of countries in the sample
 fprintf('Number of countries observed between %s and %s is %s\n', num2str(init), num2str(last), num2str(length(countries)));
@@ -56,24 +62,6 @@ fprintf('Country with highest GDP/capita in %s is %s (%s)\n', int2str(last), cou
 
 fprintf('Level factor in %s is %s\n', int2str(last), num2str(ymaxLast/yminLast))
 
-% Disasters
-list_d = list(grgdpc<0,:)
-
-if ~isempty(list_d)
-    for i=1:size(list_d, 1)
-        fprintf('%s (%s%%), ', list_d{i,1}, num2str(list_d{i,2},2))
-    end
-end
-
-% Miracles
-list_m = list(grgdpc>5,:)
-
-if ~isempty(list_m)
-    for i=1:size(list_m, 1)
-        fprintf('%s (%s%%), ', list_m{i,1}, num2str(list_m{i,2},2))
-    end
-end
-
 % Max growth rate
 [gmax, imax] = max(grgdpc);
 fprintf('Max growth rate is %s for %s\n', num2str(gmax), countries{imax});
@@ -82,6 +70,8 @@ fprintf('Max growth rate is %s for %s\n', num2str(gmax), countries{imax});
 fprintf('Average growth rate is %s\n', num2str(mean(grgdpc)))
 fprintf('Stdev. logged GDP per capita rate in %s is %s\n', int2str(init), num2str(sqrt(var(lrgdpc(1,:)))))
 fprintf('Stdev. logged GDP per capita rate in %s is %s\n', int2str(last), num2str(sqrt(var(lrgdpc(end,:)))))
+
+
 
 if debug
     % Plot growth against initial condition
@@ -100,19 +90,13 @@ end
 
 if tikz
     addpath ../matlab2tikz/src
-    matlab2tikz(sprintf('../../tikz/world-%s-%s.tex', int2str(init), int2str(last)))
+    matlab2tikz(sprintf('../../tikz/oecd-%s-%s.tex', int2str(init), int2str(last)))
 end
 
 % Regression
 
-lrgdpc0 = lrgdpc(1,:)';
-
-X = [ones(length(grgdpc),1), lrgdpc0];
+X = [ones(length(grgdpc),1), lrgdpc(1,:)'];
 y = grgdpc(:);
 beta = X\y;
-V = inv(X'*X)*((y-X*beta)'*(y-X*beta))/length(y);
 
 beta
-
-tstat = beta(2)/sqrt(V(2,2));
-tstat
