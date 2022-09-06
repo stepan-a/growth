@@ -4,13 +4,13 @@ ROOT_PATH = .
 
 all: data td-build ds-build cours
 
-data: data/pwt91.csv data/pwt91.mat data/fra_logged_rgdp_per_capita2.dat data/gbr_logged_rgdp_per_capita.dat data/usa_logged_rgdp_per_capita2.dat data/rgdpc-density-1960.dat data/fra_logged_population.dat data/fra_k_over_y_ratio.dat
+data: data/pwt100.mat data/mpd2020.csv data/fra_logged_rgdp_per_capita2.dat data/gbr_logged_rgdp_per_capita.dat data/usa_logged_rgdp_per_capita2.dat data/rgdpc-density-1960.dat data/fra_logged_population.dat data/fra_k_over_y_ratio.dat
 
-data/pwt91.csv data/mpd2020.csv: data/build.py
+data/pwt100.csv data/mpd2020.csv: data/build.py
 	@echo "Download xlsx data files (PWT and Maddison databases) and convert to CSV..."
 	@cd data; ./build.py
 
-data/pwt91.mat: data/pwt91.csv routines/pwt/build.m
+data/pwt100.mat: data/pwt100.csv routines/pwt/build.m
 	@echo "Convert PWT data into a mat file..."
 	@cd routines/pwt; matlab -nosplash -nodisplay -batch "build; quit" 2> /dev/null
 
