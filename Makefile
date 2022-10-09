@@ -62,9 +62,9 @@ data-clean:
 clean-all: td-clean ds-clean cours-clean data-clean
 
 push: all
-	rsync -vz --progress cours/introduction.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/cours/
-	rsync -vz --progress cours/solow.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/cours/
-	rsync -vz --progress cours/convergence.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/cours/
+	rsync -vz --progress cours/introduction.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/cours/introduction.pdf
+	rsync -vz --progress cours/solow.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/cours/chapitre-1-solow.pdf
+	rsync -vz --progress cours/convergence.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/cours/chapitre-2-convergence.pdf
 	rsync -vz --progress ds/partiel-2013.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/exam/
 	rsync -vz --progress ds/partiel-2014.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/exam/
 	rsync -vz --progress ds/partiel-2018.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/exam/
