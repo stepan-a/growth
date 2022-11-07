@@ -183,17 +183,17 @@
 
   \item On peut exprimer $(n+x+\delta)$ en fonction de l'état stationnaire (voir la définition de $y^\star$)~:
     \[
-      n+x+\delta = s \left.y^{\star}\right.^{-\frac{1-\alpha}{\alpha}}
+      n+x+\delta = s \left.\hat y^{\star}\right.^{-\frac{1-\alpha}{\alpha}}
     \]
 
   \item En substituant dans l'équation de $g_{\hat y}$~:
     \[
-      g_{\hat y}(t) = \alpha s  \hat y^{-\frac{1-\alpha}{\alpha}} - \alpha s \left.y^{\star}\right.^{-\frac{1-\alpha}{\alpha}}
+      g_{\hat y}(t) = \alpha s  \hat y^{-\frac{1-\alpha}{\alpha}} - \alpha s \left.\hat y^{\star}\right.^{-\frac{1-\alpha}{\alpha}}
     \]
 
   \item Soit en factorisant~:
     \[
-      g_{\hat y}(t) = \alpha (n+x+\delta)\left(\left(\frac{y(t)}{y^{\star}}\right)^{-\frac{1-\alpha}{\alpha}}-1\right)
+      g_{\hat y}(t) = \alpha (n+x+\delta)\left(\left(\frac{\hat y(t)}{\hat y^{\star}}\right)^{-\frac{1-\alpha}{\alpha}}-1\right)
     \]
 
   \item[$\Rightarrow$] $g_{\hat y}\geq 0$ ssi $\hat y\leq \left.\hat y^{\star}\right.$ \& $|g_{\hat y}|$ est d'autant plus grand que $\hat y$ est éloigné de $\hat y^\star$.
@@ -314,7 +314,7 @@
     supposera que $\hat y_A(0)<\hat y_B(0)$, c'est-à-dire que l'économie $A$ est
     initialement moins riche (en termes de production par tête).\newline
 
-  \item On suppose aussi que $\hat y_B(0)<y^\star$.\newline
+  \item On suppose aussi que $\hat y_B(0)<\hat y^\star$.\newline
 
   \item Le modèle de Solow nous dit que le taux de croissance de l'économie $A$
     doit être supérieur à celui de l'économie $B$
@@ -873,9 +873,9 @@
   \begin{itemize}
 
   \item Pour calculer la demi-vie de la distance à l'état stationnaire, il faut
-    que nous puissions nous faire une idée du niveau de l'économie $k(t)$ (ou
-    $y(t)$) à chaque instant (pour le comparer à $k^\star$, ou
-    $y^{\star}$).\newline
+    que nous puissions nous faire une idée du niveau de l'économie $\hat k(t)$ (ou
+    $\hat y(t)$) à chaque instant (pour le comparer à $\hat k^\star$, ou
+    $\hat y^{\star}$).\newline
 
   \item Nous pourrions le faire en résolvant l'équation différentielle
     caractérisant la dynamique du stock de capital (ou de la
@@ -931,10 +931,10 @@
 
   \begin{itemize}
 
-  \item On a~: $\varphi'(\hat k) = -s(1-\alpha)$ et donc à l'état stationnaire~:
+  \item On a~: $\varphi'(\hat k) = -s(1-\alpha)\hat k^{\alpha-2}$ et donc à l'état stationnaire~:
     \[
       \begin{split}
-        \varphi'(\hat k) &= -(1-\alpha) s \left. \hat k^\star \right. ^{\alpha-2}\\
+        \varphi'(\hat k^{\star}) &= -(1-\alpha) s \left. \hat k^\star \right. ^{\alpha-2}\\
                          &= -(1-\alpha) \frac{s \left. \hat k^\star \right. ^{\alpha-1}}{\hat k^\star}\\
                          &= -(1-\alpha)(n+x+\delta)\frac{1}{\hat k^\star}
       \end{split}
@@ -1148,7 +1148,7 @@
 
     \bigskip
 
-  \item Les dynamiques (approximées) de $\hat k$ et $\hat y$sont identiques $\Longrightarrow$ Même vitesse de convergence pour $\hat k$ et $\hat y$.
+  \item Les dynamiques (approximées) de $\hat k$ et $\hat y$ sont identiques $\Longrightarrow$ Même vitesse de convergence pour $\hat k$ et $\hat y$.
 
   \end{itemize}
 
@@ -1563,7 +1563,7 @@
 
     \end{itemize}
 
-  \item Comment dans le cas de la régression de convergence absolue, on peut déduire la vitesse de convergence estimée, $\hat\beta$, à partir de $\hat a_1$.\newline
+  \item Comme dans le cas de la régression de convergence absolue, on peut déduire la vitesse de convergence estimée, $\hat\beta$, à partir de $\hat a_1$.\newline
 
   \item Pour les données le taux d'épargne est approximé par le ratio investissement / production.
 
