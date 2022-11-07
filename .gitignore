@@ -24,3 +24,5 @@ ds/*.log
 ds/*.out
 
 td/*/*.pdf
+
+tikz/mrw-transition.tex
