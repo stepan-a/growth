@@ -23,7 +23,7 @@ def dotVariables__(X, t, alpha, lambd, sK, sH, n, x, delta):
 
     Il y a peu de chance de parvenir à une solution avec ce système, car
     l'algorithme (odeint par exemple) va souvent dans des régions où les
-    équations ne sont pas défnies (par exemple avec un stock de capital
+    équations ne sont pas définies (par exemple avec un stock de capital
     physique négatif).
     """
     y = X[0]**alpha * X[1]**lambd
@@ -37,7 +37,7 @@ def dotVariables(X, t, alpha, lambd, sK, sH, n, x, delta):
 
     Système équivalent à dotVariables__, mais ici les variables peuvent
     varier de -∞ à +∞. Le changement de variable permet de résoudre le
-    problème de domaine de définiton rencntrés avec dotVariables__. À la
+    problème de domaine de définiton rencontrés avec dotVariables__. À la
     sortie, il faut prendre l'exponentielle des trajectoires retournées par
     odeint (ou autre algorithme).
     """
