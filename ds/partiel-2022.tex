@@ -1,0 +1,84 @@
+\documentclass[11pt,a4paper,notitlepage, twocolumn]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage{enumerate}
+
+\usepackage{palatino}
+
+ \usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcounter{qnumber}
+\setcounter{qnumber}{0}
+
+
+\newcommand{\question}{\textbf{(\addtocounter{qnumber}{1}\theqnumber)}\,}
+\setlength{\parindent}{0cm}
+
+
+\begin{document}
+
+\title{\textsc{Croissance\\ \small{Examen}}}
+\date{}%{Le \today\ à \thistime}
+
+\maketitle
+
+\thispagestyle{empty}
+
+\begin{quote}
+  Les réponses non commentées ou insuffisamment détaillées ne seront pas considérées.
+\end{quote}
+
+\bigskip
+
+Soient $K(t)$ le stock de capital physique d'une économie à l'instant
+$t$, $L(t)$ la population qui croît au taux constant $n>0$,
+$\alpha\in]0,1[$ un paramètre technologique, $s\in]0,1[$ le taux
+d'épargne et $\delta\in[0,1]$ le taux de dépréciation du capital
+physique. La dynamique du stock de capital physique est décrite par
+l'équation suivante~:
+\[
+\dot K(t) = sY(t)-\delta K(t)
+\]
+et la technologie de production est~:
+\[
+Y(t) = K(t)^\alpha \bigl(A(t)L(t)\bigr)^{1-\alpha}
+\]
+où $A(t)$, l'efficacité du travail, croît au taux constant $x>0$. \question
+Donner une interprétation au paramètre $\alpha$. \question Caractériser la
+dynamique du stock de capital physique par tête efficace. \question Représenter
+graphiquement le taux de croissance du capital physique par tête efficace (en
+prenant soin de justifier la construction du graphique). \question Calculer
+l'état stationnaire non trivial du modèle (pour le capital par tête efficace, la
+production par tête efficace et la consommation par tête efficace). \question
+Expliquer pourquoi l'état stationnaire est aussi le niveau de long terme de
+l'économie. Quelle est l'hypothèse au c\oe ur de cette propriété~? \question
+Montrer qu'une augmentation permanente du taux d'épargne induit une augmentation
+du niveau de long terme de la production par tête efficace. \question Quelle est
+la valeur du taux d'épargne qui permet de maximiser le niveau de la production
+par tête efficace à long terme~? \question Pourquoi est-il moins simple de
+déterminer l'effet de l'augmentation permanente sur le niveau de long terme de
+la consommation par tête~? \question Montrer qu'il existe un taux d'épargne
+optimal strictement positif et strictement inférieur à un, que nous noterons
+$s_{\text{or}}$, qui maximise le niveau de la consommation par tête à long
+terme. \question Supposons que le taux d'épargne de l'économie effectif soit
+différent de $s_{\text{or}}$ et que l'économie soit initialement (à l'instant 0)
+à l'état stationnaire. Représenter graphiquement la dynamique de la consommation
+par tête efficace, si le comportement des ménages change de façon à adopter le
+comportement d'épargne optimal (il faut représenter la transition de la
+consommation par tête efficace vers le nouvel état stationnaire). \question
+Est-il toujours évident que les ménages soivent adopter le comportement
+d'épargne optimal~? Décrire les arbitrages des ménages. \question Comment la
+vitesse de convergence vers l'état stationnaire peut-elle affecter les éventuels
+arbitrages des ménages~?
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
