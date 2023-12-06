@@ -1,0 +1,82 @@
+\documentclass[11pt,a4paper,notitlepage, twocolumn]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage{enumerate}
+
+\usepackage{palatino}
+
+ \usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcounter{qnumber}
+\setcounter{qnumber}{0}
+
+
+\newcommand{\question}{\textbf{(\addtocounter{qnumber}{1}\theqnumber)}\,}
+\setlength{\parindent}{0cm}
+
+
+\begin{document}
+
+\title{\textsc{Croissance}}
+\date{Mardi 12 décembre 2023}
+
+\maketitle
+
+\thispagestyle{empty}
+
+\begin{quote}
+  \textit{Les réponses non commentées ou insuffisamment détaillées ne seront pas considérées. Prenez le temps de faire des phrases.}
+\end{quote}
+
+\bigskip
+
+\textbf{\textsc{Exercice I.}} Soient $K(t)$ le stock de capital physique d'une économie à l'instant
+$t$, $L(t)$ la population qui croît au taux constant $n>0$,
+$\alpha\in]0,1[$ un paramètre technologique, $s\in]0,1[$ le taux
+d'épargne et $\delta\in[0,1]$ le taux de dépréciation du capital
+physique. La dynamique du stock de capital physique est décrite par
+l'équation suivante~:
+\[
+\dot K(t) = sY(t)-\delta K(t)
+\]
+et la technologie de production est~:
+\[
+Y(t) = K(t)^\alpha L(t)^{1-\alpha}
+\]
+\question Donner une interprétation au paramètre $\alpha$. \question
+Caractériser la dynamique du stock de capital physique par tête. \question
+Représenter graphiquement le taux de croissance du capital physique par tête (en
+prenant soin de justifier la construction du graphique). \question Calculer
+l'état stationnaire non trivial du modèle (pour le capital par tête, la
+production par tête et la consommation par tête). \question Expliquer pourquoi
+l'état stationnaire est aussi le niveau de long terme de l'économie. Quelle est
+l'hypothèse au c\oe ur de cette propriété~? \question Déterminez le taux de
+croissance de la production par tête et montrer qu'il est décroissant par
+rapport au niveau de la production par tête. \question Déterminer le taux de
+croissance de la production à court et à long terme.\newline
+
+\setcounter{qnumber}{0}
+
+\textbf{\textsc{Exercice II.}} On reprend le même modèle que dans l'exercice I, mais avec la fonction de production suivante :
+\[
+Y(t) = \beta K(t)^\alpha L(t)^{1-\alpha} + (1-\beta)K
+\]
+où $\beta$ est un paramètre dans l'intervalle $[0,1]$. \question Déterminer la
+loi d'évolution du stock de capital par tête. \question Déterminer une condition
+sur $\beta$ qui assure l'existence d'un unique état stationnaire non trivial
+pour le stock de capital par tête. \question Représenter graphiquement le taux
+de croissance du stock de capital par tête selon les valeurs de $\beta$.
+\question Que se passe t-il si l'état stationnaire non trivial n'existe pas~?
+\question Comment expliquer ce résultat~?
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
