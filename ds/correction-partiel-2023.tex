@@ -1,0 +1,259 @@
+\documentclass[11pt,a4paper,notitlepage, onecolumn]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{tikz,pgfplots,pgfplotstable}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{patterns, arrows, decorations.pathreplacing, decorations.markings, decorations.text, calc}
+\pgfplotsset{plot coordinates/math parser=false}
+\usepackage{palatino}
+
+ \usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcounter{qnumber}
+\setcounter{qnumber}{0}
+
+
+\newcommand{\question}{\textbf{(\addtocounter{qnumber}{1}\theqnumber)}\,}
+\setlength{\parindent}{0cm}
+
+
+\begin{document}
+
+\title{\textsc{Croissance}\\(Éléments de correction)}
+\date{Mardi 12 décembre 2023}
+
+\maketitle
+
+\thispagestyle{empty}
+
+
+\bigskip
+
+\textbf{\textsc{Exercice I.}} Soient $K(t)$ le stock de capital physique d'une économie à l'instant
+$t$, $L(t)$ la population qui croît au taux constant $n>0$,
+$\alpha\in]0,1[$ un paramètre technologique, $s\in]0,1[$ le taux
+d'épargne et $\delta\in[0,1]$ le taux de dépréciation du capital
+physique. La dynamique du stock de capital physique est décrite par
+l'équation suivante~:
+\[
+\dot K(t) = sY(t)-\delta K(t)
+\]
+et la technologie de production est~:
+\[
+Y(t) = K(t)^\alpha L(t)^{1-\alpha}
+\]
+\question Le paramètre $\alpha$ est l'élasticité de la production par rapport au capital. En effet, nous avons~:
+\[
+  \begin{split}
+    \epsilon_{Y/K} &= \frac{\frac{\partial K^{\alpha}L^{1-\alpha}}{\partial K}}{\frac{Y}{K}}\\
+                   &= \frac{\alpha K^{\alpha-1}L^{1-\alpha}}{\frac{Y}{K}}\\
+                   &= \alpha \frac{K^{\alpha}L^{1-\alpha}}{Y}\\
+                   &= \alpha
+  \end{split}
+\]
+On note que l'élasticité est constante, elle ne dépend pas du niveau de l'état de l'économie. \question
+Le stock de capital physique par tête est $k(t) = K(t)/L(t)$, sa variation est donnée par~:
+\[
+\dot k  = \frac{\dot K L - K \dot L}{L^2}
+\]
+en utilisant la règle de dérivation d'un quotient de deux fonctions. En simplifiant, il vient~:
+\[
+\dot k = \frac{\dot K}{L} - n k
+\]
+En substituant la loi d'évolution du stock de capital agrégé, pour $\dot K$, il vient~:
+\[
+\dot k = \frac{sK^{\alpha}L^{1-\alpha}-\delta K}{L} - nk
+\]
+soit en exploitant l'homogéneité de degré un de la fonction de production et en simplifiant~:
+\[
+\dot k = s k^{\alpha} - (n+\delta)k
+\]
+la loi d'évolution du stock de capital physique par tête. Celui-ci
+augmente si et seulement si l'investissement par tête est supérieur à
+la dépréciattion du stock de capital pat tête. \question Pour obtenir
+le taux de croissance du stock de capital par tête, on divise la
+variation du stock de capital par tête par son niveau. On obtient~:
+\[
+g_k = s k^{\alpha-1}-(n+\delta)
+\]
+où $g_k=\dot k/k$ est le taux de croissance de $k$. Le taux de
+croissance est le investissement net (de la dépréciation) par unité de
+capital. L'investissement brut par unité de capital, $sk^{\alpha-1}$,
+est une fonction continue et monotone décroissante de $k$,
+car $0<\alpha<1$. L'investissement brut par unité de capital tend vers
+l'infini quand $k$ tend vers 0 et vers 0 quand $k$ tend vers
+l'infini. Ainsi, L'investissement net par unité de capital yernd vers
+l'infini quand $k$ tend vers 0 et vers $-(n+\delta)$ quand $k$ tend
+vers l'infini. La représentation graphique du taux de croissance est donc~:
+
+\begin{center}
+  \begin{tikzpicture}[scale=2]
+      \begin{axis}[
+        title={},
+        xlabel= $k$,
+        ylabel= {$g_{k}$},
+        xticklabels={,,},
+        yticklabels={,,},
+        enlargelimits=true,
+        grid style={dashed, gray!60},
+        axis x line = bottom,
+        axis y line = left,
+        axis lines = middle,
+        axis line style={thin},
+        xmin = -1,
+        xmax = 11,
+        ymin = -0.2,
+        ymax = 0.8,
+        small,
+        clip=false,
+        ]
+        \addplot[
+        draw=black,
+        thick,
+        smooth,
+        samples=500,
+        domain=.175:10,
+        ]
+        {.267*x^(0.333333-1)-0.1} ;
+        \addplot[
+        draw=black,
+        dashed,
+        samples=2,
+        domain=0:10,
+        ] coordinates { (0, -.08) (10, -.08)};
+        \node[right] at (10.1, -.05) {\tiny \color{blue} $sk^{\alpha-1}-(n+\delta)$};
+        \node at (0.5,0) {\tiny $\blacktriangleright$};
+        \node at (1.5,0) {\tiny $\blacktriangleright$};
+        \node at (2.5,0) {\tiny $\blacktriangleright$};
+        \node at (3.5,0) {\tiny $\blacktriangleright$};
+        \node at (5.5,0) {\tiny $\blacktriangleleft$};
+        \node at (6.5,0) {\tiny $\blacktriangleleft$};
+        \node at (7.5,0) {\tiny $\blacktriangleleft$};
+        \node at (8.5,0) {\tiny $\blacktriangleleft$};
+        \node at (9.5,0) {\tiny $\blacktriangleleft$};
+        \node[left] at (-.5,-.08) {\tiny $-(n+\delta)$};
+        %
+        % Steady state
+        %
+        \node[below] at (4.35464843161454,0) {\tiny{\color{red}$k^{\star}$}};
+      \end{axis}
+    \end{tikzpicture}
+\end{center}
+On note que cette courbe croise nécessairement une unique fois l'axe des abscisses. \question
+L'unique état stationnaire non trivial du modèle pour le capital
+par tête, $k^{\star}$, est défini par l'intersection de la courbe $g_k$ et de l'axe des abscisse. À l'état stationnaire le taux de croissance de $k$ est nul, l'investissement brut par unité de capital doit donc être égal au taux de dépréciation~:
+\[
+s\left.k^{\star}\right.^{\alpha-1} = n+\delta
+\]
+soit de façon équivalente~:
+\[
+k^{\star} = \left( \frac{s}{n+\delta} \right)^{\frac{1}{1-\alpha}}
+\]
+En substituant dans la fonction de production, on obtient l'état stationnaire de la production par tête~:
+\[
+y^{\star} = \left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+
+et donc la consommation par tête à l'état stationnaire~:
+\[
+c^{\star} = (1-s)\left(\frac{s}{n+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+\question L'état stationnaire est aussi le
+niveau de long terme de l'économie car, comme nous pouvons le voir sur le graphique, le taux de croissance est positif si et seulement si l'économie est en dessous de l'état stationnaire. Plus formellement on peut réécrire le taux de croissance, en exploitant la définition de l'état stationnaire, comme~:
+\[
+  \begin{split}
+    g_k &= sk^{\alpha-1}-s\left.k^{\star}\right.^{\alpha-1}\\
+        &= s \left.k^{\star}\right.^{\alpha-1}\left( \left( \frac{k}{k^{\star}} \right)^{\alpha-1}-1 \right)\\
+    &= (n+\delta)\left( \left( \frac{k}{k^{\star}} \right)^{\alpha-1}-1 \right)
+  \end{split}
+\]
+Ainsi,
+puisque $0<\alpha<1$, $g_k>0 \Leftrightarrow k<k^{\star}$. L'économie
+se rapproche donc toujours de l'état stationnaire quand elle est en
+dessous (en croissant) ou au dessus (en décroissant). L'hypothèse
+essentielle pour expliquer ce résultat est l'hypothèse des rendements
+décroissants ($\alpha<1$). \question Puisque $\alpha$ est l'élasticité de la production par rapport au capital physique, on a~:
+\[
+g_y = \alpha g_k
+\]
+et donc (en inversant la définition de la fonction de production intensive)~:
+\[
+g_y = (n+\delta)\left( \left( \frac{y}{y^{\star}} \right)^{\frac{\alpha-1-1}{\alpha}} -1\right)
+\]
+Comme pour le capital physique, le taux de croissance de la production
+est poisitif si et seulement si $y<y^{\star}$. \question En dérivant le logarithme de $Y(t) = y(t)L(t)$, on montre directement que le taux de
+croissance de la production agrégée est~:
+\[
+g_Y = g_y + n
+\]
+À long terme, $g_y = 0$ (car l'économie rejoint l'état stationnaire) et donc $g_Y = n$. À court terme, le taux de croissance du produit par tête varie~:
+\[
+g_Y = (n+\delta)\left( \left( \frac{y}{y^{\star}} \right)^{\frac{\alpha-1-1}{\alpha}} -1\right) + n
+\]
+le taux de croissance de la production agrégée est supérieur au teux
+de croissance de la population ($n$) si et seulement si l'économie
+intensive est en deçà de son niveau d'état stationnaire.
+
+\setcounter{qnumber}{0}
+
+\bigskip\bigskip
+
+\textbf{\textsc{Exercice II.}} On reprend le même modèle que dans l'exercice I, mais avec la fonction de production suivante :
+\[
+Y(t) = \beta K(t)^\alpha L(t)^{1-\alpha} + (1-\beta)K
+\]
+où $\beta$ est un paramètre dans l'intervalle $[0,1]$. \question En suivant la même démarche, on trouve~:
+\[
+\dot k = s\beta k^{\alpha} - \left(n+\delta-s(1-\beta)\right)k
+\]
+Notons cependant que $s\beta k^{\alpha}$ n'est pas l'investissement
+par tête (il faudrait rajouter $s(1-\beta)k$) et
+que $n+\delta-s(1-\beta)$ n'est pas le taux de dépréciation du stock
+de capital par tête.  \question Un état stationnaire non trivial $k^{\star}$ existe s'il existe $k^{\star}$ tel que~:
+\[
+s\beta \left.k^{\star}\right.^{\alpha-1} = \left(n+\delta-s(1-\beta)\right)
+\]
+une condition nécessaire et suffisante est que le membre de droite soit strictement positif, c'est-à-dire que~:
+\[
+n+\delta>s(1-\beta)
+\]
+\[
+\Leftrightarrow \beta>1-\frac{n+\delta}{s}
+\]
+Il faut que le poids sur la partie Cobb-Douglas (resp. la partie
+linéaire) de la fonction de production soit assez important
+(resp. faible) pour que le modèle intensif admette un état
+stationnaire. Ce résultat n'est guère surprenant dans la mesure où on
+sait que la partie linéaire, $(1-\beta)K$, pose problème puisqu'ici le
+rendement marginal du capital est constant (non décroissant) et ne
+converge donc pas vers 0 (une condition d'Inada n'est pas
+satisfaite). \question  En utilisant les mêmes arguments que dans l'exercice I ($sk^{\alpha-1}$ est une fonction continue, monotone décroissante de $+\infty$ à 0), on obtient la représentation graphique suivante en distinguant les cas suivant que la restriction sur $\beta$ est satisfaite (en noir) ou non (en bleu)~:
+\begin{center}
+\begin{tikzpicture}[scale=.7]
+\draw[->] (-.5, 0) -- (12, 0) node [right] {$k$} ;
+\draw[->] (0, 0) -- (0, 8) node [above] {$g_k$} ;
+\draw[->] (0, 0) -- (0, -2) ;
+% Case 1.
+\draw[dashed] (0,-1.5) node[left] {$-(n+\delta-s(1-\beta))$} -- (11.5,-1.5) ;
+\draw[thick] (.5,6) to [out=-80,in=150] (5,0) to [out=-30, in=175] (11,-1.45) ;
+\node at (5, 0) {$\bullet$} ;
+\node at (5, 0) [below] {$k^{\star}$} ;
+% Case 2.
+\draw[dashed, blue] (0,.5) node[left] {$-(n+\delta-s(1-\beta))$} -- (11.5,.5) ;
+\draw[thick, blue] (.5,8) to [out=-80,in=150] (5,2) to [out=-30, in=175] (11,2-1.45) ;
+\end{tikzpicture}
+\end{center}
+\question L'état stationnaire n'existe pas lorsque le poids sur la partie linéaire de la fonction de production est trop important. À cause du terme linéaire la productivité marginale du capital ne converge pas vers 0 quand $k$ tend vers l'infini mais vers $(1-\beta)$. La fonction de production est une combinaison convexe d'une fonction Cobb-Douglas et d'une fonction $Ak$. Si le poids sur le second terme est assez important ($\beta$ assez faible au sens où l'état stationnaire non trivial n'existe pas), on retrouve les prédiction de long terme du modèle $Ak$: le stock de capital par tête ne cesse jamais de croître, la croissance est endogène à long terme.
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

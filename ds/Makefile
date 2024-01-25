@@ -65,6 +65,11 @@ correction-partiel-2018.pdf: correction-partiel-2018.tex
 	grep -q "Rerun to get cross" correction-partiel-2018.log ) do true ; \
 	done
 
+correction-partiel-2023.pdf: correction-partiel-2023.tex
+	while ($(LATEX) correction-partiel-2023.tex ; \
+	grep -q "Rerun to get cross" correction-partiel-2023.log ) do true ; \
+	done
+
 rattrapage-2013.pdf: rattrapage-2013.tex
 	while ($(LATEX) rattrapage-2013.tex ; \
 	grep -q "Rerun to get cross" rattrapage-2013.log ) do true ; \
