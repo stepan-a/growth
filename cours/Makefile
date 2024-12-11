@@ -11,11 +11,8 @@ solow.pdf: solow.tex ../data/fra_logged_population.dat ../data/fra_k_over_y_rati
 convergence.pdf: convergence.tex ../tikz/us-real-gdp-per-capita-with-regression.tex ../tikz/oecd-1950-2019.tex ../tikz/world-1960-2019-with-regression.tex
 	@rubber --src-specials --unsafe --pdf convergence
 
-education.pdf: education.tex ../tikz/mrw-transition.tex
+education.pdf: education.tex ../pgf/mrw-transition.pgf
 	@rubber --src-specials --unsafe --pdf education
-
-# %.pdf: %.tex
-#	@rubber --src-specials --unsafe --pdf $*
 
 clean:
 	@rm -f *.aux *.log *.out *.nav *.rel *.toc *.snm *.synctex.gz *.vrb *.rubbercache
@@ -25,4 +22,4 @@ clean:
 clean-all:
 	@rm -f *.pdf
 
-.PHONY: all
+.PHONY: all clean clean-all

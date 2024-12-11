@@ -16,15 +16,15 @@
 \usepackage{color, colortbl}
 \usepackage{mathrsfs}
 \usepackage{bm}
-\usepackage{lastpage}
 \usepackage[nice]{nicefrac}
 \usepackage{setspace}
 \usepackage{ragged2e}
-%\usepackage{listings}
 \usepackage{minted}
 \usepackage{algorithms/algorithm}
 \usepackage{algorithms/algorithmic}
 \usepackage[frenchb]{babel}
+\usepackage{pgf}
+\usepackage{import}
 \usepackage{tikz,pgfplots,pgfplotstable}
 \pgfplotsset{compat=newest}
 \usetikzlibrary{patterns, arrows, decorations.pathreplacing, decorations.markings, decorations.text, calc}
@@ -790,7 +790,8 @@
   \bigskip
 
   \begin{figure}
-    \input{../tikz/mrw-transition.tex}
+    \scalebox{.55}{
+    \import{../pgf}{mrw-transition.pgf}}
     \caption{\textbf{Transition de  la production par tête efficace}, avec $\hat k(0)=1,6 \hat k^{\star}$ et $\hat h(0)=0,6 \hat h^{\star}$ (voir le code pour les valeurs des paramètres).}
   \end{figure}
 
