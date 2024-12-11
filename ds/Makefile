@@ -1,113 +1,93 @@
 LATEX = pdflatex
 
-all: ds1-2013.pdf correction-ds1-2013.pdf partiel-2013.pdf correction-partiel-2013.pdf partiel-2014.pdf correction-partiel-2014.pdf partiel-2015.pdf partiel-2016.pdf partiel-2017.pdf partiel-2018.pdf rattrapage-2013.pdf rattrapage-2017.pdf correction-rattrapage-2017.pdf correction-partiel-2018.pdf rattrapage-2018.pdf rattrapage-2019.pdf rattrapage-2023.pdf partiel-2023.pdf clean
+all: ds1-2013.pdf correction-ds1-2013.pdf partiel-2013.pdf correction-partiel-2013.pdf partiel-2014.pdf correction-partiel-2014.pdf partiel-2015.pdf partiel-2016.pdf partiel-2017.pdf partiel-2018.pdf rattrapage-2013.pdf rattrapage-2017.pdf correction-rattrapage-2017.pdf correction-partiel-2018.pdf rattrapage-2018.pdf rattrapage-2019.pdf rattrapage-2023.pdf rattrapage-2024.pdf partiel-2023.pdf clean
 
 ds1-2013.pdf: ds1-2013.tex
-	while ($(LATEX) ds1-2013.tex ; \
-	grep -q "Rerun to get cross" ds1-2013.log ) do true ; \
-	done
+	rubber --pdf $^
+	rubber --clean $^
 
 ds1-2013-question-5.tikz:
 	python3 ds1-2013.py
 
-correction-ds1-2013.pdf: correction-ds1-2013.tex ds1-2013-question-5.tikz
-	while ($(LATEX) correction-ds1-2013.tex ; \
-	grep -q "Rerun to get cross" correction-ds1-2013.log ) do true ; \
-	done
+correction-ds1-2013.pdf: ds1-2013-question-5.tikz correction-ds1-2013.tex 
+	rubber --pdf correction-ds1-2013.tex
+	rubber --clean correction-ds1-2013.tex
 
 partiel-2013.pdf: partiel-2013.tex
-	while ($(LATEX) partiel-2013.tex ; \
-	grep -q "Rerun to get cross" partiel-2013.log ) do true ; \
-	done
+	rubber --pdf $^
+	rubber --clean $^
 
 partiel-2014.pdf: partiel-2014.tex
-	while ($(LATEX) partiel-2014.tex ; \
-	grep -q "Rerun to get cross" partiel-2014.log ) do true ; \
-	done
+	rubber --pdf $^
+	rubber --clean $^
 
 partiel-2015.pdf: partiel-2015.tex
-	while ($(LATEX) partiel-2015.tex ; \
-	grep -q "Rerun to get cross" partiel-2015.log ) do true ; \
-	done
+	rubber --pdf $^
+	rubber --clean $^
 
 partiel-2016.pdf: partiel-2016.tex
-	while ($(LATEX) partiel-2016.tex ; \
-	grep -q "Rerun to get cross" partiel-2016.log ) do true ; \
-	done
+	rubber --pdf $^
+	rubber --clean $^
 
 partiel-2017.pdf: partiel-2017.tex
-	while ($(LATEX) partiel-2017.tex ; \
-	grep -q "Rerun to get cross" partiel-2017.log ) do true ; \
-	done
+	rubber --pdf $^
+	rubber --clean $^
 
 partiel-2018.pdf: partiel-2018.tex
-	while ($(LATEX) partiel-2018.tex ; \
-	grep -q "Rerun to get cross" partiel-2018.log ) do true ; \
-	done
+	rubber --pdf $^
+	rubber --clean $^
 
 partiel-2023.pdf: partiel-2023.tex
-	while ($(LATEX) partiel-2023.tex ; \
-	grep -q "Rerun to get cross" partiel-2023.log ) do true ; \
-	done
+	rubber --pdf $^
+	rubber --clean $^
 
 correction-partiel-2013.pdf: correction-partiel-2013.tex
-	while ($(LATEX) correction-partiel-2013.tex ; \
-	grep -q "Rerun to get cross" correction-partiel-2013.log ) do true ; \
-	done
+	rubber --pdf $^
+	rubber --clean $^
 
 correction-partiel-2014.pdf: correction-partiel-2014.tex
-	while ($(LATEX) correction-partiel-2014.tex ; \
-	grep -q "Rerun to get cross" correction-partiel-2014.log ) do true ; \
-	done
+	rubber --pdf $^
+	rubber --clean $^
 
 correction-partiel-2018.pdf: correction-partiel-2018.tex
-	while ($(LATEX) correction-partiel-2018.tex ; \
-	grep -q "Rerun to get cross" correction-partiel-2018.log ) do true ; \
-	done
+	rubber --pdf $^
+	rubber --clean $^
 
 correction-partiel-2023.pdf: correction-partiel-2023.tex
-	while ($(LATEX) correction-partiel-2023.tex ; \
-	grep -q "Rerun to get cross" correction-partiel-2023.log ) do true ; \
-	done
+	rubber --pdf $^
+	rubber --clean $^
 
 rattrapage-2013.pdf: rattrapage-2013.tex
-	while ($(LATEX) rattrapage-2013.tex ; \
-	grep -q "Rerun to get cross" rattrapage-2013.log ) do true ; \
-	done
+	rubber --pdf $^
+	rubber --clean $^
 
 rattrapage-2017.pdf: rattrapage-2017.tex
-	while ($(LATEX) rattrapage-2017.tex ; \
-	grep -q "Rerun to get cross" rattrapage-2017.log ) do true ; \
-	done
+	rubber --pdf $^
+	rubber --clean $^
 
 rattrapage-2018.pdf: rattrapage-2018.tex
-	while ($(LATEX) rattrapage-2018.tex ; \
-	grep -q "Rerun to get cross" rattrapage-2018.log ) do true ; \
-	done
+	rubber --pdf $^
+	rubber --clean $^
 
 rattrapage-2019.pdf: rattrapage-2019.tex
-	while ($(LATEX) rattrapage-2019.tex ; \
-	grep -q "Rerun to get cross" rattrapage-2019.log ) do true ; \
-	done
+	rubber --pdf $^
+	rubber --clean $^
 
 correction-rattrapage-2017.pdf: correction-rattrapage-2017.tex
-	while ($(LATEX) correction-rattrapage-2017.tex ; \
-	grep -q "Rerun to get cross" correction-rattrapage-2017.log ) do true ; \
-	done
+	rubber --pdf $^
+	rubber --clean $^
 
 rattrapage-2023.pdf: rattrapage-2023.tex
-	while ($(LATEX) rattrapage-2023.tex ; \
-	grep -q "Rerun to get cross" rattrapage-2023.log ) do true ; \
-	done
+	rubber --pdf $^
+	rubber --clean $^
+
+rattrapage-2024.pdf: rattrapage-2024.tex
+	rubber --pdf $^
+	rubber --clean $^
 
 clean:
-	rm -rf *.aux
-	rm -rf *.out
 	rm -rf auto
-	rm -rf *.log
-	rm -rf *.synctex.gz
 
 clean-all: clean
-	rm -f correction-ds1-2013.pdf correction-partiel-2013.pdf correction-partiel-2014.pdf correction-partiel-2018.pdf correction-rattrapage-2017.pdf ds1-2013.pdf partiel-2013.pdf partiel-2014.pdf partiel-2015.pdf partiel-2016.pdf partiel-2017.pdf partiel-2018.pdf rattrapage-2013.pdf rattrapage-2017.pdf rattrapage-2018.pdf rattrapage-2019.pdf
+	rm -f correction-ds1-2013.pdf correction-rattrapage-2017.pdf partiel-2013.pdf partiel-2016.pdf partiel-2023.pdf rattrapage-2023.pdf correction-partiel-2013.pdf ds1-2013.pdf partiel-2014.pdf partiel-2017.pdf rattrapage-2013.pdf correction-partiel-2014.pdf partiel-2015.pdf partiel-2018.pdf rattrapage-2017.pdf
 	rm -f *.tikz
-	rm -f *.log
