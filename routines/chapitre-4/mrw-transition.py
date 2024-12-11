@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 def phiK(h):
     """Frontière dans l'orthant positif (̂h,̂k).
 
@@ -79,5 +77,5 @@ s = t[t<=50]
 plt.plot(s, yhat[0:s.size], 'b-')
 plt.plot([0, s[s.size-1]], [ystar, ystar], 'r--')
 
-import tikzplotlib
-tikzplotlib.save("../../tikz/mrw-transition.tex")
+#import tikzplotlib
+plt.savefig("../../pgf/mrw-transition.pgf")
