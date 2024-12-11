@@ -1,0 +1,85 @@
+\documentclass[12pt,a4paper,notitlepage]{article}
+\synctex=1
+
+
+\usepackage[margin=3cm]{geometry}
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage{manfnt}
+\usepackage{hyperref}
+\usepackage{nicefrac}
+
+\usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+
+\title{\textsc{Croissance et Développement}}
+\author{Stéphane Adjemian}
+\date{Lundi 17 juin 2024}
+
+\maketitle
+\thispagestyle{empty}
+
+
+
+On considère un modèle de Solow
+augmenté d'une seconde variable d'état: le stock de capital humain.
+Soit la fonction de production :
+\[
+Y(t) = K(t)^{\alpha}K(t)^{\lambda}L(t)^{1-\alpha-\lambda}
+\]
+Les variables $Y$,  $K$, et $L$ ont  les interprétations usuelles.
+$H$ est le niveau de capital humain. Les paramètres $\alpha$ et
+$\lambda$ sont  positifs et  vérifient $\alpha+\lambda<1$. \question{1} La fonction de production est-elle néoclassique~?\newline
+
+Le  stock de
+capital physique se  déprécie au taux $\delta\in]0,1[$.   La loi d'évolution
+du stock de capital physique est donnée par :
+\[
+\dot{K}(t) = s_{K} Y(t) - \delta K(t)
+\]
+où $s_{K}\in]0,1[$ est le taux d'épargne en capital physique. La loi
+d'évolution du stock de capital humain est donnée par :
+\[
+\dot{H}(t) = s_{H} Y(t) - \delta H(t)
+\]
+où $s_{H}\in]0,1[$ est le taux d'épargne en capital humain. On suppose
+ici que les taux de dépréciation du capital physique et humain sont
+identiques. \question{2} Caractériser la dynamique jointe du stock de
+capital physique par tête, $k(t)$, et du stock de capital humain par
+tête, $h(t)$. \question{3} calculer l'état stationnaire non trivial
+pour ces deux stocks, puis déterminer l'état stationnaire de la
+consommation par tête, $c^{\star}$.  \question{4} Décrire l'arbitrage,
+relatif au niveau de la consommation par tête à l'état stationnaire,
+dans les choix d'épargne (en capital humain et physique). Calculer les
+taux d'épargne de la rêgle d'or, on notera $s_{K}^{\mathrm{or}}$
+et $s_{H}^{\mathrm{or}}$, c'est-à-dire les valeurs de $s_{K}$
+et $s_{H}$ qui maximisent le niveau de la consommation par tête à
+l'état stationnaire. \question{5} Supposons que le taux d'épargne en
+capital humain soit fixé, égal
+à $\bar{s}_{H}<s_{H}^{\mathrm{or}}$. Calculer le taux d'épargne en
+capital physique qui maximise $c^{\star}$, on notera $s_{K}^{\star}$
+le taux d'épargne en capital physique optimal. \question{6} Montrer
+que $s_{K}^{\star}>s_{K}^{\mathrm{or}}$ mais
+que
+$s_{K}^{\star}+\bar{s}_{H}<s_{K}^{\mathrm{or}}+s_{H}^{\mathrm{or}}$. Commenter. Le
+niveau de la consommation à l'état stationnaire est-il égal au niveau
+de la consommation de la rêgle d'or~?
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
