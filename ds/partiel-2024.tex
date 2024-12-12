@@ -1,0 +1,96 @@
+\documentclass[10pt,a4paper,notitlepage,twocolumn]{article}
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage{manfnt}
+\usepackage{hyperref}
+\usepackage{nicefrac}
+
+\usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+
+\title{\textsc{Croissance\\ \small{(L2, Le Mans)}}}
+\author{Stéphane Adjemian\thanks{Université du Mans. \texttt{stephane
+DOT adjemian AT univ DASH lemans DOT fr}}}
+\date{Mercredi 18 décembre 2024}
+
+\maketitle
+
+\thispagestyle{empty}
+
+\begin{quote}
+  \textit{Les réponses non commentées ou insuffisamment détaillées ne
+  seront pas considérées. Prenez le temps d'écrire des phrases.}
+\end{quote}
+
+\bigskip
+\bigskip
+
+On considère un modèle de Solow augmenté de dépenses publiques
+productives (dans le sens où la dépense de l'état et nécessaire et
+accroît la production). Soit la fonction de production~:
+\[
+Y(t) = K(t)^{\alpha}G(t)^{\beta}(L(t))^{1-\alpha-\beta}
+\]
+Les variables $Y$, $K$ et $L$ ont les interprétations usuelles. La
+population, $L$, croît au taux constant $n>0$. La variable $G$ est le
+niveau de la dépense publique.  Les paramètres $\alpha$ et $\beta$
+sont positifs et vérifient $\alpha+\beta<1$. La dépense publique est
+financée par une taxe, $0<\tau<1$, sur la
+production $G(t) = \tau Y(t)$. On note $0<s<1$ le taux
+d'épargne. L'investissement à l'instant $t$ est donc donné
+par $I(t) = s (1-\tau) Y(t)$ et la consommation à l'instant $t$
+par $C(t) = (1-s)(1-\tau)Y(t)$.\newline
+
+\question{1} Montrer que la dynamique du stock de capital par tête est caractérisée par~:
+
+\[
+\dot{k} = s(1-\tau)k^{\alpha}g^{\beta} - (\delta+n)k
+\]
+\question{2} En notant que l'on peut exprimer la dépense publique par
+tête comme une fonction linéaire de la production par tête $g=\tau y$,
+montrer que l'on a aussi~:
+\[
+\dot{k} = s(1-\tau)\tau^{\frac{\beta}{1-\beta}}k^{\frac{\alpha}{1-\beta}} - (n+\delta)k
+\]
+Interpréter la forme de cette équation.\newline
+
+\question{3} Donner une expression analytique du taux de croissance du
+stock de capital par tête. Représenter graphiquement ce taux de
+croissance.\newline
+
+\question{4} Montrer l'existence et calculer l'état stationnaire non
+trivial pour le stock de capital par tête, on notera $k^{\star}$. En
+déduire l'état stationnaire pour la production par tête et la
+consommation par tête, on notera $y^\star$ et $c^{\star}$.\newline
+
+\question{5} Comment se comporte les variables par tête à long terme~?\newline
+
+\question{6} Expliquer pourquoi nous excluons $\tau=0$ et $\tau=1$.\newline
+
+\question{7} Calculer la taxe optimale, notée $\tau^{\star}$ qui
+maximise la consommation par tête à long terme.\newline
+
+\question{8} Dans le choix de la taxation optimale, existe t-il un
+arbitrage entre niveau de la consommation à long terme et croissance
+des variables par tête~?\newline
+
+\question{9} En procédant par analogie avec les résultats obenus en
+cours, c'est-à-dire sans refaire les calculs, déterminer la vitesse
+d'ajustement vers l'état stationnaire (nous noterons $\lambda$ la
+vitesse de convergence). Commenter.\newline
+
+\question{10} Que deviennent les prédictions du modèle quand $\beta=1-\alpha$~?
+
+\end{document}

@@ -37,7 +37,19 @@ partiel-2018.pdf: partiel-2018.tex
 	rubber --pdf $^
 	rubber --clean $^
 
+partiel-2021.pdf: partiel-2021.tex
+	rubber --pdf $^
+	rubber --clean $^
+
+partiel-2022.pdf: partiel-2022.tex
+	rubber --pdf $^
+	rubber --clean $^
+
 partiel-2023.pdf: partiel-2023.tex
+	rubber --pdf $^
+	rubber --clean $^
+
+partiel-2024.pdf: partiel-2024.tex
 	rubber --pdf $^
 	rubber --clean $^
 
