@@ -1,0 +1,275 @@
+\documentclass[11pt,a4paper,notitlepage]{article}
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage{manfnt}
+\usepackage{hyperref}
+\usepackage{nicefrac}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+\usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+
+\title{\textsc{Croissance économique\\ \small{Session de rattrapage (Éléments de correction)}}}
+\date{Mardi 16 juin 2026}
+
+\maketitle
+\thispagestyle{empty}
+
+Modèle de Solow à deux facteurs accumulables~:
+\[
+Y(t) = K(t)^{\alpha}H(t)^{\lambda}L(t)^{1-\alpha-\lambda},
+\qquad \alpha,\lambda>0,\ \alpha+\lambda<1,
+\]
+\[
+\dot K = s_K Y - \delta K,
+\qquad
+\dot H = s_H Y - \delta H.
+\]
+
+\textbf{(1)} La population vérifie $\dot L(t)=nL(t)$, équation
+différentielle linéaire dont la solution est~:
+\[
+L(t) = L_0 e^{nt}.
+\]
+
+\textbf{(2)} La fonction de production est homogène de degré un
+(rendements d'échelle constants)~: en divisant par $L(t)$,
+\[
+y(t) = \frac{K^{\alpha}H^{\lambda}L^{1-\alpha-\lambda}}{L}
+      = \left(\frac{K}{L}\right)^{\alpha}\left(\frac{H}{L}\right)^{\lambda}
+        \left(\frac{L}{L}\right)^{1-\alpha-\lambda}
+     = k(t)^{\alpha}h(t)^{\lambda}.
+\]
+
+\textbf{(3)} Oui. La fonction est à rendements d'échelle constants
+(homogène de degré un en $(K,H,L)$). Les productivités marginales sont
+strictement positives et décroissantes~; par exemple pour le capital
+physique,
+\[
+\frac{\partial Y}{\partial K} = \alpha K^{\alpha-1}H^{\lambda}L^{1-\alpha-\lambda}>0,
+\qquad
+\frac{\partial^2 Y}{\partial K^2}<0
+\]
+puisque $\alpha\in]0,1[$ (de même pour $H$). Enfin les conditions
+d'Inada sont satisfaites pour chaque facteur accumulable~:
+\[
+\lim_{K\rightarrow 0}\frac{\partial Y}{\partial K}=+\infty,
+\qquad
+\lim_{K\rightarrow \infty}\frac{\partial Y}{\partial K}=0,
+\]
+et de même pour $H$. La technologie est donc bien néoclassique.
+
+\textbf{(4)} On procède comme dans le cours pour chacun des deux
+stocks. Pour le capital physique par tête,
+\[
+\dot k(t) = \frac{\dot K(t)L(t)-K(t)\dot L(t)}{L(t)^2}
+          = \frac{\dot K(t)}{L(t)} - n\,k(t)
+          = \frac{s_K Y(t)}{L(t)} - (n+\delta)k(t)
+          = s_K\,k(t)^{\alpha}h(t)^{\lambda} - (n+\delta)k(t).
+\]
+La même démarche appliquée au capital humain donne le système~:
+\[
+\begin{cases}
+\dot k(t) = s_K\,k(t)^{\alpha}h(t)^{\lambda} - (n+\delta)k(t),\\[2pt]
+\dot h(t) = s_H\,k(t)^{\alpha}h(t)^{\lambda} - (n+\delta)h(t).
+\end{cases}
+\]
+Les deux dynamiques sont \emph{jointes}~: la variation de chaque stock
+par tête dépend non seulement de son propre niveau, mais aussi du
+niveau de l'autre stock, car la production — donc l'investissement —
+fait intervenir à la fois le capital physique et le capital humain. On
+ne peut étudier l'accumulation de l'un indépendamment de l'autre.
+
+\textbf{(5)} À l'état stationnaire non trivial, $\dot k=\dot h=0$~:
+\[
+\begin{cases}
+s_K\left.k^{\star}\right.^{\alpha}\left.h^{\star}\right.^{\lambda} = (n+\delta)k^{\star},\\[2pt]
+s_H\left.k^{\star}\right.^{\alpha}\left.h^{\star}\right.^{\lambda} = (n+\delta)h^{\star}.
+\end{cases}
+\]
+En faisant le rapport membre à membre des deux équations, le terme
+$\left.k^{\star}\right.^{\alpha}\left.h^{\star}\right.^{\lambda}$ se
+simplifie et il vient~:
+\[
+\frac{k^{\star}}{h^{\star}} = \frac{s_K}{s_H}.
+\]
+Une économie qui épargne relativement plus en capital physique se
+caractérise, à l'état stationnaire, par un stock de capital physique
+relativement plus élevé (par rapport au capital humain). La
+composition du stock de capital reflète la composition de l'épargne.
+
+\textbf{(6)} On reporte $k^{\star}=\frac{s_K}{s_H}h^{\star}$ dans la
+seconde équation stationnaire, soit
+$s_H\left.k^{\star}\right.^{\alpha}\left.h^{\star}\right.^{\lambda-1}=n+\delta$~:
+\[
+s_H\left(\frac{s_K}{s_H}\right)^{\alpha}\left.h^{\star}\right.^{\alpha+\lambda-1}=n+\delta
+\;\Longleftrightarrow\;
+s_K^{\alpha}s_H^{1-\alpha}\left.h^{\star}\right.^{-(1-\alpha-\lambda)}=n+\delta.
+\]
+On en déduit~:
+\[
+h^{\star} = \left(\frac{s_K^{\alpha}s_H^{1-\alpha}}{n+\delta}\right)^{\frac{1}{1-\alpha-\lambda}},
+\]
+et, de façon symétrique (en reportant
+$h^{\star}=\frac{s_H}{s_K}k^{\star}$ dans la première équation)~:
+\[
+k^{\star} = \left(\frac{s_K^{1-\lambda}s_H^{\lambda}}{n+\delta}\right)^{\frac{1}{1-\alpha-\lambda}}.
+\]
+En substituant dans $y^{\star}=\left.k^{\star}\right.^{\alpha}\left.h^{\star}\right.^{\lambda}$
+et en réarrangeant, on obtient l'expression compacte~:
+\[
+y^{\star} = \left(\frac{s_K}{n+\delta}\right)^{\frac{\alpha}{1-\alpha-\lambda}}
+            \left(\frac{s_H}{n+\delta}\right)^{\frac{\lambda}{1-\alpha-\lambda}}.
+\]
+(On vérifie que le cas $\lambda=0$ redonne le résultat standard
+$y^{\star}=(\nicefrac{s_K}{(n+\delta)})^{\alpha/(1-\alpha)}$.)
+
+\textbf{(7)} La consommation est la part non épargnée de la
+production, $c(t)=(1-s_K-s_H)y(t)$, d'où à l'état stationnaire~:
+\[
+c^{\star} = (1-s_K-s_H)\left(\frac{s_K}{n+\delta}\right)^{\frac{\alpha}{1-\alpha-\lambda}}
+            \left(\frac{s_H}{n+\delta}\right)^{\frac{\lambda}{1-\alpha-\lambda}}.
+\]
+
+\textbf{(8)} En passant au logarithme,
+$\ln y^{\star}=\frac{\alpha}{1-\alpha-\lambda}\ln\frac{s_K}{n+\delta}
++\frac{\lambda}{1-\alpha-\lambda}\ln\frac{s_H}{n+\delta}$, l'élasticité
+cherchée est~:
+\[
+\frac{\partial \ln y^{\star}}{\partial \ln s_K} = \frac{\alpha}{1-\alpha-\lambda}.
+\]
+Dans le modèle de Solow standard ($\lambda=0$), cette élasticité vaut
+$\frac{\alpha}{1-\alpha}$. Comme $1-\alpha-\lambda<1-\alpha$, on a
+$\frac{\alpha}{1-\alpha-\lambda} > \frac{\alpha}{1-\alpha}$~:
+l'introduction d'un second facteur accumulable \emph{amplifie} la
+sensibilité de la production de long terme au taux d'épargne en
+capital physique. En effet, une hausse de $s_K$ augmente directement le
+capital physique, ce qui élève la production, donc l'investissement en
+\emph{capital humain}, lequel accroît à son tour la production~: un
+effet de second tour absent du modèle à un seul facteur accumulable.
+
+\textbf{(9)} À la règle d'or, $c^{\star}(s_K,s_H)$ est maximale, d'où
+$\frac{\partial c^{\star}}{\partial s_K}=\frac{\partial c^{\star}}{\partial s_H}=0$.
+En utilisant
+$\frac{\partial y^{\star}}{\partial s_K}=\frac{1}{s_K}\frac{\alpha}{1-\alpha-\lambda}y^{\star}$
+et
+$\frac{\partial y^{\star}}{\partial s_H}=\frac{1}{s_H}\frac{\lambda}{1-\alpha-\lambda}y^{\star}$,
+les conditions du premier ordre
+$(1-s_K-s_H)\frac{\partial y^{\star}}{\partial s_i}=y^{\star}$ s'écrivent~:
+\[
+\frac{1-s_K-s_H}{1-\alpha-\lambda} = \frac{s_K}{\alpha},
+\qquad
+\frac{1-s_K-s_H}{1-\alpha-\lambda} = \frac{s_H}{\lambda}.
+\]
+Le rapport des deux donne $\frac{s_K}{s_H}=\frac{\alpha}{\lambda}$~;
+en reportant dans l'une des équations on trouve~:
+\[
+\boxed{\,s_K^{\mathrm{or}}=\alpha,\qquad s_H^{\mathrm{or}}=\lambda.\,}
+\]
+Chaque taux d'épargne de la règle d'or est égal à l'élasticité de la
+production par rapport au facteur correspondant. Le niveau de
+consommation associé est~:
+\[
+c^{\star}_{\mathrm{or}} = (1-\alpha-\lambda)
+\left(\frac{\alpha}{n+\delta}\right)^{\frac{\alpha}{1-\alpha-\lambda}}
+\left(\frac{\lambda}{n+\delta}\right)^{\frac{\lambda}{1-\alpha-\lambda}}.
+\]
+
+\textbf{(10)} Oui, le modèle engendre des écarts \emph{durables} de
+revenu par tête~: à paramètres technologiques et démographiques
+identiques, deux économies ayant des taux d'épargne $(s_K,s_H)$
+différents convergent vers des états stationnaires $y^{\star}$
+différents (et y restent). Surtout, l'introduction du capital humain
+\emph{amplifie} considérablement ces écarts~: l'exposant pertinent
+passe de $\frac{\alpha}{1-\alpha}$ à
+$\frac{\alpha+\lambda}{1-\alpha-\lambda}$ pour l'effet conjoint des deux
+taux d'épargne. Avec une part du capital physique
+$\alpha\simeq\nicefrac13$, le modèle de Solow standard peine à
+expliquer les énormes écarts de revenu observés entre pays
+(l'élasticité $\frac{\alpha}{1-\alpha}\simeq\nicefrac12$ est trop
+faible). En ajoutant le capital humain avec une part $\lambda$ du même
+ordre de grandeur, on obtient une élasticité bien plus grande~: c'est
+précisément l'argument de Mankiw, Romer et Weil (1992), pour qui le
+modèle de Solow \emph{augmenté du capital humain} rend bien mieux
+compte de la dispersion internationale des revenus par tête que le
+modèle de Solow originel.
+
+\textbf{(11)} Le taux d'épargne en capital humain est fixé à
+$\bar s_H<\lambda$~: la situation est sous-optimale. On maximise
+$c^{\star}(s_K)=(1-s_K-\bar s_H)\,y^{\star}(s_K,\bar s_H)$ par rapport
+au seul $s_K$. La condition du premier ordre est
+$\frac{1-s_K-\bar s_H}{1-\alpha-\lambda} = \frac{s_K}{\alpha}$,
+soit, en résolvant pour $s_K$~:
+\[
+s_K^{\star} = \alpha\,\frac{1-\bar s_H}{1-\lambda}.
+\]
+Comme $\bar s_H<\lambda$, on a $\frac{1-\bar s_H}{1-\lambda}>1$, donc
+$s_K^{\star} > \alpha = s_K^{\mathrm{or}}$~: on cherche à compenser la
+sous-accumulation de capital humain en sur-accumulant du capital
+physique. Mais cette compensation est incomplète~: un calcul direct
+donne
+\[
+s_K^{\star}+\bar s_H = (\alpha+\lambda) + \frac{1-\alpha-\lambda}{1-\lambda}\,(\bar s_H-\lambda),
+\]
+et comme $\bar s_H<\lambda$ et $1-\alpha-\lambda>0$, le second terme est
+négatif~:
+\[
+s_K^{\star}+\bar s_H < \alpha+\lambda = s_K^{\mathrm{or}}+s_H^{\mathrm{or}}.
+\]
+Le taux d'épargne total reste inférieur à celui de la règle d'or, et
+la consommation de long terme demeure sous le niveau de la règle d'or
+(figure~\ref{fig:gold})~: en l'absence de l'instrument $s_H$, on ne
+peut atteindre l'optimum non contraint. Une politique de soutien au
+financement de l'éducation — relâchant la contrainte sur $s_H$ —
+domine donc le seul ajustement du taux d'épargne en capital physique.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=13cm, height=7cm,
+  axis lines=middle,
+  xlabel={$s_K$}, ylabel={$c^{\star}$},
+  xlabel style={anchor=west}, ylabel style={anchor=south},
+  xmin=0, xmax=0.92, ymin=0, ymax=0.23,
+  xtick={0.3,0.364}, xticklabels={$\alpha$,$s_K^{\star}$},
+  ytick=\empty, samples=120, clip=false,
+  legend style={at={(0.98,0.97)},anchor=north east,draw=none,fill=none},
+]
+  % c*(s_K) avec s_H = lambda = 0.3 (regle d'or, sommet en s_K = alpha)
+  \addplot[very thick,blue,domain=0:0.7]{1.146*(0.7-x)*x^(0.75)};
+  \addlegendentry{$s_H=\lambda$ (règle d'or)}
+  % c*(s_K) avec s_H = sbar_H = 0.15 < lambda (sommet deplace en s_K*)
+  \addplot[very thick,red,dashed,domain=0:0.85]{0.6824*(0.85-x)*x^(0.75)};
+  \addlegendentry{$s_H=\bar s_H<\lambda$ (contraint)}
+  % reperes des sommets
+  \draw[dotted] (axis cs:0.3,0)   -- (axis cs:0.3,0.1857);
+  \draw[dotted] (axis cs:0.364,0) -- (axis cs:0.364,0.1552);
+  \fill[blue] (axis cs:0.3,0.1857) circle (2pt);
+  \fill[red]  (axis cs:0.364,0.1552) circle (2pt);
+\end{axis}
+\end{tikzpicture}
+\caption{Consommation par tête de long terme en fonction de $s_K$.
+  Lorsque $s_H=\lambda$ (trait plein), le maximum est atteint en
+  $s_K=\alpha$~: c'est la règle d'or. Lorsque le capital humain est
+  sous-accumulé, $s_H=\bar s_H<\lambda$ (pointillés), le maximum est
+  déplacé vers la droite ($s_K^{\star}>\alpha$) et la consommation
+  maximale atteignable est plus faible.}
+\label{fig:gold}
+\end{figure}
+
+\end{document}

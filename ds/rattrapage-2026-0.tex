@@ -1,0 +1,108 @@
+\documentclass[11pt,a4paper,notitlepage,twocolumn]{article}
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage{manfnt}
+\usepackage{hyperref}
+\usepackage{nicefrac}
+
+\usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+
+\title{\textsc{Croissance économique\\ \small{Session de rattrapage}}}
+\date{Mardi 16 juin 2026}
+
+\maketitle
+\thispagestyle{empty}
+
+Soient $K(t)$ le stock de capital physique d'une économie à l'instant
+$t$, $L(t)$ la population (assimilée à la force de travail) à l'instant
+$t$ dont le taux de croissance $n>0$ est constant, $T>0$ une quantité
+de terre — ou plus généralement de ressources naturelles —
+disponible \emph{en quantité fixe}, et $Y(t)$ la production à
+l'instant $t$. La production est décrite par la fonction~:
+\[
+Y(t) = K(t)^{\alpha}L(t)^{\beta}T^{\gamma}
+\]
+avec $\alpha,\beta,\gamma\in]0,1[$ et $\alpha+\beta+\gamma=1$. La
+terre, contrairement au capital et au travail, n'est ni accumulable ni
+reproductible~: sa quantité $T$ reste constante au cours du
+temps. \textbf{(1)} On suppose que la population à l'instant initial
+$t=0$ est connue, $L(0)=L_0$. Déterminer le niveau de la population à
+un instant $t$ quelconque. \textbf{(2)} Étudier les rendements
+d'échelle de la fonction de production. Montrer en particulier que,
+\emph{à quantité de terre donnée}, la production présente des
+rendements d'échelle décroissants par rapport au couple
+$(K,L)$. Quelle caractéristique de la terre explique ce
+résultat~? \textbf{(3)} On note $k(t)=\nicefrac{K(t)}{L(t)}$ le
+capital par tête et $z(t)=\nicefrac{T}{L(t)}$ la quantité de terre par
+tête. Exprimer la production par tête $y(t)=\nicefrac{Y(t)}{L(t)}$ en
+fonction de $k$ et de $z$. \textbf{(4)} À quantité de terre par tête
+$z$ donnée, la fonction $k\mapsto f(k)=k^{\alpha}z^{\gamma}$ est-elle
+néoclassique~? On vérifiera notamment les conditions
+d'Inada. \textbf{(5)} Déterminer la dynamique de la terre par tête
+$z(t)$, puis résoudre l'équation différentielle obtenue. Interpréter.
+\textbf{(6)} La dynamique du stock de capital agrégé est donnée par~:
+\[
+\dot K(t) = sY(t)-\delta K(t)
+\]
+où $s\in]0,1[$ est le taux d'épargne et $\delta>0$ le taux de
+dépréciation du capital. Établir l'équation différentielle vérifiée
+par le capital par tête $k(t)$. Pourquoi cette équation n'admet-elle
+pas d'état stationnaire strictement positif et
+constant~? \textbf{(7)} On introduit le ratio capital sur production
+$\kappa(t)=\nicefrac{K(t)}{Y(t)}$. En différenciant (le logarithme de)
+la fonction de production, montrer que le taux de croissance de la
+production vérifie~:
+\[
+g_Y(t) = \alpha\, g_K(t) + \beta n
+\]
+\textbf{(8)} En déduire que le ratio capital sur production obéit à
+l'équation différentielle linéaire~:
+\[
+\dot\kappa(t) = (1-\alpha)s - \left[(1-\alpha)\delta + \beta n\right]\kappa(t)
+\]
+\textbf{(9)} Montrer qu'il existe un unique ratio capital sur
+production stationnaire $\kappa^{\star}$ strictement positif, le
+calculer, et établir qu'il est globalement stable. Donner l'expression
+de $\kappa(t)$. \textbf{(10)} On se place désormais sur le sentier de
+croissance équilibrée, c'est-à-dire lorsque $\kappa=\kappa^{\star}$.
+Calculer les taux de croissance $g_K$ et $g_Y$, puis celui de la
+production par tête $g_y$. Montrer que~:
+\[
+g_y = -\frac{\gamma n}{1-\alpha}
+\]
+Interpréter le signe de ce taux de croissance. \textbf{(11)} Discuter
+l'effet sur $g_y$ du taux de croissance démographique $n$ et de la
+part de la terre $\gamma$ dans la production. Le taux d'épargne $s$
+influence-t-il $g_y$~? Que devient le modèle lorsque
+$\gamma\rightarrow 0$~? Quel enseignement, déjà présent chez les
+économistes classiques (Ricardo, Malthus), retrouve-t-on
+ici~? \textbf{(12)} On suppose à présent que la production bénéficie
+d'un progrès technique augmentant le travail~:
+\[
+Y(t) = K(t)^{\alpha}\bigl(A(t)L(t)\bigr)^{\beta}T^{\gamma}
+\]
+où l'efficacité du travail croît au taux constant
+$\nicefrac{\dot A(t)}{A(t)}=x>0$. Reprendre la démarche de la question
+\textbf{(10)} et montrer que le taux de croissance de la production
+par tête sur le sentier de croissance équilibrée est~:
+\[
+g_y = \frac{\beta x - \gamma n}{1-\alpha}
+\]
+Sous quelle condition l'économie connaît-elle une croissance par tête
+durablement positive~? Commenter au regard de la question
+\textbf{(11)}.
+
+\end{document}

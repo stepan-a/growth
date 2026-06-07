@@ -1,0 +1,304 @@
+\documentclass[11pt,a4paper,notitlepage]{article}
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage{manfnt}
+\usepackage{hyperref}
+\usepackage{nicefrac}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+
+\title{\textsc{Croissance économique\\ \small{Session de rattrapage (Éléments de correction)}}}
+\date{Le \today\ à \thistime}
+
+\maketitle
+\thispagestyle{empty}
+
+Soient $K(t)$ le stock de capital physique, $L(t)$ la population dont
+le taux de croissance $n>0$ est constant, $T>0$ une quantité de terre
+fixe, et $Y(t)$ la production~:
+\[
+Y(t) = K(t)^{\alpha}L(t)^{\beta}T^{\gamma},\qquad \alpha+\beta+\gamma=1.
+\]
+
+\textbf{(1)} La variation de la population vérifie $\dot L(t)=nL(t)$.
+En résolvant cette équation différentielle linéaire (voir le cours
+pour les détails), on obtient~:
+\[
+L(t) = L_0 e^{nt}.
+\]
+
+\textbf{(2)} Pour $\lambda>0$, on a~:
+\[
+(\lambda K)^{\alpha}(\lambda L)^{\beta}(\lambda T)^{\gamma}
+= \lambda^{\alpha+\beta+\gamma}K^{\alpha}L^{\beta}T^{\gamma}
+= \lambda\, Y,
+\]
+donc la fonction présente des rendements d'échelle constants par
+rapport au triplet $(K,L,T)$. En revanche, \emph{à quantité de terre
+$T$ donnée}~:
+\[
+(\lambda K)^{\alpha}(\lambda L)^{\beta}T^{\gamma}
+= \lambda^{\alpha+\beta}\,Y = \lambda^{1-\gamma}\,Y,
+\]
+et comme $1-\gamma<1$, les rendements d'échelle par rapport au seul
+couple $(K,L)$ sont décroissants. C'est précisément le caractère
+\emph{fixe et non accumulable} de la terre qui en est responsable~:
+en augmentant simultanément capital et travail sans pouvoir augmenter
+la terre, on se heurte à la rareté relative de ce facteur, qui capte
+une part $\gamma$ de la production.
+
+\textbf{(3)} La production par tête est~:
+\[
+\begin{split}
+y(t) &= \frac{K(t)^{\alpha}L(t)^{\beta}T^{\gamma}}{L(t)}
+       = K(t)^{\alpha}L(t)^{\beta-1}T^{\gamma}\\
+     &= \left(\frac{K(t)}{L(t)}\right)^{\alpha}L(t)^{\alpha+\beta-1}T^{\gamma}
+       = k(t)^{\alpha}L(t)^{-\gamma}T^{\gamma}\\
+     &= k(t)^{\alpha}\left(\frac{T}{L(t)}\right)^{\gamma}
+       = k(t)^{\alpha}z(t)^{\gamma},
+\end{split}
+\]
+où l'on a utilisé $\alpha+\beta-1=-\gamma$. La production par tête
+dépend donc du capital par tête $k$ \emph{et} de la terre par tête
+$z$.
+
+\textbf{(4)} À $z$ donné, $f(k)=z^{\gamma}k^{\alpha}$. On a
+$f(0)=0$, $f'(k)=\alpha z^{\gamma}k^{\alpha-1}>0$ et
+$f''(k)=\alpha(\alpha-1)z^{\gamma}k^{\alpha-2}<0$ puisque
+$0<\alpha<1$~: la productivité marginale du capital est positive et
+décroissante. Les conditions d'Inada sont satisfaites~:
+\[
+\lim_{k\rightarrow 0}f'(k)=+\infty,
+\qquad
+\lim_{k\rightarrow\infty}f'(k)=0.
+\]
+À terre par tête donnée, la fonction de production intensive est donc
+bien néoclassique. La difficulté du modèle ne vient pas de la forme de
+$f$, mais de la décroissance \emph{exogène} de $z$ que l'on établit à
+la question suivante.
+
+\textbf{(5)} Comme $z(t)=\nicefrac{T}{L(t)}$ avec $T$ constant, en
+prenant le logarithme et en dérivant par rapport au temps~:
+\[
+\frac{\dot z(t)}{z(t)} = -\frac{\dot L(t)}{L(t)} = -n,
+\]
+soit $\dot z(t)=-n\,z(t)$, dont la solution est~:
+\[
+z(t) = z_0\,e^{-nt},\qquad z_0=\frac{T}{L_0}.
+\]
+La terre par tête décroît au taux $n$~: la population augmente tandis
+que la terre reste fixe, la dotation en ressources de chaque
+travailleur s'érode donc continûment.
+
+\textbf{(6)} On a $k=\nicefrac{K}{L}$, donc~:
+\[
+\frac{\dot k(t)}{k(t)} = \frac{\dot K(t)}{K(t)} - \frac{\dot L(t)}{L(t)}
+= \frac{sY(t)-\delta K(t)}{K(t)} - n
+= s\frac{Y(t)}{K(t)} - (n+\delta).
+\]
+Comme $\nicefrac{Y}{K}=\nicefrac{y}{k}$, il vient~:
+\[
+\dot k(t) = s\,y(t) - (n+\delta)k(t)
+          = s\,k(t)^{\alpha}z(t)^{\gamma} - (n+\delta)k(t),
+\]
+soit, en substituant $z(t)=z_0 e^{-nt}$~:
+\[
+\dot k(t) = s\,z_0^{\gamma}\,e^{-n\gamma t}\,k(t)^{\alpha} - (n+\delta)k(t).
+\]
+Cette équation est \emph{non autonome}~: le coefficient
+$s z_0^{\gamma}e^{-n\gamma t}$ dépend explicitement du temps et tend
+vers $0$. Un état stationnaire strictement positif et constant
+exigerait $s\,k^{\alpha}z(t)^{\gamma}=(n+\delta)k$ \emph{à tout
+instant}, ce qui est impossible puisque $z(t)$ varie sans cesse. La
+base productive par tête s'érodant continûment, le capital par tête ne
+peut se stabiliser à un niveau constant.
+
+\textbf{(7)} En prenant le logarithme de la fonction de production~:
+\[
+\ln Y(t) = \alpha\ln K(t) + \beta\ln L(t) + \gamma\ln T,
+\]
+puis en dérivant par rapport au temps (avec $T$ constant, donc
+$g_T=0$)~:
+\[
+g_Y(t) = \alpha\, g_K(t) + \beta\, g_L(t) + \gamma\, g_T
+       = \alpha\, g_K(t) + \beta n.
+\]
+
+\textbf{(8)} Par définition de $\kappa=\nicefrac{K}{Y}$~:
+\[
+\frac{\dot\kappa(t)}{\kappa(t)} = g_K(t) - g_Y(t)
+= g_K(t) - \bigl(\alpha\, g_K(t)+\beta n\bigr)
+= (1-\alpha)g_K(t) - \beta n.
+\]
+Or, à partir de l'accumulation du capital~:
+\[
+g_K(t) = \frac{\dot K(t)}{K(t)} = s\frac{Y(t)}{K(t)}-\delta
+       = \frac{s}{\kappa(t)}-\delta.
+\]
+En reportant~:
+\[
+\frac{\dot\kappa}{\kappa} = (1-\alpha)\left(\frac{s}{\kappa}-\delta\right)-\beta n,
+\]
+et en multipliant par $\kappa$~:
+\[
+\dot\kappa(t) = (1-\alpha)s - \bigl[(1-\alpha)\delta+\beta n\bigr]\kappa(t).
+\]
+Le ratio capital sur production obéit donc à une équation
+différentielle linéaire (du premier ordre, à coefficients constants).
+
+\textbf{(9)} L'état stationnaire $\dot\kappa=0$ donne immédiatement~:
+\[
+\kappa^{\star} = \frac{(1-\alpha)s}{(1-\alpha)\delta+\beta n} > 0,
+\]
+unique. Posons $\theta\equiv(1-\alpha)\delta+\beta n>0$, de sorte que
+$\dot\kappa=\theta(\kappa^{\star}-\kappa)$~: le coefficient de
+$\kappa$ étant négatif, $\dot\kappa>0$ pour $\kappa<\kappa^{\star}$ et
+$\dot\kappa<0$ pour $\kappa>\kappa^{\star}$ (voir le graphique en fin
+de copie). L'état stationnaire est donc globalement stable~: quel que
+soit le ratio initial $\kappa_0$, le ratio capital sur production
+converge vers $\kappa^{\star}$. La solution de l'équation linéaire
+s'écrit~:
+\[
+\kappa(t) = \kappa^{\star} + (\kappa_0-\kappa^{\star})\,e^{-\theta t}.
+\]
+
+\textbf{(10)} Sur le sentier de croissance équilibrée,
+$\kappa=\kappa^{\star}$ est constant, donc $g_K=g_Y$. En utilisant
+$g_K=\nicefrac{s}{\kappa^{\star}}-\delta$~:
+\[
+g_K = \frac{s}{\kappa^{\star}}-\delta
+    = \frac{(1-\alpha)\delta+\beta n}{1-\alpha}-\delta
+    = \frac{\beta n}{1-\alpha}.
+\]
+On retrouve bien le même résultat à partir de la question \textbf{(7)}~:
+$g_Y=\alpha g_K+\beta n=g_K$ implique $(1-\alpha)g_K=\beta n$. Ainsi~:
+\[
+g_K = g_Y = \frac{\beta n}{1-\alpha}.
+\]
+Le taux de croissance de la production par tête est alors~:
+\[
+g_y = g_Y - n = \frac{\beta n}{1-\alpha} - n
+    = \frac{\beta n-(1-\alpha)n}{1-\alpha}
+    = \frac{(\alpha+\beta-1)n}{1-\alpha},
+\]
+et comme $\alpha+\beta-1=-\gamma$~:
+\[
+\boxed{\;g_y = -\frac{\gamma n}{1-\alpha} < 0.\;}
+\]
+(On vérifie de même $g_k=g_K-n=g_y$.) La production par tête
+\emph{décroît} le long du sentier de croissance équilibrée. C'est le
+résultat central~: en présence d'un facteur fixe (la terre) et d'une
+population croissante, l'accumulation du capital ne parvient pas à
+compenser la raréfaction de la terre par tête, et le niveau de vie
+recule tendanciellement.
+
+\textbf{(11)} Le taux $g_y=-\nicefrac{\gamma n}{(1-\alpha)}$ est
+d'autant plus négatif que~:
+\begin{itemize}
+\item le taux de croissance démographique $n$ est élevé~: plus la
+  population croît vite, plus la terre par tête se raréfie rapidement,
+  et plus le déclin du niveau de vie est marqué~;
+\item la part de la terre $\gamma$ dans la production est grande~:
+  plus l'économie est dépendante du facteur fixe, plus le frein
+  qu'il exerce est puissant.
+\end{itemize}
+Le taux d'épargne $s$ \emph{n'apparaît pas} dans l'expression de
+$g_y$~: conformément au résultat classique du modèle de Solow,
+l'épargne n'a qu'un effet de \emph{niveau} (elle modifie
+$\kappa^{\star}$ et donc la position du sentier de croissance), mais
+aucun effet sur le \emph{taux de croissance} de long terme. Lorsque
+$\gamma\rightarrow 0$, on a $g_y\rightarrow 0$~: la terre disparaît de
+la fonction de production, qui redevient une Cobb-Douglas standard
+$Y=K^{\alpha}L^{1-\alpha}$, et l'on retrouve le modèle de Solow
+habituel (état stationnaire constant pour $k$, absence de croissance
+par tête à long terme). On retrouve ici le pessimisme des économistes
+classiques~: l'état stationnaire de Ricardo et le spectre malthusien,
+selon lesquels la croissance démographique butant sur une terre en
+quantité limitée condamne le revenu par tête à stagner puis à décliner
+— l'intuition moderne des « limites à la croissance ».
+
+\textbf{(12)} Avec progrès technique augmentant le travail,
+$Y=K^{\alpha}(AL)^{\beta}T^{\gamma}$, le logarithme donne~:
+\[
+\ln Y = \alpha\ln K + \beta(\ln A+\ln L) + \gamma\ln T,
+\]
+d'où, en dérivant~:
+\[
+g_Y = \alpha\, g_K + \beta(x+n).
+\]
+Sur le sentier de croissance équilibrée, $\kappa$ est constant donc
+$g_K=g_Y\equiv g$, ce qui donne $g=\alpha g+\beta(x+n)$, soit~:
+\[
+g_K = g_Y = \frac{\beta(x+n)}{1-\alpha}.
+\]
+Le taux de croissance de la production par tête devient~:
+\[
+\begin{split}
+g_y &= g_Y - n = \frac{\beta(x+n)-(1-\alpha)n}{1-\alpha}
+     = \frac{\beta x + (\alpha+\beta-1)n}{1-\alpha}\\
+    &= \frac{\beta x-\gamma n}{1-\alpha}.
+\end{split}
+\]
+La croissance par tête est durablement positive si et seulement si~:
+\[
+\beta x > \gamma n.
+\]
+Tout se joue donc dans une \emph{course} entre, d'un côté, le progrès
+technique qui accroît l'efficacité du travail (terme $\beta x$) et, de
+l'autre, la raréfaction des ressources par tête engendrée par la
+croissance démographique (terme $\gamma n$). Si le progrès technique
+est suffisamment rapide, il l'emporte sur le frein des ressources et
+l'économie connaît une croissance soutenue du niveau de vie~: c'est la
+réponse « optimiste » (Solow, Romer) au pessimisme classique de la
+question \textbf{(11)}. Dans le cas particulier $\gamma=0$ on retrouve
+le résultat standard $g_y=\nicefrac{\beta x}{(1-\alpha)}=x$ (avec
+$\beta=1-\alpha$), c'est-à-dire une croissance par tête au taux du
+progrès technique.
+
+\newpage
+
+\begin{center}
+\textbf{Dynamique du ratio capital sur production (question 9)}\\[1em]
+\begin{tikzpicture}[>=stealth,scale=1.1]
+  % axes
+  \draw[->] (-0.4,0) -- (6.4,0) node[right] {$\kappa$};
+  \draw[->] (0,-1.7) -- (0,2.9) node[above] {$\dot\kappa$};
+  % droite dot kappa = (1-alpha)s - theta kappa, intercept (0,2.2), zero en kappa*=3.6
+  \draw[very thick,blue] (-0.25,2.55) -- (6.0,-1.25);
+  % intercept
+  \draw[dashed] (0,2.2) -- (-0.05,2.2);
+  \node[left] at (0,2.2) {$(1-\alpha)s$};
+  \fill (0,2.2) circle (1.5pt);
+  % kappa star
+  \fill (3.6,0) circle (1.8pt);
+  \node[below right] at (3.6,0) {$\kappa^{\star}$};
+  % fleches de convergence sur l'axe
+  \draw[->,very thick,red] (1.0,0) -- (2.3,0);
+  \draw[->,very thick,red] (5.6,0) -- (4.3,0);
+  % pente
+  \node[blue] at (4.7,-1.5) {pente $-\theta<0$};
+\end{tikzpicture}
+\end{center}
+
+Le ratio capital sur production $\kappa$ augmente lorsqu'il est
+inférieur à $\kappa^{\star}$ et diminue lorsqu'il lui est
+supérieur~: l'état stationnaire $\kappa^{\star}$ est globalement
+stable, avec $\theta=(1-\alpha)\delta+\beta n$.
+
+\end{document}

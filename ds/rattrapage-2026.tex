@@ -1,0 +1,95 @@
+\documentclass[11pt,a4paper,notitlepage,twocolumn]{article}
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{float}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage{manfnt}
+\usepackage{hyperref}
+\usepackage{nicefrac}
+
+\usepackage[active]{srcltx}
+\usepackage{scrtime}
+
+\newcommand{\exercice}[1]{\textsc{\textbf{Exercice}} #1}
+\newcommand{\question}[1]{\textbf{(#1)}}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+
+\title{\textsc{Croissance économique\\ \small{Session de rattrapage}}}
+\date{Mardi 16 juin 2026}
+
+\maketitle
+\thispagestyle{empty}
+
+On considère un modèle de Solow augmenté d'une seconde variable
+d'état~: le stock de capital humain. Soient $K(t)$ le stock de capital
+physique, $H(t)$ le stock de capital humain, $L(t)$ la population
+(force de travail) dont le taux de croissance $n>0$ est constant, et
+$Y(t)$ la production à l'instant $t$. La technologie de production
+est~:
+\[
+Y(t) = K(t)^{\alpha}H(t)^{\lambda}L(t)^{1-\alpha-\lambda}
+\]
+où les paramètres $\alpha$ et $\lambda$ sont strictement positifs et
+vérifient $\alpha+\lambda<1$. Les deux types de capital se déprécient
+au même taux $\delta\in]0,1[$. Leurs lois d'accumulation sont~:
+\[
+\begin{aligned}
+\dot K(t) &= s_K Y(t) - \delta K(t),\\
+\dot H(t) &= s_H Y(t) - \delta H(t),
+\end{aligned}
+\]
+où $s_K\in]0,1[$ et $s_H\in]0,1[$ sont respectivement le taux
+d'épargne en capital physique et le taux d'épargne en capital humain,
+avec $s_K+s_H<1$. \textbf{(1)} On suppose que la population à
+l'instant initial $t=0$ est connue, on note $L(0)=L_0$. Déterminer le
+niveau de la population à un instant $t$ quelconque. \textbf{(2)}
+Exprimer la production par tête $y(t)=\nicefrac{Y(t)}{L(t)}$ en
+fonction du capital physique par tête $k(t)=\nicefrac{K(t)}{L(t)}$ et
+du capital humain par tête $h(t)=\nicefrac{H(t)}{L(t)}$. \textbf{(3)}
+La fonction de production est-elle néoclassique~? Justifier.
+\textbf{(4)} Établir le système d'équations différentielles
+caractérisant la dynamique jointe du capital physique par tête $k(t)$
+et du capital humain par tête $h(t)$. Pourquoi dit-on que ces deux
+dynamiques sont \emph{jointes}~? \textbf{(5)} On s'intéresse à l'état
+stationnaire non trivial $(k^{\star},h^{\star})$, où les deux stocks
+par tête sont strictement positifs et constants. Montrer qu'en cet
+état stationnaire~:
+\[
+\frac{k^{\star}}{h^{\star}} = \frac{s_K}{s_H}
+\]
+Interpréter. \textbf{(6)} Calculer l'état stationnaire des stocks par
+tête $k^{\star}$ et $h^{\star}$, puis celui de la production par tête
+$y^{\star}$. \textbf{(7)} En déduire le niveau de la consommation par
+tête à l'état stationnaire, $c^{\star}$. \textbf{(8)} Déterminer
+l'élasticité de la production par tête de long terme $y^{\star}$ par
+rapport au taux d'épargne en capital physique $s_K$. Comparer cette
+élasticité à celle que l'on obtiendrait dans le modèle de Solow
+standard (sans capital humain, $\lambda=0$). Commenter. \textbf{(9)}
+Le taux d'épargne de la règle d'or est le couple
+$(s_K,s_H)$ qui maximise la consommation par tête à l'état
+stationnaire. Déterminer les taux d'épargne de la règle d'or, notés
+$s_K^{\mathrm{or}}$ et $s_H^{\mathrm{or}}$, et montrer qu'ils valent
+respectivement $\alpha$ et $\lambda$. \textbf{(10)} Deux économies
+partagent les mêmes paramètres $\alpha$, $\lambda$, $n$ et $\delta$,
+mais diffèrent par leurs taux d'épargne $(s_K,s_H)$. Le modèle
+peut-il rendre compte d'écarts \emph{durables} de revenu par tête
+entre ces économies~? L'introduction du capital humain aide-t-elle à
+expliquer l'ampleur des écarts de revenu par tête observés entre les
+pays, au-delà de ce que permettrait le seul capital physique~?
+Commenter (on pourra se référer à l'analyse de Mankiw, Romer et Weil).
+\textbf{(11)} On suppose désormais que le taux d'épargne en capital
+humain est contraint à une valeur $\bar s_H<\lambda$ (par exemple
+parce que le financement de l'éducation est insuffisant). Le seul
+instrument disponible est alors le taux d'épargne en capital physique.
+Déterminer le taux d'épargne en capital physique $s_K^{\star}$ qui
+maximise la consommation par tête à l'état stationnaire. Montrer que
+$s_K^{\star}>\alpha$, mais que
+$s_K^{\star}+\bar s_H<\alpha+\lambda$. Commenter.
+
+\end{document}
