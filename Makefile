@@ -68,19 +68,24 @@ data-clean:
 clean-all: td-clean ds-clean cours-clean data-clean
 
 push: all
-	rsync -vz --progress cours/introduction.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/cours/introduction.pdf
-	rsync -vz --progress cours/solow.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/cours/chapitre-1-solow.pdf
-	rsync -vz --progress cours/convergence.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/cours/chapitre-2-convergence.pdf
-	rsync -vz --progress cours/education.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/cours/chapitre-3-education.pdf
-	rsync -vz --progress ds/partiel-2013.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/exam/
-	rsync -vz --progress ds/partiel-2014.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/exam/
-	rsync -vz --progress ds/partiel-2018.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/exam/
-	rsync -vz --progress ds/correction-partiel-2013.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/exam/
-	rsync -vz --progress ds/correction-partiel-2014.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/exam/
-	rsync -vz --progress ds/correction-partiel-2018.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/exam/
-	rsync -vz --progress td/1/td1.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/td/1/
-	rsync -vz --progress td/2/td2.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/td/2/
-	rsync -vz --progress td/3/td3.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/td/3/
-	rsync -vz --progress td/1/correction-td1.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/td/1/
-	rsync -vz --progress td/2/correction-td2.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/td/2/
-	rsync -vz --progress td/3/correction-td3.pdf ulysses:/home/www/le-mans.adjemian.eu/croissance/td/3/
+	rsync -vz --progress cours/introduction.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/cours/introduction.pdf
+	rsync -vz --progress cours/solow.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/cours/chapitre-1-solow.pdf
+	rsync -vz --progress cours/convergence.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/cours/chapitre-2-convergence.pdf
+	rsync -vz --progress cours/education.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/cours/chapitre-3-education.pdf
+	rsync -vz --progress ds/partiel-2013.pdf puck:/puck/home/www/le-mans.adjemian.eu/croissance/exam/
+	rsync -vz --progress ds/partiel-2014.pdf puck:/puck/home/www/le-mans.adjemian.eu/croissance/exam/
+	rsync -vz --progress ds/partiel-2018.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/exam/
+	rsync -vz --progress ds/partiel-2018.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/exam/
+	rsync -vz --progress ds/correction-partiel-2013.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/exam/
+	rsync -vz --progress ds/correction-partiel-2014.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/exam/
+	rsync -vz --progress ds/correction-partiel-2018.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/exam/
+	rsync -vz --progress ds/correction-rattrapage-2026-0.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/exam/
+	rsync -vz --progress ds/correction-rattrapage-2026.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/exam/
+	rsync -vz --progress ds/rattrapage-2026-0.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/exam/
+	rsync -vz --progress ds/rattrapage-2026.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/exam/
+    rsync -vz --progress td/1/td1.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/td/1/
+	rsync -vz --progress td/2/td2.pdf puck:/puck//www/le-mans.adjemian.eu/croissance/td/2/
+	rsync -vz --progress td/3/td3.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/td/3/
+	rsync -vz --progress td/1/correction-td1.pdf puck:/puck//www/le-mans.adjemian.eu/croissance/td/1/
+	rsync -vz --progress td/2/correction-td2.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/td/2/
+	rsync -vz --progress td/3/correction-td3.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/td/3/
