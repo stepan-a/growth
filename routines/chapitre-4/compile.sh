@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 python3 -m venv /tmp/mrw
 source /tmp/mrw/bin/activate

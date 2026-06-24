@@ -1,12 +1,12 @@
 ROOT_PATH = .
 
-.PHONY: all push clean-all data tikz cours
+.PHONY: all push clean-all data pgf cours
 
-all: data tikz td-build ds-build cours
+all: data pgf td-build ds-build cours
 
 data: data/pwt100.mat data/mpd2020.csv data/fra_logged_rgdp_per_capita2.dat data/gbr_logged_rgdp_per_capita.dat data/usa_logged_rgdp_per_capita2.dat data/rgdpc-density-1960.dat data/fra_logged_population.dat data/fra_k_over_y_ratio.dat
 
-tikz: tikz/mrw-transition.tex
+pgf: pgf/mrw-transition.pgf
 
 data/pwt100.csv data/mpd2020.csv: data/build.py
 	@echo "Download xlsx data files (PWT and Maddison databases) and convert to CSV..."
@@ -40,9 +40,9 @@ data/fra_k_over_y_ratio.dat: routines/chapitre-1/plt_fra_k_over_y_ratio.m
 	@echo "Prepare plots for K/Y ratio in France..."
 	@cd routines/chapitre-1; matlab -nosplash -nodisplay -batch "plt_fra_k_over_y_ratio; quit" 2> /dev/null
 
-tikz/mrw-transition.tex: routines/chapitre-4/mrw-transition.py
+pgf/mrw-transition.pgf: routines/chapitre-4/mrw-transition.py
 	@echo "Build plot for MRW transition..."
-	@cd routines/chapitre-4; ./mrw-transition.py
+	@cd routines/chapitre-4; ./compile.sh
 
 td-build:
 	$(MAKE) -C $(ROOT_PATH)/td all
@@ -50,7 +50,7 @@ td-build:
 ds-build:
 	$(MAKE) -C $(ROOT_PATH)/ds all
 
-cours: data tikz
+cours: data pgf
 	$(MAKE) -C $(ROOT_PATH)/cours all
 
 td-clean:
@@ -72,8 +72,8 @@ push: all
 	rsync -vz --progress cours/solow.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/cours/chapitre-1-solow.pdf
 	rsync -vz --progress cours/convergence.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/cours/chapitre-2-convergence.pdf
 	rsync -vz --progress cours/education.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/cours/chapitre-3-education.pdf
-	rsync -vz --progress ds/partiel-2013.pdf puck:/puck/home/www/le-mans.adjemian.eu/croissance/exam/
-	rsync -vz --progress ds/partiel-2014.pdf puck:/puck/home/www/le-mans.adjemian.eu/croissance/exam/
+	rsync -vz --progress ds/partiel-2013.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/exam/
+	rsync -vz --progress ds/partiel-2014.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/exam/
 	rsync -vz --progress ds/partiel-2018.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/exam/
 	rsync -vz --progress ds/partiel-2018.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/exam/
 	rsync -vz --progress ds/correction-partiel-2013.pdf puck:/puck/www/le-mans.adjemian.eu/croissance/exam/
